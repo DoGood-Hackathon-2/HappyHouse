@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B15C824B505E3C2D99B241E8 /* Pods_HappyHouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF4D2E8D7A48EDCECDBDD7D /* Pods_HappyHouseTests.framework */; };
 		B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8326C74A4C00346355 /* AppDelegate.swift */; };
 		B1C8CC8626C74A4C00346355 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8526C74A4C00346355 /* SceneDelegate.swift */; };
 		B1C8CC8826C74A4C00346355 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8726C74A4C00346355 /* ViewController.swift */; };
@@ -15,6 +16,8 @@
 		B1C8CC9026C74A4D00346355 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1C8CC8E26C74A4D00346355 /* LaunchScreen.storyboard */; };
 		B1C8CC9B26C74A4D00346355 /* HappyHouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC9A26C74A4D00346355 /* HappyHouseTests.swift */; };
 		B1C8CCA626C74A4D00346355 /* HappyHouseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CCA526C74A4D00346355 /* HappyHouseUITests.swift */; };
+		C60A6336723078343ADE2B5E /* Pods_HappyHouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC81CE1613BDCBF66DA12E53 /* Pods_HappyHouse.framework */; };
+		EAEED76C82F68562DB26B05D /* Pods_HappyHouse_HappyHouseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC38628E2E155F8B0A57735 /* Pods_HappyHouse_HappyHouseUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0DC38628E2E155F8B0A57735 /* Pods_HappyHouse_HappyHouseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyHouse_HappyHouseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		23D5254137279DAF12BB8CF5 /* Pods-HappyHouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouse.debug.xcconfig"; path = "Target Support Files/Pods-HappyHouse/Pods-HappyHouse.debug.xcconfig"; sourceTree = "<group>"; };
+		4C0E482DE29C89A4551FFEED /* Pods-HappyHouseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouseTests.debug.xcconfig"; path = "Target Support Files/Pods-HappyHouseTests/Pods-HappyHouseTests.debug.xcconfig"; sourceTree = "<group>"; };
+		926AE511005A817508D12B9E /* Pods-HappyHouseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouseTests.release.xcconfig"; path = "Target Support Files/Pods-HappyHouseTests/Pods-HappyHouseTests.release.xcconfig"; sourceTree = "<group>"; };
 		B1C8CC8026C74A4C00346355 /* HappyHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C8CC8326C74A4C00346355 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1C8CC8526C74A4C00346355 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +56,11 @@
 		B1C8CCA126C74A4D00346355 /* HappyHouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyHouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C8CCA526C74A4D00346355 /* HappyHouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyHouseUITests.swift; sourceTree = "<group>"; };
 		B1C8CCA726C74A4D00346355 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE1C173A7AB9EAF57D8144A0 /* Pods-HappyHouse-HappyHouseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouse-HappyHouseUITests.debug.xcconfig"; path = "Target Support Files/Pods-HappyHouse-HappyHouseUITests/Pods-HappyHouse-HappyHouseUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D3CD7A586B73C3B7C9A1CB99 /* Pods-HappyHouse-HappyHouseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouse-HappyHouseUITests.release.xcconfig"; path = "Target Support Files/Pods-HappyHouse-HappyHouseUITests/Pods-HappyHouse-HappyHouseUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DC81CE1613BDCBF66DA12E53 /* Pods_HappyHouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyHouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBCD1E3EC2035912B721B8C6 /* Pods-HappyHouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouse.release.xcconfig"; path = "Target Support Files/Pods-HappyHouse/Pods-HappyHouse.release.xcconfig"; sourceTree = "<group>"; };
+		ECF4D2E8D7A48EDCECDBDD7D /* Pods_HappyHouseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyHouseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C60A6336723078343ADE2B5E /* Pods_HappyHouse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B15C824B505E3C2D99B241E8 /* Pods_HappyHouseTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +84,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAEED76C82F68562DB26B05D /* Pods_HappyHouse_HappyHouseUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D0712506F6E9804AD6949D8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				23D5254137279DAF12BB8CF5 /* Pods-HappyHouse.debug.xcconfig */,
+				EBCD1E3EC2035912B721B8C6 /* Pods-HappyHouse.release.xcconfig */,
+				BE1C173A7AB9EAF57D8144A0 /* Pods-HappyHouse-HappyHouseUITests.debug.xcconfig */,
+				D3CD7A586B73C3B7C9A1CB99 /* Pods-HappyHouse-HappyHouseUITests.release.xcconfig */,
+				4C0E482DE29C89A4551FFEED /* Pods-HappyHouseTests.debug.xcconfig */,
+				926AE511005A817508D12B9E /* Pods-HappyHouseTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7A3989768DED11209E97EFE0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC81CE1613BDCBF66DA12E53 /* Pods_HappyHouse.framework */,
+				0DC38628E2E155F8B0A57735 /* Pods_HappyHouse_HappyHouseUITests.framework */,
+				ECF4D2E8D7A48EDCECDBDD7D /* Pods_HappyHouseTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B1C8CC7726C74A4C00346355 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +122,8 @@
 				B1C8CC9926C74A4D00346355 /* HappyHouseTests */,
 				B1C8CCA426C74A4D00346355 /* HappyHouseUITests */,
 				B1C8CC8126C74A4C00346355 /* Products */,
+				6D0712506F6E9804AD6949D8 /* Pods */,
+				7A3989768DED11209E97EFE0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,9 +176,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B1C8CCAA26C74A4D00346355 /* Build configuration list for PBXNativeTarget "HappyHouse" */;
 			buildPhases = (
+				4CCBFF92EE95422A6EDF348B /* [CP] Check Pods Manifest.lock */,
 				B1C8CC7C26C74A4C00346355 /* Sources */,
 				B1C8CC7D26C74A4C00346355 /* Frameworks */,
 				B1C8CC7E26C74A4C00346355 /* Resources */,
+				6A741DD8348BFF5854A26488 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +195,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B1C8CCAD26C74A4D00346355 /* Build configuration list for PBXNativeTarget "HappyHouseTests" */;
 			buildPhases = (
+				21CD35BF5B188C248C7F47CC /* [CP] Check Pods Manifest.lock */,
 				B1C8CC9226C74A4D00346355 /* Sources */,
 				B1C8CC9326C74A4D00346355 /* Frameworks */,
 				B1C8CC9426C74A4D00346355 /* Resources */,
@@ -170,9 +214,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B1C8CCB026C74A4D00346355 /* Build configuration list for PBXNativeTarget "HappyHouseUITests" */;
 			buildPhases = (
+				9F4D1BD4A2FEC36FC5A07DCE /* [CP] Check Pods Manifest.lock */,
 				B1C8CC9D26C74A4D00346355 /* Sources */,
 				B1C8CC9E26C74A4D00346355 /* Frameworks */,
 				B1C8CC9F26C74A4D00346355 /* Resources */,
+				57363413F30F6A96D71E0293 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -252,6 +298,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21CD35BF5B188C248C7F47CC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HappyHouseTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4CCBFF92EE95422A6EDF348B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HappyHouse-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57363413F30F6A96D71E0293 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HappyHouse-HappyHouseUITests/Pods-HappyHouse-HappyHouseUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HappyHouse-HappyHouseUITests/Pods-HappyHouse-HappyHouseUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HappyHouse-HappyHouseUITests/Pods-HappyHouse-HappyHouseUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A741DD8348BFF5854A26488 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HappyHouse/Pods-HappyHouse-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HappyHouse/Pods-HappyHouse-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HappyHouse/Pods-HappyHouse-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F4D1BD4A2FEC36FC5A07DCE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HappyHouse-HappyHouseUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B1C8CC7C26C74A4C00346355 /* Sources */ = {
@@ -433,6 +582,7 @@
 		};
 		B1C8CCAB26C74A4D00346355 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23D5254137279DAF12BB8CF5 /* Pods-HappyHouse.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -452,6 +602,7 @@
 		};
 		B1C8CCAC26C74A4D00346355 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBCD1E3EC2035912B721B8C6 /* Pods-HappyHouse.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -471,6 +622,7 @@
 		};
 		B1C8CCAE26C74A4D00346355 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C0E482DE29C89A4551FFEED /* Pods-HappyHouseTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -493,6 +645,7 @@
 		};
 		B1C8CCAF26C74A4D00346355 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 926AE511005A817508D12B9E /* Pods-HappyHouseTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -515,6 +668,7 @@
 		};
 		B1C8CCB126C74A4D00346355 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE1C173A7AB9EAF57D8144A0 /* Pods-HappyHouse-HappyHouseUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +689,7 @@
 		};
 		B1C8CCB226C74A4D00346355 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3CD7A586B73C3B7C9A1CB99 /* Pods-HappyHouse-HappyHouseUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
