@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B11A34A426C76DAB00CEEA35 /* Button_LightYellow_Full.png in Resources */ = {isa = PBXBuildFile; fileRef = B11A34A326C76DAB00CEEA35 /* Button_LightYellow_Full.png */; };
 		B15C824B505E3C2D99B241E8 /* Pods_HappyHouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF4D2E8D7A48EDCECDBDD7D /* Pods_HappyHouseTests.framework */; };
 		B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8326C74A4C00346355 /* AppDelegate.swift */; };
 		B1C8CC8626C74A4C00346355 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8526C74A4C00346355 /* SceneDelegate.swift */; };
@@ -42,6 +43,7 @@
 		23D5254137279DAF12BB8CF5 /* Pods-HappyHouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouse.debug.xcconfig"; path = "Target Support Files/Pods-HappyHouse/Pods-HappyHouse.debug.xcconfig"; sourceTree = "<group>"; };
 		4C0E482DE29C89A4551FFEED /* Pods-HappyHouseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouseTests.debug.xcconfig"; path = "Target Support Files/Pods-HappyHouseTests/Pods-HappyHouseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		926AE511005A817508D12B9E /* Pods-HappyHouseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouseTests.release.xcconfig"; path = "Target Support Files/Pods-HappyHouseTests/Pods-HappyHouseTests.release.xcconfig"; sourceTree = "<group>"; };
+		B11A34A326C76DAB00CEEA35 /* Button_LightYellow_Full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_LightYellow_Full.png; sourceTree = "<group>"; };
 		B1C8CC8026C74A4C00346355 /* HappyHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C8CC8326C74A4C00346355 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1C8CC8526C74A4C00346355 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,7 +103,6 @@
 				4C0E482DE29C89A4551FFEED /* Pods-HappyHouseTests.debug.xcconfig */,
 				926AE511005A817508D12B9E /* Pods-HappyHouseTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -145,6 +146,7 @@
 				B1C8CC8726C74A4C00346355 /* ViewController.swift */,
 				B1C8CC8926C74A4C00346355 /* Main.storyboard */,
 				B1C8CC8C26C74A4D00346355 /* Assets.xcassets */,
+				B11A34A326C76DAB00CEEA35 /* Button_LightYellow_Full.png */,
 				B1C8CC8E26C74A4D00346355 /* LaunchScreen.storyboard */,
 				B1C8CC9126C74A4D00346355 /* Info.plist */,
 			);
@@ -280,6 +282,7 @@
 				B1C8CC9026C74A4D00346355 /* LaunchScreen.storyboard in Resources */,
 				B1C8CC8D26C74A4D00346355 /* Assets.xcassets in Resources */,
 				B1C8CC8B26C74A4C00346355 /* Main.storyboard in Resources */,
+				B11A34A426C76DAB00CEEA35 /* Button_LightYellow_Full.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
