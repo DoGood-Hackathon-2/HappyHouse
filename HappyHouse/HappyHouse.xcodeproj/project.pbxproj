@@ -10,6 +10,8 @@
 		B11A34A426C76DAB00CEEA35 /* Button_LightYellow_Full.png in Resources */ = {isa = PBXBuildFile; fileRef = B11A34A326C76DAB00CEEA35 /* Button_LightYellow_Full.png */; };
 		B15C824B505E3C2D99B241E8 /* Pods_HappyHouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF4D2E8D7A48EDCECDBDD7D /* Pods_HappyHouseTests.framework */; };
 		B1808B5326C7BBF100B6FE37 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B5226C7BBF100B6FE37 /* loginViewController.swift */; };
+		B1808B5626C7C8F600B6FE37 /* loadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B5526C7C8F600B6FE37 /* loadingViewController.swift */; };
+		B1808B5826C7CABA00B6FE37 /* inviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B5726C7CABA00B6FE37 /* inviteViewController.swift */; };
 		B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8326C74A4C00346355 /* AppDelegate.swift */; };
 		B1C8CC8626C74A4C00346355 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8526C74A4C00346355 /* SceneDelegate.swift */; };
 		B1C8CC8826C74A4C00346355 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8726C74A4C00346355 /* ViewController.swift */; };
@@ -46,6 +48,8 @@
 		926AE511005A817508D12B9E /* Pods-HappyHouseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouseTests.release.xcconfig"; path = "Target Support Files/Pods-HappyHouseTests/Pods-HappyHouseTests.release.xcconfig"; sourceTree = "<group>"; };
 		B11A34A326C76DAB00CEEA35 /* Button_LightYellow_Full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_LightYellow_Full.png; sourceTree = "<group>"; };
 		B1808B5226C7BBF100B6FE37 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		B1808B5526C7C8F600B6FE37 /* loadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingViewController.swift; sourceTree = "<group>"; };
+		B1808B5726C7CABA00B6FE37 /* inviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inviteViewController.swift; sourceTree = "<group>"; };
 		B1C8CC8026C74A4C00346355 /* HappyHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C8CC8326C74A4C00346355 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1C8CC8526C74A4C00346355 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,8 +126,17 @@
 			isa = PBXGroup;
 			children = (
 				B1808B5226C7BBF100B6FE37 /* loginViewController.swift */,
+				B1808B5726C7CABA00B6FE37 /* inviteViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		B1808B5426C7C8D300B6FE37 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				B1808B5526C7C8F600B6FE37 /* loadingViewController.swift */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 		B1C8CC7726C74A4C00346355 = {
@@ -151,6 +164,7 @@
 		B1C8CC8226C74A4C00346355 /* HappyHouse */ = {
 			isa = PBXGroup;
 			children = (
+				B1808B5426C7C8D300B6FE37 /* Loading */,
 				B1808B5126C7BBE000B6FE37 /* Login */,
 				B1C8CC8326C74A4C00346355 /* AppDelegate.swift */,
 				B1C8CC8526C74A4C00346355 /* SceneDelegate.swift */,
@@ -423,8 +437,10 @@
 			files = (
 				B1808B5326C7BBF100B6FE37 /* loginViewController.swift in Sources */,
 				B1C8CC8826C74A4C00346355 /* ViewController.swift in Sources */,
+				B1808B5626C7C8F600B6FE37 /* loadingViewController.swift in Sources */,
 				B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */,
 				B1C8CC8626C74A4C00346355 /* SceneDelegate.swift in Sources */,
+				B1808B5826C7CABA00B6FE37 /* inviteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

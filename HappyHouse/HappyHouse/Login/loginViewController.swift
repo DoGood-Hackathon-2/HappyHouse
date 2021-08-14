@@ -6,3 +6,18 @@
 //
 
 import Foundation
+import UIKit
+import RxSwift
+import RxCocoa
+
+// 로그인 페이지
+class loginViewController : UIViewController {
+    
+    let bag = DisposeBag()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+}
+
