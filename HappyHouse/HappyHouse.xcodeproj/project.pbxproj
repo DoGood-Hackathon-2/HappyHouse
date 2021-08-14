@@ -31,6 +31,9 @@
 		B1C8CCB826C757C200346355 /* CreateFamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CCB726C757C200346355 /* CreateFamilyViewController.swift */; };
 		B1C8CCBB26C772E700346355 /* FamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CCBA26C772E700346355 /* FamilyViewController.swift */; };
 		B1C8CCBD26C7731D00346355 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CCBC26C7731D00346355 /* MyProfileViewController.swift */; };
+		B1E2150926C833C50081F42D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E2150626C833C50081F42D /* HomeViewController.swift */; };
+		B1E2150A26C833C50081F42D /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1E2150726C833C50081F42D /* HomeView.storyboard */; };
+		B1E2150B26C833C50081F42D /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E2150826C833C50081F42D /* RecommendViewModel.swift */; };
 		C60A6336723078343ADE2B5E /* Pods_HappyHouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC81CE1613BDCBF66DA12E53 /* Pods_HappyHouse.framework */; };
 		EAEED76C82F68562DB26B05D /* Pods_HappyHouse_HappyHouseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC38628E2E155F8B0A57735 /* Pods_HappyHouse_HappyHouseUITests.framework */; };
 /* End PBXBuildFile section */
@@ -86,6 +89,9 @@
 		B1C8CCB726C757C200346355 /* CreateFamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFamilyViewController.swift; sourceTree = "<group>"; };
 		B1C8CCBA26C772E700346355 /* FamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyViewController.swift; sourceTree = "<group>"; };
 		B1C8CCBC26C7731D00346355 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		B1E2150626C833C50081F42D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B1E2150726C833C50081F42D /* HomeView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeView.storyboard; sourceTree = "<group>"; };
+		B1E2150826C833C50081F42D /* RecommendViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendViewModel.swift; sourceTree = "<group>"; };
 		BE1C173A7AB9EAF57D8144A0 /* Pods-HappyHouse-HappyHouseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouse-HappyHouseUITests.debug.xcconfig"; path = "Target Support Files/Pods-HappyHouse-HappyHouseUITests/Pods-HappyHouse-HappyHouseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D3CD7A586B73C3B7C9A1CB99 /* Pods-HappyHouse-HappyHouseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouse-HappyHouseUITests.release.xcconfig"; path = "Target Support Files/Pods-HappyHouse-HappyHouseUITests/Pods-HappyHouse-HappyHouseUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DC81CE1613BDCBF66DA12E53 /* Pods_HappyHouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyHouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +218,7 @@
 		B1C8CC8226C74A4C00346355 /* HappyHouse */ = {
 			isa = PBXGroup;
 			children = (
+				B1E2150526C833C50081F42D /* HomeView */,
 				B196899026C81FBD007B9B1A /* APIManager */,
 				B196898D26C812B5007B9B1A /* Model */,
 				B196897D26C7FF3A007B9B1A /* Welcome */,
@@ -259,6 +266,16 @@
 				B196898B26C81105007B9B1A /* MemberProfileViewController.swift */,
 			);
 			path = CreateFamily;
+			sourceTree = "<group>";
+		};
+		B1E2150526C833C50081F42D /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				B1E2150626C833C50081F42D /* HomeViewController.swift */,
+				B1E2150726C833C50081F42D /* HomeView.storyboard */,
+				B1E2150826C833C50081F42D /* RecommendViewModel.swift */,
+			);
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,6 +386,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1E2150A26C833C50081F42D /* HomeView.storyboard in Resources */,
 				B1C8CC9026C74A4D00346355 /* LaunchScreen.storyboard in Resources */,
 				B1C8CC8D26C74A4D00346355 /* Assets.xcassets in Resources */,
 				B196898A26C80E11007B9B1A /* GoogleService-Info.plist in Resources */,
@@ -504,9 +522,11 @@
 				B196899226C81FCA007B9B1A /* APIManager.swift in Sources */,
 				B16384FD26C7BF2D002013F4 /* FamilyViewModel.swift in Sources */,
 				B1C8CCB826C757C200346355 /* CreateFamilyViewController.swift in Sources */,
+				B1E2150926C833C50081F42D /* HomeViewController.swift in Sources */,
 				B196898F26C812F0007B9B1A /* User.swift in Sources */,
 				B196898326C800DC007B9B1A /* Invitation.swift in Sources */,
 				B196897F26C7FF49007B9B1A /* WelcomeViewController.swift in Sources */,
+				B1E2150B26C833C50081F42D /* RecommendViewModel.swift in Sources */,
 				B196898C26C81105007B9B1A /* MemberProfileViewController.swift in Sources */,
 				B1625B2026C7E3BC000BD74D /* inviteViewController.swift in Sources */,
 				B1C8CC8826C74A4C00346355 /* ViewController.swift in Sources */,
