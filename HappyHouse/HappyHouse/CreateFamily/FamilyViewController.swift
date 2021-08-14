@@ -9,23 +9,23 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class AddMemberViewController: UIViewController {
+class FamilyViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var completeButton: UIButton!
-    let viewModel = AddMemberViewModel()
+    let viewModel = FamilyViewModel()
     var bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Data binding
-        viewModel.memberObsrvable
+        viewModel.members
             .map { $0.count <= 2 }
             .bind(to: completeButton.rx.isHidden)
             .disposed(by: bag)
         
-        viewModel.memberObsrvable
+        viewModel.members
             .bind(to: collectionView.rx
                     .items(cellIdentifier: "MemberCell", cellType: MemberCell.self))
             { index, member, cell in
@@ -52,13 +52,13 @@ class MemberCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     func initUI(of member: Member) {
-        if member.name == "" {
+        if member.id == 0 {
             imageView.image = UIImage(named: "member_placeholder")
         } else {
-            imageView.image = UIImage(named: member.image)
+            imageView.image = UIImage(named: member.image ?? "daughter_profile")
             imageView.layer.cornerRadius = imageView.frame.width / 2
         }
-        nameLabel.text = member.name
+        nameLabel.text = member.nickname
     }
 }
 

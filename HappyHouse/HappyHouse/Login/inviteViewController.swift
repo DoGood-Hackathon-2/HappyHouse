@@ -26,9 +26,9 @@ class inviteViewController : UIViewController {
     }
     @IBAction func touchUpCreateFamily(_ sender: UIButton) {
         let storyboard = UIStoryboard.init(name: "CreateFamily", bundle: nil)
-        let navigationViewController = storyboard.instantiateViewController(identifier: "NavigationViewController")
-        navigationViewController.modalPresentationStyle = .fullScreen
-        present(navigationViewController, animated: true, completion: nil)
+        let vc = storyboard.instantiateViewController(identifier: "CreateFamilyViewController")
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
 }
 
@@ -37,6 +37,7 @@ extension inviteViewController {
     func subscribeInviteCode() {
         inviteCode.rx.controlEvent(.editingDidEndOnExit)
             .asObservable()
+            .debug()
             .map { self.inviteCode.text! }
             .subscribe(onNext: { [weak self] text in
                 print(text)
