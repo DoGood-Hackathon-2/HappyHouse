@@ -14,6 +14,10 @@ Pods/
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
+
+*.pbxproj binary merge=union
+
+
 ## Build generated
 build/
 DerivedData/

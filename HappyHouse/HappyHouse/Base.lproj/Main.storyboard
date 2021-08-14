@@ -349,10 +349,16 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="15px_bold (1)" translatesAutoresizingMaskIntoConstraints="NO" id="Ask-n6-piY">
                                 <rect key="frame" x="116" y="753" width="196" height="40"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" background="Rectangle 733" translatesAutoresizingMaskIntoConstraints="NO" id="pdh-yK-n71">
-                                <rect key="frame" x="28" y="374" width="359" height="42"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 733" translatesAutoresizingMaskIntoConstraints="NO" id="d7Z-dJ-ehY">
+                                <rect key="frame" x="52" y="374" width="326" height="41"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="t0i-lJ-UoZ"/>
+                                    <constraint firstAttribute="height" constant="41" id="kny-Ho-WPe"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1mi-rp-I49">
+                                <rect key="frame" x="74" y="377" width="281" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="qRH-Yw-eIH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -363,17 +369,20 @@
                         <constraints>
                             <constraint firstItem="vOv-WL-9SH" firstAttribute="trailing" secondItem="NKR-bd-dhX" secondAttribute="trailing" constant="27" id="3ts-62-i2z"/>
                             <constraint firstItem="NKR-bd-dhX" firstAttribute="top" secondItem="Ask-n6-piY" secondAttribute="bottom" constant="13" id="APn-Ft-kNP"/>
+                            <constraint firstItem="d7Z-dJ-ehY" firstAttribute="leading" secondItem="vOv-WL-9SH" secondAttribute="leading" constant="52" id="CJy-kn-946"/>
+                            <constraint firstItem="d7Z-dJ-ehY" firstAttribute="top" secondItem="o9R-sm-71G" secondAttribute="bottom" constant="8" symbolic="YES" id="J9F-iz-68G"/>
                             <constraint firstItem="vOv-WL-9SH" firstAttribute="trailing" secondItem="Ask-n6-piY" secondAttribute="trailing" constant="102" id="Llf-wR-yPf"/>
+                            <constraint firstItem="vOv-WL-9SH" firstAttribute="trailing" secondItem="d7Z-dJ-ehY" secondAttribute="trailing" constant="36" id="Mcu-VI-Rbg"/>
+                            <constraint firstItem="1mi-rp-I49" firstAttribute="top" secondItem="o9R-sm-71G" secondAttribute="bottom" constant="11" id="NYv-K8-Mvb"/>
                             <constraint firstItem="o9R-sm-71G" firstAttribute="top" secondItem="ArR-wg-nKJ" secondAttribute="bottom" constant="76" id="Obk-Ni-mYD"/>
-                            <constraint firstItem="pdh-yK-n71" firstAttribute="leading" secondItem="vOv-WL-9SH" secondAttribute="leading" constant="28" id="PWk-cF-i98"/>
                             <constraint firstItem="Ask-n6-piY" firstAttribute="leading" secondItem="vOv-WL-9SH" secondAttribute="leading" constant="116" id="TZU-Ib-eRw"/>
                             <constraint firstItem="NKR-bd-dhX" firstAttribute="bottom" secondItem="vOv-WL-9SH" secondAttribute="bottom" id="Yp7-hp-pRO"/>
+                            <constraint firstItem="1mi-rp-I49" firstAttribute="leading" secondItem="vOv-WL-9SH" secondAttribute="leading" constant="74" id="a5E-Pu-Uv1"/>
                             <constraint firstItem="ArR-wg-nKJ" firstAttribute="trailing" secondItem="vOv-WL-9SH" secondAttribute="trailing" id="di3-V6-DhK"/>
+                            <constraint firstItem="vOv-WL-9SH" firstAttribute="trailing" secondItem="1mi-rp-I49" secondAttribute="trailing" constant="59" id="hZK-V5-hMK"/>
                             <constraint firstItem="NKR-bd-dhX" firstAttribute="leading" secondItem="vOv-WL-9SH" secondAttribute="leading" constant="28" id="j4L-8M-Eux"/>
                             <constraint firstItem="vOv-WL-9SH" firstAttribute="trailing" secondItem="o9R-sm-71G" secondAttribute="trailing" constant="173" id="qLy-b8-Csr"/>
-                            <constraint firstItem="pdh-yK-n71" firstAttribute="top" secondItem="o9R-sm-71G" secondAttribute="bottom" constant="8" symbolic="YES" id="qV7-oe-TVE"/>
                             <constraint firstItem="o9R-sm-71G" firstAttribute="leading" secondItem="vOv-WL-9SH" secondAttribute="leading" constant="52" id="rDc-9K-B67"/>
-                            <constraint firstItem="vOv-WL-9SH" firstAttribute="trailing" secondItem="pdh-yK-n71" secondAttribute="trailing" constant="27" id="rmg-ze-usO"/>
                             <constraint firstItem="ArR-wg-nKJ" firstAttribute="leading" secondItem="vOv-WL-9SH" secondAttribute="leading" id="uky-wD-YcD"/>
                             <constraint firstItem="ArR-wg-nKJ" firstAttribute="top" secondItem="vOv-WL-9SH" secondAttribute="top" constant="177" id="zQe-6V-eut"/>
                         </constraints>
@@ -502,7 +511,7 @@
         <image name="Group 3079" width="828" height="407"/>
         <image name="Mask Group" width="466" height="466"/>
         <image name="Rectangle 697" width="828" height="1297"/>
-        <image name="Rectangle 733" width="736" height="116"/>
+        <image name="Rectangle 733" width="1472" height="232"/>
         <image name="Rectangle 734" width="944" height="28"/>
         <image name="Title1" width="1050" height="101"/>
         <image name="pablo-surprise 1" width="1656" height="1184"/>
