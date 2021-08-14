@@ -129,6 +129,10 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="98l-6V-TXg"/>
+                    <connections>
+                        <outlet property="collectionView" destination="p9c-k1-ZaP" id="xuK-qc-PRZ"/>
+                        <outlet property="roomTitle" destination="RCR-YX-R0k" id="PSM-e5-YsY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -155,6 +159,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="B7L-kJ-dt1" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rCB-gu-4nV">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
