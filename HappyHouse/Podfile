@@ -20,7 +20,6 @@ target 'HappyHouse' do
     pod 'RxSwift', '6.2.0'
     pod 'RxCocoa', '6.2.0'
     pod 'RxAlamofire'
-    pod 'Firebase/Analytics'
     pod 'Firebase/Storage'
 
 end

@@ -25,10 +25,16 @@ class RecommendViewModel {
         Recommend(image: "recommend_4"),
     ]
     
+    var mypages = [
+        Recommend(image: "add_mypage_1x"),
+    ]
     
-    var recommendsObsrvable: Observable<[Recommend]>
+    
+    var recommendsObsrvable: Observable<[Recommend]> // HomeViewController에서 루틴 추천
+    var mypagesObsrvable: Observable<[Recommend]> // MyPageViewController에서 컬렉션 뷰
     
     init() {
         recommendsObsrvable = Observable.of(recommends)
+        mypagesObsrvable = Observable.of(mypages)
     }
 }
