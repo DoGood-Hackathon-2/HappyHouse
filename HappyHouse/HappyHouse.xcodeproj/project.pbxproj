@@ -12,6 +12,9 @@
 		B1625B2026C7E3BC000BD74D /* inviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B1E26C7E3BC000BD74D /* inviteViewController.swift */; };
 		B1625B2326C7E3C3000BD74D /* loadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B2226C7E3C3000BD74D /* loadingViewController.swift */; };
 		B16384FD26C7BF2D002013F4 /* FamilyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16384FC26C7BF2D002013F4 /* FamilyViewModel.swift */; };
+		B1808B6226C8425700B6FE37 /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B6126C8425700B6FE37 /* MypageViewController.swift */; };
+		B1808B6426C8667C00B6FE37 /* MypageTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B6326C8667C00B6FE37 /* MypageTableViewModel.swift */; };
+		B1808B6626C8721600B6FE37 /* TableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B6526C8721600B6FE37 /* TableModel.swift */; };
 		B196897F26C7FF49007B9B1A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196897E26C7FF49007B9B1A /* WelcomeViewController.swift */; };
 		B196898126C8003A007B9B1A /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196898026C8003A007B9B1A /* JoinViewController.swift */; };
 		B196898326C800DC007B9B1A /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196898226C800DC007B9B1A /* Invitation.swift */; };
@@ -68,6 +71,9 @@
 		B1625B1E26C7E3BC000BD74D /* inviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = inviteViewController.swift; sourceTree = "<group>"; };
 		B1625B2226C7E3C3000BD74D /* loadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loadingViewController.swift; sourceTree = "<group>"; };
 		B16384FC26C7BF2D002013F4 /* FamilyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyViewModel.swift; sourceTree = "<group>"; };
+		B1808B6126C8425700B6FE37 /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
+		B1808B6326C8667C00B6FE37 /* MypageTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageTableViewModel.swift; sourceTree = "<group>"; };
+		B1808B6526C8721600B6FE37 /* TableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableModel.swift; sourceTree = "<group>"; };
 		B196897E26C7FF49007B9B1A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		B196898026C8003A007B9B1A /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		B196898226C800DC007B9B1A /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
@@ -175,6 +181,16 @@
 			path = Loading;
 			sourceTree = "<group>";
 		};
+		B1808B6026C8424000B6FE37 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				B1808B6126C8425700B6FE37 /* MypageViewController.swift */,
+				B1808B6326C8667C00B6FE37 /* MypageTableViewModel.swift */,
+				B1808B6526C8721600B6FE37 /* TableModel.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
 		B196897D26C7FF3A007B9B1A /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +243,7 @@
 		B1C8CC8226C74A4C00346355 /* HappyHouse */ = {
 			isa = PBXGroup;
 			children = (
+				B1808B6026C8424000B6FE37 /* MyPage */,
 				B1E2150C26C837980081F42D /* CreateRoutine */,
 				B1E2150526C833C50081F42D /* HomeView */,
 				B196899026C81FBD007B9B1A /* APIManager */,
@@ -541,6 +558,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B196899226C81FCA007B9B1A /* APIManager.swift in Sources */,
+				B1808B6226C8425700B6FE37 /* MypageViewController.swift in Sources */,
 				B1E2151426C85B380081F42D /* NewRoutineViewModel.swift in Sources */,
 				B16384FD26C7BF2D002013F4 /* FamilyViewModel.swift in Sources */,
 				B1C8CCB826C757C200346355 /* CreateFamilyViewController.swift in Sources */,
@@ -551,6 +569,7 @@
 				B1E2150B26C833C50081F42D /* RecommendViewModel.swift in Sources */,
 				B196898C26C81105007B9B1A /* MemberProfileViewController.swift in Sources */,
 				B1625B2026C7E3BC000BD74D /* inviteViewController.swift in Sources */,
+				B1808B6426C8667C00B6FE37 /* MypageTableViewModel.swift in Sources */,
 				B1C8CC8826C74A4C00346355 /* ViewController.swift in Sources */,
 				B1C8CCBB26C772E700346355 /* FamilyViewController.swift in Sources */,
 				B1625B1F26C7E3BC000BD74D /* loginViewController.swift in Sources */,
@@ -560,6 +579,7 @@
 				B196898126C8003A007B9B1A /* JoinViewController.swift in Sources */,
 				B1E2151826C85F170081F42D /* NewRoutineViewController.swift in Sources */,
 				B1625B2326C7E3C3000BD74D /* loadingViewController.swift in Sources */,
+				B1808B6626C8721600B6FE37 /* TableModel.swift in Sources */,
 				B1E2151626C85B670081F42D /* Member.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
