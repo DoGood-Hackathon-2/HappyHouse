@@ -40,6 +40,21 @@ class HomeViewController : UIViewController {
                 print(index, recommend, cell)
             }.disposed(by: bag)
         
+        collectionView.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                print(indexPath.item)
+                self?.presentCreateRoutine()
+            })
+            .disposed(by: bag)
+        
+//        maincollectionView.rx
+//                    .modelSelected(BotMenu.self)
+//                    .subscribe({ (item) in
+//                        print(item.element?.path ?? "")
+//                        let pushVC = PushViewController()
+//                        self.present(pushVC, animated: true, completion: nil)
+//                    }).disposed(by: disposeBag)
+//            }
     }
     
 }
@@ -52,6 +67,14 @@ extension HomeViewController {
         roomTitle.layer.cornerRadius = 12
         roomTitle.clipsToBounds = true
         roomTitle.font = UIFont(name: roomTitle.font.fontName, size: 11)
+    }
+    
+    func presentCreateRoutine() {
+        let storyboard = UIStoryboard.init(name: "CreateRoutine", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(identifier: "NewRoutineViewController") as? NewRoutineViewController else { return }
+        //vc.navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
 }
 

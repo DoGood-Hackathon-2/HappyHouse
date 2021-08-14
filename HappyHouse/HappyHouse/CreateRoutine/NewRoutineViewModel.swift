@@ -1,15 +1,16 @@
 //
-//  AddMemberViewModel.swift
+//  CreateRoutineViewModel.swift
 //  HappyHouse
 //
-//  Created by Dain Song on 2021/08/14.
+//  Created by Dain Song on 2021/08/15.
 //
 
 import Foundation
 import RxSwift
+import RxCocoa
 import RxAlamofire
 
-class FamilyViewModel {
+class NewRoutineViewModel {
     var bag = DisposeBag()
     var members = PublishSubject<[Member]>()
     
@@ -20,9 +21,7 @@ class FamilyViewModel {
             }
             .debug()
             .subscribe(onNext: { [weak self] familyList in
-                var members = familyList.memberList
-                members.append(Member.EMPTY)
-                self?.members.onNext(members)
+                self?.members.onNext(familyList.memberList)
             })
             .disposed(by: bag)
     }
