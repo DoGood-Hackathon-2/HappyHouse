@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B11A34A426C76DAB00CEEA35 /* Button_LightYellow_Full.png in Resources */ = {isa = PBXBuildFile; fileRef = B11A34A326C76DAB00CEEA35 /* Button_LightYellow_Full.png */; };
 		B15C824B505E3C2D99B241E8 /* Pods_HappyHouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF4D2E8D7A48EDCECDBDD7D /* Pods_HappyHouseTests.framework */; };
+		B1808B5326C7BBF100B6FE37 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B5226C7BBF100B6FE37 /* loginViewController.swift */; };
 		B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8326C74A4C00346355 /* AppDelegate.swift */; };
 		B1C8CC8626C74A4C00346355 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8526C74A4C00346355 /* SceneDelegate.swift */; };
 		B1C8CC8826C74A4C00346355 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8726C74A4C00346355 /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 		4C0E482DE29C89A4551FFEED /* Pods-HappyHouseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouseTests.debug.xcconfig"; path = "Target Support Files/Pods-HappyHouseTests/Pods-HappyHouseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		926AE511005A817508D12B9E /* Pods-HappyHouseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouseTests.release.xcconfig"; path = "Target Support Files/Pods-HappyHouseTests/Pods-HappyHouseTests.release.xcconfig"; sourceTree = "<group>"; };
 		B11A34A326C76DAB00CEEA35 /* Button_LightYellow_Full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_LightYellow_Full.png; sourceTree = "<group>"; };
+		B1808B5226C7BBF100B6FE37 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		B1C8CC8026C74A4C00346355 /* HappyHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C8CC8326C74A4C00346355 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1C8CC8526C74A4C00346355 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B1808B5126C7BBE000B6FE37 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B1808B5226C7BBF100B6FE37 /* loginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		B1C8CC7726C74A4C00346355 = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 		B1C8CC8226C74A4C00346355 /* HappyHouse */ = {
 			isa = PBXGroup;
 			children = (
+				B1808B5126C7BBE000B6FE37 /* Login */,
 				B1C8CC8326C74A4C00346355 /* AppDelegate.swift */,
 				B1C8CC8526C74A4C00346355 /* SceneDelegate.swift */,
 				B1C8CC8726C74A4C00346355 /* ViewController.swift */,
@@ -410,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1808B5326C7BBF100B6FE37 /* loginViewController.swift in Sources */,
 				B1C8CC8826C74A4C00346355 /* ViewController.swift in Sources */,
 				B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */,
 				B1C8CC8626C74A4C00346355 /* SceneDelegate.swift in Sources */,
