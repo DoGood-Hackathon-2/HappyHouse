@@ -1,3 +1,48 @@
+Last login: Sat Aug 14 20:20:51 on ttys005
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+(base) Hamlitui-MacBookPro:HappyHouse hamlitjason$ ls
+HappyHouse		HappyHouseTests		Podfile
+HappyHouse.xcworkspace	HappyHouseUITests	Podfile.lock
+(base) Hamlitui-MacBookPro:HappyHouse hamlitjason$ cd ..
+(base) Hamlitui-MacBookPro:HappyHouse-main hamlitjason$ vi .gitignore
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/Users/hamlitjason/Downloads/HappyHouse-main # Created by https://www.gitignore.io/api/xcode,swift,cocoapods
+# Edit at https://www.gitignore.io/?templates=xcode,swift,cocoapods
+
+### CocoaPods ###
+## CocoaPods GitIgnore Template
+
+# CocoaPods - Only use to conserve bandwidth / Save time on Pushing
+#           - Also handy if you have a large number of dependant pods
+#           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
+Pods/
+
+### Swift ###
+# Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+
+## Build generated
+build/
+DerivedData/
+
+
 # Created by https://www.gitignore.io/api/xcode,swift,cocoapods
 # Edit at https://www.gitignore.io/?templates=xcode,swift,cocoapods
 
