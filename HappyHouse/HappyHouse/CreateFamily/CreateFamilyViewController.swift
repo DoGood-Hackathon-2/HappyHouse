@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxAlamofire
 
 class CreateFamilyViewController: UIViewController {
 
@@ -15,9 +16,7 @@ class CreateFamilyViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func touchUpAddMember(_ sender: UIButton) {
-//        guard let vc = storyboard?.instantiateViewController(identifier: "CreateProfileViewController") as? CreateProfileViewController else { return }
-//        vc.modalPresentationStyle = .fullScreen
-//        present(vc, animated: true, completion: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Request 
     }
 }

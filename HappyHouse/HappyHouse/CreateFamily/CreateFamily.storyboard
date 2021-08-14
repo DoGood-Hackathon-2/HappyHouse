@@ -69,8 +69,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="addmember_button"/>
                                 <connections>
-                                    <action selector="touchUpAddMember:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="w3a-Bo-ddz"/>
-                                    <segue destination="8Qr-4N-djb" kind="show" id="1gx-J3-5JH"/>
+                                    <segue destination="8Qr-4N-djb" kind="show" identifier="" id="1gx-J3-5JH"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -15,6 +15,7 @@
 		B196897F26C7FF49007B9B1A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196897E26C7FF49007B9B1A /* WelcomeViewController.swift */; };
 		B196898126C8003A007B9B1A /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196898026C8003A007B9B1A /* JoinViewController.swift */; };
 		B196898326C800DC007B9B1A /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196898226C800DC007B9B1A /* Invitation.swift */; };
+		B196898A26C80E11007B9B1A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B196898926C80E11007B9B1A /* GoogleService-Info.plist */; };
 		B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8326C74A4C00346355 /* AppDelegate.swift */; };
 		B1C8CC8626C74A4C00346355 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8526C74A4C00346355 /* SceneDelegate.swift */; };
 		B1C8CC8826C74A4C00346355 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8726C74A4C00346355 /* ViewController.swift */; };
@@ -60,6 +61,7 @@
 		B196897E26C7FF49007B9B1A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		B196898026C8003A007B9B1A /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		B196898226C800DC007B9B1A /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
+		B196898926C80E11007B9B1A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B1C8CC8026C74A4C00346355 /* HappyHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C8CC8326C74A4C00346355 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1C8CC8526C74A4C00346355 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				B1C8CC8C26C74A4D00346355 /* Assets.xcassets */,
 				B1C8CC8E26C74A4D00346355 /* LaunchScreen.storyboard */,
 				B1C8CC9126C74A4D00346355 /* Info.plist */,
+				B196898926C80E11007B9B1A /* GoogleService-Info.plist */,
 			);
 			path = HappyHouse;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 			files = (
 				B1C8CC9026C74A4D00346355 /* LaunchScreen.storyboard in Resources */,
 				B1C8CC8D26C74A4D00346355 /* Assets.xcassets in Resources */,
+				B196898A26C80E11007B9B1A /* GoogleService-Info.plist in Resources */,
 				B1C8CCB426C756BF00346355 /* CreateFamily.storyboard in Resources */,
 				B1C8CC8B26C74A4C00346355 /* Main.storyboard in Resources */,
 			);
