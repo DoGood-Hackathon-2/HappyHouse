@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,8 @@
 		B1C8CC9026C74A4D00346355 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1C8CC8E26C74A4D00346355 /* LaunchScreen.storyboard */; };
 		B1C8CC9B26C74A4D00346355 /* HappyHouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC9A26C74A4D00346355 /* HappyHouseTests.swift */; };
 		B1C8CCA626C74A4D00346355 /* HappyHouseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CCA526C74A4D00346355 /* HappyHouseUITests.swift */; };
+		B1C8CCB426C756BF00346355 /* CreateFamily.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1C8CCB326C756BF00346355 /* CreateFamily.storyboard */; };
+		B1C8CCB826C757C200346355 /* CreateFamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CCB726C757C200346355 /* CreateFamilyViewController.swift */; };
 		C60A6336723078343ADE2B5E /* Pods_HappyHouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC81CE1613BDCBF66DA12E53 /* Pods_HappyHouse.framework */; };
 		EAEED76C82F68562DB26B05D /* Pods_HappyHouse_HappyHouseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC38628E2E155F8B0A57735 /* Pods_HappyHouse_HappyHouseUITests.framework */; };
 /* End PBXBuildFile section */
@@ -56,6 +58,8 @@
 		B1C8CCA126C74A4D00346355 /* HappyHouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyHouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C8CCA526C74A4D00346355 /* HappyHouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyHouseUITests.swift; sourceTree = "<group>"; };
 		B1C8CCA726C74A4D00346355 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1C8CCB326C756BF00346355 /* CreateFamily.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateFamily.storyboard; sourceTree = "<group>"; };
+		B1C8CCB726C757C200346355 /* CreateFamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFamilyViewController.swift; sourceTree = "<group>"; };
 		BE1C173A7AB9EAF57D8144A0 /* Pods-HappyHouse-HappyHouseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouse-HappyHouseUITests.debug.xcconfig"; path = "Target Support Files/Pods-HappyHouse-HappyHouseUITests/Pods-HappyHouse-HappyHouseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D3CD7A586B73C3B7C9A1CB99 /* Pods-HappyHouse-HappyHouseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouse-HappyHouseUITests.release.xcconfig"; path = "Target Support Files/Pods-HappyHouse-HappyHouseUITests/Pods-HappyHouse-HappyHouseUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DC81CE1613BDCBF66DA12E53 /* Pods_HappyHouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyHouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,7 +105,6 @@
 				4C0E482DE29C89A4551FFEED /* Pods-HappyHouseTests.debug.xcconfig */,
 				926AE511005A817508D12B9E /* Pods-HappyHouseTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -147,6 +150,8 @@
 				B1C8CC8C26C74A4D00346355 /* Assets.xcassets */,
 				B1C8CC8E26C74A4D00346355 /* LaunchScreen.storyboard */,
 				B1C8CC9126C74A4D00346355 /* Info.plist */,
+				B1C8CCB326C756BF00346355 /* CreateFamily.storyboard */,
+				B1C8CCB726C757C200346355 /* CreateFamilyViewController.swift */,
 			);
 			path = HappyHouse;
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 			files = (
 				B1C8CC9026C74A4D00346355 /* LaunchScreen.storyboard in Resources */,
 				B1C8CC8D26C74A4D00346355 /* Assets.xcassets in Resources */,
+				B1C8CCB426C756BF00346355 /* CreateFamily.storyboard in Resources */,
 				B1C8CC8B26C74A4C00346355 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1C8CCB826C757C200346355 /* CreateFamilyViewController.swift in Sources */,
 				B1C8CC8826C74A4C00346355 /* ViewController.swift in Sources */,
 				B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */,
 				B1C8CC8626C74A4C00346355 /* SceneDelegate.swift in Sources */,
