@@ -11,10 +11,6 @@
 		B1625B1F26C7E3BC000BD74D /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B1D26C7E3BC000BD74D /* loginViewController.swift */; };
 		B1625B2026C7E3BC000BD74D /* inviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B1E26C7E3BC000BD74D /* inviteViewController.swift */; };
 		B1625B2326C7E3C3000BD74D /* loadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B2226C7E3C3000BD74D /* loadingViewController.swift */; };
-		B16384FD26C7BF2D002013F4 /* AddMemberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16384FC26C7BF2D002013F4 /* AddMemberViewModel.swift */; };
-		B1808B5B26C7EBEA00B6FE37 /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1808B5A26C7EBEA00B6FE37 /* HomeView.storyboard */; };
-		B1808B5D26C80E3900B6FE37 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B5C26C80E3900B6FE37 /* HomeViewController.swift */; };
-		B1808B5F26C8138400B6FE37 /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B5E26C8138400B6FE37 /* RecommendViewModel.swift */; };
 		B16384FD26C7BF2D002013F4 /* FamilyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16384FC26C7BF2D002013F4 /* FamilyViewModel.swift */; };
 		B196897F26C7FF49007B9B1A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196897E26C7FF49007B9B1A /* WelcomeViewController.swift */; };
 		B196898126C8003A007B9B1A /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196898026C8003A007B9B1A /* JoinViewController.swift */; };
@@ -64,10 +60,6 @@
 		B1625B1D26C7E3BC000BD74D /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		B1625B1E26C7E3BC000BD74D /* inviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = inviteViewController.swift; sourceTree = "<group>"; };
 		B1625B2226C7E3C3000BD74D /* loadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loadingViewController.swift; sourceTree = "<group>"; };
-		B16384FC26C7BF2D002013F4 /* AddMemberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberViewModel.swift; sourceTree = "<group>"; };
-		B1808B5A26C7EBEA00B6FE37 /* HomeView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeView.storyboard; sourceTree = "<group>"; };
-		B1808B5C26C80E3900B6FE37 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		B1808B5E26C8138400B6FE37 /* RecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewModel.swift; sourceTree = "<group>"; };
 		B16384FC26C7BF2D002013F4 /* FamilyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyViewModel.swift; sourceTree = "<group>"; };
 		B196897E26C7FF49007B9B1A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		B196898026C8003A007B9B1A /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
@@ -169,14 +161,6 @@
 			path = Loading;
 			sourceTree = "<group>";
 		};
-		B1808B5926C7EBD400B6FE37 /* HomeView */ = {
-			isa = PBXGroup;
-			children = (
-				B1808B5A26C7EBEA00B6FE37 /* HomeView.storyboard */,
-				B1808B5C26C80E3900B6FE37 /* HomeViewController.swift */,
-				B1808B5E26C8138400B6FE37 /* RecommendViewModel.swift */,
-			);
-			path = HomeView;
 		B196897D26C7FF3A007B9B1A /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,7 +212,6 @@
 		B1C8CC8226C74A4C00346355 /* HappyHouse */ = {
 			isa = PBXGroup;
 			children = (
-				B1808B5926C7EBD400B6FE37 /* HomeView */,
 				B196899026C81FBD007B9B1A /* APIManager */,
 				B196898D26C812B5007B9B1A /* Model */,
 				B196897D26C7FF3A007B9B1A /* Welcome */,
@@ -391,7 +374,6 @@
 				B196898A26C80E11007B9B1A /* GoogleService-Info.plist in Resources */,
 				B1C8CCB426C756BF00346355 /* CreateFamily.storyboard in Resources */,
 				B1C8CC8B26C74A4C00346355 /* Main.storyboard in Resources */,
-				B1808B5B26C7EBEA00B6FE37 /* HomeView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,13 +513,10 @@
 				B1C8CCBB26C772E700346355 /* FamilyViewController.swift in Sources */,
 				B1625B1F26C7E3BC000BD74D /* loginViewController.swift in Sources */,
 				B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */,
-				B1808B5D26C80E3900B6FE37 /* HomeViewController.swift in Sources */,
-				B1C8CCBD26C7731D00346355 /* CreateProfileViewController.swift in Sources */,
 				B1C8CCBD26C7731D00346355 /* MyProfileViewController.swift in Sources */,
 				B1C8CC8626C74A4C00346355 /* SceneDelegate.swift in Sources */,
 				B196898126C8003A007B9B1A /* JoinViewController.swift in Sources */,
 				B1625B2326C7E3C3000BD74D /* loadingViewController.swift in Sources */,
-				B1808B5F26C8138400B6FE37 /* RecommendViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
