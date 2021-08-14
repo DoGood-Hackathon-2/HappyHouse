@@ -17,8 +17,8 @@ struct Member {
 }
 
 class AddMemberViewModel {
-    let members = [Member(image: "daughter_profile", name: "나"),
-                   Member(image: "daughter_profile", name: "너"),
+    let members = [//Member(image: "daughter_profile", name: "나"),
+                   //Member(image: "daughter_profile", name: "너"),
                    Member(image: "daughter_profile", name: "우리"), Member.EMPTY]
     var memberObsrvable: Observable<[Member]>
     
