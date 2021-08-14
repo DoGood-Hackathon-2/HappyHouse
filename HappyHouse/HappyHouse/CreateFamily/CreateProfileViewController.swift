@@ -34,9 +34,9 @@ class CreateProfileViewController: UIViewController {
     }
     
     @IBAction func touchUpFinishButton(_ sender: UIButton) {
-        guard let vc = storyboard?.instantiateViewController(identifier: "AddMemberViewController") as? AddMemberViewController else { return }
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+//        guard let vc = storyboard?.instantiateViewController(identifier: "AddMemberViewController") as? AddMemberViewController else { return }
+//        vc.modalPresentationStyle = .fullScreen
+//        present(vc, animated: true, completion: nil)
     }
 }
 

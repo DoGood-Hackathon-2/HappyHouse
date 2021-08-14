@@ -17,7 +17,14 @@ class loginViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
-    
+    @IBAction func startKakaoButton(_ sender: Any) {
+        let svc = self.storyboard?.instantiateViewController(withIdentifier: "inviteView") as! inviteViewController
+        
+        svc.modalPresentationStyle = .fullScreen
+        
+        self.present(svc,animated: true)
+    }
 }
 

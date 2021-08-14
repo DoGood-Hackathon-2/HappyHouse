@@ -16,8 +16,8 @@ class CreateFamilyViewController: UIViewController {
     }
     
     @IBAction func touchUpAddMember(_ sender: UIButton) {
-        guard let vc = storyboard?.instantiateViewController(identifier: "CreateProfileViewController") as? CreateProfileViewController else { return }
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+//        guard let vc = storyboard?.instantiateViewController(identifier: "CreateProfileViewController") as? CreateProfileViewController else { return }
+//        vc.modalPresentationStyle = .fullScreen
+//        present(vc, animated: true, completion: nil)
     }
 }
