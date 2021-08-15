@@ -565,7 +565,7 @@
         <scene sceneID="mlW-pK-jQN">
             <objects>
                 <viewController id="QYi-ys-9xD" customClass="CameraViewController" customModule="HappyHouse" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Y4P-27-onp">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="Y4P-27-onp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -576,7 +576,7 @@
                                     <constraint firstAttribute="height" constant="524" id="AWf-Jw-TwV"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lzY-EI-U8X">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lzY-EI-U8X">
                                 <rect key="frame" x="0.0" y="568" width="414" height="327"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJh-hs-iqA">
@@ -646,10 +646,10 @@
             </objects>
             <point key="canvasLocation" x="4917" y="518"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Home Tab Bar View Controller-->
         <scene sceneID="o9i-Q5-PMj">
             <objects>
-                <tabBarController storyboardIdentifier="HomeViewTabBar" automaticallyAdjustsScrollViewInsets="NO" id="B7L-kJ-dt1" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeViewTabBar" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="B7L-kJ-dt1" customClass="HomeTabBarViewController" customModule="HappyHouse" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rCB-gu-4nV">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -657,8 +657,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="viewControllers" id="u3R-5D-wwx"/>
-                        <segue destination="Jic-Qs-Ouo" kind="relationship" relationship="viewControllers" id="uGJ-eR-UO9"/>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="viewControllers" destinationCreationSelector="home" id="u3R-5D-wwx"/>
+                        <segue destination="Jic-Qs-Ouo" kind="relationship" relationship="viewControllers" destinationCreationSelector="mypage" id="uGJ-eR-UO9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ke-vq-Ule" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
