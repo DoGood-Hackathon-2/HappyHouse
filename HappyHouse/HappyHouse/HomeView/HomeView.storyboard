@@ -37,7 +37,7 @@
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="p9c-k1-ZaP">
-                                <rect key="frame" x="20" y="295" width="374" height="330"/>
+                                <rect key="frame" x="10" y="295" width="394" height="330"/>
                                 <color key="backgroundColor" red="0.99576586479999996" green="0.95677143340000004" blue="0.96078473330000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="330" id="gYc-L5-HUY"/>
@@ -50,7 +50,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeViewCell" id="yg4-tx-Y6R" customClass="HomeViewCell" customModule="HappyHouse" customModuleProvider="target">
-                                        <rect key="frame" x="90.5" y="0.0" width="193" height="148"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="193" height="148"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wUO-lB-ecs">
                                             <rect key="frame" x="0.0" y="0.0" width="193" height="148"/>
@@ -144,10 +144,10 @@
                             <constraint firstItem="CQl-l1-WkL" firstAttribute="top" secondItem="RCR-YX-R0k" secondAttribute="top" id="etq-nZ-Uqb"/>
                             <constraint firstItem="jyj-Uu-lrl" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="44" id="l3c-ma-4fu"/>
                             <constraint firstItem="haJ-ug-EO4" firstAttribute="centerY" secondItem="Yid-Ga-Q6B" secondAttribute="centerY" constant="5" id="mOe-xH-WFz"/>
-                            <constraint firstItem="p9c-k1-ZaP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="opz-A1-C4v"/>
+                            <constraint firstItem="p9c-k1-ZaP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="opz-A1-C4v"/>
                             <constraint firstItem="guq-gM-liA" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="34" id="pLM-pD-b11"/>
                             <constraint firstItem="RCR-YX-R0k" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="qWV-fd-EhN"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="p9c-k1-ZaP" secondAttribute="trailing" constant="20" id="tBH-Cd-K5G"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="p9c-k1-ZaP" secondAttribute="trailing" constant="10" id="tBH-Cd-K5G"/>
                             <constraint firstItem="T7t-m6-qeS" firstAttribute="top" secondItem="jyj-Uu-lrl" secondAttribute="bottom" constant="38" id="th4-aY-Tp6"/>
                             <constraint firstItem="jyj-Uu-lrl" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="wea-as-0Mw"/>
                             <constraint firstItem="Yid-Ga-Q6B" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="100" id="xTt-Lk-h9Z"/>
@@ -161,12 +161,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="983" y="-213"/>
+            <point key="canvasLocation" x="982.60869565217399" y="-213.61607142857142"/>
         </scene>
         <!--마이페이지-->
         <scene sceneID="uit-hu-Mgw">
             <objects>
-                <viewController id="Jic-Qs-Ouo" customClass="MypageViewController" customModule="HappyHouse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MypageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Jic-Qs-Ouo" customClass="MypageViewController" customModule="HappyHouse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ERi-lv-0vn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -268,7 +268,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart60" translatesAutoresizingMaskIntoConstraints="NO" id="piM-NO-zrq">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mypage_heart" translatesAutoresizingMaskIntoConstraints="NO" id="piM-NO-zrq">
                                 <rect key="frame" x="65" y="367" width="82" height="63"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="63" id="4af-03-qJV"/>
@@ -457,6 +457,12 @@
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="일회성"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7X6-16-SwU">
+                                <rect key="frame" x="88" y="389.5" width="36" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dNW-hm-oaO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -466,6 +472,7 @@
                             <constraint firstItem="zSy-k3-Utg" firstAttribute="leading" secondItem="dNW-hm-oaO" secondAttribute="leading" id="2x3-nM-V70"/>
                             <constraint firstItem="YOU-75-hTn" firstAttribute="leading" secondItem="dNW-hm-oaO" secondAttribute="leading" constant="20" id="3vP-Xf-2JU"/>
                             <constraint firstItem="Fj8-5p-DSh" firstAttribute="leading" secondItem="dNW-hm-oaO" secondAttribute="leading" constant="36" id="58q-Ca-7W2"/>
+                            <constraint firstItem="7X6-16-SwU" firstAttribute="centerY" secondItem="piM-NO-zrq" secondAttribute="centerY" id="6pk-uZ-vCD"/>
                             <constraint firstItem="8NS-YH-Ull" firstAttribute="top" secondItem="0lX-kx-kQg" secondAttribute="bottom" constant="16" id="7ye-aZ-zDH"/>
                             <constraint firstItem="8NS-YH-Ull" firstAttribute="leading" secondItem="dNW-hm-oaO" secondAttribute="leading" constant="43" id="85q-bz-yCT"/>
                             <constraint firstItem="fy5-je-Tsd" firstAttribute="leading" secondItem="dNW-hm-oaO" secondAttribute="leading" constant="10" id="9mv-u0-ZVY"/>
@@ -481,6 +488,7 @@
                             <constraint firstItem="5EC-1j-rGr" firstAttribute="leading" secondItem="8NS-YH-Ull" secondAttribute="trailing" constant="5" id="Kac-mc-q0e"/>
                             <constraint firstItem="5EC-1j-rGr" firstAttribute="top" secondItem="dNW-hm-oaO" secondAttribute="top" constant="451" id="KzE-AC-N2D"/>
                             <constraint firstItem="te1-Qr-9bc" firstAttribute="top" secondItem="dNW-hm-oaO" secondAttribute="top" constant="120" id="Mfn-z1-ZKd"/>
+                            <constraint firstItem="7X6-16-SwU" firstAttribute="centerX" secondItem="piM-NO-zrq" secondAttribute="centerX" id="NHl-GP-Khh"/>
                             <constraint firstItem="0kg-35-p6v" firstAttribute="leading" secondItem="piM-NO-zrq" secondAttribute="trailing" constant="37" id="NIc-Qf-33D"/>
                             <constraint firstItem="ghp-0U-lPw" firstAttribute="top" secondItem="dNW-hm-oaO" secondAttribute="top" constant="427" id="ROm-PG-9Tm"/>
                             <constraint firstItem="Zww-8I-bJC" firstAttribute="leading" secondItem="dNW-hm-oaO" secondAttribute="leading" constant="20" id="SvS-5M-SO4"/>
@@ -868,9 +876,9 @@
         <image name="challengeMake" width="1512" height="332"/>
         <image name="clock" catalog="system" width="128" height="121"/>
         <image name="daughter_profile" width="158" height="158"/>
-        <image name="heart60" width="240" height="208"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="mother_profile" width="186" height="186"/>
+        <image name="mypage_heart" width="99" height="88"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="recommend_1" width="564" height="441"/>
         <systemColor name="labelColor">
