@@ -18,7 +18,7 @@ class JoinViewController: UIViewController {
                 
         // go to main (routine page)
         let storyboard = UIStoryboard.init(name: "HomeView", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "HomeViewController")
+        let vc = storyboard.instantiateViewController(identifier: "HomeViewTabBar")
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }

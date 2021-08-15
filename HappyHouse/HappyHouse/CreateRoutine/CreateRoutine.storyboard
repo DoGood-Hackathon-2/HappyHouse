@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JH5-ej-jlu">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -100,13 +100,6 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7A-iJ-5R2">
-                                        <rect key="frame" x="17" y="766" width="434" height="56"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="56" id="5vS-2B-ZVs"/>
-                                        </constraints>
-                                        <state key="normal" title="Button" image="add_routine"/>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="언제 시작할까요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8X-tv-eFL">
                                         <rect key="frame" x="34" y="306.5" width="381" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -393,6 +386,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7A-iJ-5R2">
+                                        <rect key="frame" x="17" y="766" width="363" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="5vS-2B-ZVs"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="add_routine"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -403,6 +403,7 @@
                                     <constraint firstItem="BOH-Cu-8yM" firstAttribute="leading" secondItem="nlH-Uy-0ud" secondAttribute="leading" constant="34" id="8ds-a9-W5w"/>
                                     <constraint firstItem="3pH-X6-oiq" firstAttribute="top" secondItem="BOH-Cu-8yM" secondAttribute="bottom" constant="25" id="AFO-v1-jhd"/>
                                     <constraint firstItem="3xO-aE-z9d" firstAttribute="leading" secondItem="nlH-Uy-0ud" secondAttribute="leading" constant="34" id="AtS-78-FuN"/>
+                                    <constraint firstAttribute="trailing" secondItem="J7A-iJ-5R2" secondAttribute="trailing" constant="25" id="J0j-4H-iVg"/>
                                     <constraint firstItem="BOH-Cu-8yM" firstAttribute="top" secondItem="iwE-UK-ptd" secondAttribute="bottom" constant="20" id="KXR-DW-QA4"/>
                                     <constraint firstItem="H8X-tv-eFL" firstAttribute="top" secondItem="gEC-ws-0jU" secondAttribute="bottom" constant="15" id="KqM-MO-U1v"/>
                                     <constraint firstItem="AFS-XV-elJ" firstAttribute="trailing" secondItem="jmr-um-E3a" secondAttribute="trailing" constant="-20" id="LwT-d0-TA5"/>

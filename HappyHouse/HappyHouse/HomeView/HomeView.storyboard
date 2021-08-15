@@ -43,7 +43,7 @@
                                     <constraint firstAttribute="height" constant="330" id="gYc-L5-HUY"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="z6W-XN-aWb">
-                                    <size key="itemSize" width="180" height="148"/>
+                                    <size key="itemSize" width="165" height="148"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -401,7 +401,18 @@
                                                     </constraints>
                                                     <state key="normal" title="챌린지 시작"/>
                                                     <connections>
-                                                        <segue destination="lqI-z7-m2m" kind="show" id="Zeo-n3-Biu"/>
+                                                        <segue destination="ECw-IQ-nYs" kind="show" id="n9U-Ad-48t"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Bl-dg-gMz" userLabel="TutorialGo">
+                                                    <rect key="frame" x="265" y="126" width="69" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="69" id="g3T-eS-Gez"/>
+                                                        <constraint firstAttribute="height" constant="29" id="khD-RZ-Nsi"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="TutorialGo:" destination="iU5-Ec-U8w" eventType="touchUpInside" id="7os-k2-EQP"/>
+                                                        <segue destination="lqI-z7-m2m" kind="show" id="Erb-rG-ylU"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -423,16 +434,19 @@
                                                 <constraint firstAttribute="trailing" secondItem="EIk-Cx-tF6" secondAttribute="trailing" constant="4" id="Wtu-OV-Nvu"/>
                                                 <constraint firstItem="YCn-Rb-4py" firstAttribute="top" secondItem="Ggq-35-O89" secondAttribute="top" constant="11" id="ZhU-eq-PrK"/>
                                                 <constraint firstItem="HHl-li-GTA" firstAttribute="top" secondItem="doI-Og-kjg" secondAttribute="bottom" constant="24" id="a6j-66-zNd"/>
+                                                <constraint firstItem="0Bl-dg-gMz" firstAttribute="trailing" secondItem="Ggq-35-O89" secondAttribute="trailingMargin" id="da2-oe-jw4"/>
                                                 <constraint firstItem="fDK-Kx-RdT" firstAttribute="top" secondItem="eBx-fW-JFx" secondAttribute="bottom" constant="10" id="euQ-wV-jae"/>
                                                 <constraint firstItem="eBx-fW-JFx" firstAttribute="top" secondItem="HHl-li-GTA" secondAttribute="bottom" constant="4.5" id="ey9-ea-tfT"/>
                                                 <constraint firstItem="no8-zz-mtt" firstAttribute="top" secondItem="Ggq-35-O89" secondAttribute="topMargin" id="fhQ-9q-KWq"/>
                                                 <constraint firstItem="no8-zz-mtt" firstAttribute="leading" secondItem="HNp-Az-VhB" secondAttribute="trailing" constant="8" symbolic="YES" id="iRg-YI-hVM"/>
                                                 <constraint firstItem="doI-Og-kjg" firstAttribute="top" secondItem="no8-zz-mtt" secondAttribute="bottom" constant="4" id="ls6-Q5-1pW"/>
                                                 <constraint firstItem="eBx-fW-JFx" firstAttribute="leading" secondItem="Ggq-35-O89" secondAttribute="leadingMargin" constant="49" id="nvP-D6-g27"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="0Bl-dg-gMz" secondAttribute="bottom" constant="5" id="qPN-eA-N84"/>
                                                 <constraint firstItem="jAi-Yb-RjX" firstAttribute="top" secondItem="eBx-fW-JFx" secondAttribute="bottom" constant="9.5" id="yRU-TD-5Ru"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="TutorialButton" destination="0Bl-dg-gMz" id="NxN-nv-JM1"/>
                                             <outlet property="date" destination="2dI-1P-dNW" id="JnU-lL-2RU"/>
                                             <outlet property="day" destination="eBx-fW-JFx" id="j5u-b7-qbR"/>
                                             <outlet property="imgView" destination="HNp-Az-VhB" id="lHq-sS-HF1"/>
@@ -520,7 +534,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mXL-qZ-LZn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1342" y="518"/>
+            <point key="canvasLocation" x="1340.5797101449277" y="517.63392857142856"/>
         </scene>
         <!--Tutorial1-->
         <scene sceneID="ZAs-lx-Tix">
@@ -789,6 +803,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMj-bn-sBT">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <state key="normal" image="IMG_2217"/>
+                                <connections>
+                                    <segue destination="HT1-bO-7fR" kind="unwind" unwindAction="unwindWithSender:" id="GtY-jo-20v"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="V5Z-Ke-O4o"/>
@@ -801,11 +818,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bfs-UM-pSc"/>
-                    <connections>
-                        <segue destination="ECw-IQ-nYs" kind="show" id="BZj-Gd-3PP"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hIE-RX-rmI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="HT1-bO-7fR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3290" y="1171"/>
         </scene>

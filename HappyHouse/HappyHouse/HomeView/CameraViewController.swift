@@ -27,11 +27,11 @@ class CameraViewController: UIViewController {
     let sessionQueue = DispatchQueue(label: "session Queue")
     let videoDeviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInWideAngleCamera, .builtInTrueDepthCamera], mediaType: .video, position: .unspecified) // 디바이스 타입에는 아이폰이 카메라 갯수가 여러개가 되면서 이걸 사용하는게 조금씩 달라졌다.
 
-    @IBOutlet weak var photoLibraryButton: UIButton!
+//    @IBOutlet weak var photoLibraryButton: UIButton!
     @IBOutlet weak var previewView: PreviewView!
     @IBOutlet weak var captureButton: UIButton!
     @IBOutlet weak var blurBGView: UIVisualEffectView!
-    @IBOutlet weak var switchButton: UIButton!
+    //@IBOutlet weak var switchButton: UIButton!
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -50,16 +50,16 @@ class CameraViewController: UIViewController {
     }
     
     func setupUI() {
-        photoLibraryButton.layer.cornerRadius = 10
-        photoLibraryButton.layer.masksToBounds = true // 둥근 모양으로 만들겠다
-        photoLibraryButton.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        photoLibraryButton.layer.borderWidth = 1
+//        photoLibraryButton.layer.cornerRadius = 10
+//        photoLibraryButton.layer.masksToBounds = true // 둥근 모양으로 만들겠다
+//        photoLibraryButton.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+//        photoLibraryButton.layer.borderWidth = 1
         
         captureButton.layer.cornerRadius = captureButton.bounds.height / 2 // 동그랗게 만드는 법
         captureButton.layer.masksToBounds = true
         
-        blurBGView.layer.cornerRadius = captureButton.bounds.height / 2 // 동그랗게 만드는 법
-        blurBGView.layer.masksToBounds = true
+//        blurBGView.layer.cornerRadius = captureButton.bounds.height / 2 // 동그랗게 만드는 법
+//        blurBGView.layer.masksToBounds = true
         
     }
     
@@ -123,10 +123,10 @@ class CameraViewController: UIViewController {
         switch position {
         case .front:
             let image = #imageLiteral(resourceName: "ic_camera_front")
-            switchButton.setImage(image, for: .normal)
+            //switchButton.setImage(image, for: .normal)
         case .back:
             let image = #imageLiteral(resourceName: "ic_camera_rear")
-            switchButton.setImage(image, for: .normal)
+            //switchButton.setImage(image, for: .normal)//
         default:
             break
         }
