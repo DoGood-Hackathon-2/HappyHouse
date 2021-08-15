@@ -12,14 +12,16 @@ class JoinViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func join(_ sender: Any) {
+        
+        print("Tt")
+        
         // go to main (routine page)
-//        let svc = self.storyboard?.instantiateViewController(withIdentifier: "inviteView") as! inviteViewController
-//        svc.modalPresentationStyle = .fullScreen
-//        self.present(svc,animated: true)
+        let svc = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewTabBar")
+        svc!.modalPresentationStyle = .fullScreen
+        self.present(svc!,animated: true)
     }
     
 }

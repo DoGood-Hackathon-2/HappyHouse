@@ -13,7 +13,6 @@ import RxSwift
 struct Recommend {
     let image: String
     static let EMPTY = Recommend(image: "")
-    
 }
 
 class RecommendViewModel {
@@ -26,6 +25,9 @@ class RecommendViewModel {
     ]
     
     var mypages = [
+        //Recommend(image: "Mask Group"),
+        Recommend(image: "Mask Group (3)"),
+        Recommend(image: "Mask Group (2)-1"),
         Recommend(image: "add_mypage_1x"),
     ]
     

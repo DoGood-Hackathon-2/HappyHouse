@@ -14,7 +14,7 @@
 		B16384FD26C7BF2D002013F4 /* FamilyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16384FC26C7BF2D002013F4 /* FamilyViewModel.swift */; };
 		B1808B6226C8425700B6FE37 /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B6126C8425700B6FE37 /* MypageViewController.swift */; };
 		B1808B6426C8667C00B6FE37 /* MypageTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B6326C8667C00B6FE37 /* MypageTableViewModel.swift */; };
-		B1808B6626C8721600B6FE37 /* TableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B6526C8721600B6FE37 /* TableModel.swift */; };
+		B1808B6826C89C0D00B6FE37 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B6726C89C0D00B6FE37 /* PreviewView.swift */; };
 		B196897F26C7FF49007B9B1A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196897E26C7FF49007B9B1A /* WelcomeViewController.swift */; };
 		B196898126C8003A007B9B1A /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196898026C8003A007B9B1A /* JoinViewController.swift */; };
 		B196898326C800DC007B9B1A /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196898226C800DC007B9B1A /* Invitation.swift */; };
@@ -73,7 +73,7 @@
 		B16384FC26C7BF2D002013F4 /* FamilyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyViewModel.swift; sourceTree = "<group>"; };
 		B1808B6126C8425700B6FE37 /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
 		B1808B6326C8667C00B6FE37 /* MypageTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageTableViewModel.swift; sourceTree = "<group>"; };
-		B1808B6526C8721600B6FE37 /* TableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableModel.swift; sourceTree = "<group>"; };
+		B1808B6726C89C0D00B6FE37 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		B196897E26C7FF49007B9B1A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		B196898026C8003A007B9B1A /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		B196898226C800DC007B9B1A /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
@@ -186,7 +186,6 @@
 			children = (
 				B1808B6126C8425700B6FE37 /* MypageViewController.swift */,
 				B1808B6326C8667C00B6FE37 /* MypageTableViewModel.swift */,
-				B1808B6526C8721600B6FE37 /* TableModel.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -301,6 +300,7 @@
 				B1E2150626C833C50081F42D /* HomeViewController.swift */,
 				B1E2150726C833C50081F42D /* HomeView.storyboard */,
 				B1E2150826C833C50081F42D /* RecommendViewModel.swift */,
+				B1808B6726C89C0D00B6FE37 /* PreviewView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -562,6 +562,7 @@
 				B1E2151426C85B380081F42D /* NewRoutineViewModel.swift in Sources */,
 				B16384FD26C7BF2D002013F4 /* FamilyViewModel.swift in Sources */,
 				B1C8CCB826C757C200346355 /* CreateFamilyViewController.swift in Sources */,
+				B1808B6826C89C0D00B6FE37 /* PreviewView.swift in Sources */,
 				B1E2150926C833C50081F42D /* HomeViewController.swift in Sources */,
 				B196898F26C812F0007B9B1A /* User.swift in Sources */,
 				B196898326C800DC007B9B1A /* Invitation.swift in Sources */,
@@ -579,7 +580,6 @@
 				B196898126C8003A007B9B1A /* JoinViewController.swift in Sources */,
 				B1E2151826C85F170081F42D /* NewRoutineViewController.swift in Sources */,
 				B1625B2326C7E3C3000BD74D /* loadingViewController.swift in Sources */,
-				B1808B6626C8721600B6FE37 /* TableModel.swift in Sources */,
 				B1E2151626C85B670081F42D /* Member.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

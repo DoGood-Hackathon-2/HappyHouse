@@ -15,6 +15,8 @@ class HomeViewCell : UICollectionViewCell {
     
     func initUI(of recommend: Recommend) {
         imageView.image = UIImage(named: recommend.image)
+//        imageView.layer.cornerRadius = imageView.frame.width / 2
+//        imageView.layer.masksToBounds = true
     }
 }
 
@@ -62,7 +64,7 @@ class HomeViewController : UIViewController {
 extension HomeViewController {
     
     func titleUI() {
-        roomTitle.text = "서버에서 정보를 받아오자" //서버에서 룸 정보 받아오기;
+        roomTitle.text = "러블리 하우스" //서버에서 룸 정보 받아오기;
         roomTitle.backgroundColor = #colorLiteral(red: 1, green: 0.9017189145, blue: 0.9212634563, alpha: 1)
         roomTitle.layer.cornerRadius = 12
         roomTitle.clipsToBounds = true
