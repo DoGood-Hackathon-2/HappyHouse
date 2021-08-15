@@ -13,6 +13,10 @@ struct Member: Codable {
     let image: String?
     
     static let EMPTY = Member(id: 0, nickname: "", image: "")
+    
+    static let members = [Member(id: 1, nickname: "공주", image: "daughter_profile"),
+                          Member(id: 2, nickname: "마마님", image: "mother_profile"),
+                          Member(id: 3, nickname: "대장", image: "father_profile")]
 }
 
 struct FamilyList: Codable {
