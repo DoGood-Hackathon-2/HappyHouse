@@ -29,6 +29,8 @@ class MypageTableCell : UITableViewCell {
     @IBOutlet weak var time: UILabel!
     //@IBOutlet weak var challengeStartButton: UIButton!
     
+    var changeView = tap()
+    
     func initUI(of recommend: MypageTableItem) {
         self.imgView.image = UIImage(named: recommend.img)
         self.imgView.layer.cornerRadius = imgView.frame.width / 2
@@ -41,6 +43,19 @@ class MypageTableCell : UITableViewCell {
 //        self.challengeStartButton.backgroundColor = #colorLiteral(red: 0.4463604689, green: 0.6324821115, blue: 0.9996365905, alpha: 1)
 //        self.challengeStartButton.layer.cornerRadius = 12
 //        self.challengeStartButton.clipsToBounds = true
+    }
+    
+    
+    
+}
+
+class tap : UIViewController {
+    func tapped() {
+        let storyboard = UIStoryboard.init(name: "HomeView", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(identifier: "tutorial1") as? Tutorial1 else { return }
+        //vc.navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false, completion: nil)
     }
 }
 

@@ -33,6 +33,10 @@ class MypageViewController : UIViewController {
         onClick() // 반복 - 일회성
         tableRepeatRx() // 테이블
     }
+    
+    @IBAction func unwind(sender: UIStoryboardSegue) {
+        
+    }
 }
 
 
