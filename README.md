@@ -4,9 +4,7 @@
 - HAUS, 가족 챌린지 공유 앱
 - 멀리 떨어져있는 가족들의 심리적거리를 좁힐 수 있게 도와주는 서비스
 
-<p align="center">
-  <img src = "haus_main.png" width="70%" height="70%">
-</p>
+![main image](haus_main.png)
 
 <br>
 
