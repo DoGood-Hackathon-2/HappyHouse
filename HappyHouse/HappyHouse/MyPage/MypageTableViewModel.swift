@@ -49,7 +49,7 @@ class MypageTableViewModel{
     
     var repeatItems = [
         MypageTableItem(img: "image 1", title: "학교가야지 얼릉 일어나", subTitle: "아침도 꼭 챙겨먹고", date: "2021.08.13", day: "매주 월 화 수 목 금", time: "오전 7시"),
-        MypageTableItem(img: "daughter_profile", title: "달이 간식주기", subTitle: "간식주고 산책도 잊지마", date: "2021.08.22", day: "매주 토 일", time: "오후 8시"),
+        MypageTableItem(img: "daughter_profile", title: "약 챙겨먹기", subTitle: "약 꼭 챙겨먹어", date: "2021.08.22", day: "매주 토 일", time: "오후 8시"),
         MypageTableItem(img: "pablo-done 1", title: "수영강습", subTitle: "우리 모두 같이가요!", date: "2021.08.17", day: "매주 목 토", time: "오전 6시"),
     ]
     
