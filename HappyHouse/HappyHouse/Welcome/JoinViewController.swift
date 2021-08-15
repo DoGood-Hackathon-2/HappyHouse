@@ -15,13 +15,12 @@ class JoinViewController: UIViewController {
     }
     
     @IBAction func join(_ sender: Any) {
-        
-        print("Tt")
-        
+                
         // go to main (routine page)
-        let svc = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewTabBar")
-        svc!.modalPresentationStyle = .fullScreen
-        self.present(svc!,animated: true)
+        let storyboard = UIStoryboard.init(name: "HomeView", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "HomeViewController")
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
     
 }
