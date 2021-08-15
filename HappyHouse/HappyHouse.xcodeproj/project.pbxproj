@@ -15,6 +15,7 @@
 		B1808B6226C8425700B6FE37 /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B6126C8425700B6FE37 /* MypageViewController.swift */; };
 		B1808B6426C8667C00B6FE37 /* MypageTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B6326C8667C00B6FE37 /* MypageTableViewModel.swift */; };
 		B1808B6826C89C0D00B6FE37 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B6726C89C0D00B6FE37 /* PreviewView.swift */; };
+		B1808B6A26C89E0D00B6FE37 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B6926C89E0D00B6FE37 /* CameraViewController.swift */; };
 		B196897F26C7FF49007B9B1A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196897E26C7FF49007B9B1A /* WelcomeViewController.swift */; };
 		B196898126C8003A007B9B1A /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196898026C8003A007B9B1A /* JoinViewController.swift */; };
 		B196898326C800DC007B9B1A /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196898226C800DC007B9B1A /* Invitation.swift */; };
@@ -74,6 +75,7 @@
 		B1808B6126C8425700B6FE37 /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
 		B1808B6326C8667C00B6FE37 /* MypageTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageTableViewModel.swift; sourceTree = "<group>"; };
 		B1808B6726C89C0D00B6FE37 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		B1808B6926C89E0D00B6FE37 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		B196897E26C7FF49007B9B1A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		B196898026C8003A007B9B1A /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		B196898226C800DC007B9B1A /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				B1E2150726C833C50081F42D /* HomeView.storyboard */,
 				B1E2150826C833C50081F42D /* RecommendViewModel.swift */,
 				B1808B6726C89C0D00B6FE37 /* PreviewView.swift */,
+				B1808B6926C89E0D00B6FE37 /* CameraViewController.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				B1808B6426C8667C00B6FE37 /* MypageTableViewModel.swift in Sources */,
 				B1C8CC8826C74A4C00346355 /* ViewController.swift in Sources */,
 				B1C8CCBB26C772E700346355 /* FamilyViewController.swift in Sources */,
+				B1808B6A26C89E0D00B6FE37 /* CameraViewController.swift in Sources */,
 				B1625B1F26C7E3BC000BD74D /* loginViewController.swift in Sources */,
 				B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */,
 				B1C8CCBD26C7731D00346355 /* MyProfileViewController.swift in Sources */,
@@ -758,13 +762,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CS3BNMZA76;
+				DEVELOPMENT_TEAM = 38PD5AHVVF;
 				INFOPLIST_FILE = HappyHouse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jellysong2.tistory.HappyHouse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lgw9898.HappyHouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -778,13 +782,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CS3BNMZA76;
+				DEVELOPMENT_TEAM = 38PD5AHVVF;
 				INFOPLIST_FILE = HappyHouse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jellysong2.tistory.HappyHouse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lgw9898.HappyHouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
