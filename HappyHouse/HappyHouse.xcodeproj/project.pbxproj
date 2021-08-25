@@ -26,6 +26,8 @@
 		B196898C26C81105007B9B1A /* MemberProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196898B26C81105007B9B1A /* MemberProfileViewController.swift */; };
 		B196898F26C812F0007B9B1A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196898E26C812F0007B9B1A /* User.swift */; };
 		B196899226C81FCA007B9B1A /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196899126C81FCA007B9B1A /* APIManager.swift */; };
+		B19F4C2726D61A1F00E7907D /* alternative in Resources */ = {isa = PBXBuildFile; fileRef = B19F4C2626D61A1F00E7907D /* alternative */; };
+		B19F4C2B26D6271C00E7907D /* NHomewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19F4C2A26D6271C00E7907D /* NHomewViewController.swift */; };
 		B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8326C74A4C00346355 /* AppDelegate.swift */; };
 		B1C8CC8626C74A4C00346355 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8526C74A4C00346355 /* SceneDelegate.swift */; };
 		B1C8CC8826C74A4C00346355 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C8CC8726C74A4C00346355 /* ViewController.swift */; };
@@ -90,6 +92,8 @@
 		B196898B26C81105007B9B1A /* MemberProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileViewController.swift; sourceTree = "<group>"; };
 		B196898E26C812F0007B9B1A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B196899126C81FCA007B9B1A /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		B19F4C2626D61A1F00E7907D /* alternative */ = {isa = PBXFileReference; lastKnownFileType = folder; path = alternative; sourceTree = "<group>"; };
+		B19F4C2A26D6271C00E7907D /* NHomewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHomewViewController.swift; sourceTree = "<group>"; };
 		B1C8CC8026C74A4C00346355 /* HappyHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C8CC8326C74A4C00346355 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1C8CC8526C74A4C00346355 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 		B1C8CC8226C74A4C00346355 /* HappyHouse */ = {
 			isa = PBXGroup;
 			children = (
+				B19F4C2626D61A1F00E7907D /* alternative */,
 				B1808B6B26C8A8DD00B6FE37 /* Tutorial */,
 				B1808B6026C8424000B6FE37 /* MyPage */,
 				B1E2150C26C837980081F42D /* CreateRoutine */,
@@ -324,6 +329,7 @@
 				B1808B6726C89C0D00B6FE37 /* PreviewView.swift */,
 				B1808B6926C89E0D00B6FE37 /* CameraViewController.swift */,
 				B1E2151B26C8C3BC0081F42D /* HomeTabBarViewController.swift */,
+				B19F4C2A26D6271C00E7907D /* NHomewViewController.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -448,6 +454,7 @@
 			files = (
 				B1E2150A26C833C50081F42D /* HomeView.storyboard in Resources */,
 				B1C8CC9026C74A4D00346355 /* LaunchScreen.storyboard in Resources */,
+				B19F4C2726D61A1F00E7907D /* alternative in Resources */,
 				B1C8CC8D26C74A4D00346355 /* Assets.xcassets in Resources */,
 				B196898A26C80E11007B9B1A /* GoogleService-Info.plist in Resources */,
 				B1C8CCB426C756BF00346355 /* CreateFamily.storyboard in Resources */,
@@ -602,6 +609,7 @@
 				B1625B1F26C7E3BC000BD74D /* loginViewController.swift in Sources */,
 				B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */,
 				B1C8CCBD26C7731D00346355 /* MyProfileViewController.swift in Sources */,
+				B19F4C2B26D6271C00E7907D /* NHomewViewController.swift in Sources */,
 				B1808B7126C8A90F00B6FE37 /* Tutorial3.swift in Sources */,
 				B1C8CC8626C74A4C00346355 /* SceneDelegate.swift in Sources */,
 				B196898126C8003A007B9B1A /* JoinViewController.swift in Sources */,

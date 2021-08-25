@@ -21,5 +21,6 @@ target 'HappyHouse' do
     pod 'RxCocoa', '6.2.0'
     pod 'RxAlamofire'
     pod 'Firebase/Storage'
-
+    pod 'SnapKit', '~> 5.0.0'
+    pod 'Then'
 end
