@@ -26,28 +26,25 @@ class NHomewViewController : ViewController{
     
     let viewModel = NHomeViewModel() // MVVM 사용위한 뷰모델 선언
     let bag = DisposeBag()
+    let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
         setUI()
-        Buttonevent()
+        event()
+        NCollectionView.delegate = self
+        setData()
     }
     
 }
 
 extension NHomewViewController {
     func layout() {
-        NRoomTitle.snp.makeConstraints {
-            if #available(iOS 11, *) {
-                // 노치가 존재하면 
-                let guide = view.safeAreaLayoutGuide
-                $0.top.equalTo(guide).offset(20)
-            } else {
-                $0.top.equalToSuperview().offset(60)
-            }
-            $0.left.equalTo(41)
-        }
+        /*
+         NRoomTitle의 경우에는 스토리보드에서 레이아웃 잡음
+         이유 : safe 대응은 가능하나, 스크롤 뷰와 제대로 매칭되서 작동하지 않기에 시간 절약을 위해 그렇게 작성
+         */
         NBackgroundImage.snp.makeConstraints {
             $0.left.right.equalTo(0)
             $0.top.equalTo(100)
@@ -109,8 +106,17 @@ extension NHomewViewController {
         
     }
     
+    func setData() {
+        viewModel.dummyObsrvable
+            .bind(to: NCollectionView.rx.items(
+                    cellIdentifier: "NHomeViewCell",
+                    cellType: NHomeViewCell.self)
+            ) { index, item, cell in
+                cell.initUI(of: item)
+            }.disposed(by: bag)
+    }
     
-    func Buttonevent() {
+    func event() {
         NCreateButton.rx.tap
             .bind{
                 print("tap")
@@ -118,35 +124,87 @@ extension NHomewViewController {
     }
 }
 
-class NHomeViewCell : UICollectionViewCell {
+extension NHomewViewController : UICollectionViewDelegateFlowLayout {
     
-    @IBOutlet weak var imageView: UIImageView!
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemSpacing : CGFloat = 10
+        //let textAreaHeight : CGFloat = 65
+        
+        let width : CGFloat = (collectionView.bounds.width - 20 - itemSpacing ) / 2
+        let height : CGFloat = width * 135/180 // + textAreaHeight
+        
+        return CGSize(width: width, height: height)
+    }
     
-    func initUI(of recommend: Recommend) {
-        imageView.image = UIImage(named: recommend.image)
-//        imageView.layer.cornerRadius = imageView.frame.width / 2
-//        imageView.layer.masksToBounds = true
+    // case A
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    // case B
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
     }
 }
 
-//
-//struct NHomeViewCell {
-//    let img : UIImage
-//    let title : String
-//}
-//
-//class NHomeViewModel {
-//    
-//    var dummyData = [
-//        NHomeViewCell(img: UIImage(named: "ticket")! ,title: "1"),
-//        NHomeViewCell(img: UIImage(named: "ticket")! ,title: "2"),
-//        NHomeViewCell(img: UIImage(named: "ticket")! ,title: "3"),
-//        NHomeViewCell(img: UIImage(named: "ticket")! ,title: "4"),
-//    ]
-//    
-//    var dummyObsrvable: Observable<[NHomeViewCell]> // NHomeViewController의 컬렉션 뷰에 들어갈 정보
-//    
-//    init() {
-//        dummyObsrvable = Observable.of(dummyData)
-//    }
-//}
+
+class NHomeViewCell : UICollectionViewCell {
+    
+    @IBOutlet weak var NBackContainer: UIView!
+    @IBOutlet weak var Nimg: UIImageView!
+    @IBOutlet weak var NRoutineTitle: UILabel!
+    
+    func initUI(of nHomeModel: NHomeModel) {
+        
+        NBackContainer.snp.makeConstraints {
+            $0.top.bottom.left.right.equalTo(0)
+        }
+        NBackContainer.layer.cornerRadius = 10
+        NBackContainer.backgroundColor = .gray
+        
+        Nimg.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(20)
+            $0.width.height.equalTo(50)
+        }
+        Nimg.layer.cornerRadius = 25
+        Nimg.layer.masksToBounds = true
+        Nimg.layer.borderWidth = 0
+        Nimg.backgroundColor = .blue
+        
+        NRoutineTitle.snp.makeConstraints {
+            $0.top.equalTo(Nimg.snp.bottom).offset(20)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(NBackContainer.frame.width)
+        }
+        NRoutineTitle.text = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊdddddㅋㅌㅍㅎ"
+        NRoutineTitle.numberOfLines = 2
+        Nimg.image = UIImage(named: "rice2")
+        //        imageView.layer.cornerRadius = imageView.frame.width / 2
+        //        imageView.layer.masksToBounds = tru
+    }
+}
+
+
+struct NHomeModel {
+    let img : UIImage
+    let title : String
+}
+
+class NHomeViewModel {
+    
+    var dummyData = [
+        // 여기서 systemName을 Model로 옮겨서 혹시나도 발생할 수 있는 에러의 경우 이미지를 systemName으로 이미지를 잘 처리해보자
+        NHomeModel(img: UIImage(systemName: "ticket")!, title: "0"),
+        NHomeModel(img: UIImage(systemName: "ticket")! ,title: "1"),
+        NHomeModel(img: UIImage(systemName: "ticket")! ,title: "2"),
+        NHomeModel(img: UIImage(systemName: "ticket")! ,title: "3"),
+        NHomeModel(img: UIImage(systemName: "ticket")! ,title: "4"),
+    ]
+    
+    var dummyObsrvable: Observable<[NHomeModel]> // NHomeViewController의 컬렉션 뷰에 들어갈 정보
+    
+    init() {
+        dummyObsrvable = Observable.of(dummyData)
+    }
+}

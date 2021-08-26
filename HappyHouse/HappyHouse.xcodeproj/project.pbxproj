@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B101FF2F26D781D300FA0D94 /* NMyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B101FF2E26D781D300FA0D94 /* NMyPageViewController.swift */; };
 		B15C824B505E3C2D99B241E8 /* Pods_HappyHouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF4D2E8D7A48EDCECDBDD7D /* Pods_HappyHouseTests.framework */; };
 		B1625B1F26C7E3BC000BD74D /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B1D26C7E3BC000BD74D /* loginViewController.swift */; };
 		B1625B2026C7E3BC000BD74D /* inviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B1E26C7E3BC000BD74D /* inviteViewController.swift */; };
@@ -74,6 +75,7 @@
 		23D5254137279DAF12BB8CF5 /* Pods-HappyHouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouse.debug.xcconfig"; path = "Target Support Files/Pods-HappyHouse/Pods-HappyHouse.debug.xcconfig"; sourceTree = "<group>"; };
 		4C0E482DE29C89A4551FFEED /* Pods-HappyHouseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouseTests.debug.xcconfig"; path = "Target Support Files/Pods-HappyHouseTests/Pods-HappyHouseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		926AE511005A817508D12B9E /* Pods-HappyHouseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyHouseTests.release.xcconfig"; path = "Target Support Files/Pods-HappyHouseTests/Pods-HappyHouseTests.release.xcconfig"; sourceTree = "<group>"; };
+		B101FF2E26D781D300FA0D94 /* NMyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMyPageViewController.swift; sourceTree = "<group>"; };
 		B1625B1D26C7E3BC000BD74D /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		B1625B1E26C7E3BC000BD74D /* inviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = inviteViewController.swift; sourceTree = "<group>"; };
 		B1625B2226C7E3C3000BD74D /* loadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loadingViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			children = (
 				B1808B6126C8425700B6FE37 /* MypageViewController.swift */,
 				B1808B6326C8667C00B6FE37 /* MypageTableViewModel.swift */,
+				B101FF2E26D781D300FA0D94 /* NMyPageViewController.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				B1E2150926C833C50081F42D /* HomeViewController.swift in Sources */,
 				B1E2151A26C8C08F0081F42D /* AddRoutineFinishViewController.swift in Sources */,
 				B196898F26C812F0007B9B1A /* User.swift in Sources */,
+				B101FF2F26D781D300FA0D94 /* NMyPageViewController.swift in Sources */,
 				B1808B6F26C8A90300B6FE37 /* Tutorial2.swift in Sources */,
 				B196898326C800DC007B9B1A /* Invitation.swift in Sources */,
 				B196897F26C7FF49007B9B1A /* WelcomeViewController.swift in Sources */,
