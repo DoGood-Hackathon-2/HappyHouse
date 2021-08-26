@@ -101,7 +101,7 @@
                                         </cells>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7A-iJ-5R2">
-                                        <rect key="frame" x="17" y="766" width="434" height="56"/>
+                                        <rect key="frame" x="17" y="766" width="371" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="5vS-2B-ZVs"/>
                                         </constraints>
@@ -402,6 +402,9 @@
                                             <constraint firstAttribute="height" constant="30" id="hxL-zL-pNs"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="back"/>
+                                        <connections>
+                                            <segue destination="a6B-yF-W8W" kind="unwind" unwindAction="exitHomeWithSender:" id="gxv-1I-axk"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="챌린지만들기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cR-eJ-G3K">
                                         <rect key="frame" x="75" y="50" width="255" height="18"/>
@@ -433,6 +436,7 @@
                                     <constraint firstItem="gEC-ws-0jU" firstAttribute="top" secondItem="3pH-X6-oiq" secondAttribute="bottom" constant="15" id="Of2-3B-Ab9"/>
                                     <constraint firstItem="3xO-aE-z9d" firstAttribute="top" secondItem="zzQ-n0-ql4" secondAttribute="bottom" constant="15" id="Onb-ee-45v"/>
                                     <constraint firstItem="iwE-UK-ptd" firstAttribute="leading" secondItem="nlH-Uy-0ud" secondAttribute="leading" constant="26" id="RpG-mJ-tVY"/>
+                                    <constraint firstAttribute="trailing" secondItem="J7A-iJ-5R2" secondAttribute="trailing" constant="17" id="SM2-E1-7Go"/>
                                     <constraint firstItem="3pH-X6-oiq" firstAttribute="leading" secondItem="H8X-tv-eFL" secondAttribute="leading" id="UxK-ig-RYu"/>
                                     <constraint firstItem="30Y-wj-MZ8" firstAttribute="centerX" secondItem="nlH-Uy-0ud" secondAttribute="centerX" id="VIY-oF-A5R"/>
                                     <constraint firstItem="2cR-eJ-G3K" firstAttribute="leading" secondItem="iwE-UK-ptd" secondAttribute="trailing" constant="19" id="Xpb-JQ-Ans"/>
@@ -472,6 +476,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YCR-fy-dd6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="a6B-yF-W8W" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="818.84057971014499" y="65.625"/>
         </scene>
@@ -520,6 +525,9 @@
                                     <constraint firstAttribute="width" constant="30" id="j7t-P2-GLp"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
+                                <connections>
+                                    <segue destination="1H0-sI-pCu" kind="unwind" unwindAction="goCreateRoutineWithSender:" id="nQO-dx-FFZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3lk-vV-Kvk"/>
@@ -541,6 +549,7 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ty6-Tv-iBB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="1H0-sI-pCu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1706" y="66"/>
         </scene>

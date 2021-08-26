@@ -28,6 +28,11 @@ class MypageTableCell : UITableViewCell {
     @IBOutlet weak var day: UILabel!
     @IBOutlet weak var time: UILabel!
     //@IBOutlet weak var challengeStartButton: UIButton!
+    @IBOutlet weak var TutorialButton: UIButton!
+    @IBAction func TutorialGo(_ sender: Any) {
+        TutorialButton.isHidden = true
+    }
+    
     
     var changeView = tap()
     

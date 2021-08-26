@@ -48,6 +48,9 @@ class HomeViewController : UIViewController {
             .disposed(by: bag)
     }
     
+    @IBAction func exitHome(sender : UIStoryboardSegue){
+    }
+    
 }
 
 extension HomeViewController {

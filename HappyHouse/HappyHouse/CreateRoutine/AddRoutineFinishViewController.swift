@@ -31,4 +31,7 @@ class AddRoutineFinishViewController: UIViewController {
         vc.isHome = true
         present(vc, animated: true, completion: nil)
     }
+    
+    @IBAction func goCreateRoutine(sender : UIStoryboardSegue){
+    }
 }
