@@ -326,13 +326,13 @@
 		B1E2150526C833C50081F42D /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				B1E2150626C833C50081F42D /* HomeViewController.swift */,
 				B1E2150726C833C50081F42D /* HomeView.storyboard */,
 				B1E2150826C833C50081F42D /* RecommendViewModel.swift */,
 				B1808B6726C89C0D00B6FE37 /* PreviewView.swift */,
 				B1808B6926C89E0D00B6FE37 /* CameraViewController.swift */,
 				B1E2151B26C8C3BC0081F42D /* HomeTabBarViewController.swift */,
 				B19F4C2A26D6271C00E7907D /* NHomewViewController.swift */,
+				B1E2150626C833C50081F42D /* HomeViewController.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";

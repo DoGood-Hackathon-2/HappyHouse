@@ -177,7 +177,7 @@ class NHomeViewCell : UICollectionViewCell {
             $0.centerX.equalToSuperview()
             $0.width.equalTo(NBackContainer.frame.width)
         }
-        NRoutineTitle.text = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊdddddㅋㅌㅍㅎ"
+        NRoutineTitle.text = "\(nHomeModel.title)"
         NRoutineTitle.numberOfLines = 2
         Nimg.image = UIImage(named: "rice2")
         //        imageView.layer.cornerRadius = imageView.frame.width / 2
