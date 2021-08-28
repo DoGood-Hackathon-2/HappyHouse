@@ -32,20 +32,29 @@ class NMyPageViewController : UIViewController {
     @IBOutlet weak var NRepeatUnderLine: UIImageView!
     @IBOutlet weak var NInstantUnderLine: UIImageView!
     //    @IBOutlet weak var NRoutineCollectionView: UICollectionView! // 루틴 컬렉션
-    @IBOutlet weak var NRoutineTableView: UITableView! // 루틴 테이블 뷰
+    @IBOutlet weak var NRoutineRepeatTableView: UITableView! // 루틴 테이블 뷰 - 반복
+    @IBOutlet weak var NRoutineInstanceTableView: UITableView! // 루틴 테이블 뷰 - 일회성
     
     
     let viewModel = NMyPageViewModel() // MVVM 사용위한 뷰모델 선언
     let bag = DisposeBag()
-    let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10) // 컬렉션 뷰에 인셋주려고
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NRoutineInstanceTableView.isHidden = true
         layout()
         setUI()
-        NMyfamilyCollectionView.delegate = self
+        delegate()
         setData()
         event()
+    }
+    
+    func delegate() {
+        NMyfamilyCollectionView.delegate = self
+        NRoutineRepeatTableView.delegate = self
+        NRoutineInstanceTableView.delegate = self
     }
 }
 
@@ -125,13 +134,21 @@ extension NMyPageViewController {
             $0.left.equalTo(NRepeatButton.snp.right)
             $0.width.equalTo(NInstantUnderLine.frame.width)
         }
-        
-        NRoutineTableView.snp.makeConstraints {
+        NRoutineRepeatTableView.snp.makeConstraints {
+            // 반복
             $0.top.equalTo(NRepeatButton.snp.bottom).offset(8)
             $0.left.equalTo(NcontentsBox.snp.left)
             $0.right.equalTo(NcontentsBox.snp.right)
             $0.bottom.equalToSuperview()
         }
+        NRoutineInstanceTableView.snp.makeConstraints {
+            // 일회성
+            $0.top.equalTo(NRepeatButton.snp.bottom).offset(8)
+            $0.left.equalTo(NcontentsBox.snp.left)
+            $0.right.equalTo(NcontentsBox.snp.right)
+            $0.bottom.equalToSuperview()
+        }
+        
         
     }
     
@@ -181,12 +198,14 @@ extension NMyPageViewController {
         NInstantButton.then {
             $0.tintColor = UIColor(red: 0.683, green: 0.683, blue: 0.683, alpha: 1)
         }
-        //        NRoutineCollectionView.then {
-        //            $0.backgroundColor = #colorLiteral(red: 1, green: 0.9551523328, blue: 0.9602802396, alpha: 1)
-        //        }
+        NRoutineRepeatTableView.then {
+            $0.backgroundColor = #colorLiteral(red: 1, green: 0.9551523328, blue: 0.9602802396, alpha: 1)
+        }
     }
     
+    
     func setData() {
+        
         viewModel.dummyObsrvable
             .bind(to: NMyfamilyCollectionView.rx.items(
                     cellIdentifier: "FamilyCell",
@@ -203,13 +222,22 @@ extension NMyPageViewController {
                 cell.NMyPageCellButton.isHighlighted = false
             }.disposed(by: bag)
         
+        
         viewModel.dummyRoutineObservable
-            .bind(to: NRoutineTableView.rx.items(
+            .bind(to: NRoutineRepeatTableView.rx.items(
                     cellIdentifier: "RoutineCell",
                     cellType: RoutineTableViewCell.self)
             ) {  index, item, cell in
-                cell.initUI()
-            }
+                cell.initUI(of: item)
+            }.disposed(by: bag)
+        
+        viewModel.dummydummyInstRoutineObservable
+            .bind(to: NRoutineInstanceTableView.rx.items(
+                    cellIdentifier: "RoutineCell",
+                    cellType: RoutineTableViewCell.self)
+            ) {  index, item, cell in
+                cell.initUI(of: item)
+            }.disposed(by: bag)
         
     }
     
@@ -220,21 +248,32 @@ extension NMyPageViewController {
                 self.NInstantUnderLine.image = UIImage(named: "Line 11")
                 self.NRepeatButton.tintColor = UIColor(red: 0.371, green: 0.371, blue: 0.371, alpha: 1)
                 self.NInstantButton.tintColor = UIColor(red: 0.683, green: 0.683, blue: 0.683, alpha: 1)
+                NRoutineRepeatTableView.isHidden = false
+                NRoutineInstanceTableView.isHidden = true
             }
         NInstantButton.rx.tap
-            .bind{
+            .bind{ [self] in
                 self.NRepeatUnderLine.image = UIImage(named: "Line 11")
                 self.NInstantUnderLine.image = UIImage(named: "Line 12")
                 self.NRepeatButton.tintColor = UIColor(red: 0.683, green: 0.683, blue: 0.683, alpha: 1)
                 self.NInstantButton.tintColor = UIColor(red: 0.371, green: 0.371, blue: 0.371, alpha: 1)
+                NRoutineRepeatTableView.isHidden = true
+                NRoutineInstanceTableView.isHidden = false
             }
     }
 }
 
-extension NMyPageViewController : UICollectionViewDelegateFlowLayout {
+extension NMyPageViewController : UICollectionViewDelegateFlowLayout, UITableViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: 80, height: 80)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        let width = view.frame.width - (view.frame.width - NcontentsBox.frame.width)
+        let height = (143/374) * width
+        return height
     }
 }
 
@@ -288,16 +327,26 @@ class NMyPageViewModel {
         MyPageCellModel(ButtonImage: "image 1"),
     ]
     
+    // 주의 : 사진 비율 1:1 아니면 완벽한 원이 아니라 짤린 원 만들어지니까 주의
     var dummyRoutineData = [
-        RoutineModel(RprofileImage: "image 1", Rtitle: "약 챙겨먹기", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시")
+        RoutineModel(RoutineType: "Repeat", RprofileImage: "image 1", Rtitle: "약 챙겨먹기", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
+        RoutineModel(RoutineType: "Repeat", RprofileImage: "Mask Group (1)", Rtitle: "약 챙겨먹기", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
+        RoutineModel(RoutineType: "Repeat", RprofileImage: "image 3", Rtitle: "약 챙겨먹기", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
+    ]
+    
+    var dummyInstRoutineData = [
+        RoutineModel(RoutineType: "Instance", RprofileImage: "image 2", Rtitle: "약 챙겨먹기", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
+        RoutineModel(RoutineType: "Instance", RprofileImage: "image 3", Rtitle: "약 챙겨먹기", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시")
     ]
     
     var dummyObsrvable: Observable<[MyPageCellModel]> // NHomeViewController의 컬렉션 뷰에 들어갈 정보
-    var dummyRoutineObservable : Observable<[RoutineModel]> // NMyPageRoutineTableView에 들어갈 정보들
+    var dummyRoutineObservable : Observable<[RoutineModel]> // NMyPageRoutineTableView에 반복하기에 들어갈 정보들
+    var dummydummyInstRoutineObservable : Observable<[RoutineModel]> // 일회성 쪽에 들어갈 정보
     
     init() {
         dummyObsrvable = Observable.of(dummyData)
         dummyRoutineObservable = Observable.of(dummyRoutineData)
+        dummydummyInstRoutineObservable = Observable.of(dummyInstRoutineData)
     }
 }
 
@@ -312,6 +361,7 @@ extension UICollectionView {
 }
 
 struct RoutineModel {
+    var RoutineType : String // 일회성인지 반복인지 타입을 지정
     var RprofileImage : String // 루틴 이미지
     var Rtitle : String // 루틴 타이틀
     var Rdescription : String // 상세내용
@@ -333,12 +383,122 @@ class RoutineTableViewCell : UITableViewCell {
     @IBOutlet weak var REditUnderLine: UIView! // 수정하기 밑줄
     @IBOutlet weak var RChallengeButton: UIButton! // 챌린지 시작버튼
     
-    func initUI() {
+    let cellHeightRatio : Double = 143/374 // cell height가 width에 종속적(가변한다)이라서 화면 비율 맞춰줄 필요가 있음
+    
+    
+    func initUI(of item : RoutineModel) {
         cellLayout() // cell 내에서의 레이아웃 배치
+        cellColor() // cell 모양 및 색
+        
         // setUI 구성
+        RImage.then {
+            $0.image = UIImage(named: item.RprofileImage)
+            //print(57.65/2)
+            $0.layer.cornerRadius = (57.65/2) // 이미지 크기 나누기 2해도 원 만들 수 있지롱
+            $0.layer.masksToBounds = true
+            $0.contentMode = .scaleAspectFill
+        }
+        RTitle.then {
+            $0.text = item.Rtitle
+        }
+        RDescription.then {
+            $0.text = item.Rdescription
+        }
+        RDate.then {
+            $0.text = item.Rdate
+            $0.textColor = UIColor(red: 0.663, green: 0.663, blue: 0.663, alpha: 1)
+        }
+        RIterator.then {
+            $0.text = item.Riterator
+            $0.textColor = UIColor(red: 0.663, green: 0.663, blue: 0.663, alpha: 1)
+        }
+        RTime.then {
+            $0.text = item.Rtime
+            $0.textColor = UIColor(red: 0.663, green: 0.663, blue: 0.663, alpha: 1)
+        }
+        REditButton.then {
+            $0.tintColor = UIColor(red: 0.442, green: 0.442, blue: 0.442, alpha: 1)
+        }
+        REditUnderLine.then {
+            $0.backgroundColor = UIColor(red: 0.442, green: 0.442, blue: 0.442, alpha: 1)
+        }
+        RChallengeButton.then {
+            $0.setTitle("  챌린지 시작  ", for: .normal) // 2칸 띄어야 모양 예뻐
+            $0.tintColor = .white
+            $0.layer.backgroundColor = UIColor(red: 0.446, green: 0.631, blue: 1, alpha: 1).cgColor
+            $0.layer.cornerRadius = CGFloat((18 * cellHeightRatio)) + CGFloat((10 * cellHeightRatio))
+        }
+        
     }
     
     func cellLayout() {
         
+        RImage.snp.makeConstraints {
+            $0.top.equalTo(18)
+            $0.left.equalTo(12)
+            $0.width.height.equalTo(57.65)
+        }
+        RTitle.snp.makeConstraints {
+            $0.left.equalTo(RImage.snp.right).offset(10.11)
+            $0.top.equalTo(17)
+        }
+        RDescription.snp.makeConstraints {
+            $0.left.equalTo(RImage.snp.right).offset(11.11)
+            $0.top.equalTo(RTitle.snp.bottom).offset(5 * cellHeightRatio)
+            //$0.right.equalTo(REditButton.snp.left).offset(-24)
+            $0.width.lessThanOrEqualTo(contentView.frame.width / 2)
+        }
+        RDateImage.snp.makeConstraints {
+            $0.left.equalTo(RDescription.snp.left)
+            $0.top.equalTo(RDescription.snp.bottom).offset(11.17 * cellHeightRatio)
+            $0.width.height.equalTo(RDate.frame.height)
+        }
+        RDate.snp.makeConstraints {
+            $0.left.equalTo(RDateImage.snp.right).offset(7.75)
+            $0.top.equalTo(RDateImage.snp.top)
+        }
+        RIterator.snp.makeConstraints {
+            $0.left.equalTo(RDescription.snp.left)
+            $0.top.equalTo(RDate.snp.bottom).offset(4 * cellHeightRatio)
+        }
+        RTimeImage.snp.makeConstraints {
+            $0.left.equalTo(RDescription.snp.left)
+            $0.top.equalTo(RIterator.snp.bottom).offset(8 * cellHeightRatio)
+            $0.width.height.equalTo(RTime.frame.height)
+        }
+        RTime.snp.makeConstraints {
+            $0.left.equalTo(RTimeImage.snp.right).offset(7.75)
+            $0.top.equalTo(RTimeImage.snp.top)
+        }
+        RChallengeButton.snp.makeConstraints {
+            $0.bottom.equalTo(-14 * cellHeightRatio)
+            $0.right.equalTo(-13)
+            $0.height.equalTo(38 * cellHeightRatio + 10)
+        }
+        REditButton.snp.makeConstraints {
+            $0.top.equalTo(8)
+            $0.right.equalTo(-22)
+        }
+        REditUnderLine.snp.makeConstraints {
+            $0.top.equalTo(REditButton.snp.bottom).offset(-1)
+            $0.width.equalTo(REditButton.frame.width)
+            $0.height.equalTo(1)
+            $0.right.equalTo(REditButton.snp.right)
+        }
+    }
+    
+    func cellColor() {
+        contentView.layer.cornerRadius = 20
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor(red: 0.929, green: 0.929, blue: 0.929, alpha: 1).cgColor
+        contentView.superview?.backgroundColor = #colorLiteral(red: 1, green: 0.9551523328, blue: 0.9602802396, alpha: 1)
+        contentView.backgroundColor = .white
+    }
+    
+    override func layoutSubviews() {
+        // 테이블 뷰 셀 사이의 간격
+        super.layoutSubviews()
+
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0))
     }
 }
