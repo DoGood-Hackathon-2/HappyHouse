@@ -32,7 +32,7 @@ class CommunityViewController : UIViewController {
 extension CommunityViewController {
     func layout() {
         CBackgroundView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(35) // 15는 safeArea값으로 해야하는데 정확히 몇인지 기억이 안나서 찾아봐야함
+            $0.top.equalToSuperview().offset(45) // 15는 safeArea값으로 해야하는데 정확히 몇인지 기억이 안나서 찾아봐야함
             $0.left.right.bottom.equalTo(0)
         }
         headTitle.snp.makeConstraints {
@@ -67,7 +67,7 @@ extension CommunityViewController : UICollectionViewDelegateFlowLayout {
         //let textAreaHeight : CGFloat = 65
         
         let width : CGFloat = (collectionView.bounds.width - 20 - itemSpacing ) / 2
-        let height : CGFloat = width * 10/7 // + textAreaHeight
+        let height : CGFloat = width + 35 // 프로필 top(10) + height/2(25) = 35 -> 정방형사진
         
         return CGSize(width: width, height: height)
         }
@@ -104,11 +104,18 @@ class CommunityCell : UICollectionViewCell {
         }
         ProfileName.then {
             $0.text = item.CProfileName
-            $0.backgroundColor = .red
+            $0.backgroundColor = UIColor(red: 0.446, green: 0.631, blue: 1, alpha: 1)
+            $0.layer.cornerRadius = $0.frame.width * 0.22 // 수학적 사고!! 글자 길이가 달라도 대응 가능해짐!
+            $0.clipsToBounds = true
+            $0.textColor = .white
         }
         CommunityImageButton.then {
-            $0.setImage(UIImage(systemName: "ticket"), for: .normal)
+            $0.setImage(UIImage(named: item.CImageButton), for: .normal) // 이미지가 없을 경우에 대한 처리도 필요하다
             $0.backgroundColor = .brown
+            $0.contentMode = .scaleAspectFill
+            $0.layer.cornerRadius = $0.frame.width * 0.15 // 커뮤니티 버튼 사이즈는 정방형
+            $0.clipsToBounds = true
+            
         }
     }
     
@@ -118,14 +125,12 @@ class CommunityCell : UICollectionViewCell {
             $0.width.height.equalTo(50)
         }
         ProfileName.snp.makeConstraints {
-            //$0.centerY.equalTo(ProfileImage.snp.top)
-            $0.top.equalTo(ProfileImage.snp.top).offset(25)
-            $0.left.equalTo(ProfileImage.snp.right).offset(3)
-            $0.right.equalToSuperview()
-
+            $0.top.equalTo(ProfileImage.snp.top).offset(15)
+            $0.left.equalTo(ProfileImage.snp.right).offset(12)
+            $0.right.lessThanOrEqualToSuperview() // 와 이코드로 레이블에 딱 맞게 구현이 가능하네 ㅠ good!
         }
         CommunityImageButton.snp.makeConstraints {
-            $0.top.equalTo(ProfileImage.snp.bottom)
+            $0.top.equalTo(ProfileImage.snp.bottom).offset(-25)
             $0.left.right.bottom.equalToSuperview()
             $0.width.equalToSuperview()
         }
@@ -134,11 +139,12 @@ class CommunityCell : UICollectionViewCell {
 }
 
 class CommunityViewModel {
+    // 앞뒤로 띄어쓰기 2칸 있어야 글자간격 제일 예쁘게 돼
     var dummyData = [
-        CommunityModel(CProfileImage: "image 1", CProfileName: "공주", CImageButton: "image 1"),
-        CommunityModel(CProfileImage: "image 1", CProfileName: "공주", CImageButton: "image 1"),
-        CommunityModel(CProfileImage: "image 1", CProfileName: "공주", CImageButton: "image 1"),
-        CommunityModel(CProfileImage: "image 1", CProfileName: "공주", CImageButton: "image 1")
+        CommunityModel(CProfileImage: "image 1", CProfileName: "  공주  ", CImageButton: "image 1"),
+        CommunityModel(CProfileImage: "image 1", CProfileName: "  우리집이사갑니다람쥐용 ", CImageButton: "image 1"),
+        CommunityModel(CProfileImage: "image 2", CProfileName: "  공주라고불러주세요  ", CImageButton: "image 2"),
+        CommunityModel(CProfileImage: "image 3", CProfileName: "  우리가대장  ", CImageButton: "image 3")
     ]
     var dummyObsrvable: Observable<[CommunityModel]> // NHomeViewController의 컬렉션 뷰에 들어갈 정보
 
