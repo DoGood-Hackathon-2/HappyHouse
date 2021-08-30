@@ -43,6 +43,7 @@ class NMyPageViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         NRoutineInstanceTableView.isHidden = true
         layout()
         setUI()

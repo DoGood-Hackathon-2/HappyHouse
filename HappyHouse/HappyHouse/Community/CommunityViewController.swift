@@ -11,6 +11,10 @@ import RxCocoa
 import SnapKit
 import Then
 
+/*
+ 중대사항 : 레이아웃 커스텀으로 구성해야만 핀터레스트 같은 화면 가능하다는데, 아직 이해가 잘 안가서 일단 다른거부터 작업하기로
+ */
+
 class CommunityViewController : UIViewController {
     
     @IBOutlet weak var CBackgroundView: UIImageView! // 백그라운드
@@ -22,6 +26,7 @@ class CommunityViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         layout()
         setUI()
         CommunityCollectionView.delegate = self
@@ -67,8 +72,8 @@ extension CommunityViewController : UICollectionViewDelegateFlowLayout, UICollec
         //let textAreaHeight : CGFloat = 65
         
         let width : CGFloat = (collectionView.bounds.width - 20 - itemSpacing ) / 2
-        //let height : CGFloat = width + 35 // 프로필 top(10) + height/2(25) = 35 -> 정방형사진
-        let height : CGFloat = CGFloat(10 * Int.random(in: 15...25))
+        let height : CGFloat = width + 35 // 프로필 top(10) + height/2(25) = 35 -> 정방형사진
+        //let height : CGFloat = CGFloat(10 * Int.random(in: 15...25))
         return CGSize(width: width, height: height)
         }
     
@@ -81,16 +86,6 @@ extension CommunityViewController : UICollectionViewDelegateFlowLayout, UICollec
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 1
-//    }
-//
-//    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt: Int) -> CGFloat {
-//
-//        return 1
-//    }
-    
 }
 
 struct CommunityModel {

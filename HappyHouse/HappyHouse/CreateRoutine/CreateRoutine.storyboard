@@ -478,7 +478,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YCR-fy-dd6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="a6B-yF-W8W" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="818.84057971014499" y="65.625"/>
+            <point key="canvasLocation" x="678" y="-265"/>
         </scene>
         <!--Add Routine Finish View Controller-->
         <scene sceneID="Xmy-a2-F9c">
@@ -551,7 +551,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ty6-Tv-iBB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="1H0-sI-pCu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1706" y="66"/>
+            <point key="canvasLocation" x="1441" y="-265"/>
         </scene>
     </scenes>
     <resources>
