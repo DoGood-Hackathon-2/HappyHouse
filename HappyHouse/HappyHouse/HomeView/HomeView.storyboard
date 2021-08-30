@@ -750,7 +750,7 @@
         <scene sceneID="mlW-pK-jQN">
             <objects>
                 <viewController id="QYi-ys-9xD" customClass="CameraViewController" customModule="HappyHouse" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Y4P-27-onp">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="Y4P-27-onp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -761,7 +761,7 @@
                                     <constraint firstAttribute="height" constant="524" id="AWf-Jw-TwV"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lzY-EI-U8X">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lzY-EI-U8X">
                                 <rect key="frame" x="0.0" y="568" width="414" height="327"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJh-hs-iqA">
@@ -1098,7 +1098,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Ba-q4-AR8">
-                                <rect key="frame" x="0.0" y="147" width="414" height="296"/>
+                                <rect key="frame" x="-44" y="147" width="217" height="296"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cdh-hQ-PKH">
@@ -1109,7 +1109,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CommunityCell" id="I1E-Po-lbs" customClass="CommunityCell" customModule="HappyHouse" customModuleProvider="target">
-                                        <rect key="frame" x="78" y="0.0" width="258" height="248"/>
+                                        <rect key="frame" x="-20.5" y="0.0" width="258" height="248"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fNp-qq-MXM">
                                             <rect key="frame" x="0.0" y="0.0" width="258" height="248"/>

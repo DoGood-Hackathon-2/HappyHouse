@@ -61,26 +61,35 @@ extension CommunityViewController {
     }
 }
 
-extension CommunityViewController : UICollectionViewDelegateFlowLayout {
+extension CommunityViewController : UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSpacing : CGFloat = 10
         //let textAreaHeight : CGFloat = 65
         
         let width : CGFloat = (collectionView.bounds.width - 20 - itemSpacing ) / 2
-        let height : CGFloat = width + 35 // 프로필 top(10) + height/2(25) = 35 -> 정방형사진
-        
+        //let height : CGFloat = width + 35 // 프로필 top(10) + height/2(25) = 35 -> 정방형사진
+        let height : CGFloat = CGFloat(10 * Int.random(in: 15...25))
         return CGSize(width: width, height: height)
         }
     
-    // case A
+//     case A
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return sectionInsets
     }
     
-    // case B
+//     case B
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 1
+//    }
+//
+//    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt: Int) -> CGFloat {
+//
+//        return 1
+//    }
     
 }
 
@@ -141,6 +150,10 @@ class CommunityCell : UICollectionViewCell {
 class CommunityViewModel {
     // 앞뒤로 띄어쓰기 2칸 있어야 글자간격 제일 예쁘게 돼
     var dummyData = [
+        CommunityModel(CProfileImage: "image 1", CProfileName: "  공주  ", CImageButton: "image 1"),
+        CommunityModel(CProfileImage: "image 1", CProfileName: "  우리집이사갑니다람쥐용 ", CImageButton: "image 1"),
+        CommunityModel(CProfileImage: "image 2", CProfileName: "  공주라고불러주세요  ", CImageButton: "image 2"),
+        CommunityModel(CProfileImage: "image 3", CProfileName: "  우리가대장  ", CImageButton: "image 3"),
         CommunityModel(CProfileImage: "image 1", CProfileName: "  공주  ", CImageButton: "image 1"),
         CommunityModel(CProfileImage: "image 1", CProfileName: "  우리집이사갑니다람쥐용 ", CImageButton: "image 1"),
         CommunityModel(CProfileImage: "image 2", CProfileName: "  공주라고불러주세요  ", CImageButton: "image 2"),
