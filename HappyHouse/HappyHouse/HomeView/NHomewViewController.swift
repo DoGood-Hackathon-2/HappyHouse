@@ -36,7 +36,6 @@ class NHomewViewController : ViewController{
         NCollectionView.delegate = self
         setData()
     }
-    
 }
 
 extension NHomewViewController {
@@ -120,6 +119,14 @@ extension NHomewViewController {
         NCreateButton.rx.tap
             .bind{
                 print("tap")
+                
+                let commonRoutineStoryboard = UIStoryboard.init(name: "CommonRoutine", bundle: nil) // 스토리보드 객체 생성
+                guard let vc = commonRoutineStoryboard.instantiateViewController(identifier: "CommonRoutine") as? CommonRoutineViewController else { return }
+                vc.modalPresentationStyle = .fullScreen
+                vc.modalTransitionStyle = .coverVertical
+                self.present(vc, animated: false, completion: nil)
+                //self.navigationController?.pushViewController(vc, animated: true) // 네비 형식으로
+                
             }.disposed(by: bag)
     }
 }
