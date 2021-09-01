@@ -114,7 +114,7 @@ extension CommonRoutineViewController {
             $0.top.equalTo(WhenStartLabel.snp.bottom).offset(10)
             $0.left.equalTo(BackButton.snp.left)
             $0.right.equalToSuperview().offset(-(view.frame.width/14))
-            $0.height.equalTo(150)
+            $0.height.equalTo(200)
         }
         InnerDateBoxViewLayout()
         RequestLabel.snp.makeConstraints {
@@ -143,7 +143,7 @@ extension CommonRoutineViewController {
     func InnerDateBoxViewLayout() {
         // figma width heigth : 374 * 219
         let DateBoxWidth = view.frame.width - (view.frame.width/7)
-        let DateBoxHeightRatio : CGFloat = 150/219
+        let DateBoxHeightRatio : CGFloat = 200/219
         let DateBoxWidthRatio : CGFloat = DateBoxWidth/374
         
         CalenderIcon.snp.makeConstraints {
@@ -263,7 +263,7 @@ extension CommonRoutineViewController {
             $0.text = "언제 시작할까요?"
         }
         DateBoxView.then {
-            $0.layer.cornerRadius = (150 * BoxViewWidth * 20) / (374 * 219) // 피그마에 있는거 화면사이즈에 맞게 수학식으로 변환
+            $0.layer.cornerRadius = (200 * BoxViewWidth * 20) / (374 * 219) // 피그마에 있는거 화면사이즈에 맞게 수학식으로 변환
             // 추후에 shadow 넣어주어야 함.
         }
         InnerDateBoxViewSetUI()
