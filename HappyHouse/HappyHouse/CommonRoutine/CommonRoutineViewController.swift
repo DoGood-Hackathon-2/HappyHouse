@@ -53,10 +53,14 @@ class CommonRoutineViewController : UIViewController {
  
     let viewModel = CRCollectionViewModel()
     let bag = DisposeBag()
-    
+    var DeviceHeight : CGFloat = 0.0
+    var figmaHeight : CGFloat = 896 // 414 * 896
+    var DeviceRatio : CGFloat = 1.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DeviceHeight = view.frame.height
+        DeviceRatio = DeviceHeight / figmaHeight < 1.0 ? 1.0 : DeviceHeight / figmaHeight + 0.35
         CRcollectionView.delegate = self
         layout()
         setUI()
@@ -114,7 +118,7 @@ extension CommonRoutineViewController {
             $0.top.equalTo(WhenStartLabel.snp.bottom).offset(10)
             $0.left.equalTo(BackButton.snp.left)
             $0.right.equalToSuperview().offset(-(view.frame.width/14))
-            $0.height.equalTo(200)
+            $0.height.equalTo(150 * DeviceRatio)
         }
         InnerDateBoxViewLayout()
         RequestLabel.snp.makeConstraints {
@@ -134,7 +138,7 @@ extension CommonRoutineViewController {
         }
         ChallengeAddButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().offset(-10)
-            $0.height.equalTo(42)
+            $0.height.equalTo(30)
             $0.left.equalToSuperview().offset((view.frame.width/14))
             $0.right.equalToSuperview().offset(-(view.frame.width/14))
         }
@@ -143,58 +147,59 @@ extension CommonRoutineViewController {
     func InnerDateBoxViewLayout() {
         // figma width heigth : 374 * 219
         let DateBoxWidth = view.frame.width - (view.frame.width/7)
-        let DateBoxHeightRatio : CGFloat = 200/219
-        let DateBoxWidthRatio : CGFloat = DateBoxWidth/374
+        let DateBoxHeightRatio : CGFloat = 150 * DeviceRatio / 219
+        let DateBoxWidthRatio : CGFloat = DateBoxWidth / 374
+        let DateBoxStaticHeight : CGFloat = 150 * DeviceRatio / 219
         
         CalenderIcon.snp.makeConstraints {
             $0.top.equalToSuperview().offset(32.37 * DateBoxHeightRatio)
             $0.left.equalToSuperview().offset(29.12 * DateBoxWidthRatio)
         }
         YearTextField.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(32.37 * DateBoxHeightRatio)
+            $0.centerY.equalTo(CalenderIcon.snp.centerY) // 와 이렇게하면 정렬 가능하네 ㅜㅜ 대박,,
             $0.left.equalTo(CalenderIcon.snp.right).offset(19.1 * DateBoxWidthRatio)
             $0.width.equalTo(71.91 * DateBoxWidthRatio)
-            $0.height.equalTo(35.87 * DateBoxHeightRatio)
+            $0.height.equalTo(35.87 * DateBoxStaticHeight)
         }
         YearText.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(32.37 * DateBoxHeightRatio)
+            $0.centerY.equalTo(CalenderIcon.snp.centerY)
             $0.left.equalTo(YearTextField.snp.right).offset(5.59 * DateBoxWidthRatio)
         }
         MonthTextField.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(32.37 * DateBoxHeightRatio)
+            $0.centerY.equalTo(CalenderIcon.snp.centerY)
             $0.left.equalTo(YearText.snp.right).offset(15.56 * DateBoxWidthRatio)
             $0.width.equalTo(51.93 * DateBoxWidthRatio)
-            $0.height.equalTo(35.87 * DateBoxHeightRatio)
+            $0.height.equalTo(35.87 * DateBoxStaticHeight)
         }
         MonthText.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(32.37 * DateBoxHeightRatio)
+            $0.centerY.equalTo(CalenderIcon.snp.centerY)
             $0.left.equalTo(MonthTextField.snp.right).offset(5.59 * DateBoxWidthRatio)
         }
         DayTextField.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(32.37 * DateBoxHeightRatio)
+            $0.centerY.equalTo(CalenderIcon.snp.centerY)
             $0.left.equalTo(MonthText.snp.right).offset(16.56 * DateBoxWidthRatio)
             $0.width.equalTo(51.93 * DateBoxWidthRatio)
-            $0.height.equalTo(35.87 * DateBoxHeightRatio)
+            $0.height.equalTo(35.87 * DateBoxStaticHeight)
         }
         DayText.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(32.37 * DateBoxHeightRatio)
+            $0.centerY.equalTo(CalenderIcon.snp.centerY)
             $0.left.equalTo(DayTextField.snp.right).offset(5.59 * DateBoxWidthRatio)
         }
         WeekendCollectionView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(91.31 * DateBoxHeightRatio)
             $0.left.equalToSuperview().offset(27 * DateBoxWidthRatio)
             $0.right.equalTo(DayText.snp.right)
-            $0.height.equalTo(49 * DateBoxHeightRatio)
+            $0.height.equalTo(49 * DateBoxStaticHeight)
         }
         ClockIcon.snp.makeConstraints {
             $0.top.equalToSuperview().offset(171.75 * DateBoxHeightRatio)
             $0.left.equalToSuperview().offset(29.12 * DateBoxWidthRatio)
         }
         TimeStackView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(171.75 * DateBoxHeightRatio)
+            $0.centerY.equalTo(ClockIcon.snp.centerY)
             $0.left.equalTo(ClockIcon.snp.right).offset(10.08 * DateBoxWidthRatio)
             $0.width.equalTo(116 * DateBoxWidthRatio)
-            $0.height.equalTo(36 * DateBoxHeightRatio)
+            $0.height.equalTo(36 * DateBoxStaticHeight)
         }
         let TimeStackViewWidth = 116 * DateBoxWidthRatio
         let TimeStackViewHeight = 36 * DateBoxHeightRatio
@@ -212,21 +217,20 @@ extension CommonRoutineViewController {
         
         AMButton.snp.makeConstraints {
             $0.bottom.equalTo(TimeStackView.snp.bottom)
-            $0.top.equalTo(TimeStackView.snp.top)
+            $0.centerY.equalTo(ClockIcon.snp.centerY)
             $0.left.equalTo(TimeStackView.snp.right).offset(14 * DateBoxWidthRatio)
-            $0.width.equalTo(42 * DateBoxWidthRatio)
+            $0.width.equalTo(42 * DateBoxStaticHeight)
         }
         PMButton.snp.makeConstraints {
             $0.bottom.equalTo(TimeStackView.snp.bottom)
-            $0.top.equalTo(TimeStackView.snp.top)
+            $0.centerY.equalTo(ClockIcon.snp.centerY)
             $0.left.equalTo(TimeStackView.snp.right).offset(58 * DateBoxWidthRatio)
-            $0.width.equalTo(42 * DateBoxWidthRatio)
+            $0.width.equalTo(42 * DateBoxStaticHeight)
         }
         TimeActivationButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(171.75 * DateBoxHeightRatio)
+            $0.centerY.equalTo(ClockIcon.snp.centerY)
             $0.right.equalTo(DayText.snp.right)
         }
-
     }
     
     func setUI() {
@@ -263,7 +267,7 @@ extension CommonRoutineViewController {
             $0.text = "언제 시작할까요?"
         }
         DateBoxView.then {
-            $0.layer.cornerRadius = (200 * BoxViewWidth * 20) / (374 * 219) // 피그마에 있는거 화면사이즈에 맞게 수학식으로 변환
+            $0.layer.cornerRadius = (150 * BoxViewWidth * 20) / (374 * 219) // 피그마에 있는거 화면사이즈에 맞게 수학식으로 변환
             // 추후에 shadow 넣어주어야 함.
         }
         InnerDateBoxViewSetUI()
@@ -277,14 +281,14 @@ extension CommonRoutineViewController {
         ChallengeAddButton.then {
             $0.backgroundColor = UIColor(red: 0.446, green: 0.631, blue: 1, alpha: 1)
             $0.setTitleColor(.white, for: .normal)
-            $0.layer.cornerRadius = (42 * BoxViewWidth * 44) / (374 * 219)
+            $0.layer.cornerRadius = (36 * BoxViewWidth * 44) / (374 * 219)
             $0.setTitle("챌린지를 추가하세요", for: .normal)
         }
     }
     
     func InnerDateBoxViewSetUI() {
-        let figmaRatio : CGFloat = 374*219
-        let DateBoxRatio = DateBoxView.frame.width * 150 / figmaRatio // 내 박스의 비율로 전환 - 세로길이 150 고정
+        let figmaBoxRatio : CGFloat = 374 * 219
+        let DateBoxRatio = DateBoxView.frame.width * 150 / figmaBoxRatio // 내 박스의 비율로 전환 - 세로길이 150 고정
         
         YearTextField.then {
             $0.backgroundColor = UIColor(red: 0.913, green: 0.913, blue: 0.913, alpha: 1)
@@ -350,6 +354,8 @@ extension CommonRoutineViewController {
             ) { index, item, cell in
                 cell.initUI(of: item)
             }.disposed(by: bag)
+        
+        WeekendCollectionView.items
     }
 }
 
@@ -409,3 +415,8 @@ class CRCollectionViewModel {
         dummyObsrvable = Observable.of(dummyData)
     }
 }
+
+class WeekendCollectionViewCell : UICollectionViewCell {
+    
+}
+
