@@ -36,7 +36,15 @@ class CommonRoutineViewController : UIViewController {
     @IBOutlet weak var MonthText: UILabel!
     @IBOutlet weak var DayTextField: UITextField!
     @IBOutlet weak var DayText: UILabel!
-    @IBOutlet weak var WeekendCollectionView: UICollectionView!
+    @IBOutlet weak var WeekendStackView: UIStackView! // week 담을 스택뷰
+    @IBOutlet weak var WeekStackIndex0: UIButton! // 매주
+    @IBOutlet weak var WeekStackIndex1: UIButton! // 월
+    @IBOutlet weak var WeekStackIndex2: UIButton! // 화
+    @IBOutlet weak var WeekStackIndex3: UIButton! // 수
+    @IBOutlet weak var WeekStackIndex4: UIButton! // 목
+    @IBOutlet weak var WeekStackIndex5: UIButton! // 금
+    @IBOutlet weak var WeekStackIndex6: UIButton! // 토
+    @IBOutlet weak var WeekStackIndex7: UIButton! // 일
     @IBOutlet weak var ClockIcon: UIImageView!
     @IBOutlet weak var TimeStackView: UIView! // 시간, 콜론, 분을 포함함
     @IBOutlet weak var HourTextField: UITextField! // inner StackView
@@ -46,26 +54,37 @@ class CommonRoutineViewController : UIViewController {
     @IBOutlet weak var PMButton: UIButton!
     @IBOutlet weak var TimeActivationButton: UIButton!
     
+    // bottom field
     @IBOutlet weak var RequestLabel: UILabel! // 요청메시지를 보내봐요
     @IBOutlet weak var RequsetTextFieldContainer: UIView! // RequestTextField 배경 -> 글자에 inset 주려면 있어야 해
     @IBOutlet weak var RequestTextField: UITextField! // 기기별로 동적대응
     @IBOutlet weak var ChallengeAddButton: UIButton! // 챌린지 추가하기 버튼
- 
-    let viewModel = CRCollectionViewModel()
+    
+    
+    let viewModel = CRCollectionViewModel() // 프로필 얼굴 + 이름 나오는 컬렉션 뷰
     let bag = DisposeBag()
     var DeviceHeight : CGFloat = 0.0
     var figmaHeight : CGFloat = 896 // 414 * 896
     var DeviceRatio : CGFloat = 1.0
     
+    let InnerBoxViewModel = WeekCollectionViewModel() // 매주, 월, 화 ...
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         DeviceHeight = view.frame.height
         DeviceRatio = DeviceHeight / figmaHeight < 1.0 ? 1.0 : DeviceHeight / figmaHeight + 0.35
-        CRcollectionView.delegate = self
+        addDelegate()
         layout()
         setUI()
         setData()
     }
+    
+    func addDelegate() {
+        CRcollectionView.delegate = self
+    }
+    
 }
 
 extension CommonRoutineViewController {
@@ -145,7 +164,6 @@ extension CommonRoutineViewController {
     }
     
     func InnerDateBoxViewLayout() {
-        // figma width heigth : 374 * 219
         let DateBoxWidth = view.frame.width - (view.frame.width/7)
         let DateBoxHeightRatio : CGFloat = 150 * DeviceRatio / 219
         let DateBoxWidthRatio : CGFloat = DateBoxWidth / 374
@@ -185,7 +203,7 @@ extension CommonRoutineViewController {
             $0.centerY.equalTo(CalenderIcon.snp.centerY)
             $0.left.equalTo(DayTextField.snp.right).offset(5.59 * DateBoxWidthRatio)
         }
-        WeekendCollectionView.snp.makeConstraints {
+        WeekendStackView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(91.31 * DateBoxHeightRatio)
             $0.left.equalToSuperview().offset(27 * DateBoxWidthRatio)
             $0.right.equalTo(DayText.snp.right)
@@ -308,7 +326,7 @@ extension CommonRoutineViewController {
             $0.textAlignment = .center
             $0.borderStyle = .none
         }
-        WeekendCollectionView.backgroundColor = .red
+        WeekButtonUI() // 버튼 배치 UI구성
         TimeStackView.then {
             $0.backgroundColor = UIColor(red: 0.913, green: 0.913, blue: 0.913, alpha: 1)
             $0.layer.cornerRadius = (DateBoxRatio * 17)
@@ -345,6 +363,33 @@ extension CommonRoutineViewController {
         }
     }
     
+    func WeekButtonUI() {
+        WeekStackIndex0.then {
+            $0.tintColor = UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1)
+        }
+        WeekStackIndex1.then {
+            $0.tintColor = UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1)
+        }
+        WeekStackIndex2.then {
+            $0.tintColor = UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1)
+        }
+        WeekStackIndex3.then {
+            $0.tintColor = UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1)
+        }
+        WeekStackIndex4.then {
+            $0.tintColor = UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1)
+        }
+        WeekStackIndex5.then {
+            $0.tintColor = UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1)
+        }
+        WeekStackIndex6.then {
+            $0.tintColor = UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1)
+        }
+        WeekStackIndex7.then {
+            $0.tintColor = UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1)
+        }
+    }
+    
     func setData() {
         viewModel.dummyObsrvable
             .bind(to: CRcollectionView.rx
@@ -355,14 +400,36 @@ extension CommonRoutineViewController {
                 cell.initUI(of: item)
             }.disposed(by: bag)
         
-        WeekendCollectionView.items
+//        InnerBoxViewModel.dummyObsrvable
+//            .bind(to: WeekendCollectionView.rx
+//                    .items(
+//                        cellIdentifier: "WeekCell",
+//                        cellType: WeekendCollectionViewCell.self)
+//            ) { index, item, cell in
+//                cell.backgroundColor = .brown
+//                cell.initUI(of: item)
+//            }.disposed(by: bag)
+        
     }
 }
 
 extension CommonRoutineViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
+        
         return CGSize(width: 60, height: 60)
+//        if collectionView == CRcollectionView {
+//            return CGSize(width: 60, height: 60)
+//        } else { // WeekCollectionView
+//            let boxWidth = view.frame.width - (view.frame.width/7)
+//
+//            let collectionSizeWidth = boxWidth - (27 * boxWidth / 374)
+//
+//            let width : CGFloat = collectionSizeWidth / 8
+//            let height : CGFloat = 49 * 150 * DeviceRatio / 219
+//
+//            return CGSize(width: width, height: height) // 이걸 커스텀 레이아웃 사용하면 컨텐츠가 크기로 자동으로 설정할 수 있어서 좋을탠데 ㅜㅜ 커스텀 레이아웃 아직 너무 어려움ㅜㅋ
+//        }
     }
 }
 
@@ -416,7 +483,43 @@ class CRCollectionViewModel {
     }
 }
 
-class WeekendCollectionViewCell : UICollectionViewCell {
-    
+struct WeekCollectionModel {
+    var WeekLabel : String
 }
 
+class WeekendCollectionViewCell : UICollectionViewCell {
+    @IBOutlet weak var WeekCellLabel: UILabel!
+    
+    func initUI(of item : WeekCollectionModel) {
+        cellLayout()
+        WeekCellLabel.then {
+            $0.text = item.WeekLabel
+            $0.tintColor = .black
+        }
+    }
+    
+    func cellLayout() {
+        WeekCellLabel.snp.makeConstraints {
+            $0.top.bottom.left.right.equalTo(0)
+        }
+    }
+}
+
+class WeekCollectionViewModel {
+    var dummyData = [
+        WeekCollectionModel(WeekLabel: "매주"),
+        WeekCollectionModel(WeekLabel: "월"),
+        WeekCollectionModel(WeekLabel: "화"),
+        WeekCollectionModel(WeekLabel: "수"),
+        WeekCollectionModel(WeekLabel: "목"),
+        WeekCollectionModel(WeekLabel: "금"),
+        WeekCollectionModel(WeekLabel: "토"),
+        WeekCollectionModel(WeekLabel: "일")
+    ]
+    
+    var dummyObsrvable: Observable<[WeekCollectionModel]>
+    
+    init() {
+        dummyObsrvable = Observable.of(dummyData)
+    }
+}
