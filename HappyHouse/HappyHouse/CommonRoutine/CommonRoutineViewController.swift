@@ -70,10 +70,6 @@ class CommonRoutineViewController : UIViewController {
     let Yearborder = CALayer() // 텍스트 필드에 값을 잘못 입력할 경우 사용자에게 알려주기 인지시켜 주기 위해 underline
     let Monthborder = CALayer()
     let Dayborder = CALayer()
-    //let Yearborder = CALayer()
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +79,10 @@ class CommonRoutineViewController : UIViewController {
         layout()
         setUI()
         setData()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { // UIViewController에 있는 메소드로 화면 클릭시 내려감 단, collectionView가 위에 있으면 컬렉션 뷰 클릭스 반응하지 않게 된다는 단점 존재
+        self.YearTextField.resignFirstResponder()
     }
     
     func addDelegate() {
@@ -496,7 +496,7 @@ extension CommonRoutineViewController {   // 텍스트 필드 제약조건을 �
      1. 입력받는 길이를 제한하기 -> 코드로 최대길이 제한
      2. 입력이 끝나면 자동으로 키보드 내리기 -> 최대길이 도달하면 내리게 코드로 주기
      3. 터무니없는 입력값을 아예 비워버리기
-     4. 입력이 끝나지 않았다면 다른 곳을 터치하여 포키스를 헤제하기
+     4. 입력이 끝나지 않았다면 다른 곳을 터치하여 포커스를 헤제하기
      5. 다시 입력할 때, 자동으로 텍스트 필드 비워버리기 -> UX 향상 -> 스토리보드에서 clear when editing begin으로 설정
      
      + Month나 Day의 경우에는 한자리만 입력하는 경우가 종종 발생할 수 있는데, 유저의 인식 향상을 위해 placeholder를 제공하면 좋겠다.
