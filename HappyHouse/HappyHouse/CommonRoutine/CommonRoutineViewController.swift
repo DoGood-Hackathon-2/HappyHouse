@@ -70,6 +70,8 @@ class CommonRoutineViewController : UIViewController {
     let Yearborder = CALayer() // 텍스트 필드에 값을 잘못 입력할 경우 사용자에게 알려주기 인지시켜 주기 위해 underline
     let Monthborder = CALayer()
     let Dayborder = CALayer()
+    let Hourborder = CALayer()
+    let Minuteborder = CALayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,12 +83,23 @@ class CommonRoutineViewController : UIViewController {
         setData()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { // UIViewController에 있는 메소드로 화면 클릭시 내려감 단, collectionView가 위에 있으면 컬렉션 뷰 클릭스 반응하지 않게 된다는 단점 존재
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { // UIViewController에 있는 메소드로 화면 클릭시 내려감 단, collectionView가 위에 있으면 컬렉션 뷰 영역을 클릭하면 사임하지 않기에, 이 부분에 대한 로직 처리가 별도로 필요하다.
         self.YearTextField.resignFirstResponder()
+        self.MonthTextField.resignFirstResponder()
+        self.DayTextField.resignFirstResponder()
+        self.HourTextField.resignFirstResponder()
+        self.MinuteTextField.resignFirstResponder()
+        
+        // 텍스트 필드의 포커싱을 놓아줄 때, 입력된 글자가 부족할 때, 완전한 조건으로 보정해주는 작업이 있다면 UX를 향상
     }
     
     func addDelegate() {
         CRcollectionView.delegate = self
+        YearTextField.delegate = self
+        MonthTextField.delegate = self
+        DayTextField.delegate = self
+        HourTextField.delegate = self
+        MinuteTextField.delegate = self
     }
     
 }
@@ -329,7 +342,7 @@ extension CommonRoutineViewController {
             Yearborder.cornerRadius =  (DateBoxRatio * 9)
             Yearborder.backgroundColor = UIColor.green.cgColor
             $0.layer.addSublayer(Yearborder)
-            Yearborder.isHidden = true
+            //Yearborder.isHidden = true
         }
         MonthTextField.then {
             $0.backgroundColor = UIColor(red: 0.913, green: 0.913, blue: 0.913, alpha: 1)
@@ -342,9 +355,9 @@ extension CommonRoutineViewController {
             // UnderLine
             Monthborder.frame = CGRect(x: 0, y: $0.frame.size.height/4 * 3, width: 51.93 * DateBoxWidthRatio, height: 1.5)
             Monthborder.cornerRadius =  (DateBoxRatio * 9)
-            Monthborder.backgroundColor = UIColor.red.cgColor
+            Monthborder.backgroundColor = UIColor.green.cgColor
             $0.layer.addSublayer(Monthborder)
-            Monthborder.isHidden = true
+            //Monthborder.isHidden = true
         }
         DayTextField.then {
             $0.backgroundColor = UIColor(red: 0.913, green: 0.913, blue: 0.913, alpha: 1)
@@ -357,9 +370,9 @@ extension CommonRoutineViewController {
             // UnderLine
             Dayborder.frame = CGRect(x: 0, y: $0.frame.size.height/4 * 3, width: 51.93 * DateBoxWidthRatio, height: 1.5)
             Dayborder.cornerRadius =  (DateBoxRatio * 9)
-            Dayborder.backgroundColor = UIColor.red.cgColor
+            Dayborder.backgroundColor = UIColor.green.cgColor
             $0.layer.addSublayer(Dayborder)
-            Dayborder.isHidden = true
+            //Dayborder.isHidden = true
             
         }
         WeekButtonUI() // 버튼 배치 UI구성
@@ -367,25 +380,44 @@ extension CommonRoutineViewController {
             $0.backgroundColor = UIColor(red: 0.913, green: 0.913, blue: 0.913, alpha: 1)
             $0.layer.cornerRadius = (DateBoxRatio * 17)
             $0.clipsToBounds = true
+            
         }
         //MARK ::: INNER TimeStackView
         HourTextField.then {
-            $0.backgroundColor = .red
+            //$0.backgroundColor = .red
             $0.layer.cornerRadius = (DateBoxRatio * 17)
             $0.textAlignment = .center
             $0.borderStyle = .none
+            $0.keyboardType = .numberPad
+            $0.text = nowDateTime(3)
+            
+            // UnderLine
+            Hourborder.frame = CGRect(x: 0, y: $0.frame.size.height/4 * 3, width: (116 * DateBoxWidthRatio - Colon.frame.width)/2, height: 1.5)
+            Hourborder.cornerRadius =  (DateBoxRatio * 9)
+            Hourborder.backgroundColor = UIColor.green.cgColor
+            $0.layer.addSublayer(Hourborder)
+            //Hourborder.isHidden = true
         }
         Colon.then {
             $0.text = ":"
         }
         MinuteTextField.then {
-            $0.backgroundColor = .blue
+            //$0.backgroundColor = .blue
             $0.layer.cornerRadius = (DateBoxRatio * 17)
             $0.textAlignment = .center
             $0.borderStyle = .none
+            $0.keyboardType = .numberPad
+            $0.text = nowDateTime(4)
+            
+            // UnderLine
+            Minuteborder.frame = CGRect(x: 0, y: $0.frame.size.height/4 * 3, width: (116 * DateBoxWidthRatio - Colon.frame.width)/2, height: 1.5)
+            Minuteborder.cornerRadius =  (DateBoxRatio * 9)
+            Minuteborder.backgroundColor = UIColor.green.cgColor
+            $0.layer.addSublayer(Minuteborder)
+            //Minuteborder.isHidden = true
         }
         AMButton.then {
-            $0.setTitleColor(.black, for: .normal)
+            $0.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
         }
         PMButton.then {
             $0.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
@@ -436,7 +468,7 @@ extension CommonRoutineViewController {
             ) { index, item, cell in
                 cell.initUI(of: item)
             }.disposed(by: bag)
-        
+
         YearTextField.rx.text.orEmpty
             .skip(1) // 구독 시 bind코드가 적용되는데 밑줄이 우리가 포커스를 잡은 시점부터 나타나길 바래서
             .observe(on: MainScheduler.asyncInstance)
@@ -464,99 +496,93 @@ extension CommonRoutineViewController {
             } // 에러 방출할 일 없으니 bind로 사용해보자
             .disposed(by: bag)
         
+        HourTextField.rx.text.orEmpty
+            .skip(1)
+            .observe(on: MainScheduler.asyncInstance)
+            .bind{
+                self.HourTextField2($0)
+                self.Hourborder.isHidden = false
+            } // 에러 방출할 일 없으니 bind로 사용해보자
+            .disposed(by: bag)
+        
+        MinuteTextField.rx.text.orEmpty
+            .skip(1)
+            .observe(on: MainScheduler.asyncInstance)
+            .bind{
+                self.MinuteTextField2($0)
+                self.Minuteborder.isHidden = false
+            } // 에러 방출할 일 없으니 bind로 사용해보자
+            .disposed(by: bag)
+        
+        
+    }
+    
+    func realDateTime() -> String {
+        let today = NSDate() //현재 시각 구하기
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm" // 2021-09-06-17-12
+//        dateFormatter.locale = Locale(identifier:"ko_KR") // 위치는 한국
+        let dateString = dateFormatter.string(from: today as Date)
+        
+        return dateString
     }
     
     func nowDateTime(_ index : Int) -> String {
         /*
+         사용자는 미래의 일정을 예약함으로 현재 시간을 주면 사용자가 입력하는 동안에 시간이 흘러, 재입력해야 하는 불편함이 발생한다.
+         이를 조정하고자 30분 후의 시간을 nowDateTime으로 지정하겠다.
+         
          index 0 - year
          index 1 - month
          index 2 - day
+         index 3 - hour : 24시간제
+         index 4 - minute
          */
-        let today = NSDate() //현재 시각 구하기
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateString = dateFormatter.string(from: today as Date)
-        let arr = dateString.components(separatedBy: "-") // 분리해서 내보내주기!
-        print(arr) //"2021"
-        
-        return arr[index]
-    }
-}
 
-extension CommonRoutineViewController : UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 60, height: 60)
-    }
-}
-
-extension CommonRoutineViewController {   // 텍스트 필드 제약조건을 주기 위해서
-    /*
-     텍스트필드 제약조건에 대해서 고려해야 하는 점들.
-     1. 입력받는 길이를 제한하기 -> 코드로 최대길이 제한
-     2. 입력이 끝나면 자동으로 키보드 내리기 -> 최대길이 도달하면 내리게 코드로 주기
-     3. 터무니없는 입력값을 아예 비워버리기
-     4. 입력이 끝나지 않았다면 다른 곳을 터치하여 포커스를 헤제하기
-     5. 다시 입력할 때, 자동으로 텍스트 필드 비워버리기 -> UX 향상 -> 스토리보드에서 clear when editing begin으로 설정
-     
-     + Month나 Day의 경우에는 한자리만 입력하는 경우가 종종 발생할 수 있는데, 유저의 인식 향상을 위해 placeholder를 제공하면 좋겠다.
-     placeholder에 제공하는 값은 오늘 날짜로 제공하면 좋지 않을까?
-     + Year의 경우에는 대부분 고정되어 있으니 처음부터 값을 줘도 좋겠다!
-     Year을 기본으로 주는 만큼 만약에 현재 날짜 및 시간보다 앞의 값을 입력한다면 입력하지 정보를 정정하고 Year의 조절이 있을 경우 언더라인이 나타나게한다.
-     */
-    private func YearTextField4(_ str : String) { // 최대길이 4까지
-        self.Yearborder.backgroundColor = UIColor.red.cgColor // 입력시 빨간색으로
-        if str.count > 4 {
-            let index = str.index(str.startIndex, offsetBy: 4)
-            self.YearTextField.text = String(str[..<index])
-        } else if str.count == 4 {
-            if Int(str)! < Int(nowDateTime(0))! { // 올해보다 이전이라면
-                self.YearTextField.text = nowDateTime(0) // 올해값으로 정정
-            }
+        let dateString = realDateTime()
+        var arr = dateString.components(separatedBy: "-") // 분리해서 내보내주기
+        
+        arr[4] = "\(Int(arr[4])! + 30)" // 30분 더하기
+        
+        self.MonthTextField.text = arr[1] // 실제로 반환되지는 않지만, 내부 로직에서 checklastDay와 nowDateTime이 서로서로 참조하고 있어서 자칫 잘못하면 무한루프가 발생함. 무한 루프가 발생함. 이 코드가 존재하면 두 개의 로직을 확인해 보았을 때, 무한루프에 빠지지 않게 되어서 설계상으로 필요한 코드이다.
+        
+        // MARK:: 30을 더했을 때의 알고리즘 로직
+        if Int(arr[4])! > 60 { // 60분을 넘어가면
+            arr[4] = "\(Int(arr[4])! - 60)" //  분에서 60을 뺴준다.
+            arr[3] = "\(Int(arr[3])! + 1)"
             
-            if !checkLeapYear() && self.MonthTextField.text == "02" && self.DayTextField.text == "29" { // 윤년이 아닌데, 2월 29일로 설정되어 있다면
-                self.DayTextField.text = "28" // 28일로 변경
-            }
-            
-            self.Yearborder.backgroundColor = UIColor.green.cgColor
-            self.YearTextField.resignFirstResponder() // 키보드 내리기
-        }
-    }
-    private func MonthTextField2(_ str : String) { // 최대길이 2까지
-        self.Monthborder.backgroundColor = UIColor.red.cgColor // 재입력시 빨간색으로
-        if str.count > 2 {
-            let index = str.index(str.startIndex, offsetBy: 2)
-            self.MonthTextField.text = String(str[..<index])
-        } else if str.count == 2 {
-            
-            if Int(str)! > 12 || Int(str)! < 1 { // 여기서 터무니 없는 숫자면 이번달로 설정
-                self.MonthTextField.text = nowDateTime(1)
-            } else { // 정상적으로 입력 되었으면
-                self.Monthborder.backgroundColor = UIColor.green.cgColor
-            }
-            
-            if self.DayTextField.text != "" { // 일이 비어있다면 넘어가도록 설계
-                if checklastDay() < Int(self.DayTextField.text!)! { // 일이 입력되어 있는 상태에서 월을 변경할 때, 마지막 날이 이번달에 없는 날이면 변경하기 위한 로직
-                    self.DayTextField.text = "\(checklastDay())"
+            if Int(arr[3])! > 23 { // 24부터는 넘어가면 하루를 더해야한다.
+                arr[3] = "01" // 시간이 다음 날로 바뀌니까 01로 바꿔준다.
+                
+                if checklastDay() == Int(arr[2]) { // 해당 달의 마지막 날이라면
+                    arr[2] = "01" // 1일로 초기화하고
+                    arr[1] = "\(Int(arr[1])! + 1)" // 월을 1 올린다.
+                    
+                    if Int(arr[1])! > 12 { // 12월을 넘어가면
+                        arr[1] = "01" // 1월로 초기화하고
+                        arr[0] = "\(Int(arr[0])! + 1)" // 년도를 1을 더한다
+                    }
+                } else { // 해당날이 마지막 날이 아니라면 현재 날짜에 1을 더한다.
+                    arr[2] = "\(Int(arr[2])! + 1)" // day에 1을 더한다.
                 }
             }
             
-            self.MonthTextField.resignFirstResponder() // 키보드 내리기
         }
-    }
-    private func DayTextField2(_ str : String) { // 최대길이 2까지
-        self.Dayborder.backgroundColor = UIColor.red.cgColor
-        if str.count > 2 {
-            let index = str.index(str.startIndex, offsetBy: 2)
-            self.DayTextField.text = String(str[..<index])
-        } else if str.count == 2 {
-            // 고려 해야할 점 -> 윤년, 월, 년,월이 입력되지 않은 경우
-            if checklastDay() < Int(self.DayTextField.text!)! { // 그 달에 없는 날짜이면
-                self.DayTextField.text = "\(checklastDay())"
+        
+        // MARK:: 30분을 더한 후에 문자열 문자열 길이를 완전하게 해주는 로직
+        if Int(arr[3])! > 12 { // 24시간제로 받아서 12시간 값을 변환해주는 과정이 필요하다.
+            arr[3] = "\(Int(arr[3])! - 12)"
+            if arr[3].count == 1 { // 한자리 수이면
+                arr[3] = "0\(arr[3])"
             }
-            self.Dayborder.backgroundColor = UIColor.green.cgColor
-            self.DayTextField.resignFirstResponder() // 키보드 내리기
         }
+        
+        if arr[4].count == 1 { // 한자리 수이면
+            arr[4] = "0\(arr[4])"
+        }
+        
+        return arr[index]
     }
     
     func checkLeapYear() -> Bool{ // 윤년인지 아닌지 체크하는 함수
@@ -591,6 +617,204 @@ extension CommonRoutineViewController {   // 텍스트 필드 제약조건을 �
             return -1 // 에러나면 -1 리턴해줌
         }
     }
+    
+    func fillOtherField() {
+        // 이 함수는 텍스트 필드 입력 중 다른 텍스트 필드 클릭 시, 텍스트 필드가 완전한 형태가 아니라면 완전하게 채워주는 작업
+        if YearTextField.text?.count != 4 {
+            YearTextField.text = nowDateTime(0)
+        }
+    }
+}
+
+extension CommonRoutineViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: 60, height: 60)
+    }
+}
+
+extension CommonRoutineViewController : UITextFieldDelegate {   // 텍스트 필드 제약조건을 주기 위해서
+    /*
+     함수명 규칙 : IBOutlet 이름 + 최대 글자 길이
+     
+     첫번째 줄 텍스트필드 제약조건에 대해서 고려해야 하는 점들.
+     1. 입력받는 길이를 제한하기 -> 코드로 최대길이 제한
+     2. 입력이 끝나면 자동으로 키보드 내리기 -> 최대길이 도달하면 내리게 코드로 주기
+     3. 터무니없는 입력값에는 현재 날짜로 초기화 -> 코드로 구현
+     4. 입력이 끝나지 않았다면 다른 곳을 터치하여 포커스를 헤제하기
+     5. 다시 입력할 때, 자동으로 텍스트 필드 비워버리기 -> UX 향상 -> 스토리보드에서 clear when editing begin으로 설정
+     
+     + Month나 Day의 경우에는 한자리만 입력하는 경우가 종종 발생할 수 있는데, 유저의 인식 향상을 위해 placeholder를 제공하면 좋겠다.
+     placeholder에 제공하는 값은 오늘 날짜로 제공하면 좋지 않을까?
+     + Year의 경우에는 대부분 고정되어 있으니 처음부터 값을 줘도 좋겠다!
+     Year을 기본으로 주는 만큼 만약에 현재 날짜 및 시간보다 앞의 값을 입력한다면 입력하지 정보를 정정하고 Year의 조절이 있을 경우 언더라인이 나타나게한다.
+     
+     Hour, Minute 텍스트필드 제약조건에 대해서 고려해야 하는 점들.
+    
+     세번째 줄 텍스트필드 제약조건에 대해서 고려해야 하는 점들.
+     1. 입력받는 길이 제한 -> 코드로 길이 제한
+     2. 입력이 끝나면 자동으로 키보드 내리기 -> 최대길이 도달하면 내리게 코드로 주기
+     3. 터무니없는 값에는 현재 시간으로 초기화 -> 코드로 구현
+     4. 입력이 끝나지 않았다면 다른 곳 터치시 포커스 헤제
+     5.
+     */
+    
+    func textFieldDidEndEditing(_ textField: UITextField) { // 텍스트 필드가 포커스를 사임하기 직전에 호출되는 메소드 이 코드가 존재하는 이유는 포커스를 놓을 때, 필드를 안전하게 채워주기 위함.
+        // 텍스트 필드에서 다른 텍스트 필드 클릭 시, touchesBegan 메소드로는 사임 여부를 확인할 수가 없어서 코드로 구현하였다.
+        if textField == YearTextField && YearTextField.text?.count ?? 0 < 4 { // 사임하는 텍스트 필드의 내용 길이가 조건보다 작다면, 채워주자.
+            YearTextField.text = nowDateTime(0)
+            Yearborder.backgroundColor = UIColor.green.cgColor
+        }
+        
+        if textField == MonthTextField && MonthTextField.text?.count ?? 0 < 2 {
+            if MonthTextField.text?.count == 1 && MonthTextField.text != "0" { // 이 경우는 사용자가 "01" 이 아니라 "1" 이렇게만 입력했을 수도 있으므로
+                MonthTextField.text = "0\(MonthTextField.text!)"
+            } else {
+                MonthTextField.text = nowDateTime(1)
+            }
+            Monthborder.backgroundColor = UIColor.green.cgColor
+        } else if textField == DayTextField && DayTextField.text?.count ?? 0 < 2 {
+            if DayTextField.text?.count == 1 && DayTextField.text != "0" { // 이 경우는 사용자가 "01" 이 아니라 "1" 이렇게만 입력했을 수도 있으므로
+                DayTextField.text = "0\(DayTextField.text!)"
+            } else {
+                DayTextField.text = nowDateTime(2)
+            }
+            self.Dayborder.backgroundColor = UIColor.green.cgColor
+        } else if textField == HourTextField && HourTextField.text?.count ?? 0 < 2 {
+            if HourTextField.text?.count == 1 && HourTextField.text != "0" { // 이 경우는 사용자가 "01" 이 아니라 "1" 이렇게만 입력했을 수도 있으므로
+                HourTextField.text = "0\(HourTextField.text!)"
+            } else {
+                HourTextField.text = nowDateTime(3)
+            }
+            self.Hourborder.backgroundColor = UIColor.green.cgColor
+        } else if textField == MinuteTextField && MinuteTextField.text?.count ?? 0 < 2 {
+            if MinuteTextField.text?.count == 1 { // 이 경우는 사용자가 "01" 이 아니라 "1" 이렇게만 입력했을 수도 있으므로
+                MinuteTextField.text = "0\(MinuteTextField.text!)"
+            } else {
+                MinuteTextField.text = nowDateTime(4)
+            }
+            self.Minuteborder.backgroundColor = UIColor.green.cgColor
+        }
+        
+        
+    }
+    
+    // MARK:: InnerBox 첫번째 줄
+    
+    private func YearTextField4(_ str : String) { // 최대길이 4까지
+        
+        if YearTextField.text?.count ?? 0 < 4 { // 입력 시에 호출 된다.
+            self.Yearborder.backgroundColor = UIColor.red.cgColor // 입력시 빨간색으로
+        }
+        
+        if str.count > 4 {
+            let index = str.index(str.startIndex, offsetBy: 4)
+            self.YearTextField.text = String(str[..<index])
+        } else if str.count == 4 {
+            if Int(str)! < Int(nowDateTime(0))! { // 올해보다 이전이라면
+                self.YearTextField.text = nowDateTime(0) // 올해값으로 정정
+            }
+            
+            if !checkLeapYear() && self.MonthTextField.text == "02" && self.DayTextField.text == "29" { // 윤년이 아닌데, 2월 29일로 설정되어 있다면
+                self.DayTextField.text = "28" // 28일로 변경
+            }
+            
+            self.Yearborder.backgroundColor = UIColor.green.cgColor
+            self.YearTextField.resignFirstResponder() // 키보드 내리기
+        }
+    }
+    private func MonthTextField2(_ str : String) { // 최대길이 2까지
+        
+        if MonthTextField.text?.count ?? 0 < 2 { // 입력 시에 호출 된다.
+            self.Monthborder.backgroundColor = UIColor.red.cgColor // 입력시 빨간색으로
+        }
+        
+        if str.count > 2 {
+            let index = str.index(str.startIndex, offsetBy: 2)
+            self.MonthTextField.text = String(str[..<index])
+        } else if str.count == 2 {
+            
+            if Int(str)! > 12 || Int(str)! < 1 { // 여기서 터무니 없는 숫자면 이번달로 설정
+                self.MonthTextField.text = nowDateTime(1)
+            } else { // 정상적으로 입력 되었으면
+                self.Monthborder.backgroundColor = UIColor.green.cgColor
+            }
+            
+            if self.DayTextField.text != "" { // 일이 비어있다면 넘어가도록 설계
+                if checklastDay() < Int(self.DayTextField.text!)! { // 일이 입력되어 있는 상태에서 월을 변경할 때, 마지막 날이 이번달에 없는 날이면 변경하기 위한 로직
+                    self.DayTextField.text = "\(checklastDay())"
+                }
+            }
+            
+            self.MonthTextField.resignFirstResponder() // 키보드 내리기
+        }
+    }
+    private func DayTextField2(_ str : String) { // 최대길이 2까지
+        
+        if DayTextField.text?.count ?? 0 < 2 { // 입력 시에 호출 된다.
+            self.Dayborder.backgroundColor = UIColor.red.cgColor // 입력시 빨간색으로
+        }
+        
+        if str.count > 2 {
+            let index = str.index(str.startIndex, offsetBy: 2)
+            self.DayTextField.text = String(str[..<index])
+        } else if str.count == 2 {
+            // 고려 해야할 점 -> 윤년, 월, 년,월이 입력되지 않은 경우
+            if checklastDay() < Int(self.DayTextField.text!)! { // 그 달에 없는 날짜이면
+                self.DayTextField.text = "\(checklastDay())"
+            }
+            self.Dayborder.backgroundColor = UIColor.green.cgColor
+            self.DayTextField.resignFirstResponder() // 키보드 내리기
+        }
+    }
+    
+    
+    // MARK:: InnerBox 세번째 줄
+    
+    private func HourTextField2(_ str : String) { // 시간 최대 2자리까지
+        
+        if HourTextField.text?.count ?? 0 < 2 { // 입력 시에 호출 된다.
+            self.Hourborder.backgroundColor = UIColor.red.cgColor // 입력시 빨간색으로
+        }
+        
+        if str.count > 2 {
+            let index = str.index(str.startIndex, offsetBy: 2)
+            self.HourTextField.text = String(str[..<index])
+        } else if str.count == 2 {
+            
+            if Int(str)! > 12 || Int(str)! < 1 { // 여기서 터무니 없는 숫자면 시간값 현재 시간으로 초기화
+                self.HourTextField.text = nowDateTime(3)
+            } else { // 정상적으로 입력 되었으면
+    
+            }
+            
+            self.Hourborder.backgroundColor = UIColor.green.cgColor
+            self.HourTextField.resignFirstResponder() // 키보드 내리기
+        }
+    }
+    
+    private func MinuteTextField2(_ str : String) { // 시간 최대 2자리까지
+        
+        if MinuteTextField.text?.count ?? 0 < 2 { // 입력 시에 호출 된다.
+            self.Minuteborder.backgroundColor = UIColor.red.cgColor // 입력시 빨간색으로
+        }
+        
+        if str.count > 2 {
+            let index = str.index(str.startIndex, offsetBy: 2)
+            self.MinuteTextField.text = String(str[..<index])
+        } else if str.count == 2 {
+            
+            if Int(str)! > 59 || Int(str)! < 1 { // 여기서 터무니 없는 숫자면 시간값 현재 시간으로 초기화
+                self.MinuteTextField.text = nowDateTime(3)
+            } else { // 정상적으로 입력 되었으면
+
+            }
+            
+            self.Minuteborder.backgroundColor = UIColor.green.cgColor
+            self.MinuteTextField.resignFirstResponder() // 키보드 내리기
+        }
+    }
+    
 }
 
 struct CRCollectionModel {
