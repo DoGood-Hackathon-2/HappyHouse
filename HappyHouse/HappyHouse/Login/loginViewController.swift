@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-// 로그인 페이지
+// 로그인 페이지 - not used 
 class loginViewController : UIViewController {
     
     let bag = DisposeBag()
