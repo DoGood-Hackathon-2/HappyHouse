@@ -176,6 +176,7 @@
                                         <rect key="frame" x="318" y="163" width="26" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="xmark.circle" catalog="system"/>
+                                        <state key="selected" backgroundImage="plus.circle" catalog="system"/>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zkr-X5-OLs">
                                         <rect key="frame" x="51" y="161" width="88" height="39"/>
@@ -332,6 +333,7 @@
         <image name="add_mypage" width="232" height="232"/>
         <image name="calender" width="19" height="21"/>
         <image name="clock" catalog="system" width="128" height="121"/>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="xmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

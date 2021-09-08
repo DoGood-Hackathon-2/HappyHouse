@@ -417,10 +417,18 @@ extension CommonRoutineViewController {
             //Minuteborder.isHidden = true
         }
         AMButton.then {
-            $0.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+            if nowDateTime(5) == "AM" {
+                $0.setTitleColor(.black, for: .normal)
+            } else {
+                $0.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+            }
         }
         PMButton.then {
-            $0.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+            if nowDateTime(5) == "PM" {
+                $0.setTitleColor(.black, for: .normal)
+            } else {
+                $0.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+            }
         }
         TimeActivationButton.then {
             $0.setTitle("", for: .normal)
@@ -514,16 +522,137 @@ extension CommonRoutineViewController {
             } // 에러 방출할 일 없으니 bind로 사용해보자
             .disposed(by: bag)
         
+        AMButton.rx.tap
+            .bind{
+                self.AMButton.setTitleColor(.black, for: .normal)
+                self.PMButton.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+            }.disposed(by: bag)
+        
+        PMButton.rx.tap
+            .bind{
+                self.PMButton.setTitleColor(.black, for: .normal)
+                self.AMButton.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+            }.disposed(by: bag)
+        
+        TimeActivationButton.rx.tap
+            .bind{
+                if self.TimeActivationButton.image(for: .normal) == UIImage(systemName: "plus.circle") { // 비활성화 상태 -> 활성화 상태
+                    if self.nowDateTime(5) == "AM" {
+                        self.AMButton.setTitleColor(.black, for: .normal)
+                        self.PMButton.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+                    } else {
+                        self.PMButton.setTitleColor(.black, for: .normal)
+                        self.AMButton.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+                    }
+                    self.TimeActivationButton.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
+                    self.PMButton.isEnabled = true
+                    self.AMButton.isEnabled = true
+                    self.MinuteTextField.isEnabled = true
+                    self.MinuteTextField.textColor = .black
+                    self.Minuteborder.isHidden = false
+                    self.HourTextField.isEnabled = true
+                    self.HourTextField.textColor = .black
+                    self.Hourborder.isHidden = false
+                    self.ClockIcon.tintColor = .black
+                } else { // 활성화 상태 -> 비활성화 상태
+                    self.TimeActivationButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+                    self.PMButton.isEnabled = false
+                    self.PMButton.setTitleColor(.gray, for: .normal)
+                    self.AMButton.isEnabled = false
+                    self.AMButton.setTitleColor(.gray, for: .normal)
+                    self.MinuteTextField.isEnabled = false
+                    self.MinuteTextField.textColor = .gray
+                    self.Minuteborder.isHidden = true
+                    self.HourTextField.isEnabled = false
+                    self.HourTextField.textColor = .gray
+                    self.Hourborder.isHidden = true
+                    self.ClockIcon.tintColor = .gray
+                }
+            }.disposed(by: bag)
+        
+        // MARK:: WeekendButtonClick 상태 확인
+        WeekStackIndex0.rx.tap
+            .bind{
+                if self.WeekStackIndex0.currentTitleColor == UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1) {
+                    self.WeekStackIndex0.setTitleColor(.black, for: .normal)
+                } else {
+                    self.WeekStackIndex0.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+                }
+            }
+            .disposed(by: bag)
+        WeekStackIndex1.rx.tap
+            .bind{
+                if self.WeekStackIndex1.currentTitleColor == UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1) {
+                    self.WeekStackIndex1.setTitleColor(.black, for: .normal)
+                } else {
+                    self.WeekStackIndex1.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+                }
+            }
+            .disposed(by: bag)
+        WeekStackIndex2.rx.tap
+            .bind{
+                if self.WeekStackIndex2.currentTitleColor == UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1) {
+                    self.WeekStackIndex2.setTitleColor(.black, for: .normal)
+                } else {
+                    self.WeekStackIndex2.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+                }
+            }
+            .disposed(by: bag)
+        WeekStackIndex3.rx.tap
+            .bind{
+                if self.WeekStackIndex3.currentTitleColor == UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1) {
+                    self.WeekStackIndex3.setTitleColor(.black, for: .normal)
+                } else {
+                    self.WeekStackIndex3.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+                }
+            }
+            .disposed(by: bag)
+        WeekStackIndex4.rx.tap
+            .bind{
+                if self.WeekStackIndex4.currentTitleColor == UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1) {
+                    self.WeekStackIndex4.setTitleColor(.black, for: .normal)
+                } else {
+                    self.WeekStackIndex4.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+                }
+            }
+            .disposed(by: bag)
+        WeekStackIndex5.rx.tap
+            .bind{
+                if self.WeekStackIndex5.currentTitleColor == UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1) {
+                    self.WeekStackIndex5.setTitleColor(.black, for: .normal)
+                } else {
+                    self.WeekStackIndex5.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+                }
+            }
+            .disposed(by: bag)
+        WeekStackIndex6.rx.tap
+            .bind{
+                if self.WeekStackIndex6.currentTitleColor == UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1) {
+                    self.WeekStackIndex6.setTitleColor(.black, for: .normal)
+                } else {
+                    self.WeekStackIndex6.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+                }
+            }
+            .disposed(by: bag)
+        WeekStackIndex7.rx.tap
+            .bind{
+                if self.WeekStackIndex7.currentTitleColor == UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1) {
+                    self.WeekStackIndex7.setTitleColor(.black, for: .normal)
+                } else {
+                    self.WeekStackIndex7.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+                }
+            }
+            .disposed(by: bag)
         
     }
     
     func realDateTime() -> String {
         let today = NSDate() //현재 시각 구하기
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm" // 2021-09-06-17-12
+        dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm-a" // 2021-09-06-17-12
 //        dateFormatter.locale = Locale(identifier:"ko_KR") // 위치는 한국
         let dateString = dateFormatter.string(from: today as Date)
-        
+        print(dateString)
         return dateString
     }
     
@@ -537,6 +666,7 @@ extension CommonRoutineViewController {
          index 2 - day
          index 3 - hour : 24시간제
          index 4 - minute
+         index 5 - AM,PM
          */
 
         
@@ -554,7 +684,7 @@ extension CommonRoutineViewController {
             
             if Int(arr[3])! > 23 { // 24부터는 넘어가면 하루를 더해야한다.
                 arr[3] = "01" // 시간이 다음 날로 바뀌니까 01로 바꿔준다.
-                
+                arr[5] = "AM" // 다음날로 넘어갔다면 AM으로 변경
                 if checklastDay() == Int(arr[2]) { // 해당 달의 마지막 날이라면
                     arr[2] = "01" // 1일로 초기화하고
                     arr[1] = "\(Int(arr[1])! + 1)" // 월을 1 올린다.
