@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  SignUpViewController.swift
 //  HappyHouse
 //
 //  Created by Dain Song on 2021/09/08.
@@ -11,7 +11,7 @@ import RxCocoa
 import SnapKit
 import Then
 
-class LoginViewController: UIViewController {
+class SignUpViewController: UIViewController {
 
     // MARK: - Properties
     private var bag = DisposeBag()
@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
     
     private let signUpLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 28, weight: .bold) // Pretendard-Black
-        $0.text = "로그인하기"
+        $0.text = "회원가입하기"
         $0.textAlignment = .center
     }
     
@@ -43,8 +43,13 @@ class LoginViewController: UIViewController {
         $0.setDefaultStyle()
     }
     
+    private let passwordCheckTextField = UITextField().then {
+        $0.placeholder = "비밀번호 확인"
+        $0.setDefaultStyle()
+    }
+    
     private let loginButton = UIButton().then {
-        $0.setTitle("로그인", for: .normal)
+        $0.setTitle("회원가입", for: .normal)
         $0.setDefaultStyle()
     }
     
@@ -56,7 +61,7 @@ class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController {
+extension SignUpViewController {
     
     /// 로그인 이후 Start View Controller에서 필요한 작업을 수행하기 위해 클로져를 전달한다.
     func configure(doneAction: @escaping EmptyClosure) {
@@ -67,7 +72,7 @@ extension LoginViewController {
     private func setUpView() {
         view.setWhiteBackground()
         view.addSubViews([contentView, loginButton])
-        contentView.addSubViews([hausLabel, signUpLabel, emailTextField, passwordTextField])
+        contentView.addSubViews([hausLabel, signUpLabel, emailTextField, passwordTextField, passwordCheckTextField])
     }
     
     private func setConstraints() {
@@ -95,9 +100,15 @@ extension LoginViewController {
         passwordTextField.snp.makeConstraints { make in
             make.height.equalTo(emailTextField.defaultHeight)
             make.top.equalTo(emailTextField.snp.bottom).offset(15)
-            make.bottom.equalToSuperview()
             make.leading.equalToSuperview().offset(17)
             make.centerX.equalToSuperview()
+        }
+        
+        passwordCheckTextField.snp.makeConstraints { make in
+            make.height.equalTo(emailTextField.defaultHeight)
+            make.top.equalTo(passwordTextField.snp.bottom).offset(15)
+            make.leading.equalToSuperview().offset(17)
+            make.bottom.centerX.equalToSuperview()
         }
         
         loginButton.snp.makeConstraints { make in
@@ -112,7 +123,7 @@ extension LoginViewController {
     private func subscribeLoginButtonEvent() {
         loginButton.rx.controlEvent(.touchUpInside)
             .subscribe { [weak self] _ in
-                // TODO - 로그인 서버연동, 이메일 형식체크(regex)
+                // TODO - 회원가입 서버연동, 이메일 형식체크(regex), 비밀번호 확인(두 값 비교)
                 self?.dismiss(animated: true, completion: self?.doneAction)
             }
             .disposed(by: bag)
