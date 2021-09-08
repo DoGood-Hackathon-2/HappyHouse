@@ -46,10 +46,8 @@ class StartViewController: UIViewController {
         super.viewDidLoad()
         setUpView()
         setConstraints()
-        subscribeSignUpButtonEvent()
-        subscribeLoginButtonEvent()
+        subscribeButtonEvent()
     }
-    
 }
 
 extension StartViewController {
@@ -92,28 +90,32 @@ extension StartViewController {
         }
     }
     
-    private func subscribeSignUpButtonEvent() {
+    private func subscribeButtonEvent() {
         signUpButton.rx.controlEvent(.touchUpInside)
             .subscribe { [weak self] _ in
                 let viewController = SignUpViewController()
                 viewController.configure {
-                    print("초대코드로 넘어가기")
+                    self?.presentInviteViewController()
                 }
                 self?.present(viewController, animated: true, completion: nil)
             }
             .disposed(by: bag)
-    }
     
-    private func subscribeLoginButtonEvent() {
         loginButton.rx.controlEvent(.touchUpInside)
             .subscribe { [weak self] _ in
                 let viewController = LoginViewController()
                 viewController.configure {
-                    print("초대코드로 넘어가기")
+                    self?.presentInviteViewController()
                 }
                 self?.present(viewController, animated: true, completion: nil)
             }
             .disposed(by: bag)
     }
     
+    private func presentInviteViewController() {
+        let viewController = InviteViewController()
+        viewController.modalPresentationStyle = .fullScreen
+        viewController.modalTransitionStyle = .crossDissolve
+        present(viewController, animated: true, completion: nil)
+    }
 }
