@@ -14,8 +14,9 @@
 		B15C824B505E3C2D99B241E8 /* Pods_HappyHouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF4D2E8D7A48EDCECDBDD7D /* Pods_HappyHouseTests.framework */; };
 		B162593726E887B70058718E /* OnboardingSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162593626E887B70058718E /* OnboardingSecondViewController.swift */; };
 		B162593A26E8972C0058718E /* CustomExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162593926E8972C0058718E /* CustomExtension.swift */; };
-		B162593C26E8A3910058718E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162593B26E8A3910058718E /* SignUpViewController.swift */; };
-		B1625B1F26C7E3BC000BD74D /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B1D26C7E3BC000BD74D /* loginViewController.swift */; };
+		B162593C26E8A3910058718E /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162593B26E8A3910058718E /* StartViewController.swift */; };
+		B162593E26E8BA1A0058718E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162593D26E8BA1A0058718E /* LoginViewController.swift */; };
+		B162594226E902070058718E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162594126E902070058718E /* SignUpViewController.swift */; };
 		B1625B2026C7E3BC000BD74D /* inviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B1E26C7E3BC000BD74D /* inviteViewController.swift */; };
 		B1625B2326C7E3C3000BD74D /* OnboardingFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B2226C7E3C3000BD74D /* OnboardingFirstViewController.swift */; };
 		B16384FD26C7BF2D002013F4 /* FamilyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16384FC26C7BF2D002013F4 /* FamilyViewModel.swift */; };
@@ -87,8 +88,9 @@
 		B101FF5A26DC7FBD00FA0D94 /* CommonRoutine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommonRoutine.storyboard; sourceTree = "<group>"; };
 		B162593626E887B70058718E /* OnboardingSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondViewController.swift; sourceTree = "<group>"; };
 		B162593926E8972C0058718E /* CustomExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExtension.swift; sourceTree = "<group>"; };
-		B162593B26E8A3910058718E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		B1625B1D26C7E3BC000BD74D /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		B162593B26E8A3910058718E /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		B162593D26E8BA1A0058718E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B162594126E902070058718E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B1625B1E26C7E3BC000BD74D /* inviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = inviteViewController.swift; sourceTree = "<group>"; };
 		B1625B2226C7E3C3000BD74D /* OnboardingFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFirstViewController.swift; sourceTree = "<group>"; };
 		B16384FC26C7BF2D002013F4 /* FamilyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyViewModel.swift; sourceTree = "<group>"; };
@@ -220,9 +222,10 @@
 		B1625B1C26C7E3BC000BD74D /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B1625B1D26C7E3BC000BD74D /* loginViewController.swift */,
 				B1625B1E26C7E3BC000BD74D /* inviteViewController.swift */,
-				B162593B26E8A3910058718E /* SignUpViewController.swift */,
+				B162593B26E8A3910058718E /* StartViewController.swift */,
+				B162593D26E8BA1A0058718E /* LoginViewController.swift */,
+				B162594126E902070058718E /* SignUpViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -633,13 +636,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B162593E26E8BA1A0058718E /* LoginViewController.swift in Sources */,
 				B162593A26E8972C0058718E /* CustomExtension.swift in Sources */,
 				B1E2151C26C8C3BC0081F42D /* HomeTabBarViewController.swift in Sources */,
 				B196899226C81FCA007B9B1A /* APIManager.swift in Sources */,
 				B1808B6226C8425700B6FE37 /* MypageViewController.swift in Sources */,
 				B16384FD26C7BF2D002013F4 /* FamilyViewModel.swift in Sources */,
 				B1C8CCB826C757C200346355 /* CreateFamilyViewController.swift in Sources */,
-				B162593C26E8A3910058718E /* SignUpViewController.swift in Sources */,
+				B162593C26E8A3910058718E /* StartViewController.swift in Sources */,
 				B1808B6826C89C0D00B6FE37 /* PreviewView.swift in Sources */,
 				B1E2150926C833C50081F42D /* HomeViewController.swift in Sources */,
 				B1E2151A26C8C08F0081F42D /* AddRoutineFinishViewController.swift in Sources */,
@@ -657,7 +661,7 @@
 				B1C8CC8826C74A4C00346355 /* ViewController.swift in Sources */,
 				B1C8CCBB26C772E700346355 /* FamilyViewController.swift in Sources */,
 				B1808B6A26C89E0D00B6FE37 /* CameraViewController.swift in Sources */,
-				B1625B1F26C7E3BC000BD74D /* loginViewController.swift in Sources */,
+				B162594226E902070058718E /* SignUpViewController.swift in Sources */,
 				B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */,
 				B1C8CCBD26C7731D00346355 /* MyProfileViewController.swift in Sources */,
 				B19F4C2B26D6271C00E7907D /* NHomewViewController.swift in Sources */,

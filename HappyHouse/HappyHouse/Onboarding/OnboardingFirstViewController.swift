@@ -34,8 +34,8 @@ class OnboardingFirstViewController : UIViewController {
     }
     
     let startButton = UIButton().then {
-        $0.backgroundColor = UIColor(named: "ButtonColor")
         $0.setTitle("시작하기", for: .normal)
+        $0.setDefaultStyle()
     }
     
     // MARK: - View Life cycle
@@ -43,7 +43,7 @@ class OnboardingFirstViewController : UIViewController {
         super.viewDidLoad()
         setUpView()
         setConstraints()
-        setButton()
+        subscribeButtonEvent()
     }
 }
 
@@ -82,10 +82,12 @@ extension OnboardingFirstViewController {
         }
     }
     
-    private func setButton() {
-        startButton.setCornerRadius()
+    private func subscribeButtonEvent() {
         startButton.rx.controlEvent(.touchUpInside)
             .subscribe { [weak self] _ in
+//                let viewController = OnboardingSecondViewController()
+//                self?.navigationController?.pushViewController(viewController, animated: true)
+
                 let secondViewController = OnboardingSecondViewController()
                 secondViewController.modalPresentationStyle = .fullScreen
                 secondViewController.modalTransitionStyle = .crossDissolve

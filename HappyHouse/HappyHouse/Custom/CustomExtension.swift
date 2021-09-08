@@ -8,18 +8,7 @@
 import UIKit
 import SnapKit
 
-extension UIButton {
-    
-    /// HAUS 앱에서 이용되는 버튼의 기본 높이
-    var defaultHeight: Int {
-        return 56
-    }
-    
-    /// UIButton 의 모서리만 둥글게 만든다.
-    func setCornerRadius() {
-        self.layer.cornerRadius = CGFloat(defaultHeight / 2)
-    }
-}
+typealias EmptyClosure = (() -> ())
 
 extension UIView {
     
@@ -36,5 +25,36 @@ extension UIView {
     
     func setWhiteBackground() {
         backgroundColor = .white
+    }
+}
+
+extension UIButton {
+    
+    /// HAUS 앱에서 이용되는 버튼의 기본 높이
+    var defaultHeight: Int {
+        return 56
+    }
+    
+    ///  HAUS 앱에서 이용되는 버튼의 기본 모양으로 설정한다.
+    func setDefaultStyle() {
+        layer.cornerRadius = CGFloat(defaultHeight / 2)
+        backgroundColor = UIColor(named: "ButtonColor")
+    }
+}
+
+extension UITextField {
+    
+    /// HAUS 앱에서 이용되는 버튼의 기본 높이
+    var defaultHeight: Int {
+        return 58
+    }
+    
+    // HAUS 앱에서 이용되는 텍스트필드의 기본 모양으로 설정한다.
+    func setDefaultStyle() {
+        clipsToBounds = true
+        layer.cornerRadius = CGFloat(defaultHeight / 2)
+        backgroundColor = UIColor(named: "TextFieldColor")
+        textAlignment = .center
+        textColor = .white
     }
 }
