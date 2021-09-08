@@ -67,14 +67,9 @@ extension OnboardingSecondViewController {
     
     // MARK: - Setting View
     private func setUpView() {
-        view.backgroundColor = .white
-        view.addSubview(loadingTitle)
-        view.addSubview(loadingTitleBackground)
-        view.addSubview(loadingImage)
-        view.addSubview(titleLabel)
-        view.addSubview(hausLabel)
-        view.addSubview(subLabel)
-        view.addSubview(startButton)
+        view.setWhiteBackground()
+        view.addSubViews([loadingTitle, loadingTitleBackground, loadingImage,
+                          titleLabel, hausLabel, subLabel, startButton])
     }
     
     private func setConstraints() {

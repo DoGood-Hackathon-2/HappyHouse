@@ -51,11 +51,8 @@ extension OnboardingFirstViewController {
     
     // MARK: - Setting View
     private func setUpView() {
-        view.backgroundColor = .white
-        view.addSubview(loadingImage)
-        view.addSubview(loadingTitle)
-        view.addSubview(titleLabel)
-        view.addSubview(startButton)
+        view.setWhiteBackground()
+        view.addSubViews([loadingImage, loadingTitle, titleLabel, startButton])
     }
     
     private func setConstraints() {

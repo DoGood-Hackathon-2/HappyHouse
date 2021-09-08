@@ -50,7 +50,8 @@ extension SignUpViewController {
     
     // MARK: - Setting View
     private func setUpView() {
-        view.backgroundColor = .white
+        view.setWhiteBackground()
+        view.addSubViews([hausLabel, signUpLabel, signUpButton, loginButton])
     }
     
     private func setConstraints() {

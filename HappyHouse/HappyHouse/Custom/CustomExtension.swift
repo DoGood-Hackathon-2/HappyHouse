@@ -27,4 +27,14 @@ extension UIView {
     var safeArea : ConstraintLayoutGuideDSL {
         return safeAreaLayoutGuide.snp
     }
+    
+    func addSubViews(_ subViews: [UIView]) {
+        subViews.forEach { subView in
+            addSubview(subView)
+        }
+    }
+    
+    func setWhiteBackground() {
+        backgroundColor = .white
+    }
 }
