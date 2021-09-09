@@ -111,7 +111,7 @@ extension InviteViewController {
         codeTextField.rx.controlEvent(.editingDidEndOnExit)
             .map { self.codeTextField.text! }
             .bind { [weak self] _ in
-                self?.presentWelcome() // todo : refactoring
+                self?.presentFullScreen(WelcomeViewController())
             }
             .disposed(by: bag)
     }
@@ -121,13 +121,6 @@ extension InviteViewController {
             .bind { [weak self] in
                 self?.presentCreateFamily() // todo : refactoring
             }.disposed(by: bag)
-    }
-    
-    private func presentWelcome() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let svc = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController") as! WelcomeViewController
-        svc.modalPresentationStyle = .fullScreen
-        self.present(svc,animated: true)
     }
     
     private func presentCreateFamily() {

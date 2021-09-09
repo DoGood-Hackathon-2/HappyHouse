@@ -10,6 +10,16 @@ import SnapKit
 
 typealias EmptyClosure = (() -> ())
 
+extension UIViewController {
+    
+    /// Modality 방식에서 전체 화면으로 보여준다.
+    func presentFullScreen(_ viewControllerToPresent: UIViewController) {
+        viewControllerToPresent.modalPresentationStyle = .fullScreen
+        viewControllerToPresent.modalTransitionStyle = .crossDissolve
+        present(viewControllerToPresent, animated: true, completion: nil)
+    }
+}
+
 extension UIView {
     
     /// SnapKit 에서 쓰기 위한 Safe Area 속성
@@ -59,12 +69,43 @@ extension UITextField {
         return 23
     }
     
-    // HAUS 앱에서 이용되는 텍스트필드의 기본 모양으로 설정한다.
+    /// HAUS 앱에서 이용되는 텍스트필드의 기본 모양으로 설정한다.
     func setDefaultStyle() {
         clipsToBounds = true
         layer.cornerRadius = CGFloat(defaultHeight / 2)
-        backgroundColor = UIColor(named: "TextFieldColor")
+        backgroundColor = UIColor(named: "PlaceholderColor")
         textAlignment = .center
         textColor = .white
+    }
+}
+
+extension UIImageView {
+
+    /// HAUS 앱에서 이용되는 프로필 사진의 기본 너비와 높이
+    var defaultProfileSize: Int {
+        return 180
+    }
+    
+    /// HAUS 앱에서 이용되는 프로필 사진의 너비를 통해 원형으로 만든다.
+    func makeCircleView() {
+        layer.cornerRadius = CGFloat(defaultProfileSize / 2)
+    }
+}
+
+
+extension NSMutableAttributedString {
+
+    func bold(string: String, fontSize: CGFloat) -> NSMutableAttributedString {
+        let font = UIFont.boldSystemFont(ofSize: fontSize)
+        let attributes: [NSAttributedString.Key: Any] = [.font: font]
+        self.append(NSAttributedString(string: string, attributes: attributes))
+        return self
+    }
+
+    func regular(string: String, fontSize: CGFloat) -> NSMutableAttributedString {
+        let font = UIFont.systemFont(ofSize: fontSize)
+        let attributes: [NSAttributedString.Key: Any] = [.font: font]
+        self.append(NSAttributedString(string: string, attributes: attributes))
+        return self
     }
 }
