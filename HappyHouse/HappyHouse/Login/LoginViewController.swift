@@ -88,15 +88,15 @@ extension LoginViewController {
         emailTextField.snp.makeConstraints { make in
             make.height.equalTo(emailTextField.defaultHeight)
             make.top.equalTo(signUpLabel.snp.bottom).offset(50)
-            make.leading.equalToSuperview().offset(17)
+            make.leading.equalToSuperview().offset(emailTextField.defaultMargin)
             make.centerX.equalToSuperview()
         }
         
         passwordTextField.snp.makeConstraints { make in
-            make.height.equalTo(emailTextField.defaultHeight)
+            make.height.equalTo(passwordTextField.defaultHeight)
             make.top.equalTo(emailTextField.snp.bottom).offset(15)
             make.bottom.equalToSuperview()
-            make.leading.equalToSuperview().offset(17)
+            make.leading.equalToSuperview().offset(passwordTextField.defaultMargin)
             make.centerX.equalToSuperview()
         }
         
@@ -104,7 +104,7 @@ extension LoginViewController {
             make.height.equalTo(loginButton.defaultHeight)
             make.top.greaterThanOrEqualTo(contentView.snp.bottom)
             make.bottom.equalTo(view.safeArea.bottom).offset(-20)
-            make.leading.equalToSuperview().offset(17)
+            make.leading.equalToSuperview().offset(loginButton.defaultMargin)
             make.centerX.equalToSuperview()
         }
     }

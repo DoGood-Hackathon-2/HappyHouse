@@ -16,8 +16,12 @@ class OnboardingSecondViewController: UIViewController {
     // MARK: - Properties
     var bag = DisposeBag()
     
-    let loadingTitle = UIImageView().then {
-        $0.image = UIImage(named: "34px_bold2") // label 로 변경 * 폰트설치
+    let titleLabel = UILabel().then {
+        $0.text = "always\nhappy!"
+        $0.textAlignment = .center
+        $0.textColor = UIColor(named: "TitleColor")
+        $0.font = UIFont.systemFont(ofSize: 34, weight: .black) // RammettoOne-Regular
+        $0.numberOfLines = 2
     }
 
     let loadingTitleBackground = UIImageView().then {
@@ -28,9 +32,8 @@ class OnboardingSecondViewController: UIViewController {
         $0.image = UIImage(named: "pablo-visit-parents 1")
     }
         
-    let titleLabel = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 30, weight: .bold)
-                // 현재 폰트적용이 안됨 UIFont(name: "Pretendard-Bold", size: 30)
+    let subTitleLabel = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 30, weight: .bold) // Pretendard-Bold
         $0.text = "행복한 우리 가족을 위한\n루틴만들기"
         $0.textAlignment = .center
         $0.numberOfLines = 0
@@ -43,7 +46,7 @@ class OnboardingSecondViewController: UIViewController {
         $0.textColor = UIColor(named: "TitleColor")
     }
     
-    let subLabel = UILabel().then {
+    let buttonInfoLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 17) // Pretendard-Regular
         $0.text = "즐거운 시간을 보내러 가볼까요?"
         $0.textAlignment = .center
@@ -68,12 +71,12 @@ extension OnboardingSecondViewController {
     // MARK: - Setting View
     private func setUpView() {
         view.setWhiteBackground()
-        view.addSubViews([loadingTitle, loadingTitleBackground, loadingImage,
-                          titleLabel, hausLabel, subLabel, startButton])
+        view.addSubViews([titleLabel, loadingTitleBackground, loadingImage,
+                          subTitleLabel, hausLabel, buttonInfoLabel, startButton])
     }
     
     private func setConstraints() {
-        loadingTitle.snp.makeConstraints { make in
+        titleLabel.snp.makeConstraints { make in
             make.height.equalTo(85)
             make.top.equalTo(view.safeArea.top).offset(80)
             make.leading.equalToSuperview().offset(40)
@@ -90,30 +93,30 @@ extension OnboardingSecondViewController {
         loadingImage.snp.makeConstraints { make in
             make.height.equalTo(214)
             make.leading.width.equalToSuperview()
-            make.top.equalTo(loadingTitle.snp.bottom).offset(30)
+            make.top.equalTo(titleLabel.snp.bottom).offset(30)
         }
         
-        titleLabel.snp.makeConstraints { make in
+        subTitleLabel.snp.makeConstraints { make in
             make.height.equalTo(85)
             make.top.greaterThanOrEqualTo(loadingImage.snp.bottom)
             make.leading.centerX.equalToSuperview()
         }
         
         hausLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(25)
+            make.top.equalTo(subTitleLabel.snp.bottom).offset(25)
             make.leading.centerX.equalToSuperview()
         }
         
-        subLabel.snp.makeConstraints { make in
+        buttonInfoLabel.snp.makeConstraints { make in
             make.top.equalTo(hausLabel.snp.bottom).offset(25)
             make.leading.centerX.equalToSuperview()
         }
         
         startButton.snp.makeConstraints { make in
             make.height.equalTo(startButton.defaultHeight)
-            make.top.equalTo(subLabel.snp.bottom).offset(19)
+            make.top.equalTo(buttonInfoLabel.snp.bottom).offset(19)
             make.bottom.equalTo(view.safeArea.bottom).offset(-20)
-            make.leading.equalToSuperview().offset(17)
+            make.leading.equalToSuperview().offset(startButton.defaultMargin)
             make.centerX.equalToSuperview()
         }
     }
@@ -121,10 +124,7 @@ extension OnboardingSecondViewController {
     private func subscribeButtonEvent() {
         startButton.rx.controlEvent(.touchUpInside)
             .subscribe { [weak self] _ in
-                let signUpViewController = StartViewController()
-                signUpViewController.modalPresentationStyle = .fullScreen
-                signUpViewController.modalTransitionStyle = .crossDissolve
-                self?.present(signUpViewController, animated: true, completion: nil)
+                self?.presentFullScreen(StartViewController())
             }
             .disposed(by: bag)
     }

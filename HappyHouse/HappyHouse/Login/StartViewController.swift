@@ -113,9 +113,6 @@ extension StartViewController {
     }
     
     private func presentInviteViewController() {
-        let viewController = InviteViewController()
-        viewController.modalPresentationStyle = .fullScreen
-        viewController.modalTransitionStyle = .crossDissolve
-        present(viewController, animated: true, completion: nil)
+        presentFullScreen(InviteViewController())
     }
 }
