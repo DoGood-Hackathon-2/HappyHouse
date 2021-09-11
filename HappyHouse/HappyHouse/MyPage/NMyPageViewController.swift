@@ -330,14 +330,14 @@ class NMyPageViewModel {
     
     // 주의 : 사진 비율 1:1 아니면 완벽한 원이 아니라 짤린 원 만들어지니까 주의
     var dummyRoutineData = [
-        RoutineModel(RoutineType: "Repeat", RprofileImage: "image 1", Rtitle: "약 챙겨먹기", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
-        RoutineModel(RoutineType: "Repeat", RprofileImage: "Mask Group (1)", Rtitle: "약 챙겨먹기", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
-        RoutineModel(RoutineType: "Repeat", RprofileImage: "image 3", Rtitle: "약 챙겨먹기", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
+        RoutineModel(RoutineType: "Repeat", RprofileImage: "image 1", Rtitle: "약 ㅁㄴㅇㅎ", Rdescription: "뮷 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
+        RoutineModel(RoutineType: "Repeat", RprofileImage: "Mask Group (1)", Rtitle: "약 123", Rdescription: "엄마 ㅅㅎㅅ 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
+        RoutineModel(RoutineType: "Repeat", RprofileImage: "image 3", Rtitle: "약 ㅅㅎㅅ", Rdescription: "ㅁㄴㄹㅇ? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
     ]
     
     var dummyInstRoutineData = [
-        RoutineModel(RoutineType: "Instance", RprofileImage: "image 2", Rtitle: "약 챙겨먹기", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
-        RoutineModel(RoutineType: "Instance", RprofileImage: "image 3", Rtitle: "약 챙겨먹기", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시")
+        RoutineModel(RoutineType: "Instance", RprofileImage: "image 2", Rtitle: "약 ㅁㄴ", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
+        RoutineModel(RoutineType: "Instance", RprofileImage: "image 3", Rtitle: "약 ㅁㅎ", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시")
     ]
     
     var dummyObsrvable: Observable<[MyPageCellModel]> // NHomeViewController의 컬렉션 뷰에 들어갈 정보

@@ -56,8 +56,8 @@ class CommonRoutineViewController : UIViewController {
     
     // bottom field
     @IBOutlet weak var RequestLabel: UILabel! // 요청메시지를 보내봐요
-    @IBOutlet weak var RequsetTextFieldContainer: UIView! // RequestTextField 배경 -> 글자에 inset 주려면 있어야 해
-    @IBOutlet weak var RequestTextField: UITextField! // 기기별로 동적대응
+    @IBOutlet weak var RequsetTextViewContainer: UIView! // RequestTextField 배경 -> 글자에 inset 주려면 있어야 해
+    @IBOutlet weak var RequestTextView: UITextView! // 기기별로 동적대응
     @IBOutlet weak var ChallengeAddButton: UIButton! // 챌린지 추가하기 버튼
     
     
@@ -161,13 +161,13 @@ extension CommonRoutineViewController {
             $0.top.equalTo(DateBoxView.snp.bottom).offset(10)
             $0.left.equalTo(BackButton.snp.left)
         }
-        RequsetTextFieldContainer.snp.makeConstraints {
+        RequsetTextViewContainer.snp.makeConstraints {
             $0.top.equalTo(RequestLabel.snp.bottom).offset(10)
             $0.left.equalTo(BackButton.snp.left)
             $0.right.equalToSuperview().offset(-(view.frame.width/14))
             $0.bottom.equalTo(ChallengeAddButton.snp.top).offset(-10)
         }
-        RequestTextField.snp.makeConstraints {
+        RequestTextView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.left.equalToSuperview().offset((view.frame.width/14))
             $0.right.equalToSuperview().offset(-(view.frame.width/14))
@@ -306,12 +306,15 @@ extension CommonRoutineViewController {
             // 추후에 shadow 넣어주어야 함.
         }
         InnerDateBoxViewSetUI()
-        RequsetTextFieldContainer.then {
+        RequsetTextViewContainer.then {
             $0.layer.cornerRadius = (56 * BoxViewWidth * 44) / (374 * 219)
         }
-        RequestTextField.then {
-            $0.placeholder = "간단한 메시지를 적어보세요~!"
-            RequestTextField.borderStyle = .none
+        RequestTextView.then {
+            if $0.text.count == 0 {
+                $0.text = "간단한 메시지를 적어보세요~!"
+                $0.textColor = UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1)
+            }
+            //RequestTextField.borderStyle = .none
         }
         ChallengeAddButton.then {
             $0.backgroundColor = UIColor(red: 0.446, green: 0.631, blue: 1, alpha: 1)
@@ -476,7 +479,7 @@ extension CommonRoutineViewController {
             ) { index, item, cell in
                 cell.initUI(of: item)
             }.disposed(by: bag)
-
+        
         YearTextField.rx.text.orEmpty
             .skip(1) // 구독 시 bind코드가 적용되는데 밑줄이 우리가 포커스를 잡은 시점부터 나타나길 바래서
             .observe(on: MainScheduler.asyncInstance)
@@ -644,13 +647,102 @@ extension CommonRoutineViewController {
             }
             .disposed(by: bag)
         
+        RequestTextView.rx.didBeginEditing
+            .bind{ _ in
+                if self.RequestTextView.text == "간단한 메시지를 적어보세요~!" {
+                    self.RequestTextView.text = ""
+                }
+                self.RequestTextView.textColor = .black
+            }.disposed(by: bag)
+        
+        RequestTextView.rx.didEndEditing
+            .bind{
+                if self.RequestTextView.text.count == 0 {
+                    self.RequestTextView.text = "간단한 메시지를 적어보세요~!"
+                    self.RequestTextView.textColor = UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1)
+                }
+            }.disposed(by: bag)
+        
+        //        CreateRoutineTextField.rx.controlEvent([.editingDidBegin])
+        //            .bind{
+        //                print("touch begin")
+        //            }.disposed(by: bag)
+        
+        ChallengeAddButton.rx.tap
+            .bind{
+                print("ChallengeAddButton tap")
+                /*
+                 확인해야하는 사항
+                 1. 제목이 정상적으로 들어가 있는지
+                 2. 누구와 함께할지 선택 하였는지 - 선택하지 않았다면 그냥 default
+                 3. 날짜는 잘 들어가 있고, 오늘 날짜보다 뒤인지.
+                 4. 시간은 어떻게 설정했는지, 아예 막았을 수도 있어서 AM,PM도 검사
+                 5. 요일 선택은 어떻게 했는지
+                 6. 요청 메시지는 어떻게 입력했는지. -> 요청 메시지는 없어도 돼.
+                 */
+                
+                if self.CreateRoutineTextField.text == "" { // 텍스트가 비어있으면
+                    // out
+                }
+                
+                if Int(self.YearTextField.text!)! < Int(self.nowDateTime(0))! { // 년도가 올해보다 이전이면
+                    // out
+                    
+                } else if Int(self.YearTextField.text!)! == Int(self.nowDateTime(0))! { // 년도가 같아
+                    if Int(self.MonthTextField.text!)! < Int(self.nowDateTime(1))! { // 월이 뒤야
+                        // out
+                        
+                    } else if Int(self.MonthTextField.text!)! == Int(self.nowDateTime(1))! { // 월이 같아
+                        if Int(self.DayTextField.text!)! < Int(self.nowDateTime(2))! { // 일이 뒤야
+                            // out
+                            
+                        } else if Int(self.DayTextField.text!)! == Int(self.nowDateTime(2))! { // 일이 같아
+                            // TimeActivationButton 상태 검사
+                            if self.TimeActivationButton.currentImage == UIImage(systemName: "plus.circle") { // plus.circle이면 비활성화 상태임 -> 조건 만족
+                            }
+                            
+                            // 활성화 상태라 AM,PM 검사를 해야한다.
+                            let userChoice : String // 유저가 선택한 AM,PM
+                            if self.AMButton.currentTitleColor == .black { // 유저가 AM,PM중 고른거
+                                userChoice = "AM" // AM
+                            } else {
+                                userChoice = "PM" // PM
+                            }
+                            
+                            if self.nowDateTime(5) == "PM" && userChoice == "AM" {
+                                // out
+                                
+                            } else if self.nowDateTime(5) == "AM" && userChoice == "PM" {
+                                // 이 상태에서는 조건 만족
+                                
+                            } else {
+                                // self.nowDateTime(5) == userChoice 의 경우 -> 조건 검사를 시행해야 한다.
+                                if Int(self.HourTextField.text!)! < Int(self.nowDateTime(3))! { // 시간이 뒤야
+                                    // out
+                                } else if Int(self.HourTextField.text!)! == Int(self.nowDateTime(3))! { // 시간이 같아
+                                    if Int(self.MinuteTextField.text!)! <= Int(self.nowDateTime(4))! { // 분이 같거나 뒤야
+                                        // out
+                                    } else {
+                                        // 여기에 도착했다면 조건이 완벽하게 설정 되었네요~!^_^
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }.disposed(by: bag)
+        
+    }
+    
+    func alert() {
+        
     }
     
     func realDateTime() -> String {
         let today = NSDate() //현재 시각 구하기
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm-a" // 2021-09-06-17-12
-//        dateFormatter.locale = Locale(identifier:"ko_KR") // 위치는 한국
+        //        dateFormatter.locale = Locale(identifier:"ko_KR") // 위치는 한국
         let dateString = dateFormatter.string(from: today as Date)
         print(dateString)
         return dateString
@@ -668,7 +760,6 @@ extension CommonRoutineViewController {
          index 4 - minute
          index 5 - AM,PM
          */
-
         
         let dateString = realDateTime()
         var arr = dateString.components(separatedBy: "-") // 분리해서 내보내주기
@@ -780,7 +871,7 @@ extension CommonRoutineViewController : UITextFieldDelegate {   // 텍스트 필
      Year을 기본으로 주는 만큼 만약에 현재 날짜 및 시간보다 앞의 값을 입력한다면 입력하지 정보를 정정하고 Year의 조절이 있을 경우 언더라인이 나타나게한다.
      
      Hour, Minute 텍스트필드 제약조건에 대해서 고려해야 하는 점들.
-    
+     
      세번째 줄 텍스트필드 제약조건에 대해서 고려해야 하는 점들.
      1. 입력받는 길이 제한 -> 코드로 길이 제한
      2. 입력이 끝나면 자동으로 키보드 내리기 -> 최대길이 도달하면 내리게 코드로 주기
@@ -915,7 +1006,7 @@ extension CommonRoutineViewController : UITextFieldDelegate {   // 텍스트 필
             if Int(str)! > 12 || Int(str)! < 1 { // 여기서 터무니 없는 숫자면 시간값 현재 시간으로 초기화
                 self.HourTextField.text = nowDateTime(3)
             } else { // 정상적으로 입력 되었으면
-    
+                
             }
             
             self.Hourborder.backgroundColor = UIColor.green.cgColor
@@ -937,7 +1028,7 @@ extension CommonRoutineViewController : UITextFieldDelegate {   // 텍스트 필
             if Int(str)! > 59 || Int(str)! < 1 { // 여기서 터무니 없는 숫자면 시간값 현재 시간으로 초기화
                 self.MinuteTextField.text = nowDateTime(3)
             } else { // 정상적으로 입력 되었으면
-
+                
             }
             
             self.Minuteborder.backgroundColor = UIColor.green.cgColor
