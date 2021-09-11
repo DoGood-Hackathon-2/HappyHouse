@@ -683,22 +683,27 @@ extension CommonRoutineViewController {
                 
                 if self.CreateRoutineTextField.text == "" { // 텍스트가 비어있으면
                     // out
+                    print("CreateRoutineTextField out")
                 }
                 
                 if Int(self.YearTextField.text!)! < Int(self.nowDateTime(0))! { // 년도가 올해보다 이전이면
                     // out
+                    print("YearTextField out")
                     
                 } else if Int(self.YearTextField.text!)! == Int(self.nowDateTime(0))! { // 년도가 같아
                     if Int(self.MonthTextField.text!)! < Int(self.nowDateTime(1))! { // 월이 뒤야
                         // out
+                        print("MonthTextField out")
                         
                     } else if Int(self.MonthTextField.text!)! == Int(self.nowDateTime(1))! { // 월이 같아
                         if Int(self.DayTextField.text!)! < Int(self.nowDateTime(2))! { // 일이 뒤야
                             // out
+                            print("DayTextField out")
                             
                         } else if Int(self.DayTextField.text!)! == Int(self.nowDateTime(2))! { // 일이 같아
                             // TimeActivationButton 상태 검사
                             if self.TimeActivationButton.currentImage == UIImage(systemName: "plus.circle") { // plus.circle이면 비활성화 상태임 -> 조건 만족
+                                print("TimeActivationButton out")
                             }
                             
                             // 활성화 상태라 AM,PM 검사를 해야한다.
@@ -711,6 +716,7 @@ extension CommonRoutineViewController {
                             
                             if self.nowDateTime(5) == "PM" && userChoice == "AM" {
                                 // out
+                                print("userChoice out")
                                 
                             } else if self.nowDateTime(5) == "AM" && userChoice == "PM" {
                                 // 이 상태에서는 조건 만족
@@ -719,10 +725,15 @@ extension CommonRoutineViewController {
                                 // self.nowDateTime(5) == userChoice 의 경우 -> 조건 검사를 시행해야 한다.
                                 if Int(self.HourTextField.text!)! < Int(self.nowDateTime(3))! { // 시간이 뒤야
                                     // out
+                                    print("HourTextField out")
+                                    
                                 } else if Int(self.HourTextField.text!)! == Int(self.nowDateTime(3))! { // 시간이 같아
-                                    if Int(self.MinuteTextField.text!)! <= Int(self.nowDateTime(4))! { // 분이 같거나 뒤야
+                                    if Int(self.MinuteTextField.text!)! <= (Int(self.nowDateTime(4))! - 30) { // 분이 같거나 뒤야 + 근데 내가 nowtime에서 분을 30분 앞으로 땡겨두어서 30을 빼주어야 realtime이 된다.
                                         // out
+                                        print("MinuteTextField out")
+                                        
                                     } else {
+                                        print("Ok")
                                         // 여기에 도착했다면 조건이 완벽하게 설정 되었네요~!^_^
                                     }
                                 }
