@@ -35,6 +35,9 @@ class NMyPageViewController : UIViewController {
     @IBOutlet weak var NRoutineRepeatTableView: UITableView! // 루틴 테이블 뷰 - 반복
     @IBOutlet weak var NRoutineInstanceTableView: UITableView! // 루틴 테이블 뷰 - 일회성
     
+    @IBAction func currMyPage(sender: UIStoryboardSegue) {
+        // unwind 세그웨이
+    }
     
     let viewModel = NMyPageViewModel() // MVVM 사용위한 뷰모델 선언
     let bag = DisposeBag()

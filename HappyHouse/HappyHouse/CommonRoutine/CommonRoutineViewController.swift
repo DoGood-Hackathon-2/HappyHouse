@@ -686,10 +686,6 @@ extension CommonRoutineViewController {
         
     }
     
-    func alert() {
-        
-    }
-    
     func realDateTime() -> String {
         let today = NSDate() //현재 시각 구하기
         let dateFormatter = DateFormatter()
@@ -827,6 +823,7 @@ extension CommonRoutineViewController {
                     if self.TimeActivationButton.currentImage == UIImage(systemName: "plus.circle") { // plus.circle이면 비활성화 상태임 -> 조건 만족
                         print("TimeActivationButton ok")
                         // ok
+                        okOption()
                     } else {
                         // 활성화 상태라 AM,PM 검사를 해야한다.
                         let userChoice : String // 유저가 선택한 AM,PM
@@ -845,6 +842,7 @@ extension CommonRoutineViewController {
                         } else if self.nowDateTime(5) == "AM" && userChoice == "PM" {
                             // 이 상태에서는 조건 만족 -> 년 월 일 다 같은데 실제 시간은 AM인데 유저가 고른시간 PM이면 무조건 만족하지
                             print("ok")
+                            okOption()
                         } else { // self.nowDateTime(5) == userChoice 의 경우 -> 조건 검사를 시행해야 한다.
                             if Int(self.HourTextField.text!)! < Int(self.nowDateTime(3))! { // 시간이 뒤야
                                 // out
@@ -859,6 +857,7 @@ extension CommonRoutineViewController {
                                     self.Minuteborder.backgroundColor = UIColor.red.cgColor
                                 } else {
                                     print("Ok")
+                                    okOption()
                                     // 여기에 도착했다면 조건이 완벽하게 설정 되었네요~!^_^
                                 }
                             }
@@ -869,14 +868,17 @@ extension CommonRoutineViewController {
                 } else {
                     print("else3")
                     // 년 월 같은데 일이 뒤라서 Ok
+                    okOption()
                 }
             } else {
                 print("else2")
                 // 년이 같은데 월이 뒤라서 ok
+                okOption()
             }
         } else {
             print("else1")
             // 년도가 뒤라서 ok
+            okOption()
         }
     }
     
@@ -891,6 +893,13 @@ extension CommonRoutineViewController {
              self.present(alert, animated: false, completion: nil)
          }
      }
+    
+    func okOption() {
+        // 조건이 모두 만족되었을 때, 페이지 전환
+        let vc = storyboard?.instantiateViewController(identifier: "RoutineVerifyViewController") as! RoutineVerifyViewController
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
     
 }
 

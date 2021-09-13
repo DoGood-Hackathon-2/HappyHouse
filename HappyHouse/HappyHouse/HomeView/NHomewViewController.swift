@@ -24,6 +24,10 @@ class NHomewViewController : ViewController{
     @IBOutlet weak var NMention: UILabel! // 추천 멘트
     @IBOutlet weak var NCollectionView: UICollectionView! // 추천 루틴
     
+    @IBAction func currHomePage(sender: UIStoryboardSegue) {
+        // unwind 세그웨이
+    }
+    
     let viewModel = NHomeViewModel() // MVVM 사용위한 뷰모델 선언
     let bag = DisposeBag()
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)

@@ -192,7 +192,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBq-uB-Hdm">
-                                                <rect key="frame" x="41" y="60" width="29.5" height="14"/>
+                                                <rect key="frame" x="41" y="60" width="30" height="14.5"/>
                                                 <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -221,16 +221,16 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="djX-Y4-gnl">
-                                                <rect key="frame" x="99" y="227" width="230.5" height="56"/>
+                                                <rect key="frame" x="99" y="227" width="228" height="58"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HELLO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgk-Rd-ink">
-                                                        <rect key="frame" x="0.0" y="0.0" width="154" height="56"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="151.5" height="58"/>
                                                         <fontDescription key="fontDescription" name="Pretendard-ExtraBold" family="Pretendard" pointSize="48"/>
                                                         <color key="textColor" name="TitleColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRq-D6-ZkR">
-                                                        <rect key="frame" x="162" y="0.0" width="68.5" height="56"/>
+                                                        <rect key="frame" x="159.5" y="0.0" width="68.5" height="58"/>
                                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="28"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
