@@ -12,6 +12,7 @@
 		B101FF5826DC7F7800FA0D94 /* CommonRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B101FF5726DC7F7800FA0D94 /* CommonRoutineViewController.swift */; };
 		B101FF5B26DC7FBE00FA0D94 /* CommonRoutine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B101FF5A26DC7FBD00FA0D94 /* CommonRoutine.storyboard */; };
 		B15C824B505E3C2D99B241E8 /* Pods_HappyHouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF4D2E8D7A48EDCECDBDD7D /* Pods_HappyHouseTests.framework */; };
+		B15D0A6226EE3D1700517248 /* RoutineVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D0A6126EE3D1700517248 /* RoutineVerifyViewController.swift */; };
 		B1625B1F26C7E3BC000BD74D /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B1D26C7E3BC000BD74D /* loginViewController.swift */; };
 		B1625B2026C7E3BC000BD74D /* inviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B1E26C7E3BC000BD74D /* inviteViewController.swift */; };
 		B1625B2326C7E3C3000BD74D /* loadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B2226C7E3C3000BD74D /* loadingViewController.swift */; };
@@ -82,6 +83,7 @@
 		B101FF3126DA5BD500FA0D94 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		B101FF5726DC7F7800FA0D94 /* CommonRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRoutineViewController.swift; sourceTree = "<group>"; };
 		B101FF5A26DC7FBD00FA0D94 /* CommonRoutine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommonRoutine.storyboard; sourceTree = "<group>"; };
+		B15D0A6126EE3D1700517248 /* RoutineVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineVerifyViewController.swift; sourceTree = "<group>"; };
 		B1625B1D26C7E3BC000BD74D /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		B1625B1E26C7E3BC000BD74D /* inviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = inviteViewController.swift; sourceTree = "<group>"; };
 		B1625B2226C7E3C3000BD74D /* loadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loadingViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			children = (
 				B101FF5726DC7F7800FA0D94 /* CommonRoutineViewController.swift */,
 				B101FF5A26DC7FBD00FA0D94 /* CommonRoutine.storyboard */,
+				B15D0A6126EE3D1700517248 /* RoutineVerifyViewController.swift */,
 			);
 			path = CommonRoutine;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				B196898C26C81105007B9B1A /* MemberProfileViewController.swift in Sources */,
 				B1625B2026C7E3BC000BD74D /* inviteViewController.swift in Sources */,
 				B1808B6426C8667C00B6FE37 /* MypageTableViewModel.swift in Sources */,
+				B15D0A6226EE3D1700517248 /* RoutineVerifyViewController.swift in Sources */,
 				B1C8CC8826C74A4C00346355 /* ViewController.swift in Sources */,
 				B1C8CCBB26C772E700346355 /* FamilyViewController.swift in Sources */,
 				B1808B6A26C89E0D00B6FE37 /* CameraViewController.swift in Sources */,
