@@ -17,7 +17,7 @@ class NHomewViewController : ViewController{
     @IBOutlet weak var NRoomTitle: UILabel! // 방 제목
     @IBOutlet weak var NBackgroundImage: UIImageView! // 이미지로 되어 있어서 다크모드 대응시 이미지 변경 필요
     @IBOutlet weak var NSuggetLabel: UILabel! // 제안하는 레이블 이름
-    @IBOutlet weak var NCreateButton: UIButton! // 버튼
+    @IBOutlet weak var NCreateButton: UIButton! // 챌린지 만들기 버튼
     @IBOutlet weak var NProfileImage: UIImageView! // 프로필 이미지
     @IBOutlet weak var StackView: UIStackView! // 스택 뷰
     @IBOutlet weak var NProfileName: UILabel! // 스택 뷰 안의 이름

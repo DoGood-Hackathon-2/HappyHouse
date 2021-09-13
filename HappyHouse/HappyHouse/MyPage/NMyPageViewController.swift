@@ -55,6 +55,17 @@ class NMyPageViewController : UIViewController {
         event()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dest = segue.destination // 목적지 뷰의 인스턴스 읽어오기
+        
+        guard let rvc = dest as? CommonRoutineViewController else {
+            return
+        }
+        
+        rvc.fromController = 1 // 1이면 확인
+        
+    }
+    
     func delegate() {
         NMyfamilyCollectionView.delegate = self
         NRoutineRepeatTableView.delegate = self
@@ -233,7 +244,16 @@ extension NMyPageViewController {
                     cellType: RoutineTableViewCell.self)
             ) {  index, item, cell in
                 cell.initUI(of: item)
+                cell.isHighlighted = true
             }.disposed(by: bag)
+        
+//        NRoutineRepeatTableView.rx
+//            .modelSelected(String.self)
+//            .subscribe(onNext: { item in
+//                print(item)
+//                print("ㅁ넣오미녛ㅁ농ㅎㅁㄴ우려문ㅇㄹ;ㅜㅁㄴ룸ㅇ나룸넣우;ㄴ훔;ㅏㄴㅇ흐ㅜ민ㅇㄹ허 몊 미ㅡ ㅠㅚ뮤ㅏㅣㅓㄴㅇ규ㅗㅓㅏ미ㅠㅜㅎㅊ므호소님처ㅡ탸ㅐ느ㅓ;;ㅑ느아ㅣㅍㅁ;샤ㅛㄴ;ㅁㅊㄴ;ㅁ쟈돈아ㅗㅎ미ㅕ겸ㅎ")
+//            })
+        
         
         viewModel.dummydummyInstRoutineObservable
             .bind(to: NRoutineInstanceTableView.rx.items(
@@ -242,6 +262,8 @@ extension NMyPageViewController {
             ) {  index, item, cell in
                 cell.initUI(of: item)
             }.disposed(by: bag)
+
+        
         
     }
     
@@ -264,6 +286,12 @@ extension NMyPageViewController {
                 NRoutineRepeatTableView.isHidden = true
                 NRoutineInstanceTableView.isHidden = false
             }
+        
+        NEditButton.rx.tap
+            .subscribe{
+                print("asd")
+            }
+        
     }
 }
 
@@ -278,6 +306,17 @@ extension NMyPageViewController : UICollectionViewDelegateFlowLayout, UITableVie
         let width = view.frame.width - (view.frame.width - NcontentsBox.frame.width)
         let height = (143/374) * width
         return height
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        
+        let commonRoutineStoryboard = UIStoryboard.init(name: "CommonRoutine", bundle: nil) // 스토리보드 객체 생성
+        guard let vc = commonRoutineStoryboard.instantiateViewController(identifier: "CommonRoutine") as? CommonRoutineViewController else { return }
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .coverVertical
+        self.present(vc, animated: false, completion: nil)
+        
     }
 }
 

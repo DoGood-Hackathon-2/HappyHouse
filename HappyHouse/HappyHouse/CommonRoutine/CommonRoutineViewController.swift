@@ -60,6 +60,7 @@ class CommonRoutineViewController : UIViewController {
     @IBOutlet weak var RequestTextView: UITextView! // 기기별로 동적대응
     @IBOutlet weak var ChallengeAddButton: UIButton! // 챌린지 추가하기 버튼
     
+    var fromController = 0 // 0이면 생성, 1이면 확인
     
     let viewModel = CRCollectionViewModel() // 프로필 얼굴 + 이름 나오는 컬렉션 뷰
     let bag = DisposeBag()
@@ -682,6 +683,12 @@ extension CommonRoutineViewController {
                  */
                 self.ChecktheOption()
                 
+            }.disposed(by: bag)
+        
+        BackButton.rx.tap
+            .bind{
+                print("ASD")
+                self.dismiss(animated: true, completion: nil)
             }.disposed(by: bag)
         
     }
