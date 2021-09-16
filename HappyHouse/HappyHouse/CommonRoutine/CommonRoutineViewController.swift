@@ -123,6 +123,7 @@ class CommonRoutineViewController : UIViewController {
     func controlloerForm(_ option : Int) { // 0이면 생성, 1이면 확인
         // 어디서 왔는지에 따라 확인할 페이지인지, 아니면 생성 페이지인지를 결정
         if option == 1 {
+            PageTitle.isHidden = true
             VerfityTitle.isHidden = false
             
             RoutineTitle.isHidden = true
@@ -189,7 +190,10 @@ class CommonRoutineViewController : UIViewController {
             RequestTextView.text = detail
             RequestTextView.textColor = .black
             
+            ChallengeAddButton.setTitle("챌린지 시작하기", for: .normal)
+            
         } else {
+            PageTitle.isHidden = false
             VerfityTitle.isHidden = true
             
             RoutineTitle.isHidden = false
@@ -807,7 +811,12 @@ extension CommonRoutineViewController {
                  5. 요일 선택은 어떻게 했는지
                  6. 요청 메시지는 어떻게 입력했는지. -> 요청 메시지는 없어도 돼.
                  */
-                self.ChecktheOption()
+                if self.ChallengeAddButton.currentTitle == "챌린지를 추가하세요" {
+                    self.ChecktheOption()
+                } else { // 글 확인하기
+                    // 도전 중인 챌린지에 넣거나, 데이터 모델 안에 챌린지 도전 여부를 바로 넣어서 확인한다.
+                }
+                
                 
             }.disposed(by: bag)
         
