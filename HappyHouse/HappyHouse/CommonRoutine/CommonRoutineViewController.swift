@@ -60,8 +60,20 @@ class CommonRoutineViewController : UIViewController {
     @IBOutlet weak var RequestTextView: UITextView! // 기기별로 동적대응
     @IBOutlet weak var ChallengeAddButton: UIButton! // 챌린지 추가하기 버튼
     
-    var fromController = 0 // 0이면 생성, 1이면 확인
     
+    // MARK:: 여기는 확인을 눌렀을 때만 사용되는 IBOutlet
+    @IBOutlet weak var VerfityTitle: UILabel!
+    
+    
+    // MARK:: 공용뷰로 사용하기 위한 변수들 -> 조건 검사는 ViewDidLoad에서 Hidden 처리로
+    var fromController = 0 // 0이면 생성, 1이면 확인
+    var verifyTitle = "" // 제목
+    var detail = "" // 마지막에 들어갈 내용
+    var date = "" // 날짜가 언제인지
+    var iterator = "" // 반복은 어떻게 되는지
+    var time = "" // 시간
+    
+    // MARK:: ㅡ0ㅡ
     let viewModel = CRCollectionViewModel() // 프로필 얼굴 + 이름 나오는 컬렉션 뷰
     let bag = DisposeBag()
     var DeviceHeight : CGFloat = 0.0
@@ -84,6 +96,11 @@ class CommonRoutineViewController : UIViewController {
         setData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        controlloerForm(fromController)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { // UIViewController에 있는 메소드로 화면 클릭시 내려감 단, collectionView가 위에 있으면 컬렉션 뷰 영역을 클릭하면 사임하지 않기에, 이 부분에 대한 로직 처리가 별도로 필요하다.
         self.YearTextField.resignFirstResponder()
         self.MonthTextField.resignFirstResponder()
@@ -103,6 +120,106 @@ class CommonRoutineViewController : UIViewController {
         MinuteTextField.delegate = self
     }
     
+    func controlloerForm(_ option : Int) { // 0이면 생성, 1이면 확인
+        // 어디서 왔는지에 따라 확인할 페이지인지, 아니면 생성 페이지인지를 결정
+        if option == 1 {
+            VerfityTitle.isHidden = false
+            
+            RoutineTitle.isHidden = true
+            CreateRoutineTextField.isHidden = true
+            CRUnderLineView.isHidden = true
+            
+            // MARK:: 데이터
+            YearTextField.text = dateSplit(0)// 0000
+            MonthTextField.text = dateSplit(1)// 00
+            DayTextField.text = dateSplit(2)// 00
+            Yearborder.isHidden = true
+            Monthborder.isHidden = true
+            Dayborder.isHidden = true
+            
+            WeekStackIndex0.isUserInteractionEnabled = false
+            WeekStackIndex1.isUserInteractionEnabled = false
+            WeekStackIndex2.isUserInteractionEnabled = false
+            WeekStackIndex3.isUserInteractionEnabled = false
+            WeekStackIndex4.isUserInteractionEnabled = false
+            WeekStackIndex5.isUserInteractionEnabled = false
+            WeekStackIndex6.isUserInteractionEnabled = false
+            WeekStackIndex7.isUserInteractionEnabled = false
+            
+            for i in iteratorSplit() {
+                if i == "매주" {
+                    WeekStackIndex0.setTitleColor(.black, for: .normal)
+                } else if i == "월" {
+                    WeekStackIndex1.setTitleColor(.black, for: .normal)
+                } else if i == "화" {
+                    WeekStackIndex2.setTitleColor(.black, for: .normal)
+                } else if i == "수" {
+                    WeekStackIndex3.setTitleColor(.black, for: .normal)
+                } else if i == "목" {
+                    WeekStackIndex4.setTitleColor(.black, for: .normal)
+                } else if i == "금" {
+                    WeekStackIndex5.setTitleColor(.black, for: .normal)
+                } else if i == "토" {
+                    WeekStackIndex6.setTitleColor(.black, for: .normal)
+                } else if i == "일" {
+                    WeekStackIndex7.setTitleColor(.black, for: .normal)
+                }
+            }
+            
+            HourTextField.isUserInteractionEnabled = false
+            MinuteTextField.isUserInteractionEnabled = false
+            AMButton.isUserInteractionEnabled = false
+            PMButton.isUserInteractionEnabled = false
+            Hourborder.isHidden = true
+            Minuteborder.isHidden = true
+            TimeActivationButton.isHidden = true
+            
+            HourTextField.text = timeSplit()[1]
+            MinuteTextField.text = timeSplit()[2]
+            
+            if timeSplit()[0] == "오전" {
+                AMButton.setTitleColor(.black, for: .normal)
+                PMButton.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+            } else {
+                PMButton.setTitleColor(.black, for: .normal)
+                AMButton.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+            }
+            
+            RequestTextView.isUserInteractionEnabled = false
+            RequestTextView.text = detail
+            RequestTextView.textColor = .black
+            
+        } else {
+            VerfityTitle.isHidden = true
+            
+            RoutineTitle.isHidden = false
+            CreateRoutineTextField.isHidden = false
+            CRUnderLineView.isHidden = false
+            
+            // MARK:: 데이터
+            
+        }
+    }
+    
+    func dateSplit(_ index : Int) -> String {
+        let arr = date.components(separatedBy: ".") // 2021.01.01
+        
+        return arr[index]
+    }
+    
+    func iteratorSplit() -> Array<String>  {
+        let arr = iterator.components(separatedBy: " ") // 매주 월 수 금
+        
+        return arr
+    }
+    
+    func timeSplit() -> Array<String> {
+        var arr = time.components(separatedBy: " ") // 오후 3시 00분
+        arr[1] = String(arr[1].dropLast()) // 00 "시" 삭제
+        arr[2] = String(arr[2].dropLast())// 00 "분" 삭제
+        return arr
+    }
+    
 }
 
 extension CommonRoutineViewController {
@@ -117,6 +234,10 @@ extension CommonRoutineViewController {
             $0.left.equalTo(view.frame.width/14)
         }
         RoutineTitle.snp.makeConstraints {
+            $0.top.equalTo(BackButton.snp.bottom).offset(35)
+            $0.left.equalTo(BackButton.snp.left)
+        }
+        VerfityTitle.snp.makeConstraints { // 확인일때만 특수하게 나타나는 레이블
             $0.top.equalTo(BackButton.snp.bottom).offset(35)
             $0.left.equalTo(BackButton.snp.left)
         }
@@ -284,6 +405,12 @@ extension CommonRoutineViewController {
         
         RoutineTitle.then {
             $0.text = "챌린지를 만들어 보세요." // 여기에는 sender통해서 인자값 줘서 조정하기
+        }
+        
+        VerfityTitle.then {
+            $0.text = "\(verifyTitle)"
+            $0.textColor = UIColor(red: 0.133, green: 0.422, blue: 1, alpha: 1)
+            //$0.font = UIFont(name: "Pretendard-Bold", size: 28)
         }
         
         CreateRoutineTextField.then {
@@ -671,7 +798,6 @@ extension CommonRoutineViewController {
         
         ChallengeAddButton.rx.tap
             .bind{
-                print("ChallengeAddButton tap")
                 /*
                  확인해야하는 사항
                  1. 제목이 정상적으로 들어가 있는지
@@ -687,7 +813,6 @@ extension CommonRoutineViewController {
         
         BackButton.rx.tap
             .bind{
-                print("ASD")
                 self.dismiss(animated: true, completion: nil)
             }.disposed(by: bag)
         
@@ -699,7 +824,7 @@ extension CommonRoutineViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm-a" // 2021-09-06-17-12
         //        dateFormatter.locale = Locale(identifier:"ko_KR") // 위치는 한국
         let dateString = dateFormatter.string(from: today as Date)
-        print(dateString)
+        //print(dateString)
         return dateString
     }
     
@@ -806,29 +931,29 @@ extension CommonRoutineViewController {
     func ChecktheOption() {
         if self.CreateRoutineTextField.text == "" { // 텍스트가 비어있으면
             // out
-            print("CreateRoutineTextField out")
+            //print("CreateRoutineTextField out")
             alert("챌린지 제목을 입력해주세요.")
         } else if Int(self.YearTextField.text!)! < Int(self.nowDateTime(0))! { // 년도가 올해보다 이전이면
             // out
-            print("YearTextField out")
+            //print("YearTextField out")
             alert("날짜를 다시 확인해주세요.")
             self.Yearborder.backgroundColor = UIColor.red.cgColor
         } else if Int(self.YearTextField.text!)! == Int(self.nowDateTime(0))! { // 년도가 같아
             if Int(self.MonthTextField.text!)! < Int(self.nowDateTime(1))! { // 월이 뒤야
                 // out
-                print("MonthTextField out")
+                //print("MonthTextField out")
                 alert("날짜를 다시 확인해주세요.")
                 self.Monthborder.backgroundColor = UIColor.red.cgColor
             } else if Int(self.MonthTextField.text!)! == Int(self.nowDateTime(1))! { // 월이 같아
                 if Int(self.DayTextField.text!)! < Int(self.nowDateTime(2))! { // 일이 뒤야
                     // out
-                    print("DayTextField out")
+                    //print("DayTextField out")
                     alert("날짜를 다시 확인해주세요.")
                     self.Dayborder.backgroundColor = UIColor.red.cgColor
                 } else if Int(self.DayTextField.text!)! == Int(self.nowDateTime(2))! { // 일이 같아
                     // TimeActivationButton 상태 검사
                     if self.TimeActivationButton.currentImage == UIImage(systemName: "plus.circle") { // plus.circle이면 비활성화 상태임 -> 조건 만족
-                        print("TimeActivationButton ok")
+                        //print("TimeActivationButton ok")
                         // ok
                         okOption()
                     } else {
@@ -842,28 +967,28 @@ extension CommonRoutineViewController {
                         
                         if self.nowDateTime(5) == "PM" && userChoice == "AM" {
                             // out -> 년 월 일 다 같은데 이 조건이면 당연히 안되겠지?
-                            print("userChoice out")
+                            //print("userChoice out")
                             alert("시간을 다시 확인해 주세요")
                             self.Hourborder.backgroundColor = UIColor.red.cgColor
                             self.Minuteborder.backgroundColor = UIColor.red.cgColor
                         } else if self.nowDateTime(5) == "AM" && userChoice == "PM" {
                             // 이 상태에서는 조건 만족 -> 년 월 일 다 같은데 실제 시간은 AM인데 유저가 고른시간 PM이면 무조건 만족하지
-                            print("ok")
+                            //print("ok")
                             okOption()
                         } else { // self.nowDateTime(5) == userChoice 의 경우 -> 조건 검사를 시행해야 한다.
                             if Int(self.HourTextField.text!)! < Int(self.nowDateTime(3))! { // 시간이 뒤야
                                 // out
-                                print("HourTextField out")
+                                //print("HourTextField out")
                                 alert("시간을 다시 확인해 주세요")
                                 self.Hourborder.backgroundColor = UIColor.red.cgColor
                             } else if Int(self.HourTextField.text!)! == Int(self.nowDateTime(3))! { // 시간이 같아
                                 if Int(self.MinuteTextField.text!)! <= (Int(self.nowDateTime(4))! - 30) { // 분이 같거나 뒤야 + 근데 내가 nowtime에서 분을 30분 앞으로 땡겨두어서 30을 빼주어야 realtime이 된다.
                                     // out
-                                    print("MinuteTextField out")
+                                    //print("MinuteTextField out")
                                     alert("시간을 다시 확인해 주세요")
                                     self.Minuteborder.backgroundColor = UIColor.red.cgColor
                                 } else {
-                                    print("Ok")
+                                    //print("Ok")
                                     okOption()
                                     // 여기에 도착했다면 조건이 완벽하게 설정 되었네요~!^_^
                                 }
@@ -873,17 +998,17 @@ extension CommonRoutineViewController {
                     
                     
                 } else {
-                    print("else3")
+                    //print("else3")
                     // 년 월 같은데 일이 뒤라서 Ok
                     okOption()
                 }
             } else {
-                print("else2")
+                //print("else2")
                 // 년이 같은데 월이 뒤라서 ok
                 okOption()
             }
         } else {
-            print("else1")
+            //print("else1")
             // 년도가 뒤라서 ok
             okOption()
         }

@@ -280,6 +280,13 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lvh-fh-Pcd">
+                                <rect key="frame" x="30" y="123" width="67" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -310,6 +317,7 @@
                         <outlet property="RoutineTitle" destination="bbZ-B6-uur" id="q7j-7Q-Wnz"/>
                         <outlet property="TimeActivationButton" destination="zBf-td-06a" id="Qxi-Kb-9Wb"/>
                         <outlet property="TimeStackView" destination="Zkr-X5-OLs" id="BMc-MJ-muB"/>
+                        <outlet property="VerfityTitle" destination="Lvh-fh-Pcd" id="m3D-Cv-Ted"/>
                         <outlet property="WeekStackIndex0" destination="uYL-vx-al2" id="1kx-kP-Fyw"/>
                         <outlet property="WeekStackIndex1" destination="nVf-50-B7r" id="YvE-RR-dC1"/>
                         <outlet property="WeekStackIndex2" destination="jcL-bh-NFE" id="xsx-an-4pZ"/>

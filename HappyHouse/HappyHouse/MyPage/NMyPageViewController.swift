@@ -55,17 +55,6 @@ class NMyPageViewController : UIViewController {
         event()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dest = segue.destination // 목적지 뷰의 인스턴스 읽어오기
-        
-        guard let rvc = dest as? CommonRoutineViewController else {
-            return
-        }
-        
-        rvc.fromController = 1 // 1이면 확인
-        
-    }
-    
     func delegate() {
         NMyfamilyCollectionView.delegate = self
         NRoutineRepeatTableView.delegate = self
@@ -247,14 +236,6 @@ extension NMyPageViewController {
                 cell.isHighlighted = true
             }.disposed(by: bag)
         
-//        NRoutineRepeatTableView.rx
-//            .modelSelected(String.self)
-//            .subscribe(onNext: { item in
-//                print(item)
-//                print("ㅁ넣오미녛ㅁ농ㅎㅁㄴ우려문ㅇㄹ;ㅜㅁㄴ룸ㅇ나룸넣우;ㄴ훔;ㅏㄴㅇ흐ㅜ민ㅇㄹ허 몊 미ㅡ ㅠㅚ뮤ㅏㅣㅓㄴㅇ규ㅗㅓㅏ미ㅠㅜㅎㅊ므호소님처ㅡ탸ㅐ느ㅓ;;ㅑ느아ㅣㅍㅁ;샤ㅛㄴ;ㅁㅊㄴ;ㅁ쟈돈아ㅗㅎ미ㅕ겸ㅎ")
-//            })
-        
-        
         viewModel.dummydummyInstRoutineObservable
             .bind(to: NRoutineInstanceTableView.rx.items(
                     cellIdentifier: "RoutineCell",
@@ -289,7 +270,7 @@ extension NMyPageViewController {
         
         NEditButton.rx.tap
             .subscribe{
-                print("asd")
+                print("수정하기 버튼")
             }
         
     }
@@ -309,10 +290,27 @@ extension NMyPageViewController : UICollectionViewDelegateFlowLayout, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        print("index row : \(indexPath.row)")
         
         let commonRoutineStoryboard = UIStoryboard.init(name: "CommonRoutine", bundle: nil) // 스토리보드 객체 생성
         guard let vc = commonRoutineStoryboard.instantiateViewController(identifier: "CommonRoutine") as? CommonRoutineViewController else { return }
+        vc.fromController = 1 // 어디서 왔는지 알리고
+        
+        if NRoutineInstanceTableView.isHidden == true { // 반복 버튼일 때,
+            vc.verifyTitle = viewModel.dummyRoutineData[indexPath.row].Rtitle
+            vc.date = viewModel.dummyRoutineData[indexPath.row].Rdate
+            vc.iterator = viewModel.dummyRoutineData[indexPath.row].Riterator
+            vc.time = viewModel.dummyRoutineData[indexPath.row].Rtime
+            vc.detail = viewModel.dummyRoutineData[indexPath.row].Rdescription
+        } else {
+            vc.verifyTitle = viewModel.dummyInstRoutineData[indexPath.row].Rtitle
+            vc.date = viewModel.dummyInstRoutineData[indexPath.row].Rdate
+            vc.iterator = viewModel.dummyInstRoutineData[indexPath.row].Riterator
+            vc.time = viewModel.dummyInstRoutineData[indexPath.row].Rtime
+            vc.detail = viewModel.dummyInstRoutineData[indexPath.row].Rdescription
+        }
+        
+        
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .coverVertical
         self.present(vc, animated: false, completion: nil)
@@ -331,7 +329,9 @@ class MyPageCollectionCell : UICollectionViewCell {
         NMyPageCellButton.layer.masksToBounds = true
         NMyPageCellButton.backgroundColor = #colorLiteral(red: 1, green: 0.9551523328, blue: 0.9602802396, alpha: 1)
         
-        NMyPageCellButton.rx.controlEvent(UIControl.Event.allTouchEvents).bind{
+        NMyPageCellButton.rx
+            .controlEvent(UIControl.Event.allTouchEvents)
+            .bind {
             // 모든 이벤트를 막아야지!! ㅜㅜ rxCocoa 공부할 때 배운거라 구현했넴 ㅜㅍ
             self.NMyPageCellButton.isHighlighted = false
         }
@@ -349,7 +349,7 @@ class MyPageCollectionCell : UICollectionViewCell {
         NMyPageCellButton.rx.tap
             // dispose하면 작동 안함.
             .bind{
-                print("tap")
+                //print("tap")
             }
     }
 }
@@ -372,14 +372,14 @@ class NMyPageViewModel {
     
     // 주의 : 사진 비율 1:1 아니면 완벽한 원이 아니라 짤린 원 만들어지니까 주의
     var dummyRoutineData = [
-        RoutineModel(RoutineType: "Repeat", RprofileImage: "image 1", Rtitle: "약 ㅁㄴㅇㅎ", Rdescription: "뮷 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
-        RoutineModel(RoutineType: "Repeat", RprofileImage: "Mask Group (1)", Rtitle: "약 123", Rdescription: "엄마 ㅅㅎㅅ 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
-        RoutineModel(RoutineType: "Repeat", RprofileImage: "image 3", Rtitle: "약 ㅅㅎㅅ", Rdescription: "ㅁㄴㄹㅇ? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
+        RoutineModel(RoutineType: "Repeat", RprofileImage: "image 1", Rtitle: "약 ㅁㄴㅇㅎ", Rdescription: "뮷 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오전 04시 04분"),
+        RoutineModel(RoutineType: "Repeat", RprofileImage: "Mask Group (1)", Rtitle: "약 123", Rdescription: "엄마 ㅅㅎㅅ 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오전 06시 15분"),
+        RoutineModel(RoutineType: "Repeat", RprofileImage: "image 3", Rtitle: "약 ㅅㅎㅅ", Rdescription: "ㅁㄴㄹㅇ? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 04시 10분"),
     ]
     
     var dummyInstRoutineData = [
-        RoutineModel(RoutineType: "Instance", RprofileImage: "image 2", Rtitle: "약 ㅁㄴ", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
-        RoutineModel(RoutineType: "Instance", RprofileImage: "image 3", Rtitle: "약 ㅁㅎ", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시")
+        RoutineModel(RoutineType: "Instance", RprofileImage: "image 2", Rtitle: "약 ㅁㄴ", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "월 수", Rtime: "오후 03시 00분"),
+        RoutineModel(RoutineType: "Instance", RprofileImage: "image 3", Rtitle: "약 ㅁㅎ", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "금", Rtime: "오후 03시 00분")
     ]
     
     var dummyObsrvable: Observable<[MyPageCellModel]> // NHomeViewController의 컬렉션 뷰에 들어갈 정보
