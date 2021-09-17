@@ -16,9 +16,8 @@ class CreateFamilyViewController: UIViewController {
 
     // MARK: - Properties
     private var bag = DisposeBag()
-    
-    private let contentView = UIView()
-        
+    private var familyName: String? = nil
+            
     private let englishTitle = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 48, weight: .black) // Pretendard-Black
         $0.text = "Create\nFamily"
@@ -27,7 +26,7 @@ class CreateFamilyViewController: UIViewController {
     }
 
     private let koreanTitle = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 28, weight: .black) // Pretendard-Bold
+        $0.font = UIFont.systemFont(ofSize: 28, weight: .bold) // Pretendard-Bold
         $0.text = "가족구성원 만들기"
     }
     
@@ -64,10 +63,6 @@ class CreateFamilyViewController: UIViewController {
         setUpView()
         setConstraints()
         setBinding()
-    }
-    
-    @IBAction func touchUpFinish(_ sender: Any) {
-        presentMyProfile()
     }
 }
 
@@ -117,7 +112,7 @@ extension CreateFamilyViewController {
         
         nextButton.snp.makeConstraints { make in
             make.height.equalTo(nextButton.defaultHeight)
-            //make.top.equalTo(lineView.snp.bottom).offset(308)
+            make.top.lessThanOrEqualTo(lineView.snp.bottom).offset(308)
             make.bottom.equalTo(view.safeArea.bottom).offset(-20)
             make.leading.equalToSuperview().offset(nextButton.defaultMargin)
             make.centerX.equalToSuperview()
@@ -127,19 +122,20 @@ extension CreateFamilyViewController {
     // MARK: - Rx Event
     private func setBinding() {
         familyNameTextField.rx.controlEvent(.editingDidEndOnExit)
-            .asObservable()
             .map { self.familyNameTextField.text! }
-            .subscribe(onNext: { [weak self] text in
-                User.familyName = text
-                self?.presentMyProfile()
-            })
+            .bind { [unowned self] text in
+                self.familyName = text
+            }
             .disposed(by: bag)
-    }
-    
-    // MARK: - present view
-    private func presentMyProfile() {
-        guard let vc = storyboard?.instantiateViewController(identifier: "MyProfileViewController") as? MyProfileViewController else { return }
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+        
+        nextButton.rx.controlEvent(.touchUpInside)
+            .filter { self.familyName != nil }
+            .map { self.familyName! }
+            .bind { [unowned self] familyName in
+                let myProfileViewController = MyProfileViewController()
+                myProfileViewController.configure(familyName: familyName)
+                self.presentFullScreen(myProfileViewController)
+            }
+            .disposed(by: bag)
     }
 }

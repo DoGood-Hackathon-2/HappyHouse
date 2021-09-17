@@ -56,6 +56,16 @@ extension UIButton {
         backgroundColor = UIColor(named: "ButtonColor")
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
     }
+    
+    /// HAUS 앱에서 이용되는 프로필 사진의 기본 너비와 높이
+    var defaultProfileSize: Int {
+        return 180
+    }
+    
+    /// HAUS 앱에서 이용되는 프로필 사진의 너비를 통해 원형으로 만든다.
+    func makeCircleView() {
+        layer.cornerRadius = CGFloat(defaultProfileSize / 2)
+    }
 }
 
 extension UITextField {
