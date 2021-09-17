@@ -67,11 +67,13 @@ class CommonRoutineViewController : UIViewController {
     
     // MARK:: 공용뷰로 사용하기 위한 변수들 -> 조건 검사는 ViewDidLoad에서 Hidden 처리로
     var fromController = 0 // 0이면 생성, 1이면 확인
+    var idxpath = 0 // 몇번째 인덱스로 왔는가
     var verifyTitle = "" // 제목
     var detail = "" // 마지막에 들어갈 내용
     var date = "" // 날짜가 언제인지
     var iterator = "" // 반복은 어떻게 되는지
     var time = "" // 시간
+    var myPageTable = NMyPageViewModel() // 마이페이지의 테이블
     
     // MARK:: ㅡ0ㅡ
     let viewModel = CRCollectionViewModel() // 프로필 얼굴 + 이름 나오는 컬렉션 뷰
@@ -131,6 +133,9 @@ class CommonRoutineViewController : UIViewController {
             CRUnderLineView.isHidden = true
             
             // MARK:: 데이터
+            WithWhoLabel.text = "함께하는 사람"
+            WhenStartLabel.text = "챌린지 시간"
+            
             YearTextField.text = dateSplit(0)// 0000
             MonthTextField.text = dateSplit(1)// 00
             DayTextField.text = dateSplit(2)// 00
@@ -167,6 +172,8 @@ class CommonRoutineViewController : UIViewController {
                 }
             }
             
+            RequestLabel.text = "요청 메시지~!"
+            
             HourTextField.isUserInteractionEnabled = false
             MinuteTextField.isUserInteractionEnabled = false
             AMButton.isUserInteractionEnabled = false
@@ -190,7 +197,8 @@ class CommonRoutineViewController : UIViewController {
             RequestTextView.text = detail
             RequestTextView.textColor = .black
             
-            ChallengeAddButton.setTitle("챌린지 시작하기", for: .normal)
+            //ChallengeAddButton.setTitle("챌린지 시작하기", for: .normal)
+            ChallengeAddButton.isHidden = true
             
         } else {
             PageTitle.isHidden = false
@@ -199,7 +207,7 @@ class CommonRoutineViewController : UIViewController {
             RoutineTitle.isHidden = false
             CreateRoutineTextField.isHidden = false
             CRUnderLineView.isHidden = false
-            
+            ChallengeAddButton.isHidden = false
             // MARK:: 데이터
             
         }
@@ -815,6 +823,15 @@ extension CommonRoutineViewController {
                     self.ChecktheOption()
                 } else { // 글 확인하기
                     // 도전 중인 챌린지에 넣거나, 데이터 모델 안에 챌린지 도전 여부를 바로 넣어서 확인한다.
+                    self.alert("챌린지를 시작합니다") {
+                        print("gjalbtngak;snjfkgnsljkfnmzx gna sfljngjksnfdjkalns nbm,s fhkjvb")
+                        self.myPageTable.dummyRoutineData[self.idxpath].RChallengeState = "  챌린지 중  "
+                        print(self.myPageTable.dummyRoutineData)
+                        self.dismiss(animated: false) {
+                            print("AD")
+                            
+                        }
+                    }
                 }
                 
                 
