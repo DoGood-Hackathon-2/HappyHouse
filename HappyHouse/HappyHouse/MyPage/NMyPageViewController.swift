@@ -53,6 +53,8 @@ class NMyPageViewController : UIViewController {
         delegate()
         setData()
         event()
+        NEditButton.isHidden = true // 기능 구현이 어려워서 일단 히든해버리자.
+        NEditUnderBar.isHidden = true // 기능 구현이 어려워서 일단 히든해버리자.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -445,6 +447,8 @@ class RoutineTableViewCell : UITableViewCell {
         cellColor() // cell 모양 및 색
         event()
         
+        REditButton.isHidden = true // 기능 구현이 어려워서 일단 히든해버리자.
+        REditUnderLine.isHidden = true // 기능 구현이 어려워서 일단 히든해두기
         // setUI 구성
         RImage.then {
             $0.image = UIImage(named: item.RprofileImage)
@@ -572,13 +576,9 @@ class RoutineTableViewCell : UITableViewCell {
                 guard let vc = commonRoutineStoryboard.instantiateViewController(identifier: "CommonRoutine") as? CommonRoutineViewController else { return }
                 vc.fromController = 2 // 어디서 왔는지 알리고 -> 2는 수정하기에서 왔다.
                 
-//                // 반복 버튼일 때,
-//                vc.verifyTitle = viewModel.dummyRoutineData[indexPath.row].Rtitle
-//                vc.date = viewModel.dummyRoutineData[indexPath.row].Rdate
-//                vc.iterator = viewModel.dummyRoutineData[indexPath.row].Riterator
-//                vc.time = viewModel.dummyRoutineData[indexPath.row].Rtime
-//                vc.detail = viewModel.dummyRoutineData[indexPath.row].Rdescription
-//                vc.idxpath = indexPath.row // 몇번째에서 왔는지!
+                let contentView = self.REditButton.superview // 슈퍼뷰로 접근해서
+                let cell = contentView?.superview
+                
                 
             }
     }
