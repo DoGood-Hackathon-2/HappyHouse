@@ -79,6 +79,7 @@ class JoinViewController: UIViewController {
 
 extension JoinViewController {
     
+    // MARK: - Setting View
     private func setUpView() {
         view.setWhiteBackground()
         view.addSubViews([backgroundImage, welcomeLabel, familyNameLabel, profileInfoLabel,
@@ -139,7 +140,7 @@ extension JoinViewController {
         }
     }
     
-    
+    // MARK: - Rx event
     private func setBinding() {
     }
     

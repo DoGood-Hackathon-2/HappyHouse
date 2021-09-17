@@ -54,8 +54,7 @@ class InviteViewController : UIViewController {
         super.viewDidLoad()
         setUpView()
         setConstraints()
-        subscribeInviteCode()
-        subscribeButtonEvent()
+        setBinding()
     }
 }
 
@@ -106,27 +105,18 @@ extension InviteViewController {
         }
     }
     
-    // MARK: - Rx event 
-    private func subscribeInviteCode() {
+    // MARK: - Rx event
+    private func setBinding() {
         codeTextField.rx.controlEvent(.editingDidEndOnExit)
             .map { self.codeTextField.text! }
-            .bind { [weak self] _ in
-                self?.presentFullScreen(WelcomeViewController())
+            .bind { [unowned self] _ in
+                self.presentFullScreen(WelcomeViewController())
             }
             .disposed(by: bag)
-    }
-    
-    private func subscribeButtonEvent() {
+        
         createFamilyButton.rx.tap
-            .bind { [weak self] in
-                self?.presentCreateFamily() // todo : refactoring
+            .bind { [unowned self] in
+                self.presentFullScreen(CreateFamilyViewController())
             }.disposed(by: bag)
-    }
-    
-    private func presentCreateFamily() {
-        let storyboard = UIStoryboard(name: "CreateFamily", bundle: nil)
-        let svc = storyboard.instantiateViewController(withIdentifier: "CreateFamilyViewController") as! CreateFamilyViewController
-        svc.modalPresentationStyle = .fullScreen
-        self.present(svc,animated: true)
     }
 }

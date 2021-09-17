@@ -54,6 +54,7 @@ extension UIButton {
     func setDefaultStyle() {
         layer.cornerRadius = CGFloat(defaultHeight / 2)
         backgroundColor = UIColor(named: "ButtonColor")
+        titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
     }
 }
 
