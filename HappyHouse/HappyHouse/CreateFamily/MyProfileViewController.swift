@@ -51,6 +51,7 @@ class MyProfileViewController: UIViewController {
     }
     
     private let profileImageButton = UIButton().then {
+        $0.clipsToBounds = true
         $0.layer.backgroundColor = UIColor(named: "PlaceholderColor")?.cgColor
         $0.layer.borderWidth = 3
         $0.layer.borderColor = UIColor(named: "TitleColor")?.cgColor
@@ -187,7 +188,9 @@ extension MyProfileViewController {
         
         nextButton.rx.controlEvent(.touchUpInside)
             .bind { [unowned self] in
-                //presentFullScreen(FamilyViewController())
+                let familyViewController = FamilyViewController()
+                familyViewController.configure(familyName: self.familyName)
+                presentFullScreen(familyViewController)
             }
             .disposed(by: bag)
     }
