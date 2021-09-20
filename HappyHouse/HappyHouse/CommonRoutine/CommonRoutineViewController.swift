@@ -10,6 +10,8 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import Then
+import UserNotifications
+
 
 /*
  기기별 사이즈 대응 : RequestTextField의 height를 동적으로 규정하여 대응한다.
@@ -64,7 +66,6 @@ class CommonRoutineViewController : UIViewController {
     // MARK:: 여기는 확인을 눌렀을 때만 사용되는 IBOutlet
     @IBOutlet weak var VerfityTitle: UILabel!
     
-    
     // MARK:: 공용뷰로 사용하기 위한 변수들 -> 조건 검사는 ViewDidLoad에서 Hidden 처리로
     var fromController = 0 // 0이면 생성, 1이면 확인
     var idxpath = 0 // 몇번째 인덱스로 왔는가
@@ -88,14 +89,74 @@ class CommonRoutineViewController : UIViewController {
     let Hourborder = CALayer()
     let Minuteborder = CALayer()
     
+    
+    // to store the current active textfield,UITextView
+    var activeTextField : UITextField? = nil
+    var activeTextView : UITextView? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // add delegate to all textfields to self (this view controller)
+        CreateRoutineTextField.delegate = self
+        RequestTextView.delegate = self
         DeviceHeight = view.frame.height
         DeviceRatio = DeviceHeight / figmaHeight < 1.0 ? 1.0 : DeviceHeight / figmaHeight + 0.35
         addDelegate()
         layout()
         setUI()
         setData()
+        
+        // call the 'keyboardWillShow' function when the view controller receive the notification that a keyboard is going to be shown
+        NotificationCenter.default.addObserver(self, selector: #selector(CommonRoutineViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        // call the 'keyboardWillHide' function when the view controlelr receive notification that keyboard is going to be hidden
+        NotificationCenter.default.addObserver(self, selector: #selector(CommonRoutineViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            // if keyboard size is not available for some reason, dont do anything
+            print("keyboardSize gurad out")
+            
+            return
+        }
+        
+        var shouldMoveViewUp = false
+        
+        // if active text field is not nil
+        if let activeTextField = activeTextField {
+            print("keyboardWillShow : activeTextField \(activeTextField)")
+            
+            let bottomOfTextField = activeTextField.convert(activeTextField.bounds, to: self.view).maxY;
+            
+            print("keyboardWillShow : bottomOfTextField \(bottomOfTextField)")
+            
+            let topOfKeyboard = self.view.frame.height - keyboardSize.height
+            
+            print("keyboardWillShow : topOfKeyboard \(topOfKeyboard)")
+            
+            // if the bottom of Textfield is below the top of keyboard, move up
+            if bottomOfTextField > topOfKeyboard {
+                shouldMoveViewUp = true
+                
+                print("keyboardWillShow : bottomOfTextField > topOfKeyboard true")
+            }
+            print("keyboardWillShow : bottomOfTextField > topOfKeyboard false")
+        }
+        
+        if(shouldMoveViewUp) {
+            self.view.frame.origin.y = 0 - keyboardSize.height
+            
+            print("keyboardWillShow : viewframeoring \(self.view.frame.origin.y = 0 - keyboardSize.height)")
+            
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+      // move back the root view origin to zero
+      self.view.frame.origin.y = 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,11 +165,15 @@ class CommonRoutineViewController : UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { // UIViewController에 있는 메소드로 화면 클릭시 내려감 단, collectionView가 위에 있으면 컬렉션 뷰 영역을 클릭하면 사임하지 않기에, 이 부분에 대한 로직 처리가 별도로 필요하다.
+        
+        self.CreateRoutineTextField.resignFirstResponder()
         self.YearTextField.resignFirstResponder()
         self.MonthTextField.resignFirstResponder()
         self.DayTextField.resignFirstResponder()
         self.HourTextField.resignFirstResponder()
         self.MinuteTextField.resignFirstResponder()
+        self.RequestTextView.resignFirstResponder()
+        
         
         // 텍스트 필드의 포커싱을 놓아줄 때, 입력된 글자가 부족할 때, 완전한 조건으로 보정해주는 작업이 있다면 UX를 향상
     }
@@ -308,6 +373,7 @@ extension CommonRoutineViewController {
         }
         ChallengeAddButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().offset(-10)
+            //$0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top)
             $0.height.equalTo(30)
             $0.left.equalToSuperview().offset((view.frame.width/14))
             $0.right.equalToSuperview().offset(-(view.frame.width/14))
@@ -1094,7 +1160,20 @@ extension CommonRoutineViewController : UITextFieldDelegate {   // 텍스트 필
      5.
      */
     
+    // when user select a textfield, this method will be called
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // set the activeTextField to the selected textfield
+        self.activeTextField = textField
+        print("tx did begin editing \(self.activeTextField)")
+    }
+    
+    // when user click 'done' or dismiss the keyboard
     func textFieldDidEndEditing(_ textField: UITextField) { // 텍스트 필드가 포커스를 사임하기 직전에 호출되는 메소드 이 코드가 존재하는 이유는 포커스를 놓을 때, 필드를 안전하게 채워주기 위함.
+        
+        self.activeTextField = nil // 활동하는 키보드 날려주기
+        print("tx did end editing \(self.activeTextField)")
+        
+        
         // 텍스트 필드에서 다른 텍스트 필드 클릭 시, touchesBegan 메소드로는 사임 여부를 확인할 수가 없어서 코드로 구현하였다.
         if textField == YearTextField && YearTextField.text?.count ?? 0 < 4 { // 사임하는 텍스트 필드의 내용 길이가 조건보다 작다면, 채워주자.
             YearTextField.text = nowDateTime(0)
@@ -1130,7 +1209,6 @@ extension CommonRoutineViewController : UITextFieldDelegate {   // 텍스트 필
             }
             self.Minuteborder.backgroundColor = UIColor.green.cgColor
         }
-        
         
     }
     
@@ -1249,7 +1327,42 @@ extension CommonRoutineViewController : UITextFieldDelegate {   // 텍스트 필
             self.MinuteTextField.resignFirstResponder() // 키보드 내리기
         }
     }
+ 
+}
+
+extension CommonRoutineViewController : UITextViewDelegate {
     
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        print("didbegin txtview")
+        self.activeTextView = textView
+        animateViewMoving(true, 100)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        print("didend txtview")
+        self.activeTextView = nil
+        animateViewMoving(false, 0)
+    }
+    
+    func animateViewMoving (_ up:Bool, _ moveValue :CGFloat){
+        
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            // if keyboard size is not available for some reason, dont do anything
+            print("keyboardSize gurad out")
+            
+            return
+        }
+        
+        
+            let movementDuration:TimeInterval = 0.3
+            let movement:CGFloat = ( up ? -moveValue : moveValue)
+            UIView.beginAnimations( "animateView", context: nil)
+            UIView.setAnimationBeginsFromCurrentState(true)
+            UIView.setAnimationDuration(movementDuration )
+            self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
+            UIView.commitAnimations()
+        }
 }
 
 struct CRCollectionModel {
