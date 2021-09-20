@@ -96,16 +96,16 @@ class CommonRoutineViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addDelegate()
         
-        // add delegate to all textfields to self (this view controller)
-        CreateRoutineTextField.delegate = self
-        RequestTextView.delegate = self
         DeviceHeight = view.frame.height
         DeviceRatio = DeviceHeight / figmaHeight < 1.0 ? 1.0 : DeviceHeight / figmaHeight + 0.35
-        addDelegate()
         layout()
         setUI()
         setData()
+        
+        // UITextView
+        NotificationCenter.default.addObserver(self, selector: #selector(CommonRoutineViewController.adjustTextFieldConstraintsToKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         // call the 'keyboardWillShow' function when the view controller receive the notification that a keyboard is going to be shown
         NotificationCenter.default.addObserver(self, selector: #selector(CommonRoutineViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -113,6 +113,24 @@ class CommonRoutineViewController : UIViewController {
         // call the 'keyboardWillHide' function when the view controlelr receive notification that keyboard is going to be hidden
         NotificationCenter.default.addObserver(self, selector: #selector(CommonRoutineViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    @objc private func adjustTextFieldConstraintsToKeyboard(noti:Notification){
+            guard let userInfo = noti.userInfo else{
+                fatalError()
+            }
+            
+            guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
+                fatalError()
+            }
+            if noti.name == UIResponder.keyboardWillShowNotification{
+                var keyboardHeight = (keyboardFrame.height - view.safeAreaInsets.bottom)
+                //constraintToBottomForTag.constant = keyboardHeight
+            }
+            else{
+                
+            }
+        }
+    
     
     @objc func keyboardWillShow(notification: NSNotification) {
         
@@ -185,6 +203,10 @@ class CommonRoutineViewController : UIViewController {
         DayTextField.delegate = self
         HourTextField.delegate = self
         MinuteTextField.delegate = self
+        
+        // add delegate to all textfields to self (this view controller)
+        CreateRoutineTextField.delegate = self
+        RequestTextView.delegate = self
     }
     
     func controlloerForm(_ option : Int) { // 0이면 생성, 1이면 확인
@@ -1336,17 +1358,18 @@ extension CommonRoutineViewController : UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         print("didbegin txtview")
         self.activeTextView = textView
-        animateViewMoving(true, 100)
+        //animateViewMoving(true, 100)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         print("didend txtview")
         self.activeTextView = nil
-        animateViewMoving(false, 0)
+        //animateViewMoving(false, 0)
     }
     
     func animateViewMoving (_ up:Bool, _ moveValue :CGFloat){
         
+        let notification = NSNotification()
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             // if keyboard size is not available for some reason, dont do anything
             print("keyboardSize gurad out")
@@ -1355,14 +1378,20 @@ extension CommonRoutineViewController : UITextViewDelegate {
         }
         
         
-            let movementDuration:TimeInterval = 0.3
-            let movement:CGFloat = ( up ? -moveValue : moveValue)
-            UIView.beginAnimations( "animateView", context: nil)
-            UIView.setAnimationBeginsFromCurrentState(true)
-            UIView.setAnimationDuration(movementDuration )
-            self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
-            UIView.commitAnimations()
-        }
+        
+        //self.view.frame.origin.y = 0 - keyboardSize.height
+        print("asdasd")
+        print(type(of: keyboardSize.height))
+        
+        let movementDuration : TimeInterval = 0.3
+        let movement : CGFloat = ( up ? -(moveValue) : moveValue)
+        UIView.beginAnimations("animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
+        UIView.commitAnimations()
+    }
+    
 }
 
 struct CRCollectionModel {
