@@ -127,9 +127,18 @@ extension FamilyViewController {
                     .items(cellIdentifier: MemberCell.identifier, cellType: MemberCell.self))
             { index, member, cell in
                 cell.initUI(of: member)
-//                print(index, member, cell)
             }
             .disposed(by: bag)
+        
+        // Last item clicked -> Create new member profile
+        collectionView.rx.modelSelected(Member.self)
+            .filter { $0 == Member.EMPTY }
+            .bind { [unowned self] _ in
+                let newMemberProfileViewController = MemberProfileViewController()
+                newMemberProfileViewController.configure(familyName: self.familyName)
+                self.presentFullScreen(newMemberProfileViewController)
+            }
+            
     }
 }
 

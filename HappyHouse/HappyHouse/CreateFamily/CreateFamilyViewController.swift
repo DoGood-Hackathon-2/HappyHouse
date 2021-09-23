@@ -76,6 +76,7 @@ extension CreateFamilyViewController {
     }
     
     private func setConstraints() {
+        //constraint 깨지는 것 확인하기 
         englishTitle.snp.makeConstraints { make in
             make.top.equalTo(view.safeArea.top).offset(60)
             make.leading.equalToSuperview().offset(30)
