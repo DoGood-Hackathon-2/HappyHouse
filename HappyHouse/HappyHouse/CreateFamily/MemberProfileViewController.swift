@@ -8,13 +8,11 @@
 import UIKit
 import RxSwift
 
-class MemberProfileViewController: UIViewController {
+class MemberProfileViewController: ProfileViewController {
     
     // MARK: - Properties
     private var familyName = ""
     private var descriptionFormat = " 안에서의\n역할을 입력해주세요"
-    private var bag = DisposeBag()
-    private let imagePicker = UIImagePickerController()
             
     private let welcomeTitle = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 48, weight: .black) // Pretendard-ExtraBold
@@ -50,18 +48,6 @@ class MemberProfileViewController: UIViewController {
         $0.layer.borderColor = UIColor(named: "SubColor")?.cgColor
     }
     
-    private let profileImageButton = UIButton().then {
-        $0.clipsToBounds = true
-        $0.layer.backgroundColor = UIColor(named: "PlaceholderColor")?.cgColor
-        $0.layer.borderWidth = 3
-        $0.layer.borderColor = UIColor(named: "TitleColor")?.cgColor
-        $0.makeCircleView()
-    }
-    
-    private let cameraButton = UIButton().then {
-        $0.setImage(UIImage(named: "camera_button"), for: .normal)
-    }
-    
     private let nextButton = UIButton().then {
         $0.setTitle("선택하기", for: .normal)
         $0.setDefaultStyle()
@@ -75,34 +61,22 @@ class MemberProfileViewController: UIViewController {
         super.viewDidLoad()
         setUpView()
         setConstraints()
-        setImagePicker()
         setBinding()
+    }
+    
+    // MARK: - Rx Event
+    override func setBinding() {
+        super.setBinding()
+        nextButton.rx.controlEvent(.touchUpInside)
+            .bind { [unowned self] in
+                let familyViewController = FamilyViewController()
+                familyViewController.configure(familyName: self.familyName)
+                presentFullScreen(familyViewController)
+            }
+            .disposed(by: bag)
     }
 }
 
-extension MemberProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    // MARK: - Image Picker
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        var newImage: UIImage? = nil
-        
-        if let possibleImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            newImage = possibleImage // 수정된 이미지가 있을 경우
-        } else if let possibleImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            newImage = possibleImage // 원본 이미지가 있을 경우
-        }
-        
-        profileImageButton.setBackgroundImage(newImage, for: .normal)
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    private func setImagePicker() {
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = true
-        imagePicker.delegate = self
-    }
-}
 
 
 extension MemberProfileViewController {
@@ -170,29 +144,6 @@ extension MemberProfileViewController {
             make.leading.equalToSuperview().offset(nextButton.defaultMargin)
             make.centerX.equalToSuperview()
         }
-    }
-        
-    // MARK: - Rx Event
-    private func setBinding() {
-        profileImageButton.rx.controlEvent(.touchUpInside)
-            .bind { [unowned self] in
-                present(imagePicker, animated: true)
-            }
-            .disposed(by: bag)
-        
-        cameraButton.rx.controlEvent(.touchUpInside)
-            .bind { [unowned self] in
-                present(imagePicker, animated: true)
-            }
-            .disposed(by: bag)
-        
-        nextButton.rx.controlEvent(.touchUpInside)
-            .bind { [unowned self] in
-                let familyViewController = FamilyViewController()
-                familyViewController.configure(familyName: self.familyName)
-                presentFullScreen(familyViewController)
-            }
-            .disposed(by: bag)
     }
 }
 

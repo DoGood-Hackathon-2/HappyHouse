@@ -138,7 +138,7 @@ extension FamilyViewController {
                 newMemberProfileViewController.configure(familyName: self.familyName)
                 self.presentFullScreen(newMemberProfileViewController)
             }
-            
+            .disposed(by: bag)            
     }
 }
 

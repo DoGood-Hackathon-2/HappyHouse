@@ -11,6 +11,7 @@
 		B101FF3226DA5BD500FA0D94 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B101FF3126DA5BD500FA0D94 /* CommunityViewController.swift */; };
 		B101FF5826DC7F7800FA0D94 /* CommonRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B101FF5726DC7F7800FA0D94 /* CommonRoutineViewController.swift */; };
 		B101FF5B26DC7FBE00FA0D94 /* CommonRoutine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B101FF5A26DC7FBD00FA0D94 /* CommonRoutine.storyboard */; };
+		B1445AC226FDBC70003F37DD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1445AC126FDBC70003F37DD /* ProfileViewController.swift */; };
 		B15C824B505E3C2D99B241E8 /* Pods_HappyHouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF4D2E8D7A48EDCECDBDD7D /* Pods_HappyHouseTests.framework */; };
 		B162593726E887B70058718E /* OnboardingSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162593626E887B70058718E /* OnboardingSecondViewController.swift */; };
 		B162593A26E8972C0058718E /* CustomExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162593926E8972C0058718E /* CustomExtension.swift */; };
@@ -86,6 +87,7 @@
 		B101FF3126DA5BD500FA0D94 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		B101FF5726DC7F7800FA0D94 /* CommonRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRoutineViewController.swift; sourceTree = "<group>"; };
 		B101FF5A26DC7FBD00FA0D94 /* CommonRoutine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommonRoutine.storyboard; sourceTree = "<group>"; };
+		B1445AC126FDBC70003F37DD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B162593626E887B70058718E /* OnboardingSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondViewController.swift; sourceTree = "<group>"; };
 		B162593926E8972C0058718E /* CustomExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExtension.swift; sourceTree = "<group>"; };
 		B162593B26E8A3910058718E /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				B1C8CCBA26C772E700346355 /* FamilyViewController.swift */,
 				B16384FC26C7BF2D002013F4 /* FamilyViewModel.swift */,
 				B196898B26C81105007B9B1A /* MemberProfileViewController.swift */,
+				B1445AC126FDBC70003F37DD /* ProfileViewController.swift */,
 			);
 			path = CreateFamily;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 				B162594226E902070058718E /* SignUpViewController.swift in Sources */,
 				B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */,
 				B1C8CCBD26C7731D00346355 /* MyProfileViewController.swift in Sources */,
+				B1445AC226FDBC70003F37DD /* ProfileViewController.swift in Sources */,
 				B19F4C2B26D6271C00E7907D /* NHomewViewController.swift in Sources */,
 				B1808B7126C8A90F00B6FE37 /* Tutorial3.swift in Sources */,
 				B1C8CC8626C74A4C00346355 /* SceneDelegate.swift in Sources */,

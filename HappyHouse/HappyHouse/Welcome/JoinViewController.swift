@@ -11,11 +11,9 @@ import RxCocoa
 import SnapKit
 import Then
 
-class JoinViewController: UIViewController {
+class JoinViewController: ProfileViewController {
     
-    // MARK: - Properties
-    var bag = DisposeBag()
-        
+    // MARK: - Properties        
     private let welcomeLabel = UILabel().then {
         $0.text = "Welcome"
         $0.font = UIFont.systemFont(ofSize: 48, weight: .black) // Pretendard-ExtraBold
@@ -47,17 +45,6 @@ class JoinViewController: UIViewController {
         $0.layer.borderColor = UIColor(named: "SubColor")?.cgColor
     }
     
-    private let profileImage = UIImageView().then {
-        $0.layer.backgroundColor = UIColor(named: "PlaceholderColor")?.cgColor
-        $0.layer.borderWidth = 3
-        $0.layer.borderColor = UIColor(named: "TitleColor")?.cgColor
-        $0.makeCircleView()
-    }
-    
-    private let cameraButton = UIButton().then {
-        $0.setImage(UIImage(named: "camera_button"), for: .normal)
-    }
-    
     private let backgroundImage = UIImageView().then {
         $0.image = UIImage(named: "Rectangle 697") // 이미지 에셋 의미있는 이름으로 변경하기
         $0.contentMode = .top
@@ -83,7 +70,7 @@ extension JoinViewController {
     private func setUpView() {
         view.setWhiteBackground()
         view.addSubViews([backgroundImage, welcomeLabel, familyNameLabel, profileInfoLabel,
-                          nicknameTextField, lineView, profileImage, cameraButton, joinButton])
+                          nicknameTextField, lineView, profileImageButton, cameraButton, joinButton])
     }
     
     private func setConstraints() {
@@ -119,29 +106,25 @@ extension JoinViewController {
             make.height.equalTo(2)
         }
         
-        profileImage.snp.makeConstraints { make in
-            make.width.height.equalTo(profileImage.defaultProfileSize)
+        profileImageButton.snp.makeConstraints { make in
+            make.width.height.equalTo(profileImageButton.defaultProfileSize)
             make.top.equalTo(lineView.snp.bottom).offset(50)
             make.centerX.equalToSuperview()
         }
         
         cameraButton.snp.makeConstraints { make in
             make.width.height.equalTo(26)
-            make.trailing.equalTo(profileImage).offset(-10)
-            make.bottom.equalTo(profileImage).offset(-15)
+            make.trailing.equalTo(profileImageButton).offset(-10)
+            make.bottom.equalTo(profileImageButton).offset(-15)
         }
         
         joinButton.snp.makeConstraints { make in
             make.height.equalTo(joinButton.defaultHeight)
-            make.top.lessThanOrEqualTo(profileImage.snp.bottom).offset(147)
+            make.top.lessThanOrEqualTo(profileImageButton.snp.bottom).offset(147)
             make.bottom.equalTo(view.safeArea.bottom).offset(-20)
             make.leading.equalToSuperview().offset(joinButton.defaultMargin)
             make.centerX.equalToSuperview()
         }
-    }
-    
-    // MARK: - Rx event
-    private func setBinding() {
     }
     
     private func presentMain() {
@@ -152,3 +135,4 @@ extension JoinViewController {
         present(vc, animated: true, completion: nil)
     }
 }
+
