@@ -13,6 +13,7 @@ class MyProfileViewController: ProfileViewController {
     // MARK: - Properties
     private var familyName = ""
     private var descriptionFormat = " 안에서의\n역할을 입력해주세요"
+    private let tapGesture = UITapGestureRecognizer()
             
     private let welcomeTitle = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 48, weight: .black) // Pretendard-ExtraBold
@@ -74,6 +75,12 @@ class MyProfileViewController: ProfileViewController {
                 presentFullScreen(familyViewController)
             }
             .disposed(by: bag)
+        
+        tapGesture.rx.event
+            .bind { [unowned self] _ in
+                self.nicknameTextField.resignFirstResponder()
+            }
+            .disposed(by: bag)
     }
 }
 
@@ -82,6 +89,7 @@ extension MyProfileViewController {
     // MARK: - Setting View
     private func setUpView() {
         view.setWhiteBackground()
+        view.addGestureRecognizer(tapGesture)
         view.addSubViews([welcomeTitle, familyNameLabel, backgroundImage, descriptionLabel,
                           nicknameTextField, lineView, profileImageButton, cameraButton, nextButton])
         familyNameLabel.text = familyName

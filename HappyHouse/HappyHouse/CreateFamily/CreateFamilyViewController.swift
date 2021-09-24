@@ -17,6 +17,7 @@ class CreateFamilyViewController: UIViewController {
     // MARK: - Properties
     private var bag = DisposeBag()
     private var familyName: String? = nil
+    private let tapGesture = UITapGestureRecognizer()
             
     private let englishTitle = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 48, weight: .black) // Pretendard-Black
@@ -71,6 +72,7 @@ extension CreateFamilyViewController {
     // MARK: - Setting View
     private func setUpView() {
         view.setWhiteBackground()
+        view.addGestureRecognizer(tapGesture)
         view.addSubViews([englishTitle, koreanTitle, descriptionLabel,
                           familyNameTextField, lineView, backgroundImage, nextButton])
     }
@@ -126,6 +128,12 @@ extension CreateFamilyViewController {
             .map { self.familyNameTextField.text! }
             .bind { [unowned self] text in
                 self.familyName = text
+            }
+            .disposed(by: bag)
+        
+        tapGesture.rx.event
+            .bind { [unowned self] _ in
+                self.familyNameTextField.resignFirstResponder()
             }
             .disposed(by: bag)
         

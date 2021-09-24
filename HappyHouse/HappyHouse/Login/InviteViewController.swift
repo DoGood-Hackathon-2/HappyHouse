@@ -16,7 +16,7 @@ class InviteViewController : UIViewController {
     
     // MARK: - Properties
     private var bag = DisposeBag()
-    
+    private let tapGesture = UITapGestureRecognizer()    
     private let contentView = UIView()
     
     private let hausLabel = UILabel().then {
@@ -63,6 +63,7 @@ extension InviteViewController {
     // MARK: - Setting View
     private func setUpView() {
         view.setWhiteBackground()
+        view.addGestureRecognizer(tapGesture)
         view.addSubViews([contentView, createFamilyInfoLabel, createFamilyButton])
         contentView.addSubViews([hausLabel, codeInfoLabel, codeTextField])
         // todo : add gesture recognizer -> resign (textfield's) first responder
@@ -113,10 +114,17 @@ extension InviteViewController {
                 self.presentFullScreen(WelcomeViewController())
             }
             .disposed(by: bag)
+
+        tapGesture.rx.event
+            .bind { [unowned self] _ in
+                self.codeTextField.resignFirstResponder()
+            }
+            .disposed(by: bag)
         
         createFamilyButton.rx.tap
             .bind { [unowned self] in
                 self.presentFullScreen(CreateFamilyViewController())
             }.disposed(by: bag)
+        
     }
 }

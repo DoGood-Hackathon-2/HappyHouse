@@ -13,7 +13,9 @@ import Then
 
 class JoinViewController: ProfileViewController {
     
-    // MARK: - Properties        
+    // MARK: - Properties
+    private let tapGesture = UITapGestureRecognizer()
+
     private let welcomeLabel = UILabel().then {
         $0.text = "Welcome"
         $0.font = UIFont.systemFont(ofSize: 48, weight: .black) // Pretendard-ExtraBold
@@ -62,6 +64,15 @@ class JoinViewController: ProfileViewController {
         setConstraints()
         setBinding()
     }
+    
+    override func setBinding() {
+        super.setBinding()
+        tapGesture.rx.event
+            .bind { [unowned self] _ in
+                self.nicknameTextField.resignFirstResponder()
+            }
+            .disposed(by: bag)
+    }
 }
 
 extension JoinViewController {
@@ -69,6 +80,7 @@ extension JoinViewController {
     // MARK: - Setting View
     private func setUpView() {
         view.setWhiteBackground()
+        view.addGestureRecognizer(tapGesture)
         view.addSubViews([backgroundImage, welcomeLabel, familyNameLabel, profileInfoLabel,
                           nicknameTextField, lineView, profileImageButton, cameraButton, joinButton])
     }
