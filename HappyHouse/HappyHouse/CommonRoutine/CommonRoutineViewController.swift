@@ -105,7 +105,7 @@ class CommonRoutineViewController : UIViewController {
         setData()
         
         // UITextView
-        NotificationCenter.default.addObserver(self, selector: #selector(CommonRoutineViewController.adjustTextFieldConstraintsToKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(CommonRoutineViewController.adjustTextFieldConstraintsToKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         // call the 'keyboardWillShow' function when the view controller receive the notification that a keyboard is going to be shown
         NotificationCenter.default.addObserver(self, selector: #selector(CommonRoutineViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -114,25 +114,41 @@ class CommonRoutineViewController : UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(CommonRoutineViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc private func adjustTextFieldConstraintsToKeyboard(noti:Notification){
-            guard let userInfo = noti.userInfo else{
-                fatalError()
-            }
+    @objc private func adjustTextFieldConstraintsToKeyboard(notification : Notification){
+        
+        print("txtview in")
+        
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            // if keyboard size is not available for some reason, dont do anything
+            print("keyboardSize gurad out")
             
-            guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
-                fatalError()
-            }
-            if noti.name == UIResponder.keyboardWillShowNotification{
-                var keyboardHeight = (keyboardFrame.height - view.safeAreaInsets.bottom)
-                //constraintToBottomForTag.constant = keyboardHeight
-            }
-            else{
-                
+            return
+        }
+        
+        var shouldMoveViewUp = false
+        
+        // if active text field is not nil
+        if let activeTextView = activeTextView {
+            
+            let bottomOfTextView = activeTextView.convert(activeTextView.bounds, to: self.view).maxY;
+            
+            let topOfKeyboard = self.view.frame.height - keyboardSize.height
+            
+            // if the bottom of Textfield is below the top of keyboard, move up
+            if bottomOfTextView > topOfKeyboard {
+                shouldMoveViewUp = true
             }
         }
+        
+        if (shouldMoveViewUp) {
+            self.view.frame.origin.y = 0 - keyboardSize.height
+        }
+    }
     
     
     @objc func keyboardWillShow(notification: NSNotification) {
+        
+        print("txtfield in")
         
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             // if keyboard size is not available for some reason, dont do anything
@@ -145,35 +161,54 @@ class CommonRoutineViewController : UIViewController {
         
         // if active text field is not nil
         if let activeTextField = activeTextField {
-            print("keyboardWillShow : activeTextField \(activeTextField)")
+            //print("keyboardWillShow : activeTextField \(activeTextField)")
             
             let bottomOfTextField = activeTextField.convert(activeTextField.bounds, to: self.view).maxY;
             
-            print("keyboardWillShow : bottomOfTextField \(bottomOfTextField)")
+            //print("keyboardWillShow : bottomOfTextField \(bottomOfTextField)")
             
             let topOfKeyboard = self.view.frame.height - keyboardSize.height
             
-            print("keyboardWillShow : topOfKeyboard \(topOfKeyboard)")
+            //print("keyboardWillShow : topOfKeyboard \(topOfKeyboard)")
             
             // if the bottom of Textfield is below the top of keyboard, move up
             if bottomOfTextField > topOfKeyboard {
                 shouldMoveViewUp = true
                 
-                print("keyboardWillShow : bottomOfTextField > topOfKeyboard true")
+                //print("keyboardWillShow : bottomOfTextField > topOfKeyboard true")
             }
-            print("keyboardWillShow : bottomOfTextField > topOfKeyboard false")
+            //print("keyboardWillShow : bottomOfTextField > topOfKeyboard false")
+            print("textfield on")
+        }
+        
+        // if active text field is not nil
+        print("active txt view : \(activeTextView)")
+        if let activeTextView = activeTextView {
+            
+            let bottomOfTextView = activeTextView.convert(activeTextView.bounds, to: self.view).maxY;
+            print("bottomOfTextView : \(bottomOfTextView)")
+            
+            let topOfKeyboard = self.view.frame.height - keyboardSize.height
+            print("topOfKeyboard : \(topOfKeyboard)")
+            // if the bottom of Textfield is below the top of keyboard, move up
+            if bottomOfTextView > topOfKeyboard {
+                shouldMoveViewUp = true
+            }
+            
+            print("txtview on")
         }
         
         if(shouldMoveViewUp) {
             self.view.frame.origin.y = 0 - keyboardSize.height
             
-            print("keyboardWillShow : viewframeoring \(self.view.frame.origin.y = 0 - keyboardSize.height)")
+            //print("keyboardWillShow : viewframeoring \(self.view.frame.origin.y = 0 - keyboardSize.height)")
             
         }
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
       // move back the root view origin to zero
+        print("out")
       self.view.frame.origin.y = 0
     }
     
@@ -890,11 +925,12 @@ extension CommonRoutineViewController {
                     self.RequestTextView.textColor = UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1)
                 }
             }.disposed(by: bag)
+//
+//                CreateRoutineTextField.rx.controlEvent([.editingDidBegin])
+//                    .bind{
+//                        print("touch begin")
+//                    }.disposed(by: bag)
         
-        //        CreateRoutineTextField.rx.controlEvent([.editingDidBegin])
-        //            .bind{
-        //                print("touch begin")
-        //            }.disposed(by: bag)
         
         ChallengeAddButton.rx.tap
             .bind{
@@ -912,7 +948,6 @@ extension CommonRoutineViewController {
                 } else { // 글 확인하기
                     // 도전 중인 챌린지에 넣거나, 데이터 모델 안에 챌린지 도전 여부를 바로 넣어서 확인한다.
                     self.alert("챌린지를 시작합니다") {
-                        print("gjalbtngak;snjfkgnsljkfnmzx gna sfljngjksnfdjkalns nbm,s fhkjvb")
                         self.myPageTable.dummyRoutineData[self.idxpath].RChallengeState = "  챌린지 중  "
                         print(self.myPageTable.dummyRoutineData)
                         self.dismiss(animated: false) {
@@ -969,6 +1004,10 @@ extension CommonRoutineViewController {
             arr[4] = "\(Int(arr[4])! - 60)" //  분에서 60을 뺴준다.
             arr[3] = "\(Int(arr[3])! + 1)"
             
+            if arr[3].count == 1 { // 한자리 수이면
+                arr[3] = "0\(arr[3])"
+            }
+            
             if Int(arr[3])! > 23 { // 24부터는 넘어가면 하루를 더해야한다.
                 arr[3] = "01" // 시간이 다음 날로 바뀌니까 01로 바꿔준다.
                 arr[5] = "AM" // 다음날로 넘어갔다면 AM으로 변경
@@ -984,7 +1023,6 @@ extension CommonRoutineViewController {
                     arr[2] = "\(Int(arr[2])! + 1)" // day에 1을 더한다.
                 }
             }
-            
         }
         
         // MARK:: 30분을 더한 후에 문자열 문자열 길이를 완전하게 해주는 로직
@@ -1186,15 +1224,14 @@ extension CommonRoutineViewController : UITextFieldDelegate {   // 텍스트 필
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // set the activeTextField to the selected textfield
         self.activeTextField = textField
-        print("tx did begin editing \(self.activeTextField)")
+        print("tx did begin editing")
     }
     
     // when user click 'done' or dismiss the keyboard
     func textFieldDidEndEditing(_ textField: UITextField) { // 텍스트 필드가 포커스를 사임하기 직전에 호출되는 메소드 이 코드가 존재하는 이유는 포커스를 놓을 때, 필드를 안전하게 채워주기 위함.
         
         self.activeTextField = nil // 활동하는 키보드 날려주기
-        print("tx did end editing \(self.activeTextField)")
-        
+        print("tx did end editing")
         
         // 텍스트 필드에서 다른 텍스트 필드 클릭 시, touchesBegan 메소드로는 사임 여부를 확인할 수가 없어서 코드로 구현하였다.
         if textField == YearTextField && YearTextField.text?.count ?? 0 < 4 { // 사임하는 텍스트 필드의 내용 길이가 조건보다 작다면, 채워주자.
@@ -1235,7 +1272,6 @@ extension CommonRoutineViewController : UITextFieldDelegate {   // 텍스트 필
     }
     
     // MARK:: InnerBox 첫번째 줄
-    
     private func YearTextField4(_ str : String) { // 최대길이 4까지
         
         if YearTextField.text?.count ?? 0 < 4 { // 입력 시에 호출 된다.
@@ -1258,6 +1294,7 @@ extension CommonRoutineViewController : UITextFieldDelegate {   // 텍스트 필
             self.YearTextField.resignFirstResponder() // 키보드 내리기
         }
     }
+    
     private func MonthTextField2(_ str : String) { // 최대길이 2까지
         
         if MonthTextField.text?.count ?? 0 < 2 { // 입력 시에 호출 된다.
@@ -1358,30 +1395,18 @@ extension CommonRoutineViewController : UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         print("didbegin txtview")
         self.activeTextView = textView
-        //animateViewMoving(true, 100)
+        print("func activeTextView : \(activeTextView)")
+        animateViewMoving(true, self.RequestTextView.frame.height)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         print("didend txtview")
         self.activeTextView = nil
-        //animateViewMoving(false, 0)
+        print("func activeTextView : \(activeTextView)")
+        animateViewMoving(false, 0)
     }
     
     func animateViewMoving (_ up:Bool, _ moveValue :CGFloat){
-        
-        let notification = NSNotification()
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            // if keyboard size is not available for some reason, dont do anything
-            print("keyboardSize gurad out")
-            
-            return
-        }
-        
-        
-        
-        //self.view.frame.origin.y = 0 - keyboardSize.height
-        print("asdasd")
-        print(type(of: keyboardSize.height))
         
         let movementDuration : TimeInterval = 0.3
         let movement : CGFloat = ( up ? -(moveValue) : moveValue)
