@@ -161,6 +161,11 @@ extension NCameraViewController {
                 alert.addAction(cancel)
                 self.present(alert, animated: true, completion: nil)
             }
+        
+        okButton.rx.tap
+            .bind{
+                // 데이터 처리
+            }.disposed(by: bag)
     }
 }
 
