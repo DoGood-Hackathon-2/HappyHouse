@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IkX-zO-OxN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B7L-kJ-dt1">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -28,7 +28,7 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="HomeViewController" customModule="HappyHouse" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -88,7 +88,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="17px_bold chall" translatesAutoresizingMaskIntoConstraints="NO" id="T7t-m6-qeS">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="17px_bold chall" translatesAutoresizingMaskIntoConstraints="NO" id="T7t-m6-qeS">
                                 <rect key="frame" x="10" y="719" width="250" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="1PJ-ax-DXu"/>
@@ -100,7 +100,7 @@
                                     <constraint firstAttribute="width" constant="80" id="gYo-B4-8tg"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBv-Lz-a8f">
+                            <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBv-Lz-a8f">
                                 <rect key="frame" x="24" y="752" width="366" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="1bv-BI-mio"/>
@@ -1464,6 +1464,9 @@
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <state key="normal" title="챌린지시작"/>
+                                                                    <connections>
+                                                                        <segue destination="IkX-zO-OxN" kind="show" id="HjM-Jv-YAj"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xji-Cr-095">
                                                                     <rect key="frame" x="244" y="40" width="86" height="6"/>
@@ -1555,9 +1558,9 @@
         <!--Camera View Controller-->
         <scene sceneID="V6J-el-p6Q">
             <objects>
-                <viewController id="IkX-zO-OxN" customClass="NCameraViewController" customModule="HappyHouse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NCameraViewController" id="IkX-zO-OxN" customClass="NCameraViewController" customModule="HappyHouse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E6P-wU-5gD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtb-fe-50U">
@@ -1594,6 +1597,7 @@
                         <viewLayoutGuide key="safeArea" id="vrh-GQ-GmK"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                     </view>
+                    <navigationItem key="navigationItem" id="9oN-te-Vr6"/>
                     <connections>
                         <outlet property="MemoTitle" destination="wtb-fe-50U" id="xci-T1-hz0"/>
                         <outlet property="MomoView" destination="gy4-3o-Mzf" id="VkM-i8-bmp"/>
@@ -1604,7 +1608,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DuH-vn-NyH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2647.826086956522" y="509.59821428571428"/>
+            <point key="canvasLocation" x="2736" y="499"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="3kI-aY-k5S">

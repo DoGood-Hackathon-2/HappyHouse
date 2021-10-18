@@ -1,36 +1,5 @@
-//
-//  CameraViewController.swift
-//  HappyHouse
-//
-//  Created by Hamlit Jason on 2021/08/15.
-//
-
-import UIKit
-import AVFoundation
-
-class PreviewView: UIView {
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer {
-        guard let layer = layer as? AVCaptureVideoPreviewLayer else {
-            fatalError("Expected `AVCaptureVideoPreviewLayer` type for layer. Check PreviewView.layerClass implementation.")
-        }
-        
-        layer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        layer.connection?.videoOrientation = .portrait
-        return layer
-    }
-    
-    var session: AVCaptureSession? {
-        get {
-            return videoPreviewLayer.session
-        }
-        set {
-            videoPreviewLayer.session = newValue
-        }
-    }
-    
-    // MARK: UIView
-    
-    override class var layerClass: AnyClass {
-        return AVCaptureVideoPreviewLayer.self
-    }
-}
+/*
+ ~ MyPage/NCameraViewController
+ 리팩토링 과정을 거치면서 변경
+ (건우)
+ */

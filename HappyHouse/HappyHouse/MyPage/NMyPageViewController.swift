@@ -427,6 +427,7 @@ struct RoutineModel {
 }
 
 class RoutineTableViewCell : UITableViewCell {
+    
     @IBOutlet weak var RImage: UIImageView!
     @IBOutlet weak var RTitle: UILabel!
     @IBOutlet weak var RDescription: UILabel!
@@ -439,6 +440,7 @@ class RoutineTableViewCell : UITableViewCell {
     @IBOutlet weak var REditUnderLine: UIView! // 수정하기 밑줄
     @IBOutlet weak var RChallengeButton: UIButton! // 챌린지 시작버튼
     
+    
     let cellHeightRatio : Double = 143/374 // cell height가 width에 종속적(가변한다)이라서 화면 비율 맞춰줄 필요가 있음
     
     
@@ -447,7 +449,7 @@ class RoutineTableViewCell : UITableViewCell {
         cellColor() // cell 모양 및 색
         event()
         
-        REditButton.isHidden = true // 기능 구현이 어려워서 일단 히든해버리자.
+        //REditButton.isHidden = true // 기능 구현이 어려워서 일단 히든해버리자.
         REditUnderLine.isHidden = true // 기능 구현이 어려워서 일단 히든해두기
         // setUI 구성
         RImage.then {
@@ -563,9 +565,14 @@ class RoutineTableViewCell : UITableViewCell {
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0))
     }
     
-    func event() {
+    func event() { // UITableCell에 구현된 함수이다.
         RChallengeButton.rx.tap
             .bind {
+                // NcameraPage로 넘어가야 한다. id : NCameraViewController
+                let vc = UIStoryboard.init(name: "HomeView", bundle: nil).instantiateViewController(identifier: "NCameraViewController") as! NCameraViewController
+                vc.modalPresentationStyle = .fullScreen
+                
+                
                 self.RChallengeButton.setTitle("  도전중...  ", for: .normal)
                 self.RChallengeButton.backgroundColor = .red
             }
@@ -576,8 +583,9 @@ class RoutineTableViewCell : UITableViewCell {
                 guard let vc = commonRoutineStoryboard.instantiateViewController(identifier: "CommonRoutine") as? CommonRoutineViewController else { return }
                 vc.fromController = 2 // 어디서 왔는지 알리고 -> 2는 수정하기에서 왔다.
                 
-                let contentView = self.REditButton.superview // 슈퍼뷰로 접근해서
-                let cell = contentView?.superview
+                let contentViewCS = self.REditButton.superview // 슈퍼뷰로 접근해서
+                let cell = contentViewCS?.superview
+                print(type(of: cell))
                 
                 
             }

@@ -11,6 +11,8 @@ import SnapKit
 import Then
 import RxSwift
 import RxCocoa
+import UserNotifications
+
 
 class NCameraViewController : UIViewController {
     
@@ -165,6 +167,8 @@ extension NCameraViewController {
         okButton.rx.tap
             .bind{
                 // 데이터 처리
+                print("okbutton click")
+                self.dismiss(animated: true, completion: nil)
             }.disposed(by: bag)
     }
 }

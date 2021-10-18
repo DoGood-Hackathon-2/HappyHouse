@@ -18,6 +18,21 @@
 		B1625B2026C7E3BC000BD74D /* inviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B1E26C7E3BC000BD74D /* inviteViewController.swift */; };
 		B1625B2326C7E3C3000BD74D /* loadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B2226C7E3C3000BD74D /* loadingViewController.swift */; };
 		B16384FD26C7BF2D002013F4 /* FamilyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16384FC26C7BF2D002013F4 /* FamilyViewModel.swift */; };
+		B17053B6271C47D000498CC2 /* CRCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053B5271C47D000498CC2 /* CRCollectionViewModel.swift */; };
+		B17053B8271C4BDF00498CC2 /* CRCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053B7271C4BDF00498CC2 /* CRCollectionViewCell.swift */; };
+		B17053BA271C4C0D00498CC2 /* CRCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053B9271C4C0D00498CC2 /* CRCollectionModel.swift */; };
+		B17053BC271C4D2F00498CC2 /* KeyboradEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053BB271C4D2F00498CC2 /* KeyboradEvent.swift */; };
+		B17053BF271C4E2900498CC2 /* InputRestraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053BE271C4E2900498CC2 /* InputRestraint.swift */; };
+		B17053C1271C4F6100498CC2 /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053C0271C4F6100498CC2 /* CollectionViewFlowLayout.swift */; };
+		B17053C3271C4FA100498CC2 /* CRLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053C2271C4FA100498CC2 /* CRLayout.swift */; };
+		B17053C5271C502400498CC2 /* CRInnerDateBoxLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053C4271C502400498CC2 /* CRInnerDateBoxLayout.swift */; };
+		B17053C7271C508E00498CC2 /* CRSetUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053C6271C508E00498CC2 /* CRSetUI.swift */; };
+		B17053C9271C511D00498CC2 /* CRInnerDateBoxViewSetUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053C8271C511D00498CC2 /* CRInnerDateBoxViewSetUI.swift */; };
+		B17053CB271C514D00498CC2 /* CRWeekButtonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053CA271C514D00498CC2 /* CRWeekButtonUI.swift */; };
+		B17053CD271D21FF00498CC2 /* CRSetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053CC271D21FF00498CC2 /* CRSetData.swift */; };
+		B17053D0271D3D6100498CC2 /* CRClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053CF271D3D6100498CC2 /* CRClock.swift */; };
+		B17053D2271D3FCA00498CC2 /* CRTextFiledRestraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053D1271D3FCA00498CC2 /* CRTextFiledRestraint.swift */; };
+		B17053D4271D3FFE00498CC2 /* CRUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053D3271D3FFE00498CC2 /* CRUtils.swift */; };
 		B1808B6226C8425700B6FE37 /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B6126C8425700B6FE37 /* MypageViewController.swift */; };
 		B1808B6426C8667C00B6FE37 /* MypageTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B6326C8667C00B6FE37 /* MypageTableViewModel.swift */; };
 		B1808B6826C89C0D00B6FE37 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B6726C89C0D00B6FE37 /* PreviewView.swift */; };
@@ -90,6 +105,21 @@
 		B1625B1E26C7E3BC000BD74D /* inviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = inviteViewController.swift; sourceTree = "<group>"; };
 		B1625B2226C7E3C3000BD74D /* loadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loadingViewController.swift; sourceTree = "<group>"; };
 		B16384FC26C7BF2D002013F4 /* FamilyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyViewModel.swift; sourceTree = "<group>"; };
+		B17053B5271C47D000498CC2 /* CRCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCollectionViewModel.swift; sourceTree = "<group>"; };
+		B17053B7271C4BDF00498CC2 /* CRCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCollectionViewCell.swift; sourceTree = "<group>"; };
+		B17053B9271C4C0D00498CC2 /* CRCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCollectionModel.swift; sourceTree = "<group>"; };
+		B17053BB271C4D2F00498CC2 /* KeyboradEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboradEvent.swift; sourceTree = "<group>"; };
+		B17053BE271C4E2900498CC2 /* InputRestraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputRestraint.swift; sourceTree = "<group>"; };
+		B17053C0271C4F6100498CC2 /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		B17053C2271C4FA100498CC2 /* CRLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRLayout.swift; sourceTree = "<group>"; };
+		B17053C4271C502400498CC2 /* CRInnerDateBoxLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRInnerDateBoxLayout.swift; sourceTree = "<group>"; };
+		B17053C6271C508E00498CC2 /* CRSetUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRSetUI.swift; sourceTree = "<group>"; };
+		B17053C8271C511D00498CC2 /* CRInnerDateBoxViewSetUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRInnerDateBoxViewSetUI.swift; sourceTree = "<group>"; };
+		B17053CA271C514D00498CC2 /* CRWeekButtonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRWeekButtonUI.swift; sourceTree = "<group>"; };
+		B17053CC271D21FF00498CC2 /* CRSetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRSetData.swift; sourceTree = "<group>"; };
+		B17053CF271D3D6100498CC2 /* CRClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRClock.swift; sourceTree = "<group>"; };
+		B17053D1271D3FCA00498CC2 /* CRTextFiledRestraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRTextFiledRestraint.swift; sourceTree = "<group>"; };
+		B17053D3271D3FFE00498CC2 /* CRUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUtils.swift; sourceTree = "<group>"; };
 		B1808B6126C8425700B6FE37 /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
 		B1808B6326C8667C00B6FE37 /* MypageTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageTableViewModel.swift; sourceTree = "<group>"; };
 		B1808B6726C89C0D00B6FE37 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
@@ -201,9 +231,13 @@
 		B101FF5926DC7F8000FA0D94 /* CommonRoutine */ = {
 			isa = PBXGroup;
 			children = (
+				B17053BD271C4DFE00498CC2 /* Extension */,
 				B101FF5726DC7F7800FA0D94 /* CommonRoutineViewController.swift */,
 				B101FF5A26DC7FBD00FA0D94 /* CommonRoutine.storyboard */,
 				B15D0A6126EE3D1700517248 /* RoutineVerifyViewController.swift */,
+				B17053B5271C47D000498CC2 /* CRCollectionViewModel.swift */,
+				B17053B7271C4BDF00498CC2 /* CRCollectionViewCell.swift */,
+				B17053B9271C4C0D00498CC2 /* CRCollectionModel.swift */,
 			);
 			path = CommonRoutine;
 			sourceTree = "<group>";
@@ -223,6 +257,25 @@
 				B1625B2226C7E3C3000BD74D /* loadingViewController.swift */,
 			);
 			path = Loading;
+			sourceTree = "<group>";
+		};
+		B17053BD271C4DFE00498CC2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B17053BB271C4D2F00498CC2 /* KeyboradEvent.swift */,
+				B17053BE271C4E2900498CC2 /* InputRestraint.swift */,
+				B17053C0271C4F6100498CC2 /* CollectionViewFlowLayout.swift */,
+				B17053C2271C4FA100498CC2 /* CRLayout.swift */,
+				B17053C4271C502400498CC2 /* CRInnerDateBoxLayout.swift */,
+				B17053C6271C508E00498CC2 /* CRSetUI.swift */,
+				B17053C8271C511D00498CC2 /* CRInnerDateBoxViewSetUI.swift */,
+				B17053CA271C514D00498CC2 /* CRWeekButtonUI.swift */,
+				B17053CC271D21FF00498CC2 /* CRSetData.swift */,
+				B17053CF271D3D6100498CC2 /* CRClock.swift */,
+				B17053D1271D3FCA00498CC2 /* CRTextFiledRestraint.swift */,
+				B17053D3271D3FFE00498CC2 /* CRUtils.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		B1808B6026C8424000B6FE37 /* MyPage */ = {
@@ -624,28 +677,37 @@
 			files = (
 				B1E2151C26C8C3BC0081F42D /* HomeTabBarViewController.swift in Sources */,
 				B196899226C81FCA007B9B1A /* APIManager.swift in Sources */,
+				B17053D4271D3FFE00498CC2 /* CRUtils.swift in Sources */,
 				B1808B6226C8425700B6FE37 /* MypageViewController.swift in Sources */,
 				B16384FD26C7BF2D002013F4 /* FamilyViewModel.swift in Sources */,
+				B17053D2271D3FCA00498CC2 /* CRTextFiledRestraint.swift in Sources */,
 				B1C8CCB826C757C200346355 /* CreateFamilyViewController.swift in Sources */,
+				B17053BF271C4E2900498CC2 /* InputRestraint.swift in Sources */,
 				B1808B6826C89C0D00B6FE37 /* PreviewView.swift in Sources */,
 				B1E2150926C833C50081F42D /* HomeViewController.swift in Sources */,
 				B1E2151A26C8C08F0081F42D /* AddRoutineFinishViewController.swift in Sources */,
+				B17053C7271C508E00498CC2 /* CRSetUI.swift in Sources */,
 				B196898F26C812F0007B9B1A /* User.swift in Sources */,
 				B101FF2F26D781D300FA0D94 /* NMyPageViewController.swift in Sources */,
 				B1808B6F26C8A90300B6FE37 /* Tutorial2.swift in Sources */,
 				B13DF2052714A61A001BA195 /* NCameraViewController.swift in Sources */,
 				B196898326C800DC007B9B1A /* Invitation.swift in Sources */,
 				B196897F26C7FF49007B9B1A /* WelcomeViewController.swift in Sources */,
+				B17053CD271D21FF00498CC2 /* CRSetData.swift in Sources */,
 				B101FF5826DC7F7800FA0D94 /* CommonRoutineViewController.swift in Sources */,
 				B1E2150B26C833C50081F42D /* RecommendViewModel.swift in Sources */,
 				B196898C26C81105007B9B1A /* MemberProfileViewController.swift in Sources */,
 				B1625B2026C7E3BC000BD74D /* inviteViewController.swift in Sources */,
+				B17053BC271C4D2F00498CC2 /* KeyboradEvent.swift in Sources */,
 				B1808B6426C8667C00B6FE37 /* MypageTableViewModel.swift in Sources */,
 				B15D0A6226EE3D1700517248 /* RoutineVerifyViewController.swift in Sources */,
 				B1C8CC8826C74A4C00346355 /* ViewController.swift in Sources */,
 				B1C8CCBB26C772E700346355 /* FamilyViewController.swift in Sources */,
+				B17053C9271C511D00498CC2 /* CRInnerDateBoxViewSetUI.swift in Sources */,
 				B1808B6A26C89E0D00B6FE37 /* CameraViewController.swift in Sources */,
 				B1625B1F26C7E3BC000BD74D /* loginViewController.swift in Sources */,
+				B17053C1271C4F6100498CC2 /* CollectionViewFlowLayout.swift in Sources */,
+				B17053CB271C514D00498CC2 /* CRWeekButtonUI.swift in Sources */,
 				B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */,
 				B1C8CCBD26C7731D00346355 /* MyProfileViewController.swift in Sources */,
 				B19F4C2B26D6271C00E7907D /* NHomewViewController.swift in Sources */,
@@ -654,7 +716,13 @@
 				B196898126C8003A007B9B1A /* JoinViewController.swift in Sources */,
 				B1E2151826C85F170081F42D /* NewRoutineViewController.swift in Sources */,
 				B101FF3226DA5BD500FA0D94 /* CommunityViewController.swift in Sources */,
+				B17053BA271C4C0D00498CC2 /* CRCollectionModel.swift in Sources */,
 				B1808B6D26C8A8ED00B6FE37 /* Tutorial1.swift in Sources */,
+				B17053C5271C502400498CC2 /* CRInnerDateBoxLayout.swift in Sources */,
+				B17053C3271C4FA100498CC2 /* CRLayout.swift in Sources */,
+				B17053D0271D3D6100498CC2 /* CRClock.swift in Sources */,
+				B17053B6271C47D000498CC2 /* CRCollectionViewModel.swift in Sources */,
+				B17053B8271C4BDF00498CC2 /* CRCollectionViewCell.swift in Sources */,
 				B1625B2326C7E3C3000BD74D /* loadingViewController.swift in Sources */,
 				B1E2151626C85B670081F42D /* Member.swift in Sources */,
 			);
