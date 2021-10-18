@@ -5,6 +5,12 @@
 //  Created by Hamlit Jason on 2021/09/12.
 //
 
+/*
+ 루틴 확인 눌렀을 때, 나타나는 페이지
+ 코드 길이가 적어 MVC로 구현
+ (건우)
+ */
+
 import UIKit
 import RxSwift
 import RxCocoa

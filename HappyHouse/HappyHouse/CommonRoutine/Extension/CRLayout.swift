@@ -1,8 +1,8 @@
 //
-//  CommonRoutine.swift
+//  File.swift
 //  HappyHouse
 //
-//  Created by Hamlit Jason on 2021/08/30.
+//  Created by Hamlit Jason on 2021/10/17.
 //
 
 import UIKit
@@ -12,428 +12,88 @@ import SnapKit
 import Then
 import UserNotifications
 
-
-/*
- 기기별 사이즈 대응 : RequestTextField의 height를 동적으로 규정하여 대응한다.
- */
-
-class CommonRoutineViewController : UIViewController {
+// MARK:: CommonRoutineViewController의 메인 레이아웃 Snapkit
+extension CommonRoutineViewController {
     
-    @IBOutlet weak var PageTitle: UILabel!
-    @IBOutlet weak var BackButton: UIButton!
-    @IBOutlet weak var RoutineTitle: UILabel!
-    @IBOutlet weak var CreateRoutineTextField: UITextField!
-    @IBOutlet weak var CRUnderLineView: UIView! // 크리에이티브 루틴 언더라인 뷰
-    @IBOutlet weak var BackgroundImage: UIImageView!
-    @IBOutlet weak var WithWhoLabel: UILabel! // 누구와 함께 할까요 이름
-    @IBOutlet weak var CRcollectionView: UICollectionView!
-    @IBOutlet weak var WhenStartLabel: UILabel! // 언제 시작할까요?
-    @IBOutlet weak var DateBoxView: UIView! // 시간이 들어갈 곳
-    
-    // DateBoxView IBOutlet
-    @IBOutlet weak var CalenderIcon: UIImageView!
-    @IBOutlet weak var YearTextField: UITextField!
-    @IBOutlet weak var YearText: UILabel!
-    @IBOutlet weak var MonthTextField: UITextField!
-    @IBOutlet weak var MonthText: UILabel!
-    @IBOutlet weak var DayTextField: UITextField!
-    @IBOutlet weak var DayText: UILabel!
-    @IBOutlet weak var WeekendStackView: UIStackView! // week 담을 스택뷰
-    @IBOutlet weak var WeekStackIndex0: UIButton! // 매주
-    @IBOutlet weak var WeekStackIndex1: UIButton! // 월
-    @IBOutlet weak var WeekStackIndex2: UIButton! // 화
-    @IBOutlet weak var WeekStackIndex3: UIButton! // 수
-    @IBOutlet weak var WeekStackIndex4: UIButton! // 목
-    @IBOutlet weak var WeekStackIndex5: UIButton! // 금
-    @IBOutlet weak var WeekStackIndex6: UIButton! // 토
-    @IBOutlet weak var WeekStackIndex7: UIButton! // 일
-    @IBOutlet weak var ClockIcon: UIImageView!
-    @IBOutlet weak var TimeStackView: UIView! // 시간, 콜론, 분을 포함함
-    @IBOutlet weak var HourTextField: UITextField! // inner StackView
-    @IBOutlet weak var Colon: UILabel! // inner StackView
-    @IBOutlet weak var MinuteTextField: UITextField! // inner StackView
-    @IBOutlet weak var AMButton: UIButton!
-    @IBOutlet weak var PMButton: UIButton!
-    @IBOutlet weak var TimeActivationButton: UIButton!
-    
-    // bottom field
-    @IBOutlet weak var RequestLabel: UILabel! // 요청메시지를 보내봐요
-    @IBOutlet weak var RequsetTextViewContainer: UIView! // RequestTextField 배경 -> 글자에 inset 주려면 있어야 해
-    @IBOutlet weak var RequestTextView: UITextView! // 기기별로 동적대응
-    @IBOutlet weak var ChallengeAddButton: UIButton! // 챌린지 추가하기 버튼
-    
-    
-    // MARK:: 여기는 확인을 눌렀을 때만 사용되는 IBOutlet
-    @IBOutlet weak var VerfityTitle: UILabel!
-    
-    // MARK:: 공용뷰로 사용하기 위한 변수들 -> 조건 검사는 ViewDidLoad에서 Hidden 처리로
-    var fromController = 0 // 0이면 생성, 1이면 확인
-    var idxpath = 0 // 몇번째 인덱스로 왔는가
-    var verifyTitle = "" // 제목
-    var detail = "" // 마지막에 들어갈 내용
-    var date = "" // 날짜가 언제인지
-    var iterator = "" // 반복은 어떻게 되는지
-    var time = "" // 시간
-    var myPageTable = NMyPageViewModel() // 마이페이지의 테이블
-    
-    // MARK:: ㅡ0ㅡ
-    let viewModel = CRCollectionViewModel() // 프로필 얼굴 + 이름 나오는 컬렉션 뷰
-    let bag = DisposeBag()
-    var DeviceHeight : CGFloat = 0.0
-    var figmaHeight : CGFloat = 896 // 414 * 896
-    var DeviceRatio : CGFloat = 1.0
-    
-    let Yearborder = CALayer() // 텍스트 필드에 값을 잘못 입력할 경우 사용자에게 알려주기 인지시켜 주기 위해 underline
-    let Monthborder = CALayer()
-    let Dayborder = CALayer()
-    let Hourborder = CALayer()
-    let Minuteborder = CALayer()
-    
-    
-    // to store the current active textfield,UITextView
-    var activeTextField : UITextField? = nil
-    var activeTextView : UITextView? = nil
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        addDelegate()
-        
-        DeviceHeight = view.frame.height
-        DeviceRatio = DeviceHeight / figmaHeight < 1.0 ? 1.0 : DeviceHeight / figmaHeight + 0.35
-        layout()
-        setUI()
-        setData()
-        
-        // MARK:: 키보드 이슈 해결해야해!
-        NotificationCenter.default.addObserver(self, selector: #selector(CommonRoutineViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        // call the 'keyboardWillHide' function when the view controlelr receive notification that keyboard is going to be hidden
-        NotificationCenter.default.addObserver(self, selector: #selector(CommonRoutineViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc private func adjustTextFieldConstraintsToKeyboard(notification : Notification){
-        
-        print("txtview in")
-        
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            // if keyboard size is not available for some reason, dont do anything
-            print("keyboardSize gurad out")
-            
-            return
+    func layout() { // 메인 레이아웃
+        PageTitle.snp.makeConstraints {
+            $0.top.equalTo(50)
+            $0.centerX.equalToSuperview()
         }
-        
-        var shouldMoveViewUp = false
-        
-        // if active text field is not nil
-        if let activeTextView = activeTextView {
-            
-            let bottomOfTextView = activeTextView.convert(activeTextView.bounds, to: self.view).maxY;
-            
-            let topOfKeyboard = self.view.frame.height - keyboardSize.height
-            
-            // if the bottom of Textfield is below the top of keyboard, move up
-            if bottomOfTextView > topOfKeyboard {
-                shouldMoveViewUp = true
-            }
+        BackButton.snp.makeConstraints {
+            $0.top.equalTo(PageTitle.snp.top).offset(-(PageTitle.frame.height/2))
+            $0.left.equalTo(view.frame.width/14)
         }
-        
-        if (shouldMoveViewUp) {
-            self.view.frame.origin.y = 0 - keyboardSize.height
+        RoutineTitle.snp.makeConstraints {
+            $0.top.equalTo(BackButton.snp.bottom).offset(35)
+            $0.left.equalTo(BackButton.snp.left)
+        }
+        VerfityTitle.snp.makeConstraints { // 확인일때만 특수하게 나타나는 레이블
+            $0.top.equalTo(BackButton.snp.bottom).offset(35)
+            $0.left.equalTo(BackButton.snp.left)
+        }
+        CreateRoutineTextField.snp.makeConstraints {
+            $0.left.equalTo(BackButton.snp.left)
+            $0.top.equalTo(RoutineTitle.snp.bottom).offset(11)
+            $0.width.lessThanOrEqualTo(250)
+        }
+        CRUnderLineView.snp.makeConstraints {
+            $0.left.equalTo(BackButton.snp.left)
+            $0.top.equalTo(CreateRoutineTextField.snp.bottom).offset(-(CreateRoutineTextField.frame.height/4))
+            $0.width.equalTo(270)
+            $0.height.equalTo(15)
+        }
+        BackgroundImage.snp.makeConstraints {
+            $0.left.bottom.right.equalToSuperview()
+            $0.top.equalTo(CRUnderLineView.snp.bottom).offset(10)
+        }
+        WithWhoLabel.snp.makeConstraints {
+            $0.top.equalTo(BackgroundImage.snp.top).offset(10)
+            $0.left.equalTo(BackButton.snp.left)
+        }
+        CRcollectionView.snp.makeConstraints {
+            $0.top.equalTo(WithWhoLabel.snp.bottom).offset(10)
+            $0.left.equalTo(BackButton.snp.left)
+            $0.right.equalToSuperview().offset(-(view.frame.width/14)) // 백버튼의 좌간격 만큼
+            //$0.bottom.equalTo(-100)
+            $0.height.equalTo(80)
+        }
+        WhenStartLabel.snp.makeConstraints {
+            $0.top.equalTo(CRcollectionView.snp.bottom).offset(10)
+            $0.left.equalTo(BackButton.snp.left)
+            $0.width.lessThanOrEqualToSuperview()
+        }
+        DateBoxView.snp.makeConstraints {
+            $0.top.equalTo(WhenStartLabel.snp.bottom).offset(10)
+            $0.left.equalTo(BackButton.snp.left)
+            $0.right.equalToSuperview().offset(-(view.frame.width/14))
+            $0.height.equalTo(150 * DeviceRatio)
+        }
+        InnerDateBoxViewLayout()
+        RequestLabel.snp.makeConstraints {
+            $0.top.equalTo(DateBoxView.snp.bottom).offset(10)
+            $0.left.equalTo(BackButton.snp.left)
+        }
+        RequsetTextViewContainer.snp.makeConstraints {
+            $0.top.equalTo(RequestLabel.snp.bottom).offset(10)
+            $0.left.equalTo(BackButton.snp.left)
+            $0.right.equalToSuperview().offset(-(view.frame.width/14))
+            $0.bottom.equalTo(ChallengeAddButton.snp.top).offset(-10)
+        }
+        RequestTextView.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.left.equalToSuperview().offset((view.frame.width/14))
+            $0.right.equalToSuperview().offset(-(view.frame.width/14))
+        }
+        ChallengeAddButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview().offset(-10)
+            //$0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top)
+            $0.height.equalTo(30)
+            $0.left.equalToSuperview().offset((view.frame.width/14))
+            $0.right.equalToSuperview().offset(-(view.frame.width/14))
         }
     }
     
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        
-        print("txtfield in")
-        
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            // if keyboard size is not available for some reason, dont do anything
-            print("keyboardSize gurad out")
-            
-            return
-        }
-        
-        var shouldMoveViewUp = false
-        
-        // if active text field is not nil
-        if let activeTextField = activeTextField {
-            //print("keyboardWillShow : activeTextField \(activeTextField)")
-            
-            let bottomOfTextField = activeTextField.convert(activeTextField.bounds, to: self.view).maxY;
-            
-            //print("keyboardWillShow : bottomOfTextField \(bottomOfTextField)")
-            
-            let topOfKeyboard = self.view.frame.height - keyboardSize.height
-            
-            //print("keyboardWillShow : topOfKeyboard \(topOfKeyboard)")
-            
-            // if the bottom of Textfield is below the top of keyboard, move up
-            if bottomOfTextField > topOfKeyboard {
-                shouldMoveViewUp = true
-                
-                //print("keyboardWillShow : bottomOfTextField > topOfKeyboard true")
-            }
-            //print("keyboardWillShow : bottomOfTextField > topOfKeyboard false")
-            print("textfield on")
-        }
-        
-        // if active text field is not nil
-        print("active txt view : \(activeTextView)")
-        if let activeTextView = activeTextView {
-            
-            let bottomOfTextView = activeTextView.convert(activeTextView.bounds, to: self.view).maxY;
-            print("bottomOfTextView : \(bottomOfTextView)")
-            
-            let topOfKeyboard = self.view.frame.height - keyboardSize.height
-            print("topOfKeyboard : \(topOfKeyboard)")
-            // if the bottom of Textfield is below the top of keyboard, move up
-            if bottomOfTextView > topOfKeyboard {
-                shouldMoveViewUp = true
-            }
-            
-            print("txtview on")
-        }
-        
-        if(shouldMoveViewUp) {
-            self.view.frame.origin.y = 0 - keyboardSize.height
-            
-            //print("keyboardWillShow : viewframeoring \(self.view.frame.origin.y = 0 - keyboardSize.height)")
-            
-        }
-    }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-      // move back the root view origin to zero
-        print("out")
-      self.view.frame.origin.y = 0
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        controlloerForm(fromController)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { // UIViewController에 있는 메소드로 화면 클릭시 내려감 단, collectionView가 위에 있으면 컬렉션 뷰 영역을 클릭하면 사임하지 않기에, 이 부분에 대한 로직 처리가 별도로 필요하다.
-        
-        self.CreateRoutineTextField.resignFirstResponder()
-        self.YearTextField.resignFirstResponder()
-        self.MonthTextField.resignFirstResponder()
-        self.DayTextField.resignFirstResponder()
-        self.HourTextField.resignFirstResponder()
-        self.MinuteTextField.resignFirstResponder()
-        self.RequestTextView.resignFirstResponder()
-        
-        
-        // 텍스트 필드의 포커싱을 놓아줄 때, 입력된 글자가 부족할 때, 완전한 조건으로 보정해주는 작업이 있다면 UX를 향상
-    }
-    
-    func addDelegate() {
-        CRcollectionView.delegate = self
-        YearTextField.delegate = self
-        MonthTextField.delegate = self
-        DayTextField.delegate = self
-        HourTextField.delegate = self
-        MinuteTextField.delegate = self
-        
-        // add delegate to all textfields to self (this view controller)
-        CreateRoutineTextField.delegate = self
-        RequestTextView.delegate = self
-    }
-    
-    func controlloerForm(_ option : Int) { // 0이면 생성, 1이면 확인
-        // 어디서 왔는지에 따라 확인할 페이지인지, 아니면 생성 페이지인지를 결정
-        if option == 1 {
-            PageTitle.isHidden = true
-            VerfityTitle.isHidden = false
-            
-            RoutineTitle.isHidden = true
-            CreateRoutineTextField.isHidden = true
-            CRUnderLineView.isHidden = true
-            
-            // MARK:: 데이터
-            WithWhoLabel.text = "함께하는 사람"
-            WhenStartLabel.text = "챌린지 시간"
-            
-            YearTextField.text = dateSplit(0)// 0000
-            MonthTextField.text = dateSplit(1)// 00
-            DayTextField.text = dateSplit(2)// 00
-            Yearborder.isHidden = true
-            Monthborder.isHidden = true
-            Dayborder.isHidden = true
-            
-            WeekStackIndex0.isUserInteractionEnabled = false
-            WeekStackIndex1.isUserInteractionEnabled = false
-            WeekStackIndex2.isUserInteractionEnabled = false
-            WeekStackIndex3.isUserInteractionEnabled = false
-            WeekStackIndex4.isUserInteractionEnabled = false
-            WeekStackIndex5.isUserInteractionEnabled = false
-            WeekStackIndex6.isUserInteractionEnabled = false
-            WeekStackIndex7.isUserInteractionEnabled = false
-            
-            for i in iteratorSplit() {
-                if i == "매주" {
-                    WeekStackIndex0.setTitleColor(.black, for: .normal)
-                } else if i == "월" {
-                    WeekStackIndex1.setTitleColor(.black, for: .normal)
-                } else if i == "화" {
-                    WeekStackIndex2.setTitleColor(.black, for: .normal)
-                } else if i == "수" {
-                    WeekStackIndex3.setTitleColor(.black, for: .normal)
-                } else if i == "목" {
-                    WeekStackIndex4.setTitleColor(.black, for: .normal)
-                } else if i == "금" {
-                    WeekStackIndex5.setTitleColor(.black, for: .normal)
-                } else if i == "토" {
-                    WeekStackIndex6.setTitleColor(.black, for: .normal)
-                } else if i == "일" {
-                    WeekStackIndex7.setTitleColor(.black, for: .normal)
-                }
-            }
-            
-            RequestLabel.text = "요청 메시지~!"
-            
-            HourTextField.isUserInteractionEnabled = false
-            MinuteTextField.isUserInteractionEnabled = false
-            AMButton.isUserInteractionEnabled = false
-            PMButton.isUserInteractionEnabled = false
-            Hourborder.isHidden = true
-            Minuteborder.isHidden = true
-            TimeActivationButton.isHidden = true
-            
-            HourTextField.text = timeSplit()[1]
-            MinuteTextField.text = timeSplit()[2]
-            
-            if timeSplit()[0] == "오전" {
-                AMButton.setTitleColor(.black, for: .normal)
-                PMButton.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
-            } else {
-                PMButton.setTitleColor(.black, for: .normal)
-                AMButton.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
-            }
-            
-            RequestTextView.isUserInteractionEnabled = false
-            RequestTextView.text = detail
-            RequestTextView.textColor = .black
-            
-            //ChallengeAddButton.setTitle("챌린지 시작하기", for: .normal)
-            ChallengeAddButton.isHidden = true
-            
-        } else {
-            PageTitle.isHidden = false
-            VerfityTitle.isHidden = true
-            
-            RoutineTitle.isHidden = false
-            CreateRoutineTextField.isHidden = false
-            CRUnderLineView.isHidden = false
-            ChallengeAddButton.isHidden = false
-            // MARK:: 데이터
-            
-        }
-    }
-    
-    func dateSplit(_ index : Int) -> String {
-        let arr = date.components(separatedBy: ".") // 2021.01.01
-        
-        return arr[index]
-    }
-    
-    func iteratorSplit() -> Array<String>  {
-        let arr = iterator.components(separatedBy: " ") // 매주 월 수 금
-        
-        return arr
-    }
-    
-    func timeSplit() -> Array<String> {
-        var arr = time.components(separatedBy: " ") // 오후 3시 00분
-        arr[1] = String(arr[1].dropLast()) // 00 "시" 삭제
-        arr[2] = String(arr[2].dropLast())// 00 "분" 삭제
-        return arr
-    }
-    
-}
-
-//extension CommonRoutineViewController {
-//    
-//    func layout() { // 메인 레이아웃
-//        PageTitle.snp.makeConstraints {
-//            $0.top.equalTo(50)
-//            $0.centerX.equalToSuperview()
-//        }
-//        BackButton.snp.makeConstraints {
-//            $0.top.equalTo(PageTitle.snp.top).offset(-(PageTitle.frame.height/2))
-//            $0.left.equalTo(view.frame.width/14)
-//        }
-//        RoutineTitle.snp.makeConstraints {
-//            $0.top.equalTo(BackButton.snp.bottom).offset(35)
-//            $0.left.equalTo(BackButton.snp.left)
-//        }
-//        VerfityTitle.snp.makeConstraints { // 확인일때만 특수하게 나타나는 레이블
-//            $0.top.equalTo(BackButton.snp.bottom).offset(35)
-//            $0.left.equalTo(BackButton.snp.left)
-//        }
-//        CreateRoutineTextField.snp.makeConstraints {
-//            $0.left.equalTo(BackButton.snp.left)
-//            $0.top.equalTo(RoutineTitle.snp.bottom).offset(11)
-//            $0.width.lessThanOrEqualTo(250)
-//        }
-//        CRUnderLineView.snp.makeConstraints {
-//            $0.left.equalTo(BackButton.snp.left)
-//            $0.top.equalTo(CreateRoutineTextField.snp.bottom).offset(-(CreateRoutineTextField.frame.height/4))
-//            $0.width.equalTo(270)
-//            $0.height.equalTo(15)
-//        }
-//        BackgroundImage.snp.makeConstraints {
-//            $0.left.bottom.right.equalToSuperview()
-//            $0.top.equalTo(CRUnderLineView.snp.bottom).offset(10)
-//        }
-//        WithWhoLabel.snp.makeConstraints {
-//            $0.top.equalTo(BackgroundImage.snp.top).offset(10)
-//            $0.left.equalTo(BackButton.snp.left)
-//        }
-//        CRcollectionView.snp.makeConstraints {
-//            $0.top.equalTo(WithWhoLabel.snp.bottom).offset(10)
-//            $0.left.equalTo(BackButton.snp.left)
-//            $0.right.equalToSuperview().offset(-(view.frame.width/14)) // 백버튼의 좌간격 만큼
-//            //$0.bottom.equalTo(-100)
-//            $0.height.equalTo(80)
-//        }
-//        WhenStartLabel.snp.makeConstraints {
-//            $0.top.equalTo(CRcollectionView.snp.bottom).offset(10)
-//            $0.left.equalTo(BackButton.snp.left)
-//            $0.width.lessThanOrEqualToSuperview()
-//        }
-//        DateBoxView.snp.makeConstraints {
-//            $0.top.equalTo(WhenStartLabel.snp.bottom).offset(10)
-//            $0.left.equalTo(BackButton.snp.left)
-//            $0.right.equalToSuperview().offset(-(view.frame.width/14))
-//            $0.height.equalTo(150 * DeviceRatio)
-//        }
-//        InnerDateBoxViewLayout()
-//        RequestLabel.snp.makeConstraints {
-//            $0.top.equalTo(DateBoxView.snp.bottom).offset(10)
-//            $0.left.equalTo(BackButton.snp.left)
-//        }
-//        RequsetTextViewContainer.snp.makeConstraints {
-//            $0.top.equalTo(RequestLabel.snp.bottom).offset(10)
-//            $0.left.equalTo(BackButton.snp.left)
-//            $0.right.equalToSuperview().offset(-(view.frame.width/14))
-//            $0.bottom.equalTo(ChallengeAddButton.snp.top).offset(-10)
-//        }
-//        RequestTextView.snp.makeConstraints {
-//            $0.top.bottom.equalToSuperview()
-//            $0.left.equalToSuperview().offset((view.frame.width/14))
-//            $0.right.equalToSuperview().offset(-(view.frame.width/14))
-//        }
-//        ChallengeAddButton.snp.makeConstraints {
-//            $0.bottom.equalToSuperview().offset(-10)
-//            //$0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top)
-//            $0.height.equalTo(30)
-//            $0.left.equalToSuperview().offset((view.frame.width/14))
-//            $0.right.equalToSuperview().offset(-(view.frame.width/14))
-//        }
-//    }
-//    
 //    func InnerDateBoxViewLayout() {
 //        let DateBoxWidth = view.frame.width - (view.frame.width/7)
 //        let DateBoxHeightRatio : CGFloat = 150 * DeviceRatio / 219
@@ -521,7 +181,7 @@ class CommonRoutineViewController : UIViewController {
 //            $0.right.equalTo(DayText.snp.right)
 //        }
 //    }
-//    
+    
 //    func setUI() {
 //        //let figmaRatio : CGFloat = 374*219
 //        //let DateBoxRatio = DateBoxView.frame.width * 150 / figmaRatio
@@ -583,7 +243,7 @@ class CommonRoutineViewController : UIViewController {
 //            $0.setTitle("챌린지를 추가하세요", for: .normal)
 //        }
 //    }
-//    
+    
 //    func InnerDateBoxViewSetUI() {
 //        let figmaBoxRatio : CGFloat = 374 * 219
 //        let DateBoxRatio = DateBoxView.frame.width * 150 / figmaBoxRatio // 내 박스의 비율로 전환 - 세로길이 150 고정
@@ -701,7 +361,7 @@ class CommonRoutineViewController : UIViewController {
 //            $0.text = "요청메시지를 보내봐요"
 //        }
 //    }
-//    
+    
 //    func WeekButtonUI() {
 //        WeekStackIndex0.then {
 //            $0.tintColor = UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1)
@@ -728,9 +388,9 @@ class CommonRoutineViewController : UIViewController {
 //            $0.tintColor = UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1)
 //        }
 //    }
-//    
+    
 //    func setData() {
-//        
+//
 //        viewModel.dummyObsrvable
 //            .bind(to: CRcollectionView.rx
 //                    .items(
@@ -739,7 +399,7 @@ class CommonRoutineViewController : UIViewController {
 //            ) { index, item, cell in
 //                cell.initUI(of: item)
 //            }.disposed(by: bag)
-//        
+//
 //        YearTextField.rx.text.orEmpty
 //            .skip(1) // 구독 시 bind코드가 적용되는데 밑줄이 우리가 포커스를 잡은 시점부터 나타나길 바래서
 //            .observe(on: MainScheduler.asyncInstance)
@@ -748,7 +408,7 @@ class CommonRoutineViewController : UIViewController {
 //                self.Yearborder.isHidden = false
 //            } // 에러 방출할 일 없으니 bind로 사용해보자
 //            .disposed(by: bag) // 메모리 누수를 막읍시다.
-//        
+//
 //        MonthTextField.rx.text.orEmpty
 //            .skip(1)
 //            .observe(on: MainScheduler.asyncInstance)
@@ -757,7 +417,7 @@ class CommonRoutineViewController : UIViewController {
 //                self.Monthborder.isHidden = false
 //            })
 //            .disposed(by: bag)
-//        
+//
 //        DayTextField.rx.text.orEmpty
 //            .skip(1)
 //            .observe(on: MainScheduler.asyncInstance)
@@ -766,7 +426,7 @@ class CommonRoutineViewController : UIViewController {
 //                self.Dayborder.isHidden = false
 //            } // 에러 방출할 일 없으니 bind로 사용해보자
 //            .disposed(by: bag)
-//        
+//
 //        HourTextField.rx.text.orEmpty
 //            .skip(1)
 //            .observe(on: MainScheduler.asyncInstance)
@@ -775,7 +435,7 @@ class CommonRoutineViewController : UIViewController {
 //                self.Hourborder.isHidden = false
 //            } // 에러 방출할 일 없으니 bind로 사용해보자
 //            .disposed(by: bag)
-//        
+//
 //        MinuteTextField.rx.text.orEmpty
 //            .skip(1)
 //            .observe(on: MainScheduler.asyncInstance)
@@ -784,19 +444,19 @@ class CommonRoutineViewController : UIViewController {
 //                self.Minuteborder.isHidden = false
 //            } // 에러 방출할 일 없으니 bind로 사용해보자
 //            .disposed(by: bag)
-//        
+//
 //        AMButton.rx.tap
 //            .bind{
 //                self.AMButton.setTitleColor(.black, for: .normal)
 //                self.PMButton.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
 //            }.disposed(by: bag)
-//        
+//
 //        PMButton.rx.tap
 //            .bind{
 //                self.PMButton.setTitleColor(.black, for: .normal)
 //                self.AMButton.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
 //            }.disposed(by: bag)
-//        
+//
 //        TimeActivationButton.rx.tap
 //            .bind{
 //                if self.TimeActivationButton.image(for: .normal) == UIImage(systemName: "plus.circle") { // 비활성화 상태 -> 활성화 상태
@@ -832,7 +492,7 @@ class CommonRoutineViewController : UIViewController {
 //                    self.ClockIcon.tintColor = .gray
 //                }
 //            }.disposed(by: bag)
-//        
+//
 //        // MARK:: WeekendButtonClick 상태 확인
 //        WeekStackIndex0.rx.tap
 //            .bind{
@@ -906,7 +566,7 @@ class CommonRoutineViewController : UIViewController {
 //                }
 //            }
 //            .disposed(by: bag)
-//        
+//
 //        RequestTextView.rx.didBeginEditing
 //            .bind{ _ in
 //                if self.RequestTextView.text == "간단한 메시지를 적어보세요~!" {
@@ -914,7 +574,7 @@ class CommonRoutineViewController : UIViewController {
 //                }
 //                self.RequestTextView.textColor = .black
 //            }.disposed(by: bag)
-//        
+//
 //        RequestTextView.rx.didEndEditing
 //            .bind{
 //                if self.RequestTextView.text.count == 0 {
@@ -922,13 +582,13 @@ class CommonRoutineViewController : UIViewController {
 //                    self.RequestTextView.textColor = UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1)
 //                }
 //            }.disposed(by: bag)
-////
-////                CreateRoutineTextField.rx.controlEvent([.editingDidBegin])
-////                    .bind{
-////                        print("touch begin")
-////                    }.disposed(by: bag)
-//        
-//        
+//
+//                //CreateRoutineTextField.rx.controlEvent([.editingDidBegin])
+//                    //.bind{
+//                        //print("touch begin")
+//                    //}.disposed(by: bag)
+//
+//
 //        ChallengeAddButton.rx.tap
 //            .bind{
 //                /*
@@ -949,21 +609,21 @@ class CommonRoutineViewController : UIViewController {
 //                        print(self.myPageTable.dummyRoutineData)
 //                        self.dismiss(animated: false) {
 //                            print("AD")
-//                            
+//
 //                        }
 //                    }
 //                }
-//                
-//                
+//
+//
 //            }.disposed(by: bag)
-//        
+//
 //        BackButton.rx.tap
 //            .bind{
 //                self.dismiss(animated: true, completion: nil)
 //            }.disposed(by: bag)
-//        
+//
 //    }
-//    
+    
 //    func realDateTime() -> String {
 //        let today = NSDate() //현재 시각 구하기
 //        let dateFormatter = DateFormatter()
@@ -1181,287 +841,5 @@ class CommonRoutineViewController : UIViewController {
 //        vc.modalPresentationStyle = .fullScreen
 //        present(vc, animated: true, completion: nil)
 //    }
-//    
-//}
-
-//extension CommonRoutineViewController : UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        return CGSize(width: 60, height: 60)
-//    }
-//}
-
-//extension CommonRoutineViewController : UITextFieldDelegate {   // 텍스트 필드 제약조건을 주기 위해서
-//    /*
-//     함수명 규칙 : IBOutlet 이름 + 최대 글자 길이
-//
-//     첫번째 줄 텍스트필드 제약조건에 대해서 고려해야 하는 점들.
-//     1. 입력받는 길이를 제한하기 -> 코드로 최대길이 제한
-//     2. 입력이 끝나면 자동으로 키보드 내리기 -> 최대길이 도달하면 내리게 코드로 주기
-//     3. 터무니없는 입력값에는 현재 날짜로 초기화 -> 코드로 구현
-//     4. 입력이 끝나지 않았다면 다른 곳을 터치하여 포커스를 헤제하기
-//     5. 다시 입력할 때, 자동으로 텍스트 필드 비워버리기 -> UX 향상 -> 스토리보드에서 clear when editing begin으로 설정
-//
-//     + Month나 Day의 경우에는 한자리만 입력하는 경우가 종종 발생할 수 있는데, 유저의 인식 향상을 위해 placeholder를 제공하면 좋겠다.
-//     placeholder에 제공하는 값은 오늘 날짜로 제공하면 좋지 않을까?
-//     + Year의 경우에는 대부분 고정되어 있으니 처음부터 값을 줘도 좋겠다!
-//     Year을 기본으로 주는 만큼 만약에 현재 날짜 및 시간보다 앞의 값을 입력한다면 입력하지 정보를 정정하고 Year의 조절이 있을 경우 언더라인이 나타나게한다.
-//
-//     Hour, Minute 텍스트필드 제약조건에 대해서 고려해야 하는 점들.
-//
-//     세번째 줄 텍스트필드 제약조건에 대해서 고려해야 하는 점들.
-//     1. 입력받는 길이 제한 -> 코드로 길이 제한
-//     2. 입력이 끝나면 자동으로 키보드 내리기 -> 최대길이 도달하면 내리게 코드로 주기
-//     3. 터무니없는 값에는 현재 시간으로 초기화 -> 코드로 구현
-//     4. 입력이 끝나지 않았다면 다른 곳 터치시 포커스 헤제
-//     5.
-//     */
-//
-//    // when user select a textfield, this method will be called
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        // set the activeTextField to the selected textfield
-//        self.activeTextField = textField
-//        print("tx did begin editing")
-//    }
-//
-//    // when user click 'done' or dismiss the keyboard
-//    func textFieldDidEndEditing(_ textField: UITextField) { // 텍스트 필드가 포커스를 사임하기 직전에 호출되는 메소드 이 코드가 존재하는 이유는 포커스를 놓을 때, 필드를 안전하게 채워주기 위함.
-//
-//        self.activeTextField = nil // 활동하는 키보드 날려주기
-//        print("tx did end editing")
-//
-//        // 텍스트 필드에서 다른 텍스트 필드 클릭 시, touchesBegan 메소드로는 사임 여부를 확인할 수가 없어서 코드로 구현하였다.
-//        if textField == YearTextField && YearTextField.text?.count ?? 0 < 4 { // 사임하는 텍스트 필드의 내용 길이가 조건보다 작다면, 채워주자.
-//            YearTextField.text = nowDateTime(0)
-//            Yearborder.backgroundColor = UIColor.green.cgColor
-//        }
-//
-//        if textField == MonthTextField && MonthTextField.text?.count ?? 0 < 2 {
-//            if MonthTextField.text?.count == 1 && MonthTextField.text != "0" { // 이 경우는 사용자가 "01" 이 아니라 "1" 이렇게만 입력했을 수도 있으므로
-//                MonthTextField.text = "0\(MonthTextField.text!)"
-//            } else {
-//                MonthTextField.text = nowDateTime(1)
-//            }
-//            Monthborder.backgroundColor = UIColor.green.cgColor
-//        } else if textField == DayTextField && DayTextField.text?.count ?? 0 < 2 {
-//            if DayTextField.text?.count == 1 && DayTextField.text != "0" { // 이 경우는 사용자가 "01" 이 아니라 "1" 이렇게만 입력했을 수도 있으므로
-//                DayTextField.text = "0\(DayTextField.text!)"
-//            } else {
-//                DayTextField.text = nowDateTime(2)
-//            }
-//            self.Dayborder.backgroundColor = UIColor.green.cgColor
-//        } else if textField == HourTextField && HourTextField.text?.count ?? 0 < 2 {
-//            if HourTextField.text?.count == 1 && HourTextField.text != "0" { // 이 경우는 사용자가 "01" 이 아니라 "1" 이렇게만 입력했을 수도 있으므로
-//                HourTextField.text = "0\(HourTextField.text!)"
-//            } else {
-//                HourTextField.text = nowDateTime(3)
-//            }
-//            self.Hourborder.backgroundColor = UIColor.green.cgColor
-//        } else if textField == MinuteTextField && MinuteTextField.text?.count ?? 0 < 2 {
-//            if MinuteTextField.text?.count == 1 { // 이 경우는 사용자가 "01" 이 아니라 "1" 이렇게만 입력했을 수도 있으므로
-//                MinuteTextField.text = "0\(MinuteTextField.text!)"
-//            } else {
-//                MinuteTextField.text = nowDateTime(4)
-//            }
-//            self.Minuteborder.backgroundColor = UIColor.green.cgColor
-//        }
-//
-//    }
-//
-//    // MARK:: InnerBox 첫번째 줄
-//    private func YearTextField4(_ str : String) { // 최대길이 4까지
-//
-//        if YearTextField.text?.count ?? 0 < 4 { // 입력 시에 호출 된다.
-//            self.Yearborder.backgroundColor = UIColor.red.cgColor // 입력시 빨간색으로
-//        }
-//
-//        if str.count > 4 {
-//            let index = str.index(str.startIndex, offsetBy: 4)
-//            self.YearTextField.text = String(str[..<index])
-//        } else if str.count == 4 {
-//            if Int(str)! < Int(nowDateTime(0))! { // 올해보다 이전이라면
-//                self.YearTextField.text = nowDateTime(0) // 올해값으로 정정
-//            }
-//
-//            if !checkLeapYear() && self.MonthTextField.text == "02" && self.DayTextField.text == "29" { // 윤년이 아닌데, 2월 29일로 설정되어 있다면
-//                self.DayTextField.text = "28" // 28일로 변경
-//            }
-//
-//            self.Yearborder.backgroundColor = UIColor.green.cgColor
-//            self.YearTextField.resignFirstResponder() // 키보드 내리기
-//        }
-//    }
-//
-//    private func MonthTextField2(_ str : String) { // 최대길이 2까지
-//
-//        if MonthTextField.text?.count ?? 0 < 2 { // 입력 시에 호출 된다.
-//            self.Monthborder.backgroundColor = UIColor.red.cgColor // 입력시 빨간색으로
-//        }
-//
-//        if str.count > 2 {
-//            let index = str.index(str.startIndex, offsetBy: 2)
-//            self.MonthTextField.text = String(str[..<index])
-//        } else if str.count == 2 {
-//
-//            if Int(str)! > 12 || Int(str)! < 1 { // 여기서 터무니 없는 숫자면 이번달로 설정
-//                self.MonthTextField.text = nowDateTime(1)
-//            } else { // 정상적으로 입력 되었으면
-//                self.Monthborder.backgroundColor = UIColor.green.cgColor
-//            }
-//
-//            if self.DayTextField.text != "" { // 일이 비어있다면 넘어가도록 설계
-//                if checklastDay() < Int(self.DayTextField.text!)! { // 일이 입력되어 있는 상태에서 월을 변경할 때, 마지막 날이 이번달에 없는 날이면 변경하기 위한 로직
-//                    self.DayTextField.text = "\(checklastDay())"
-//                }
-//            }
-//
-//            self.MonthTextField.resignFirstResponder() // 키보드 내리기
-//        }
-//    }
-//    private func DayTextField2(_ str : String) { // 최대길이 2까지
-//
-//        if DayTextField.text?.count ?? 0 < 2 { // 입력 시에 호출 된다.
-//            self.Dayborder.backgroundColor = UIColor.red.cgColor // 입력시 빨간색으로
-//        }
-//
-//        if str.count > 2 {
-//            let index = str.index(str.startIndex, offsetBy: 2)
-//            self.DayTextField.text = String(str[..<index])
-//        } else if str.count == 2 {
-//            // 고려 해야할 점 -> 윤년, 월, 년,월이 입력되지 않은 경우
-//            if checklastDay() < Int(self.DayTextField.text!)! { // 그 달에 없는 날짜이면
-//                self.DayTextField.text = "\(checklastDay())"
-//            }
-//            self.Dayborder.backgroundColor = UIColor.green.cgColor
-//            self.DayTextField.resignFirstResponder() // 키보드 내리기
-//        }
-//    }
-//
-//
-//    // MARK:: InnerBox 세번째 줄
-//
-//    private func HourTextField2(_ str : String) { // 시간 최대 2자리까지
-//
-//        if HourTextField.text?.count ?? 0 < 2 { // 입력 시에 호출 된다.
-//            self.Hourborder.backgroundColor = UIColor.red.cgColor // 입력시 빨간색으로
-//        }
-//
-//        if str.count > 2 {
-//            let index = str.index(str.startIndex, offsetBy: 2)
-//            self.HourTextField.text = String(str[..<index])
-//        } else if str.count == 2 {
-//
-//            if Int(str)! > 12 || Int(str)! < 1 { // 여기서 터무니 없는 숫자면 시간값 현재 시간으로 초기화
-//                self.HourTextField.text = nowDateTime(3)
-//            } else { // 정상적으로 입력 되었으면
-//
-//            }
-//
-//            self.Hourborder.backgroundColor = UIColor.green.cgColor
-//            self.HourTextField.resignFirstResponder() // 키보드 내리기
-//        }
-//    }
-//
-//    private func MinuteTextField2(_ str : String) { // 시간 최대 2자리까지
-//
-//        if MinuteTextField.text?.count ?? 0 < 2 { // 입력 시에 호출 된다.
-//            self.Minuteborder.backgroundColor = UIColor.red.cgColor // 입력시 빨간색으로
-//        }
-//
-//        if str.count > 2 {
-//            let index = str.index(str.startIndex, offsetBy: 2)
-//            self.MinuteTextField.text = String(str[..<index])
-//        } else if str.count == 2 {
-//
-//            if Int(str)! > 59 || Int(str)! < 1 { // 여기서 터무니 없는 숫자면 시간값 현재 시간으로 초기화
-//                self.MinuteTextField.text = nowDateTime(3)
-//            } else { // 정상적으로 입력 되었으면
-//
-//            }
-//
-//            self.Minuteborder.backgroundColor = UIColor.green.cgColor
-//            self.MinuteTextField.resignFirstResponder() // 키보드 내리기
-//        }
-//    }
-//
-//}
-
-//extension CommonRoutineViewController : UITextViewDelegate {
-//    
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//        print("didbegin txtview")
-//        self.activeTextView = textView
-//        print("func activeTextView : \(activeTextView)")
-//        animateViewMoving(true, self.RequestTextView.frame.height)
-//    }
-//    
-//    func textViewDidEndEditing(_ textView: UITextView) {
-//        print("didend txtview")
-//        self.activeTextView = nil
-//        print("func activeTextView : \(activeTextView)")
-//        animateViewMoving(false, 0)
-//    }
-//    
-//    func animateViewMoving (_ up:Bool, _ moveValue :CGFloat){
-//        
-//        let movementDuration : TimeInterval = 0.3
-//        let movement : CGFloat = ( up ? -(moveValue) : moveValue)
-//        UIView.beginAnimations("animateView", context: nil)
-//        UIView.setAnimationBeginsFromCurrentState(true)
-//        UIView.setAnimationDuration(movementDuration)
-//        self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
-//        UIView.commitAnimations()
-//    }
-//    
-//}
-
-//struct CRCollectionModel {
-//    var profileButtonImage : String
-//    var name : String
-//}
-
-//class CRCollectionViewCell : UICollectionViewCell {
-//    @IBOutlet weak var ProfileButtonImage: UIButton!
-//    @IBOutlet weak var ProfileName: UILabel!
-//
-//    func initUI(of item : CRCollectionModel) {
-//        cellLayout()
-//        ProfileButtonImage.then{
-//            $0.setImage(UIImage(named: item.profileButtonImage), for: .normal)
-//            $0.setTitle("", for: .normal)
-//            $0.layer.cornerRadius = 30 // width의 절반
-//            $0.clipsToBounds = true
-//        }
-//        ProfileName.then {
-//            $0.text = item.name
-//        }
-//    }
-//
-//    func cellLayout() {
-//        ProfileButtonImage.snp.makeConstraints {
-//            $0.top.left.equalToSuperview()
-//            $0.width.height.equalTo(60)
-//        }
-//        ProfileName.snp.makeConstraints {
-//            $0.centerX.equalToSuperview()
-//            $0.top.equalTo(ProfileButtonImage.snp.bottom)
-//            $0.width.equalTo(60)
-//            $0.bottom.equalToSuperview()
-//        }
-//    }
-//}
-
-//class CRCollectionViewModel {
-//    var dummyData = [
-//        CRCollectionModel(profileButtonImage: "image 1", name: " 짱꾸짱꾸 "),
-//        CRCollectionModel(profileButtonImage: "image 2", name: " 도라에몽이최고"),
-//        CRCollectionModel(profileButtonImage: "image 3", name: " 왜굮거"),
-//    ]
-//    
-//    var dummyObsrvable: Observable<[CRCollectionModel]>
-//    
-//    init() {
-//        dummyObsrvable = Observable.of(dummyData)
-//    }
-//}
-//
+    
+}
