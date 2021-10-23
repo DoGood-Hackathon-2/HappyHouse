@@ -11,8 +11,10 @@
 		B101FF3226DA5BD500FA0D94 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B101FF3126DA5BD500FA0D94 /* CommunityViewController.swift */; };
 		B101FF5826DC7F7800FA0D94 /* CommonRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B101FF5726DC7F7800FA0D94 /* CommonRoutineViewController.swift */; };
 		B101FF5B26DC7FBE00FA0D94 /* CommonRoutine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B101FF5A26DC7FBD00FA0D94 /* CommonRoutine.storyboard */; };
+		B13DF2052714A61A001BA195 /* NCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13DF2042714A61A001BA195 /* NCameraViewController.swift */; };
 		B1445AC226FDBC70003F37DD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1445AC126FDBC70003F37DD /* ProfileViewController.swift */; };
 		B15C824B505E3C2D99B241E8 /* Pods_HappyHouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF4D2E8D7A48EDCECDBDD7D /* Pods_HappyHouseTests.framework */; };
+		B15D0A6226EE3D1700517248 /* RoutineVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D0A6126EE3D1700517248 /* RoutineVerifyViewController.swift */; };
 		B162593726E887B70058718E /* OnboardingSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162593626E887B70058718E /* OnboardingSecondViewController.swift */; };
 		B162593A26E8972C0058718E /* CustomExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162593926E8972C0058718E /* CustomExtension.swift */; };
 		B162593C26E8A3910058718E /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162593B26E8A3910058718E /* StartViewController.swift */; };
@@ -20,10 +22,6 @@
 		B162594226E902070058718E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162594126E902070058718E /* SignUpViewController.swift */; };
 		B1625B2026C7E3BC000BD74D /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B1E26C7E3BC000BD74D /* InviteViewController.swift */; };
 		B1625B2326C7E3C3000BD74D /* OnboardingFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B2226C7E3C3000BD74D /* OnboardingFirstViewController.swift */; };
-		B13DF2052714A61A001BA195 /* NCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13DF2042714A61A001BA195 /* 
-    .swift */; };
-		B15D0A6226EE3D1700517248 /* RoutineVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D0A6126EE3D1700517248 /* 
-    .swift */; };
 		B16384FD26C7BF2D002013F4 /* FamilyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16384FC26C7BF2D002013F4 /* FamilyViewModel.swift */; };
 		B17053B6271C47D000498CC2 /* CRCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053B5271C47D000498CC2 /* CRCollectionViewModel.swift */; };
 		B17053B8271C4BDF00498CC2 /* CRCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053B7271C4BDF00498CC2 /* CRCollectionViewCell.swift */; };
@@ -47,6 +45,14 @@
 		B1808B6D26C8A8ED00B6FE37 /* Tutorial1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B6C26C8A8ED00B6FE37 /* Tutorial1.swift */; };
 		B1808B6F26C8A90300B6FE37 /* Tutorial2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B6E26C8A90300B6FE37 /* Tutorial2.swift */; };
 		B1808B7126C8A90F00B6FE37 /* Tutorial3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1808B7026C8A90F00B6FE37 /* Tutorial3.swift */; };
+		B189AA3C272449F8001B2967 /* Objc_KeyboardEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B189AA3B272449F7001B2967 /* Objc_KeyboardEvent.swift */; };
+		B189AA3E27244AD2001B2967 /* CRAddDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B189AA3D27244AD2001B2967 /* CRAddDelegate.swift */; };
+		B189AA4027244B25001B2967 /* CRControlform.swift in Sources */ = {isa = PBXBuildFile; fileRef = B189AA3F27244B25001B2967 /* CRControlform.swift */; };
+		B189AA4227244B9D001B2967 /* CRStringSplit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B189AA4127244B9D001B2967 /* CRStringSplit.swift */; };
+		B189AA4527244C28001B2967 /* NMyPageRoutionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B189AA4427244C28001B2967 /* NMyPageRoutionTableCell.swift */; };
+		B189AA4727244CBB001B2967 /* NMyPageRoutineTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B189AA4627244CBB001B2967 /* NMyPageRoutineTableCellModel.swift */; };
+		B189AA4927244D11001B2967 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B189AA4827244D11001B2967 /* Utils.swift */; };
+		B189AA4B27244D47001B2967 /* NMyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B189AA4A27244D47001B2967 /* NMyPageViewModel.swift */; };
 		B196897F26C7FF49007B9B1A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196897E26C7FF49007B9B1A /* WelcomeViewController.swift */; };
 		B196898126C8003A007B9B1A /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196898026C8003A007B9B1A /* JoinViewController.swift */; };
 		B196898326C800DC007B9B1A /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196898226C800DC007B9B1A /* Invitation.swift */; };
@@ -106,7 +112,9 @@
 		B101FF3126DA5BD500FA0D94 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		B101FF5726DC7F7800FA0D94 /* CommonRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRoutineViewController.swift; sourceTree = "<group>"; };
 		B101FF5A26DC7FBD00FA0D94 /* CommonRoutine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommonRoutine.storyboard; sourceTree = "<group>"; };
+		B13DF2042714A61A001BA195 /* NCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCameraViewController.swift; sourceTree = "<group>"; };
 		B1445AC126FDBC70003F37DD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B15D0A6126EE3D1700517248 /* RoutineVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineVerifyViewController.swift; sourceTree = "<group>"; };
 		B162593626E887B70058718E /* OnboardingSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondViewController.swift; sourceTree = "<group>"; };
 		B162593926E8972C0058718E /* CustomExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExtension.swift; sourceTree = "<group>"; };
 		B162593B26E8A3910058718E /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -114,8 +122,6 @@
 		B162594126E902070058718E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B1625B1E26C7E3BC000BD74D /* InviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
 		B1625B2226C7E3C3000BD74D /* OnboardingFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFirstViewController.swift; sourceTree = "<group>"; };
-		B13DF2042714A61A001BA195 /* NCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCameraViewController.swift; sourceTree = "<group>"; };
-		B15D0A6126EE3D1700517248 /* RoutineVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineVerifyViewController.swift; sourceTree = "<group>"; };
 		B16384FC26C7BF2D002013F4 /* FamilyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyViewModel.swift; sourceTree = "<group>"; };
 		B17053B5271C47D000498CC2 /* CRCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCollectionViewModel.swift; sourceTree = "<group>"; };
 		B17053B7271C4BDF00498CC2 /* CRCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -139,6 +145,14 @@
 		B1808B6C26C8A8ED00B6FE37 /* Tutorial1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial1.swift; sourceTree = "<group>"; };
 		B1808B6E26C8A90300B6FE37 /* Tutorial2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial2.swift; sourceTree = "<group>"; };
 		B1808B7026C8A90F00B6FE37 /* Tutorial3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial3.swift; sourceTree = "<group>"; };
+		B189AA3B272449F7001B2967 /* Objc_KeyboardEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objc_KeyboardEvent.swift; sourceTree = "<group>"; };
+		B189AA3D27244AD2001B2967 /* CRAddDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRAddDelegate.swift; sourceTree = "<group>"; };
+		B189AA3F27244B25001B2967 /* CRControlform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRControlform.swift; sourceTree = "<group>"; };
+		B189AA4127244B9D001B2967 /* CRStringSplit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRStringSplit.swift; sourceTree = "<group>"; };
+		B189AA4427244C28001B2967 /* NMyPageRoutionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMyPageRoutionTableCell.swift; sourceTree = "<group>"; };
+		B189AA4627244CBB001B2967 /* NMyPageRoutineTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMyPageRoutineTableCellModel.swift; sourceTree = "<group>"; };
+		B189AA4827244D11001B2967 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		B189AA4A27244D47001B2967 /* NMyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMyPageViewModel.swift; sourceTree = "<group>"; };
 		B196897E26C7FF49007B9B1A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		B196898026C8003A007B9B1A /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		B196898226C800DC007B9B1A /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
@@ -297,6 +311,10 @@
 				B17053CF271D3D6100498CC2 /* CRClock.swift */,
 				B17053D1271D3FCA00498CC2 /* CRTextFiledRestraint.swift */,
 				B17053D3271D3FFE00498CC2 /* CRUtils.swift */,
+				B189AA3B272449F7001B2967 /* Objc_KeyboardEvent.swift */,
+				B189AA3D27244AD2001B2967 /* CRAddDelegate.swift */,
+				B189AA3F27244B25001B2967 /* CRControlform.swift */,
+				B189AA4127244B9D001B2967 /* CRStringSplit.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -304,10 +322,14 @@
 		B1808B6026C8424000B6FE37 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				B189AA4327244C03001B2967 /* Extension */,
 				B1808B6126C8425700B6FE37 /* MypageViewController.swift */,
 				B1808B6326C8667C00B6FE37 /* MypageTableViewModel.swift */,
 				B101FF2E26D781D300FA0D94 /* NMyPageViewController.swift */,
 				B13DF2042714A61A001BA195 /* NCameraViewController.swift */,
+				B189AA4427244C28001B2967 /* NMyPageRoutionTableCell.swift */,
+				B189AA4627244CBB001B2967 /* NMyPageRoutineTableCellModel.swift */,
+				B189AA4A27244D47001B2967 /* NMyPageViewModel.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -320,6 +342,14 @@
 				B1808B7026C8A90F00B6FE37 /* Tutorial3.swift */,
 			);
 			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		B189AA4327244C03001B2967 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B189AA4827244D11001B2967 /* Utils.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		B196897D26C7FF3A007B9B1A /* Welcome */ = {
@@ -701,16 +731,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				B162593E26E8BA1A0058718E /* LoginViewController.swift in Sources */,
+				B189AA4727244CBB001B2967 /* NMyPageRoutineTableCellModel.swift in Sources */,
 				B162593A26E8972C0058718E /* CustomExtension.swift in Sources */,
 				B1E2151C26C8C3BC0081F42D /* HomeTabBarViewController.swift in Sources */,
 				B196899226C81FCA007B9B1A /* APIManager.swift in Sources */,
 				B17053D4271D3FFE00498CC2 /* CRUtils.swift in Sources */,
 				B1808B6226C8425700B6FE37 /* MypageViewController.swift in Sources */,
+				B189AA3C272449F8001B2967 /* Objc_KeyboardEvent.swift in Sources */,
 				B16384FD26C7BF2D002013F4 /* FamilyViewModel.swift in Sources */,
 				B17053D2271D3FCA00498CC2 /* CRTextFiledRestraint.swift in Sources */,
 				B1C8CCB826C757C200346355 /* CreateFamilyViewController.swift in Sources */,
 				B162593C26E8A3910058718E /* StartViewController.swift in Sources */,
 				B17053BF271C4E2900498CC2 /* InputRestraint.swift in Sources */,
+				B189AA4027244B25001B2967 /* CRControlform.swift in Sources */,
+				B189AA4B27244D47001B2967 /* NMyPageViewModel.swift in Sources */,
 				B1808B6826C89C0D00B6FE37 /* PreviewView.swift in Sources */,
 				B1E2150926C833C50081F42D /* HomeViewController.swift in Sources */,
 				B1E2151A26C8C08F0081F42D /* AddRoutineFinishViewController.swift in Sources */,
@@ -732,10 +766,12 @@
 				B15D0A6226EE3D1700517248 /* RoutineVerifyViewController.swift in Sources */,
 				B1C8CC8826C74A4C00346355 /* ViewController.swift in Sources */,
 				B1C8CCBB26C772E700346355 /* FamilyViewController.swift in Sources */,
+				B189AA4227244B9D001B2967 /* CRStringSplit.swift in Sources */,
+				B189AA4527244C28001B2967 /* NMyPageRoutionTableCell.swift in Sources */,
 				B17053C9271C511D00498CC2 /* CRInnerDateBoxViewSetUI.swift in Sources */,
+				B189AA4927244D11001B2967 /* Utils.swift in Sources */,
 				B1808B6A26C89E0D00B6FE37 /* CameraViewController.swift in Sources */,
 				B162594226E902070058718E /* SignUpViewController.swift in Sources */,
-				B1625B1F26C7E3BC000BD74D /* loginViewController.swift in Sources */,
 				B17053C1271C4F6100498CC2 /* CollectionViewFlowLayout.swift in Sources */,
 				B17053CB271C514D00498CC2 /* CRWeekButtonUI.swift in Sources */,
 				B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */,
@@ -753,9 +789,10 @@
 				B17053C5271C502400498CC2 /* CRInnerDateBoxLayout.swift in Sources */,
 				B17053C3271C4FA100498CC2 /* CRLayout.swift in Sources */,
 				B17053D0271D3D6100498CC2 /* CRClock.swift in Sources */,
+				B189AA3E27244AD2001B2967 /* CRAddDelegate.swift in Sources */,
 				B17053B6271C47D000498CC2 /* CRCollectionViewModel.swift in Sources */,
 				B17053B8271C4BDF00498CC2 /* CRCollectionViewCell.swift in Sources */,
-				B1625B2326C7E3C3000BD74D /* loadingViewController.swift in Sources */,
+				B1625B2326C7E3C3000BD74D /* OnboardingFirstViewController.swift in Sources */,
 				B1E2151626C85B670081F42D /* Member.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

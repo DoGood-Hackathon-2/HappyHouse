@@ -19,9 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         // Window 설정
-        self.window = UIWindow(windowScene: scene)
-        window?.rootViewController = OnboardingFirstViewController()
-        window?.makeKeyAndVisible()
+//        self.window = UIWindow(windowScene: scene)
+//        window?.rootViewController = OnboardingFirstViewController()
+//        window?.makeKeyAndVisible()
         
 //        for fontFamily in UIFont.familyNames { // 커스텀 폰트 등록 확인 코드
 //            for fontName in UIFont.fontNames(forFamilyName: fontFamily) {

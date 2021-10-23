@@ -111,103 +111,103 @@ class CommonRoutineViewController : UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(CommonRoutineViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc private func adjustTextFieldConstraintsToKeyboard(notification : Notification){
-        
-        print("txtview in")
-        
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            // if keyboard size is not available for some reason, dont do anything
-            print("keyboardSize gurad out")
-            
-            return
-        }
-        
-        var shouldMoveViewUp = false
-        
-        // if active text field is not nil
-        if let activeTextView = activeTextView {
-            
-            let bottomOfTextView = activeTextView.convert(activeTextView.bounds, to: self.view).maxY;
-            
-            let topOfKeyboard = self.view.frame.height - keyboardSize.height
-            
-            // if the bottom of Textfield is below the top of keyboard, move up
-            if bottomOfTextView > topOfKeyboard {
-                shouldMoveViewUp = true
-            }
-        }
-        
-        if (shouldMoveViewUp) {
-            self.view.frame.origin.y = 0 - keyboardSize.height
-        }
-    }
-    
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        
-        print("txtfield in")
-        
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            // if keyboard size is not available for some reason, dont do anything
-            print("keyboardSize gurad out")
-            
-            return
-        }
-        
-        var shouldMoveViewUp = false
-        
-        // if active text field is not nil
-        if let activeTextField = activeTextField {
-            //print("keyboardWillShow : activeTextField \(activeTextField)")
-            
-            let bottomOfTextField = activeTextField.convert(activeTextField.bounds, to: self.view).maxY;
-            
-            //print("keyboardWillShow : bottomOfTextField \(bottomOfTextField)")
-            
-            let topOfKeyboard = self.view.frame.height - keyboardSize.height
-            
-            //print("keyboardWillShow : topOfKeyboard \(topOfKeyboard)")
-            
-            // if the bottom of Textfield is below the top of keyboard, move up
-            if bottomOfTextField > topOfKeyboard {
-                shouldMoveViewUp = true
-                
-                //print("keyboardWillShow : bottomOfTextField > topOfKeyboard true")
-            }
-            //print("keyboardWillShow : bottomOfTextField > topOfKeyboard false")
-            print("textfield on")
-        }
-        
-        // if active text field is not nil
-        print("active txt view : \(activeTextView)")
-        if let activeTextView = activeTextView {
-            
-            let bottomOfTextView = activeTextView.convert(activeTextView.bounds, to: self.view).maxY;
-            print("bottomOfTextView : \(bottomOfTextView)")
-            
-            let topOfKeyboard = self.view.frame.height - keyboardSize.height
-            print("topOfKeyboard : \(topOfKeyboard)")
-            // if the bottom of Textfield is below the top of keyboard, move up
-            if bottomOfTextView > topOfKeyboard {
-                shouldMoveViewUp = true
-            }
-            
-            print("txtview on")
-        }
-        
-        if(shouldMoveViewUp) {
-            self.view.frame.origin.y = 0 - keyboardSize.height
-            
-            //print("keyboardWillShow : viewframeoring \(self.view.frame.origin.y = 0 - keyboardSize.height)")
-            
-        }
-    }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-      // move back the root view origin to zero
-        print("out")
-      self.view.frame.origin.y = 0
-    }
+//    @objc private func adjustTextFieldConstraintsToKeyboard(notification : Notification){
+//
+//        print("txtview in")
+//
+//        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+//            // if keyboard size is not available for some reason, dont do anything
+//            print("keyboardSize gurad out")
+//
+//            return
+//        }
+//
+//        var shouldMoveViewUp = false
+//
+//        // if active text field is not nil
+//        if let activeTextView = activeTextView {
+//
+//            let bottomOfTextView = activeTextView.convert(activeTextView.bounds, to: self.view).maxY;
+//
+//            let topOfKeyboard = self.view.frame.height - keyboardSize.height
+//
+//            // if the bottom of Textfield is below the top of keyboard, move up
+//            if bottomOfTextView > topOfKeyboard {
+//                shouldMoveViewUp = true
+//            }
+//        }
+//
+//        if (shouldMoveViewUp) {
+//            self.view.frame.origin.y = 0 - keyboardSize.height
+//        }
+//    }
+//
+//
+//    @objc func keyboardWillShow(notification: NSNotification) {
+//
+//        print("txtfield in")
+//
+//        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+//            // if keyboard size is not available for some reason, dont do anything
+//            print("keyboardSize gurad out")
+//
+//            return
+//        }
+//
+//        var shouldMoveViewUp = false
+//
+//        // if active text field is not nil
+//        if let activeTextField = activeTextField {
+//            //print("keyboardWillShow : activeTextField \(activeTextField)")
+//
+//            let bottomOfTextField = activeTextField.convert(activeTextField.bounds, to: self.view).maxY;
+//
+//            //print("keyboardWillShow : bottomOfTextField \(bottomOfTextField)")
+//
+//            let topOfKeyboard = self.view.frame.height - keyboardSize.height
+//
+//            //print("keyboardWillShow : topOfKeyboard \(topOfKeyboard)")
+//
+//            // if the bottom of Textfield is below the top of keyboard, move up
+//            if bottomOfTextField > topOfKeyboard {
+//                shouldMoveViewUp = true
+//
+//                //print("keyboardWillShow : bottomOfTextField > topOfKeyboard true")
+//            }
+//            //print("keyboardWillShow : bottomOfTextField > topOfKeyboard false")
+//            print("textfield on")
+//        }
+//
+//        // if active text field is not nil
+//        print("active txt view : \(activeTextView)")
+//        if let activeTextView = activeTextView {
+//
+//            let bottomOfTextView = activeTextView.convert(activeTextView.bounds, to: self.view).maxY;
+//            print("bottomOfTextView : \(bottomOfTextView)")
+//
+//            let topOfKeyboard = self.view.frame.height - keyboardSize.height
+//            print("topOfKeyboard : \(topOfKeyboard)")
+//            // if the bottom of Textfield is below the top of keyboard, move up
+//            if bottomOfTextView > topOfKeyboard {
+//                shouldMoveViewUp = true
+//            }
+//
+//            print("txtview on")
+//        }
+//
+//        if(shouldMoveViewUp) {
+//            self.view.frame.origin.y = 0 - keyboardSize.height
+//
+//            //print("keyboardWillShow : viewframeoring \(self.view.frame.origin.y = 0 - keyboardSize.height)")
+//
+//        }
+//    }
+//
+//    @objc func keyboardWillHide(notification: NSNotification) {
+//      // move back the root view origin to zero
+//        print("out")
+//      self.view.frame.origin.y = 0
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -228,128 +228,128 @@ class CommonRoutineViewController : UIViewController {
         // 텍스트 필드의 포커싱을 놓아줄 때, 입력된 글자가 부족할 때, 완전한 조건으로 보정해주는 작업이 있다면 UX를 향상
     }
     
-    func addDelegate() {
-        CRcollectionView.delegate = self
-        YearTextField.delegate = self
-        MonthTextField.delegate = self
-        DayTextField.delegate = self
-        HourTextField.delegate = self
-        MinuteTextField.delegate = self
-        
-        // add delegate to all textfields to self (this view controller)
-        CreateRoutineTextField.delegate = self
-        RequestTextView.delegate = self
-    }
-    
-    func controlloerForm(_ option : Int) { // 0이면 생성, 1이면 확인
-        // 어디서 왔는지에 따라 확인할 페이지인지, 아니면 생성 페이지인지를 결정
-        if option == 1 {
-            PageTitle.isHidden = true
-            VerfityTitle.isHidden = false
-            
-            RoutineTitle.isHidden = true
-            CreateRoutineTextField.isHidden = true
-            CRUnderLineView.isHidden = true
-            
-            // MARK:: 데이터
-            WithWhoLabel.text = "함께하는 사람"
-            WhenStartLabel.text = "챌린지 시간"
-            
-            YearTextField.text = dateSplit(0)// 0000
-            MonthTextField.text = dateSplit(1)// 00
-            DayTextField.text = dateSplit(2)// 00
-            Yearborder.isHidden = true
-            Monthborder.isHidden = true
-            Dayborder.isHidden = true
-            
-            WeekStackIndex0.isUserInteractionEnabled = false
-            WeekStackIndex1.isUserInteractionEnabled = false
-            WeekStackIndex2.isUserInteractionEnabled = false
-            WeekStackIndex3.isUserInteractionEnabled = false
-            WeekStackIndex4.isUserInteractionEnabled = false
-            WeekStackIndex5.isUserInteractionEnabled = false
-            WeekStackIndex6.isUserInteractionEnabled = false
-            WeekStackIndex7.isUserInteractionEnabled = false
-            
-            for i in iteratorSplit() {
-                if i == "매주" {
-                    WeekStackIndex0.setTitleColor(.black, for: .normal)
-                } else if i == "월" {
-                    WeekStackIndex1.setTitleColor(.black, for: .normal)
-                } else if i == "화" {
-                    WeekStackIndex2.setTitleColor(.black, for: .normal)
-                } else if i == "수" {
-                    WeekStackIndex3.setTitleColor(.black, for: .normal)
-                } else if i == "목" {
-                    WeekStackIndex4.setTitleColor(.black, for: .normal)
-                } else if i == "금" {
-                    WeekStackIndex5.setTitleColor(.black, for: .normal)
-                } else if i == "토" {
-                    WeekStackIndex6.setTitleColor(.black, for: .normal)
-                } else if i == "일" {
-                    WeekStackIndex7.setTitleColor(.black, for: .normal)
-                }
-            }
-            
-            RequestLabel.text = "요청 메시지~!"
-            
-            HourTextField.isUserInteractionEnabled = false
-            MinuteTextField.isUserInteractionEnabled = false
-            AMButton.isUserInteractionEnabled = false
-            PMButton.isUserInteractionEnabled = false
-            Hourborder.isHidden = true
-            Minuteborder.isHidden = true
-            TimeActivationButton.isHidden = true
-            
-            HourTextField.text = timeSplit()[1]
-            MinuteTextField.text = timeSplit()[2]
-            
-            if timeSplit()[0] == "오전" {
-                AMButton.setTitleColor(.black, for: .normal)
-                PMButton.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
-            } else {
-                PMButton.setTitleColor(.black, for: .normal)
-                AMButton.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
-            }
-            
-            RequestTextView.isUserInteractionEnabled = false
-            RequestTextView.text = detail
-            RequestTextView.textColor = .black
-            
-            //ChallengeAddButton.setTitle("챌린지 시작하기", for: .normal)
-            ChallengeAddButton.isHidden = true
-            
-        } else {
-            PageTitle.isHidden = false
-            VerfityTitle.isHidden = true
-            
-            RoutineTitle.isHidden = false
-            CreateRoutineTextField.isHidden = false
-            CRUnderLineView.isHidden = false
-            ChallengeAddButton.isHidden = false
-            // MARK:: 데이터
-            
-        }
-    }
-    
-    func dateSplit(_ index : Int) -> String {
-        let arr = date.components(separatedBy: ".") // 2021.01.01
-        
-        return arr[index]
-    }
-    
-    func iteratorSplit() -> Array<String>  {
-        let arr = iterator.components(separatedBy: " ") // 매주 월 수 금
-        
-        return arr
-    }
-    
-    func timeSplit() -> Array<String> {
-        var arr = time.components(separatedBy: " ") // 오후 3시 00분
-        arr[1] = String(arr[1].dropLast()) // 00 "시" 삭제
-        arr[2] = String(arr[2].dropLast())// 00 "분" 삭제
-        return arr
-    }
+//    func addDelegate() {
+//        CRcollectionView.delegate = self
+//        YearTextField.delegate = self
+//        MonthTextField.delegate = self
+//        DayTextField.delegate = self
+//        HourTextField.delegate = self
+//        MinuteTextField.delegate = self
+//
+//        // add delegate to all textfields to self (this view controller)
+//        CreateRoutineTextField.delegate = self
+//        RequestTextView.delegate = self
+//    }
+//    
+//    func controlloerForm(_ option : Int) { // 0이면 생성, 1이면 확인
+//        // 어디서 왔는지에 따라 확인할 페이지인지, 아니면 생성 페이지인지를 결정
+//        if option == 1 {
+//            PageTitle.isHidden = true
+//            VerfityTitle.isHidden = false
+//            
+//            RoutineTitle.isHidden = true
+//            CreateRoutineTextField.isHidden = true
+//            CRUnderLineView.isHidden = true
+//            
+//            // MARK:: 데이터
+//            WithWhoLabel.text = "함께하는 사람"
+//            WhenStartLabel.text = "챌린지 시간"
+//            
+//            YearTextField.text = dateSplit(0)// 0000
+//            MonthTextField.text = dateSplit(1)// 00
+//            DayTextField.text = dateSplit(2)// 00
+//            Yearborder.isHidden = true
+//            Monthborder.isHidden = true
+//            Dayborder.isHidden = true
+//            
+//            WeekStackIndex0.isUserInteractionEnabled = false
+//            WeekStackIndex1.isUserInteractionEnabled = false
+//            WeekStackIndex2.isUserInteractionEnabled = false
+//            WeekStackIndex3.isUserInteractionEnabled = false
+//            WeekStackIndex4.isUserInteractionEnabled = false
+//            WeekStackIndex5.isUserInteractionEnabled = false
+//            WeekStackIndex6.isUserInteractionEnabled = false
+//            WeekStackIndex7.isUserInteractionEnabled = false
+//            
+//            for i in iteratorSplit() {
+//                if i == "매주" {
+//                    WeekStackIndex0.setTitleColor(.black, for: .normal)
+//                } else if i == "월" {
+//                    WeekStackIndex1.setTitleColor(.black, for: .normal)
+//                } else if i == "화" {
+//                    WeekStackIndex2.setTitleColor(.black, for: .normal)
+//                } else if i == "수" {
+//                    WeekStackIndex3.setTitleColor(.black, for: .normal)
+//                } else if i == "목" {
+//                    WeekStackIndex4.setTitleColor(.black, for: .normal)
+//                } else if i == "금" {
+//                    WeekStackIndex5.setTitleColor(.black, for: .normal)
+//                } else if i == "토" {
+//                    WeekStackIndex6.setTitleColor(.black, for: .normal)
+//                } else if i == "일" {
+//                    WeekStackIndex7.setTitleColor(.black, for: .normal)
+//                }
+//            }
+//            
+//            RequestLabel.text = "요청 메시지~!"
+//            
+//            HourTextField.isUserInteractionEnabled = false
+//            MinuteTextField.isUserInteractionEnabled = false
+//            AMButton.isUserInteractionEnabled = false
+//            PMButton.isUserInteractionEnabled = false
+//            Hourborder.isHidden = true
+//            Minuteborder.isHidden = true
+//            TimeActivationButton.isHidden = true
+//            
+//            HourTextField.text = timeSplit()[1]
+//            MinuteTextField.text = timeSplit()[2]
+//            
+//            if timeSplit()[0] == "오전" {
+//                AMButton.setTitleColor(.black, for: .normal)
+//                PMButton.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+//            } else {
+//                PMButton.setTitleColor(.black, for: .normal)
+//                AMButton.setTitleColor(UIColor(red: 0.675, green: 0.675, blue: 0.675, alpha: 1), for: .normal)
+//            }
+//            
+//            RequestTextView.isUserInteractionEnabled = false
+//            RequestTextView.text = detail
+//            RequestTextView.textColor = .black
+//            
+//            //ChallengeAddButton.setTitle("챌린지 시작하기", for: .normal)
+//            ChallengeAddButton.isHidden = true
+//            
+//        } else {
+//            PageTitle.isHidden = false
+//            VerfityTitle.isHidden = true
+//            
+//            RoutineTitle.isHidden = false
+//            CreateRoutineTextField.isHidden = false
+//            CRUnderLineView.isHidden = false
+//            ChallengeAddButton.isHidden = false
+//            // MARK:: 데이터
+//            
+//        }
+//    }
+//    
+//    func dateSplit(_ index : Int) -> String {
+//        let arr = date.components(separatedBy: ".") // 2021.01.01
+//        
+//        return arr[index]
+//    }
+//    
+//    func iteratorSplit() -> Array<String>  {
+//        let arr = iterator.components(separatedBy: " ") // 매주 월 수 금
+//        
+//        return arr
+//    }
+//    
+//    func timeSplit() -> Array<String> {
+//        var arr = time.components(separatedBy: " ") // 오후 3시 00분
+//        arr[1] = String(arr[1].dropLast()) // 00 "시" 삭제
+//        arr[2] = String(arr[2].dropLast())// 00 "분" 삭제
+//        return arr
+//    }
     
 }
 
