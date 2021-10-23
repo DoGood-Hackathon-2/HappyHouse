@@ -1,17 +1,5 @@
-//
-//  Tutorial1.swift
-//  HappyHouse
-//
-//  Created by Hamlit Jason on 2021/08/15.
-//
-
-import Foundation
-import UIKit
-
-class Tutorial2 : UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-}
+/*
+ ~ MyPage/NCameraViewController
+ 리팩토링 과정을 거치면서 변경
+ (건우)
+ */

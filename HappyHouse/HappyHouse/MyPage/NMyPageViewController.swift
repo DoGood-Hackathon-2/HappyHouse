@@ -35,6 +35,9 @@ class NMyPageViewController : UIViewController {
     @IBOutlet weak var NRoutineRepeatTableView: UITableView! // 루틴 테이블 뷰 - 반복
     @IBOutlet weak var NRoutineInstanceTableView: UITableView! // 루틴 테이블 뷰 - 일회성
     
+    @IBAction func currMyPage(sender: UIStoryboardSegue) {
+        // unwind 세그웨이
+    }
     
     let viewModel = NMyPageViewModel() // MVVM 사용위한 뷰모델 선언
     let bag = DisposeBag()
@@ -50,6 +53,14 @@ class NMyPageViewController : UIViewController {
         delegate()
         setData()
         event()
+        NEditButton.isHidden = true // 기능 구현이 어려워서 일단 히든해버리자.
+        NEditUnderBar.isHidden = true // 기능 구현이 어려워서 일단 히든해버리자.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        NRoutineRepeatTableView.reloadData()
+        print("reload")
     }
     
     func delegate() {
@@ -221,6 +232,7 @@ extension NMyPageViewController {
                     cell.NMyPageCellButton.setImage(UIImage(named: item.ButtonImage), for: .normal)
                 }
                 cell.NMyPageCellButton.isHighlighted = false
+                cell.reloadInputViews()
             }.disposed(by: bag)
         
         
@@ -229,7 +241,9 @@ extension NMyPageViewController {
                     cellIdentifier: "RoutineCell",
                     cellType: RoutineTableViewCell.self)
             ) {  index, item, cell in
+                
                 cell.initUI(of: item)
+                cell.isHighlighted = true
             }.disposed(by: bag)
         
         viewModel.dummydummyInstRoutineObservable
@@ -239,6 +253,8 @@ extension NMyPageViewController {
             ) {  index, item, cell in
                 cell.initUI(of: item)
             }.disposed(by: bag)
+        
+        
         
     }
     
@@ -261,6 +277,12 @@ extension NMyPageViewController {
                 NRoutineRepeatTableView.isHidden = true
                 NRoutineInstanceTableView.isHidden = false
             }
+        
+        NEditButton.rx.tap
+            .subscribe{
+                print("수정하기 버튼")
+            }
+        
     }
 }
 
@@ -276,6 +298,36 @@ extension NMyPageViewController : UICollectionViewDelegateFlowLayout, UITableVie
         let height = (143/374) * width
         return height
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("index row : \(indexPath.row)")
+        
+        let commonRoutineStoryboard = UIStoryboard.init(name: "CommonRoutine", bundle: nil) // 스토리보드 객체 생성
+        guard let vc = commonRoutineStoryboard.instantiateViewController(identifier: "CommonRoutine") as? CommonRoutineViewController else { return }
+        vc.fromController = 1 // 어디서 왔는지 알리고
+        
+        if NRoutineInstanceTableView.isHidden == true { // 반복 버튼일 때,
+            vc.verifyTitle = viewModel.dummyRoutineData[indexPath.row].Rtitle
+            vc.date = viewModel.dummyRoutineData[indexPath.row].Rdate
+            vc.iterator = viewModel.dummyRoutineData[indexPath.row].Riterator
+            vc.time = viewModel.dummyRoutineData[indexPath.row].Rtime
+            vc.detail = viewModel.dummyRoutineData[indexPath.row].Rdescription
+            vc.idxpath = indexPath.row // 몇번째에서 왔는지!
+        } else {
+            vc.verifyTitle = viewModel.dummyInstRoutineData[indexPath.row].Rtitle
+            vc.date = viewModel.dummyInstRoutineData[indexPath.row].Rdate
+            vc.iterator = viewModel.dummyInstRoutineData[indexPath.row].Riterator
+            vc.time = viewModel.dummyInstRoutineData[indexPath.row].Rtime
+            vc.detail = viewModel.dummyInstRoutineData[indexPath.row].Rdescription
+            vc.idxpath = indexPath.row // 몇번째에서 왔는지!
+        }
+        
+        
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .coverVertical
+        self.present(vc, animated: false, completion: nil)
+        
+    }
 }
 
 class MyPageCollectionCell : UICollectionViewCell {
@@ -289,10 +341,12 @@ class MyPageCollectionCell : UICollectionViewCell {
         NMyPageCellButton.layer.masksToBounds = true
         NMyPageCellButton.backgroundColor = #colorLiteral(red: 1, green: 0.9551523328, blue: 0.9602802396, alpha: 1)
         
-        NMyPageCellButton.rx.controlEvent(UIControl.Event.allTouchEvents).bind{
-            // 모든 이벤트를 막아야지!! ㅜㅜ rxCocoa 공부할 때 배운거라 구현했넴 ㅜㅍ
-            self.NMyPageCellButton.isHighlighted = false
-        }
+        NMyPageCellButton.rx
+            .controlEvent(UIControl.Event.allTouchEvents)
+            .bind {
+                // 모든 이벤트에 하이라이트를 막아야지!! ㅜㅜ rxCocoa 공부할 때 배운거라 구현했넴 ㅜㅍ
+                self.NMyPageCellButton.isHighlighted = false
+            }
     }
     
     func lastinitUI(of item : MyPageCellModel) {
@@ -307,7 +361,7 @@ class MyPageCollectionCell : UICollectionViewCell {
         NMyPageCellButton.rx.tap
             // dispose하면 작동 안함.
             .bind{
-                print("tap")
+                //print("tap")
             }
     }
 }
@@ -330,14 +384,14 @@ class NMyPageViewModel {
     
     // 주의 : 사진 비율 1:1 아니면 완벽한 원이 아니라 짤린 원 만들어지니까 주의
     var dummyRoutineData = [
-        RoutineModel(RoutineType: "Repeat", RprofileImage: "image 1", Rtitle: "약 챙겨먹기", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
-        RoutineModel(RoutineType: "Repeat", RprofileImage: "Mask Group (1)", Rtitle: "약 챙겨먹기", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
-        RoutineModel(RoutineType: "Repeat", RprofileImage: "image 3", Rtitle: "약 챙겨먹기", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
+        RoutineModel(RoutineType: "Repeat", RprofileImage: "image 1", Rtitle: "약 ㅁㄴㅇㅎ", Rdescription: "뮷 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오전 04시 04분", RChallengeState: "  챌린지 시작  "),
+        RoutineModel(RoutineType: "Repeat", RprofileImage: "Mask Group (1)", Rtitle: "약 123", Rdescription: "엄마 ㅅㅎㅅ 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오전 06시 15분", RChallengeState: "  챌린지 시작  "),
+        RoutineModel(RoutineType: "Repeat", RprofileImage: "image 3", Rtitle: "약 ㅅㅎㅅ", Rdescription: "ㅁㄴㄹㅇ? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 04시 10분", RChallengeState: "  챌린지 시작  "),
     ]
     
     var dummyInstRoutineData = [
-        RoutineModel(RoutineType: "Instance", RprofileImage: "image 2", Rtitle: "약 챙겨먹기", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시"),
-        RoutineModel(RoutineType: "Instance", RprofileImage: "image 3", Rtitle: "약 챙겨먹기", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "매주 월 수 금", Rtime: "오후 3시")
+        RoutineModel(RoutineType: "Instance", RprofileImage: "image 2", Rtitle: "약 ㅁㄴ", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "월 수", Rtime: "오후 03시 00분", RChallengeState: "  챌린지 시작  "),
+        RoutineModel(RoutineType: "Instance", RprofileImage: "image 3", Rtitle: "약 ㅁㅎ", Rdescription: "엄마 건강은 챙기고 있어? 약 꼭 챙겨먹고 사랑해", Rdate: "2021. 08. 13", Riterator: "금", Rtime: "오후 03시 00분", RChallengeState: "  챌린지 시작  ")
     ]
     
     var dummyObsrvable: Observable<[MyPageCellModel]> // NHomeViewController의 컬렉션 뷰에 들어갈 정보
@@ -369,9 +423,11 @@ struct RoutineModel {
     var Rdate : String // 루틴 날짜
     var Riterator : String // 루틴 반복
     var Rtime : String // 루틴 시간
+    var RChallengeState : String // 챌린지 도전중인지 확인하려고
 }
 
 class RoutineTableViewCell : UITableViewCell {
+    
     @IBOutlet weak var RImage: UIImageView!
     @IBOutlet weak var RTitle: UILabel!
     @IBOutlet weak var RDescription: UILabel!
@@ -384,13 +440,17 @@ class RoutineTableViewCell : UITableViewCell {
     @IBOutlet weak var REditUnderLine: UIView! // 수정하기 밑줄
     @IBOutlet weak var RChallengeButton: UIButton! // 챌린지 시작버튼
     
+    
     let cellHeightRatio : Double = 143/374 // cell height가 width에 종속적(가변한다)이라서 화면 비율 맞춰줄 필요가 있음
     
     
     func initUI(of item : RoutineModel) {
         cellLayout() // cell 내에서의 레이아웃 배치
         cellColor() // cell 모양 및 색
+        event()
         
+        //REditButton.isHidden = true // 기능 구현이 어려워서 일단 히든해버리자.
+        REditUnderLine.isHidden = true // 기능 구현이 어려워서 일단 히든해두기
         // setUI 구성
         RImage.then {
             $0.image = UIImage(named: item.RprofileImage)
@@ -419,12 +479,14 @@ class RoutineTableViewCell : UITableViewCell {
         }
         REditButton.then {
             $0.tintColor = UIColor(red: 0.442, green: 0.442, blue: 0.442, alpha: 1)
+            $0.isUserInteractionEnabled = true
         }
         REditUnderLine.then {
             $0.backgroundColor = UIColor(red: 0.442, green: 0.442, blue: 0.442, alpha: 1)
         }
         RChallengeButton.then {
-            $0.setTitle("  챌린지 시작  ", for: .normal) // 2칸 띄어야 모양 예뻐
+            print("item ::: \(item)")
+            $0.setTitle(item.RChallengeState, for: .normal) // 2칸 띄어야 모양 예뻐
             $0.tintColor = .white
             $0.layer.backgroundColor = UIColor(red: 0.446, green: 0.631, blue: 1, alpha: 1).cgColor
             $0.layer.cornerRadius = CGFloat((18 * cellHeightRatio)) + CGFloat((10 * cellHeightRatio))
@@ -499,7 +561,33 @@ class RoutineTableViewCell : UITableViewCell {
     override func layoutSubviews() {
         // 테이블 뷰 셀 사이의 간격
         super.layoutSubviews()
-
+        
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0))
+    }
+    
+    func event() { // UITableCell에 구현된 함수이다.
+        RChallengeButton.rx.tap
+            .bind {
+                // NcameraPage로 넘어가야 한다. id : NCameraViewController
+                let vc = UIStoryboard.init(name: "HomeView", bundle: nil).instantiateViewController(identifier: "NCameraViewController") as! NCameraViewController
+                vc.modalPresentationStyle = .fullScreen
+                
+                
+                self.RChallengeButton.setTitle("  도전중...  ", for: .normal)
+                self.RChallengeButton.backgroundColor = .red
+            }
+        
+        REditButton.rx.tap
+            .bind {
+                let commonRoutineStoryboard = UIStoryboard.init(name: "CommonRoutine", bundle: nil) // 스토리보드 객체 생성
+                guard let vc = commonRoutineStoryboard.instantiateViewController(identifier: "CommonRoutine") as? CommonRoutineViewController else { return }
+                vc.fromController = 2 // 어디서 왔는지 알리고 -> 2는 수정하기에서 왔다.
+                
+                let contentViewCS = self.REditButton.superview // 슈퍼뷰로 접근해서
+                let cell = contentViewCS?.superview
+                print(type(of: cell))
+                
+                
+            }
     }
 }
