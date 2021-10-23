@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import Then
+import GoogleSignIn
 
 class StartViewController: UIViewController {
 
@@ -92,22 +93,31 @@ extension StartViewController {
     
     private func subscribeButtonEvent() {
         signUpButton.rx.controlEvent(.touchUpInside)
-            .subscribe { [weak self] _ in
-                let viewController = SignUpViewController()
-                viewController.configure {
-                    self?.presentInviteViewController()
+            .subscribe { [unowned self] _ in
+                // google login test
+                GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
+                    guard error == nil else {
+                        print(error)
+                        return
+                    }
+                    print(user)
                 }
-                self?.present(viewController, animated: true, completion: nil)
+                
+//                let viewController = SignUpViewController()
+//                viewController.configure {
+//                    self?.presentInviteViewController()
+//                }
+//                self?.present(viewController, animated: true, completion: nil)
             }
             .disposed(by: bag)
     
         loginButton.rx.controlEvent(.touchUpInside)
-            .subscribe { [weak self] _ in
+            .subscribe { [unowned self] _ in
                 let viewController = LoginViewController()
                 viewController.configure {
-                    self?.presentInviteViewController()
+                    self.presentInviteViewController()
                 }
-                self?.present(viewController, animated: true, completion: nil)
+                self.present(viewController, animated: true, completion: nil)
             }
             .disposed(by: bag)
     }

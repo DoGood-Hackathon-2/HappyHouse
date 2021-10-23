@@ -23,4 +23,5 @@ target 'HappyHouse' do
     pod 'Firebase/Storage'
     pod 'SnapKit', '~> 5.0.0'
     pod 'Then'
+    pod 'GoogleSignIn'
 end
