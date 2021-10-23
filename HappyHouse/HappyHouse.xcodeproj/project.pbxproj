@@ -11,12 +11,19 @@
 		B101FF3226DA5BD500FA0D94 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B101FF3126DA5BD500FA0D94 /* CommunityViewController.swift */; };
 		B101FF5826DC7F7800FA0D94 /* CommonRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B101FF5726DC7F7800FA0D94 /* CommonRoutineViewController.swift */; };
 		B101FF5B26DC7FBE00FA0D94 /* CommonRoutine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B101FF5A26DC7FBD00FA0D94 /* CommonRoutine.storyboard */; };
-		B13DF2052714A61A001BA195 /* NCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13DF2042714A61A001BA195 /* NCameraViewController.swift */; };
+		B1445AC226FDBC70003F37DD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1445AC126FDBC70003F37DD /* ProfileViewController.swift */; };
 		B15C824B505E3C2D99B241E8 /* Pods_HappyHouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF4D2E8D7A48EDCECDBDD7D /* Pods_HappyHouseTests.framework */; };
-		B15D0A6226EE3D1700517248 /* RoutineVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D0A6126EE3D1700517248 /* RoutineVerifyViewController.swift */; };
-		B1625B1F26C7E3BC000BD74D /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B1D26C7E3BC000BD74D /* loginViewController.swift */; };
-		B1625B2026C7E3BC000BD74D /* inviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B1E26C7E3BC000BD74D /* inviteViewController.swift */; };
-		B1625B2326C7E3C3000BD74D /* loadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B2226C7E3C3000BD74D /* loadingViewController.swift */; };
+		B162593726E887B70058718E /* OnboardingSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162593626E887B70058718E /* OnboardingSecondViewController.swift */; };
+		B162593A26E8972C0058718E /* CustomExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162593926E8972C0058718E /* CustomExtension.swift */; };
+		B162593C26E8A3910058718E /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162593B26E8A3910058718E /* StartViewController.swift */; };
+		B162593E26E8BA1A0058718E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162593D26E8BA1A0058718E /* LoginViewController.swift */; };
+		B162594226E902070058718E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B162594126E902070058718E /* SignUpViewController.swift */; };
+		B1625B2026C7E3BC000BD74D /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B1E26C7E3BC000BD74D /* InviteViewController.swift */; };
+		B1625B2326C7E3C3000BD74D /* OnboardingFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625B2226C7E3C3000BD74D /* OnboardingFirstViewController.swift */; };
+		B13DF2052714A61A001BA195 /* NCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13DF2042714A61A001BA195 /* 
+    .swift */; };
+		B15D0A6226EE3D1700517248 /* RoutineVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D0A6126EE3D1700517248 /* 
+    .swift */; };
 		B16384FD26C7BF2D002013F4 /* FamilyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16384FC26C7BF2D002013F4 /* FamilyViewModel.swift */; };
 		B17053B6271C47D000498CC2 /* CRCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053B5271C47D000498CC2 /* CRCollectionViewModel.swift */; };
 		B17053B8271C4BDF00498CC2 /* CRCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17053B7271C4BDF00498CC2 /* CRCollectionViewCell.swift */; };
@@ -99,11 +106,16 @@
 		B101FF3126DA5BD500FA0D94 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		B101FF5726DC7F7800FA0D94 /* CommonRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRoutineViewController.swift; sourceTree = "<group>"; };
 		B101FF5A26DC7FBD00FA0D94 /* CommonRoutine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommonRoutine.storyboard; sourceTree = "<group>"; };
+		B1445AC126FDBC70003F37DD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B162593626E887B70058718E /* OnboardingSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondViewController.swift; sourceTree = "<group>"; };
+		B162593926E8972C0058718E /* CustomExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExtension.swift; sourceTree = "<group>"; };
+		B162593B26E8A3910058718E /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		B162593D26E8BA1A0058718E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B162594126E902070058718E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		B1625B1E26C7E3BC000BD74D /* InviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
+		B1625B2226C7E3C3000BD74D /* OnboardingFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFirstViewController.swift; sourceTree = "<group>"; };
 		B13DF2042714A61A001BA195 /* NCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCameraViewController.swift; sourceTree = "<group>"; };
 		B15D0A6126EE3D1700517248 /* RoutineVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineVerifyViewController.swift; sourceTree = "<group>"; };
-		B1625B1D26C7E3BC000BD74D /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
-		B1625B1E26C7E3BC000BD74D /* inviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = inviteViewController.swift; sourceTree = "<group>"; };
-		B1625B2226C7E3C3000BD74D /* loadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loadingViewController.swift; sourceTree = "<group>"; };
 		B16384FC26C7BF2D002013F4 /* FamilyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyViewModel.swift; sourceTree = "<group>"; };
 		B17053B5271C47D000498CC2 /* CRCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCollectionViewModel.swift; sourceTree = "<group>"; };
 		B17053B7271C4BDF00498CC2 /* CRCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -242,21 +254,32 @@
 			path = CommonRoutine;
 			sourceTree = "<group>";
 		};
+		B162593826E897020058718E /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				B162593926E8972C0058718E /* CustomExtension.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		B1625B1C26C7E3BC000BD74D /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B1625B1D26C7E3BC000BD74D /* loginViewController.swift */,
-				B1625B1E26C7E3BC000BD74D /* inviteViewController.swift */,
+				B1625B1E26C7E3BC000BD74D /* InviteViewController.swift */,
+				B162593B26E8A3910058718E /* StartViewController.swift */,
+				B162593D26E8BA1A0058718E /* LoginViewController.swift */,
+				B162594126E902070058718E /* SignUpViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
 		};
-		B1625B2126C7E3C3000BD74D /* Loading */ = {
+		B1625B2126C7E3C3000BD74D /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				B1625B2226C7E3C3000BD74D /* loadingViewController.swift */,
+				B1625B2226C7E3C3000BD74D /* OnboardingFirstViewController.swift */,
+				B162593626E887B70058718E /* OnboardingSecondViewController.swift */,
 			);
-			path = Loading;
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		B17053BD271C4DFE00498CC2 /* Extension */ = {
@@ -351,6 +374,7 @@
 		B1C8CC8226C74A4C00346355 /* HappyHouse */ = {
 			isa = PBXGroup;
 			children = (
+				B162593826E897020058718E /* Custom */,
 				B101FF5926DC7F8000FA0D94 /* CommonRoutine */,
 				B101FF3026DA59B000FA0D94 /* Community */,
 				B19F4C2626D61A1F00E7907D /* alternative */,
@@ -361,7 +385,7 @@
 				B196899026C81FBD007B9B1A /* APIManager */,
 				B196898D26C812B5007B9B1A /* Model */,
 				B196897D26C7FF3A007B9B1A /* Welcome */,
-				B1625B2126C7E3C3000BD74D /* Loading */,
+				B1625B2126C7E3C3000BD74D /* Onboarding */,
 				B1625B1C26C7E3BC000BD74D /* Login */,
 				B1C8CCB926C772CD00346355 /* CreateFamily */,
 				B1C8CC8326C74A4C00346355 /* AppDelegate.swift */,
@@ -403,6 +427,7 @@
 				B1C8CCBA26C772E700346355 /* FamilyViewController.swift */,
 				B16384FC26C7BF2D002013F4 /* FamilyViewModel.swift */,
 				B196898B26C81105007B9B1A /* MemberProfileViewController.swift */,
+				B1445AC126FDBC70003F37DD /* ProfileViewController.swift */,
 			);
 			path = CreateFamily;
 			sourceTree = "<group>";
@@ -675,6 +700,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B162593E26E8BA1A0058718E /* LoginViewController.swift in Sources */,
+				B162593A26E8972C0058718E /* CustomExtension.swift in Sources */,
 				B1E2151C26C8C3BC0081F42D /* HomeTabBarViewController.swift in Sources */,
 				B196899226C81FCA007B9B1A /* APIManager.swift in Sources */,
 				B17053D4271D3FFE00498CC2 /* CRUtils.swift in Sources */,
@@ -682,6 +709,7 @@
 				B16384FD26C7BF2D002013F4 /* FamilyViewModel.swift in Sources */,
 				B17053D2271D3FCA00498CC2 /* CRTextFiledRestraint.swift in Sources */,
 				B1C8CCB826C757C200346355 /* CreateFamilyViewController.swift in Sources */,
+				B162593C26E8A3910058718E /* StartViewController.swift in Sources */,
 				B17053BF271C4E2900498CC2 /* InputRestraint.swift in Sources */,
 				B1808B6826C89C0D00B6FE37 /* PreviewView.swift in Sources */,
 				B1E2150926C833C50081F42D /* HomeViewController.swift in Sources */,
@@ -697,19 +725,22 @@
 				B101FF5826DC7F7800FA0D94 /* CommonRoutineViewController.swift in Sources */,
 				B1E2150B26C833C50081F42D /* RecommendViewModel.swift in Sources */,
 				B196898C26C81105007B9B1A /* MemberProfileViewController.swift in Sources */,
-				B1625B2026C7E3BC000BD74D /* inviteViewController.swift in Sources */,
-				B17053BC271C4D2F00498CC2 /* KeyboradEvent.swift in Sources */,
+				B1625B2026C7E3BC000BD74D /* InviteViewController.swift in Sources */,
 				B1808B6426C8667C00B6FE37 /* MypageTableViewModel.swift in Sources */,
+				B162593726E887B70058718E /* OnboardingSecondViewController.swift in Sources */,
+				B17053BC271C4D2F00498CC2 /* KeyboradEvent.swift in Sources */,
 				B15D0A6226EE3D1700517248 /* RoutineVerifyViewController.swift in Sources */,
 				B1C8CC8826C74A4C00346355 /* ViewController.swift in Sources */,
 				B1C8CCBB26C772E700346355 /* FamilyViewController.swift in Sources */,
 				B17053C9271C511D00498CC2 /* CRInnerDateBoxViewSetUI.swift in Sources */,
 				B1808B6A26C89E0D00B6FE37 /* CameraViewController.swift in Sources */,
+				B162594226E902070058718E /* SignUpViewController.swift in Sources */,
 				B1625B1F26C7E3BC000BD74D /* loginViewController.swift in Sources */,
 				B17053C1271C4F6100498CC2 /* CollectionViewFlowLayout.swift in Sources */,
 				B17053CB271C514D00498CC2 /* CRWeekButtonUI.swift in Sources */,
 				B1C8CC8426C74A4C00346355 /* AppDelegate.swift in Sources */,
 				B1C8CCBD26C7731D00346355 /* MyProfileViewController.swift in Sources */,
+				B1445AC226FDBC70003F37DD /* ProfileViewController.swift in Sources */,
 				B19F4C2B26D6271C00E7907D /* NHomewViewController.swift in Sources */,
 				B1808B7126C8A90F00B6FE37 /* Tutorial3.swift in Sources */,
 				B1C8CC8626C74A4C00346355 /* SceneDelegate.swift in Sources */,
@@ -718,6 +749,7 @@
 				B101FF3226DA5BD500FA0D94 /* CommunityViewController.swift in Sources */,
 				B17053BA271C4C0D00498CC2 /* CRCollectionModel.swift in Sources */,
 				B1808B6D26C8A8ED00B6FE37 /* Tutorial1.swift in Sources */,
+				B1625B2326C7E3C3000BD74D /* OnboardingFirstViewController.swift in Sources */,
 				B17053C5271C502400498CC2 /* CRInnerDateBoxLayout.swift in Sources */,
 				B17053C3271C4FA100498CC2 /* CRLayout.swift in Sources */,
 				B17053D0271D3D6100498CC2 /* CRClock.swift in Sources */,
@@ -902,13 +934,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 38PD5AHVVF;
+				DEVELOPMENT_TEAM = CS3BNMZA76;
 				INFOPLIST_FILE = HappyHouse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lgw9898.HappyHouse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jellysong2.tistory.HappyHouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -922,13 +954,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 38PD5AHVVF;
+				DEVELOPMENT_TEAM = CS3BNMZA76;
 				INFOPLIST_FILE = HappyHouse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lgw9898.HappyHouse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jellysong2.tistory.HappyHouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
